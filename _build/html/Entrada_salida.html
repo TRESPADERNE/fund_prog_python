@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La entrada/salida. &#8212; My sample book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     La entrada/salida.
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Entrada_salida.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FEntrada_salida.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Entrada_salida.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-funcion-print">
+     La función
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       print()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-funcion-input">
+     La función
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       input()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-con-formato">
+   Salida con formato
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="la-entrada-salida">
+<h1>La entrada/salida.<a class="headerlink" href="#la-entrada-salida" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#Introducci%C3%B3n">Introducción</a><br>
+<a class="reference external" href="#La_funci%C3%B3n_print()">La función <code class="docutils literal notranslate"><span class="pre">print()</span></code></a><br>
+<a class="reference external" href="#La_funci%C3%B3n_input()">La función <code class="docutils literal notranslate"><span class="pre">input()</span></code></a><br>
+<a class="reference external" href="#Salida_con_formato">Salida con formato</a></p>
+<hr class="docutils" />
+<p><a id='Introducción'></a></p>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>El trabajo directo con el intérprete de Python, aunque útil para realizar pruebas puntuales, no resulta la estrategia más apropiada para escribir programas de cierta envergadura.
+La opción preferida en la práctica es la de escribir, utilizando un editor de texto cualquiera, las sentencias de Python necesarias. Al fichero creado, conocido como <strong>guion</strong> (<strong>script</strong>) se le da un nombre arbitrario con extensión <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
+<p>El programa así almacenado podrá ser ejecutado directamente desde una terminal del sistema operativo, con un comando similar al siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">primer_programa</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>También se puede editar y ejecutar un <strong>guion</strong> desde <strong>entornos de desarrollo integrado (IDE)</strong> como <em>Spyder</em>, utilizando los recursos que los mismos ponen a disposición del programador.</p>
+<p>Los programas almacenados en el archivo son ejecutados por el intérprete, sentencia a sentencia, en el orden en que estas aparezcan en el texto del mismo.</p>
+<p>El comportamiento de una misma sentencia puede ser ligeramente diferente si se ejecuta directamente por el intérprete o como parte de la ejecución de un programa salvado previamente en un fichero. En particular, en este último caso, la evaluación de una sentencia que contiene, por ejemplo, una expresión, no produce la salida inmediata por pantalla del resultado parcial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programa que calcula el área de un cilindro de radio y altura dados</span>
+
+<span class="n">radio</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">altura</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159</span>
+
+<span class="n">area_seccion</span> <span class="o">=</span> <span class="n">PI</span><span class="o">*</span><span class="n">radio</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">area_lado</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">PI</span><span class="o">*</span><span class="n">radio</span><span class="o">*</span><span class="n">altura</span>
+<span class="n">area_cilindro</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">area_seccion</span> <span class="o">+</span> <span class="n">area_lado</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El programa anterior puede ser editado y almacenado en un fichero, para posteriormente ser ejecutado siguiendo alguna de las formas comentadas.</p>
+<p>El programa es, desde luego, muy simple y tiene además el defecto de que, tal y como está, su utilidad es muy limitada:</p>
+<ul class="simple">
+<li><p>En primer lugar, para hallar el área exterior de un cilindro de <code class="docutils literal notranslate"><span class="pre">altura</span></code> y/o <code class="docutils literal notranslate"><span class="pre">radio</span></code> diferente, habría que editar el texto del programa para modificar las líneas pertinentes y volverlo a salvar para posteriormente ejecutarlo.</p></li>
+<li><p>Otro defecto importante es que no se visualiza por pantalla el resultado del cálculo.</p></li>
+</ul>
+<p>Nuestra experiencia en la utilización de programas de ordenador nos sugiere otra forma de actuar:</p>
+<ul class="simple">
+<li><p>se ejecuta el programa cuantas veces sea necesario</p></li>
+<li><p>en cada ocasión, se introducen datos diferentes según las necesidades utilizando el teclado del ordenador</p></li>
+<li><p>se visualiza, típicamente por pantalla, el resultado que se desea</p></li>
+</ul>
+<p>O sea, un elemento básico que le falta al programa anterior son las facilidades de <strong>entrada</strong> de datos y <strong>salida</strong> de resultados.</p>
+<p>Un programa mucho más útil se muestra en la siguiente celda.</p>
+<hr class="docutils" />
+<p><a id='La_función_print()'></a></p>
+<div class="section" id="la-funcion-print">
+<h3>La función <code class="docutils literal notranslate"><span class="pre">print()</span></code><a class="headerlink" href="#la-funcion-print" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programa que calcula el área de un cilindro de radio y altura dados por el usuario. </span>
+<span class="c1"># Saca por pantalla el resultado</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="n">radio</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">altura</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">area_seccion</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="n">radio</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">area_lado</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">radio</span><span class="o">*</span><span class="n">altura</span>
+<span class="n">area_cilindro</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">area_seccion</span> <span class="o">+</span> <span class="n">area_lado</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área del cilindro es:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area_cilindro</span><span class="p">,</span> <span class="s2">&quot;unidades al cuadrado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El área del cilindro es:
+62.83185307179586 unidades al cuadrado
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sin haber introducido aún la entrada de datos, el código anterior es capaz de mostrar por pantalla el contenido de la variable que almacena el resultado del cálculo. Para ello se utiliza la función <code class="docutils literal notranslate"> <span class="pre">print()</span></code> nativa del lenguaje Python.</p>
+<p>Otra mejora importante se deriva de utilizar una mejor aproximación del número <span class="math notranslate nohighlight">\(\pi\)</span> que se encuentra disponible, como una constante, en el módulo <code class="docutils literal notranslate"><span class="pre">math</span></code>. Al hacer esto, además evitamos cambios accidentales del valor de <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<hr class="docutils" />
+<p><a id='La_función_input()'></a></p>
+</div>
+<div class="section" id="la-funcion-input">
+<h3>La función <code class="docutils literal notranslate"><span class="pre">input()</span></code><a class="headerlink" href="#la-funcion-input" title="Permalink to this headline">¶</a></h3>
+<p>Para lograr la introducción vía teclado de los valores de los datos (<code class="docutils literal notranslate"><span class="pre">radio</span></code> y <code class="docutils literal notranslate"><span class="pre">altura</span></code>) se utiliza la función <code class="docutils literal notranslate"><span class="pre">input()</span></code> tal como se muestra a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Programa que calcula el área de un cilindro con entrada y salida</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="n">cadena_radio</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">radio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cadena_radio</span><span class="p">)</span>
+
+<span class="c1"># Las dos líneas anteriores se codifican de forma más compacta e informativa para el usuario como:</span>
+<span class="c1"># radio = float(input(&#39;Dame el radio:&#39;))</span>
+
+<span class="n">altura</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Dame la altura:&#39;</span><span class="p">))</span>
+
+<span class="n">area_seccion</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="n">radio</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">area_lado</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">radio</span><span class="o">*</span><span class="n">altura</span>
+<span class="n">area_cilindro</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">area_seccion</span> <span class="o">+</span> <span class="n">area_lado</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área del cilindro es:&quot;</span><span class="p">,</span> <span class="n">area_cilindro</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">e02e668ae2ef</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">cadena_radio</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">radio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cadena_radio</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="nn">C:\Anaconda3\lib\site-packages\ipykernel\kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>             <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">858</span>                 <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe que la función <code class="docutils literal notranslate"><span class="pre">input()</span></code> tiene como argumento opcional una cadena de caracteres que ha de servir para informar al usuario (por pantalla) de lo que se espera introduzca por teclado.</p>
+<p>Por otra parte, se debe notar que la función <code class="docutils literal notranslate"><span class="pre">input()</span></code> devuelve un valor que es de tipo <code class="docutils literal notranslate"><span class="pre">str</span></code>. Es cierto que si el usuario ha hecho lo correcto, esa cadena de caracteres contendrá los dígitos y signos que puedan ser interpretados como un número real, pero para poder realizar aritmética con dicho número hay que obtener la representación numérica del mismo como un valor de tipo <code class="docutils literal notranslate"><span class="pre">float</span></code>. Para lograrlo se utiliza la función nativa de Python <code class="docutils literal notranslate"><span class="pre">float()</span></code>, que espera como argumento una cadena y devuelve el tipo de datos real que la representa (en caso de que no haya errores).</p>
+<p>La solicitud de la variable <code class="docutils literal notranslate"><span class="pre">radio</span></code> no se hace de una forma <strong>amigable</strong> para el usuario (<strong>user friendly</strong>). Si este no conoce la dinámica del programa le será imposible saber qué se le está solicitando.</p>
+<p>La solicitud del valor de la variable <code class="docutils literal notranslate"><span class="pre">altura</span></code> corrige el defecto de la anterior de no contener un indicación clara al usuario. Al mismo tiempo resulta más compacta, puesto que utiliza la capacidad de composición de las funciones para aplicar directamente la función <code class="docutils literal notranslate"><span class="pre">float()</span></code> a la cadena que devuelve la función <code class="docutils literal notranslate"><span class="pre">input()</span></code>.</p>
+<p>Otra función útil en este contexto, que hace una tarea similar, es <code class="docutils literal notranslate"><span class="pre">int(cadena,</span> <span class="pre">base)</span></code> que convierte la cadena <code class="docutils literal notranslate"><span class="pre">cadena</span></code> a un entero de la <code class="docutils literal notranslate"><span class="pre">base</span></code> dada. Por defecto (en ausencia del argumento base) se presupone la base decimal.</p>
+<p>Por otro lado, la función <code class="docutils literal notranslate"><span class="pre">str()</span></code> convierte en el sentido inverso: diferentes valores numéricos a su representación como cadena de caracteres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Salida_con_formato'></a></p>
+</div>
+</div>
+<div class="section" id="salida-con-formato">
+<h2>Salida con formato<a class="headerlink" href="#salida-con-formato" title="Permalink to this headline">¶</a></h2>
+<p>Habrá notado que la función <code class="docutils literal notranslate"><span class="pre">print()</span></code> puede tener un número variable de argumentos:</p>
+<ul class="simple">
+<li><p>cuando estos son cadenas de caracteres, los muestra tal cual en la consola de salida, dispositivo genérico normalmente asociado a la pantalla.</p></li>
+<li><p>cuando el argumento de la función no es una cadena de caracteres, implícitamente la función <code class="docutils literal notranslate"><span class="pre">print()</span></code> realiza  la conversión requerida desde el tipo de dato original a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p></li>
+</ul>
+<p>El funcionamiento por defecto de <code class="docutils literal notranslate"><span class="pre">print()</span></code> es tal que, al finalizar la salida por pantalla, escribe un carácter que representa el cambio del cursor de la pantalla hacia una nueva línea, el carácter <code class="docutils literal notranslate"><span class="pre">\n</span></code>. En la mayoría de los casos, este es el comportamiento adecuado.</p>
+<p>En algunas ocasiones, sin embargo, se podría requerir que el cursor permaneciera en la misma línea después de ejecutar la función <code class="docutils literal notranslate"><span class="pre">print()</span></code>. Para ello, se puede incluir un argumento invocado mediante el parámetro <code class="docutils literal notranslate"><span class="pre">end</span></code> de forma que contenga el carácter que la función debe utilizar al final de la línea.</p>
+<p>Vea el ejemplo siguiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vol</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El valor del volumen es:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El valor del volumen es: 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>El funcionamiento ya descrito de <code class="docutils literal notranslate"><span class="pre">print()</span></code> es suficiente para una salida por pantalla básica, útil en muchos casos.</p>
+<p>En ocasiones se desea tener un control más detallado de la forma en que los valores van a ser ofrecidos al usuario. Puede desearse, por ejemplo:</p>
+<ul class="simple">
+<li><p>mostrar solo un determinado número de dígitos significativos de determinado valor, o</p></li>
+<li><p>reservar un espacio en pantalla específico para sacar datos en forma de tabla, respetando la alineación de las columnas.</p></li>
+</ul>
+<p>Para estos casos, se utiliza preferentemente la opción de especificar formatos en las cadenas de caracteres.</p>
+<p>Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_base</span> <span class="o">=</span> <span class="mf">10.6666</span>
+<span class="n">area_lado</span> <span class="o">=</span> <span class="mf">20.3891</span>
+<span class="n">area_total</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">area_base</span> <span class="o">+</span> <span class="n">area_lado</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área de la base es </span><span class="si">{:.2f}</span><span class="s2">, el del lado </span><span class="si">{:.2f}</span><span class="s2"> y el área total es </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span>
+      <span class="nb">format</span><span class="p">(</span><span class="n">area_base</span><span class="p">,</span><span class="n">area_lado</span><span class="p">,</span><span class="n">area_total</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cambiando el orden total: </span><span class="si">{2:.2f}</span><span class="s2"> es 2*</span><span class="si">{0:.2f}</span><span class="s2"> + </span><span class="si">{1:.2f}</span><span class="s2">&quot;</span><span class="o">.</span>
+      <span class="nb">format</span><span class="p">(</span><span class="n">area_base</span><span class="p">,</span><span class="n">area_lado</span><span class="p">,</span><span class="n">area_total</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El área de la base es 10.67, el del lado 20.39 y el área total es 41.722
+Cambiando el orden total: 41.72 es 2*10.67 + 20.39
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe el use de las llaves <code class="docutils literal notranslate"><span class="pre">{}</span></code> para introducir dentro de la cadena de caracteres <em>referencias</em> a valores que serán proporcionados mediante el <strong>método</strong> <code class="docutils literal notranslate"><span class="pre">.format()</span></code>. Estas referencias tienen el <strong>formato</strong> <code class="docutils literal notranslate"><span class="pre">{[n]:[tam][.precisión]formato}</span></code>. Se debe entender que los corchetes no se mostrarán por pantalla, sino que, como es costumbre a la hora de describir la sintaxis de algunas sentencias, significa que su contenido puede ser omitido.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> se utiliza para especificar el número de orden del valor que debe ser embebido tal y como aparece en los argumentos de <code class="docutils literal notranslate"><span class="pre">.format()</span></code>, comenzando en cero.
+Si se omite esta especificación, se asume el mismo orden en que los argumentos aparecen en <code class="docutils literal notranslate"><span class="pre">.format()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tam</span></code> establece el tamaño del campo en pantalla; de no existir, se tomará el espacio necesario, cualquiera que este sea.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.precisión</span></code> especifica el número de lugares decimales al que se redondeará el valor. Esto es aplicable  en el caso de que se trate de un valor real.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formato</span></code> es una letra que identifica el tipo del valor: <code class="docutils literal notranslate"><span class="pre">f</span></code> para <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> para <code class="docutils literal notranslate"><span class="pre">int</span></code> y <code class="docutils literal notranslate"><span class="pre">s</span></code> para <code class="docutils literal notranslate"><span class="pre">str</span></code> son los más habituales.</p></li>
+</ul>
+<p>Véase el ejemplo siguiente. Haced modificaciones y razonad el resultado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:5d}{:15.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span><span class="mf">1.234343</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{1:5f}{0:15d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1180.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  123          1.234
+1180.200000              1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="notebooks.html" title="previous page">Content with notebooks</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
