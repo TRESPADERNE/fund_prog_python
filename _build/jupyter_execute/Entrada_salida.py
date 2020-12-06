@@ -125,7 +125,7 @@ print("El área del cilindro es:", area_cilindro)
 # 
 # Por otro lado, la función `str()` convierte en el sentido inverso: diferentes valores numéricos a su representación como cadena de caracteres.
 
-# In[4]:
+# In[ ]:
 
 
 str(1.2)
@@ -145,7 +145,7 @@ str(1.2)
 # 
 # Vea el ejemplo siguiente:
 
-# In[5]:
+# In[ ]:
 
 
 vol = 3
@@ -163,7 +163,7 @@ print(vol)
 # 
 # Por ejemplo:
 
-# In[2]:
+# In[ ]:
 
 
 area_base = 10.6666
@@ -186,7 +186,7 @@ print("Cambiando el orden total: {2:.2f} es 2*{0:.2f} + {1:.2f}".
 # 
 # Véase el ejemplo siguiente. Haced modificaciones y razonad el resultado.
 
-# In[8]:
+# In[ ]:
 
 
 print("{:5d}{:15.3f}".format(123,1.234343))
