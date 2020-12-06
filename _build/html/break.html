@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salto incondicional break &#8212; My sample book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introducción" href="introduccion.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Entrada_salida.html">
+     La entrada/salida.
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="introduccion.html">
+     Introducción
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Salto incondicional
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       break
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/break.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/primerjupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/primerjupyterbook/issues/new?title=Issue%20on%20page%20%2Fbreak.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centinelas">
+   Centinelas
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="salto-incondicional-break">
+<h1>Salto incondicional <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#salto-incondicional-break" title="Permalink to this headline">¶</a></h1>
+<p>Supongamos un programa cuya introducción de datos debe interrumpirse
+cuando se cumpla una de las dos
+condiciones preestablecidas siguientes:</p>
+<ul class="simple">
+<li><p>El número de datos introducido supera un valor máximo.</p></li>
+<li><p>Se cumple una determinada condición, en cuyo caso abandonaremos la
+introducción de datos.</p></li>
+</ul>
+<p>Veamos dos alternativas, una sin usar <code class="docutils literal notranslate"><span class="pre">break</span></code> y otra utilizándolo.</p>
+<p><strong>Ejemplo con</strong> <code class="docutils literal notranslate"><span class="pre">while</span></code> <strong>sin usar</strong> <code class="docutils literal notranslate"><span class="pre">break</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Suma de los números positivos introducidos: sin break</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">num_datos</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Número máximo de datos a leer: &quot;</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num_datos</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">{},</span> <span class="n">dato</span><span class="p">{},</span> <span class="n">suma</span><span class="p">{};</span> <span class="c1">// A cero con inicialización uniforme</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_datos</span> <span class="o">&amp;&amp;</span> <span class="n">dato</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Introduzca un dato (negativo para finalizar): &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">dato</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dato</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">suma</span> <span class="o">+=</span> <span class="n">dato</span><span class="p">;</span>
+      <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Se han introducido &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;La suma de los datos introducidos es &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">suma</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No se han introducido datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break1">Edita, compila y ejecuta el código</a></p>
+<p>Al final del tema anterior sugeríamos que antes de usar un determinado
+tipo de bucle debíamos preguntarnos sobre si conocíamos el número de
+iteraciones a realizar de antemano.</p>
+<p>En este ejemplo, la respuesta podría
+ser <strong>NO</strong>, si prevemos que el usuario no completará todos los posibles
+valores a introducir, es decir, el bucle <code class="docutils literal notranslate"><span class="pre">while</span></code> terminará al evaluarse
+la expresión <code class="docutils literal notranslate"><span class="pre">dato</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> a <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>Sin embargo, podríamos adoptar una postura más <em>optimista</em> y pensar que
+el usuario introducirá todos los posibles valores y, por tanto, la salida
+del bucle <code class="docutils literal notranslate"><span class="pre">while</span></code> será debida a la evaluación de la expresión
+<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">num_datos</span></code> a <code class="docutils literal notranslate"><span class="pre">false</span></code>. Y en este supuesto es donde el bucle <code class="docutils literal notranslate"><span class="pre">for</span></code>
+parece más oportuno.</p>
+<p>Veámoslo en la siguiente versión del programa.</p>
+<p><strong>Ejemplo con</strong> <code class="docutils literal notranslate"><span class="pre">for</span></code> <strong>usando</strong> <code class="docutils literal notranslate"><span class="pre">break</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Suma de los números positivos introducidos: usando break</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">num_datos</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Número máximo de datos a leer: &quot;</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num_datos</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">i</span><span class="p">{},</span> <span class="n">suma</span><span class="p">{};</span> <span class="c1">// A cero con inicialización uniforme</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_datos</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Introduzca un dato (negativo para finalizar): &quot;</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">dato</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">dato</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dato</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">suma</span> <span class="o">+=</span> <span class="n">dato</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Se han introducido &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;La suma de los datos introducidos es &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">suma</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No se han introducido datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break2">Edita, compila y ejecuta el código</a></p>
+<p>En este ejemplo, la sentencia <code class="docutils literal notranslate"><span class="pre">break</span></code> permite contemplar el caso
+en el que el usuario no complete la introducción de todos los valores,
+al introducir un valor negativo.</p>
+<p>El salto incondicional <code class="docutils literal notranslate"><span class="pre">break</span></code> ha sido considerado en muchos ámbitos,
+sobre todo relacionados con la docencia, una mala práctica de programación.</p>
+<p>La realidad es que, en muchos casos, el uso de <code class="docutils literal notranslate"><span class="pre">break</span></code> facilita
+la legibilidad del código y, por ello, es recomendable su uso.</p>
+<p>Vamos a ver cómo un bucle <code class="docutils literal notranslate"><span class="pre">for</span></code> es lo suficientemente versátil para
+permitir una tercera versión del ejemplo, sin usar <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
+<p><strong>Ejemplo con</strong> <code class="docutils literal notranslate"><span class="pre">for</span></code> <strong>sin usar</strong> <code class="docutils literal notranslate"><span class="pre">break</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Suma de los números positivos introducidos</span>
+<span class="c1">// Con for sin usar break</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">num_datos</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Número máximo de datos a leer: &quot;</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num_datos</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">i</span><span class="p">{},</span> <span class="n">suma</span><span class="p">{},</span> <span class="n">dato</span><span class="p">{};</span> <span class="c1">// A cero con inicialización uniforme</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_datos</span> <span class="o">&amp;&amp;</span> <span class="n">dato</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Introduzca un dato (negativo para finalizar): &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">dato</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dato</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">suma</span> <span class="o">+=</span> <span class="n">dato</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="o">--</span><span class="n">i</span><span class="p">;</span> <span class="c1">// Para compensar el ++i de fin de bloque for</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Se han introducido &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;La suma de los datos introducidos es &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">suma</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No se han introducido datos válidos.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break3">Edita, compila y ejecuta el código</a></p>
+<p>Esta versión es, sin lugar a dudas, <em>desafortunada</em>. Los bucles <code class="docutils literal notranslate"><span class="pre">for</span></code>
+es preferible usarlos con una condición de salida simple. Además, como
+el incremento del contador <code class="docutils literal notranslate"><span class="pre">i</span></code>
+se produce al final del bucle, debemos decrementarlo en caso de
+salida prematura por dejar de cumplirse la condición <code class="docutils literal notranslate"><span class="pre">dato</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.</p>
+<div class="section" id="centinelas">
+<h2>Centinelas<a class="headerlink" href="#centinelas" title="Permalink to this headline">¶</a></h2>
+<p>El uso de la sentencia <code class="docutils literal notranslate"><span class="pre">break</span></code> suele venir acompañada en muchos problemas del
+uso de una variable <strong>centinela</strong>, también denominada <strong>testigo</strong> o <strong>bandera</strong>.</p>
+<p>Habitualmente la variable <strong>centinela</strong> tiene un tipo booleano y nos permite
+discriminar cuando la finalización de un bucle se ha debido o no a un salto
+incondicional.</p>
+<p>Un ejemplo clásico es la determinación de si un número es primo.</p>
+<p><strong>Ejemplo: determinar si un número es primo (versión 1)</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Determina si un número entero es primo. (Versión 1)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">do</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Deme un entero positivo mayor que 1: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">numero</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; El valor introducido no es válido.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="n">es_primo</span><span class="p">{</span><span class="nb">true</span><span class="p">};</span>  <span class="c1">// Variable centinela o bandera</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">divisor</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">divisor</span> <span class="o">&lt;</span> <span class="n">numero</span> <span class="p">;</span> <span class="o">++</span><span class="n">divisor</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">es_primo</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;El número &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">es_primo</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; no es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break4">Edita, compila y ejecuta el código</a></p>
+<p>Una advertencia: existen formas más eficientes de realizar la tarea propuesta;
+el código anterior debe verse como un intento inicial.</p>
+<p>La estrategia consiste en determinar, mediante un bucle, todos los posibles
+divisores <em>legítimos</em>, rango <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">numero-1]</span></code>, que harían que se pudiera
+decidir que el número no es primo.</p>
+<p>Nótese que el bucle tiene una especie de carácter asimétrico:</p>
+<ul class="simple">
+<li><p>para concluir que el número es primo, se debe llevar el bucle hasta su
+conclusión, investigando todos los posibles divisores, sin hallar ningún
+divisor exacto.</p></li>
+<li><p>para concluir que el número no es primo, basta con encontrar el primer
+divisor exacto.</p></li>
+</ul>
+<p>La variable <strong>centinela</strong> <code class="docutils literal notranslate"><span class="pre">es_primo</span></code> es la encargada de poner de
+manifiesto cuál de las dos situaciones se ha producido.</p>
+<p>Por supuesto, el lenguaje nos brinda otras opciones para programar
+el problema anterior sin usar <code class="docutils literal notranslate"><span class="pre">break</span></code>. Como vimos anteriormente,
+basta incorporar la condición de activación de la salida incondicional
+a la expresión de la condición del <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p><strong>Ejemplo: determinar si un número es primo (versión 2)</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Determina si un número entero es primo. (Versión 2)</span>
+<span class="c1">// Sin usar break</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">do</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Deme un entero positivo mayor que 1: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">numero</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; El valor introducido no es válido.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="n">es_primo</span><span class="p">{</span><span class="nb">true</span><span class="p">};</span>  <span class="c1">// Variable centinela o bandera</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">divisor</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">divisor</span> <span class="o">&lt;</span> <span class="n">numero</span> <span class="o">&amp;&amp;</span> <span class="n">es_primo</span><span class="p">;</span> <span class="o">++</span><span class="n">divisor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">es_primo</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;El número &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">es_primo</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; no es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break5">Edita, compila y ejecuta el código</a></p>
+<p>Dejamos al alumno transformar este ejemplo usando <code class="docutils literal notranslate"><span class="pre">while</span></code> en lugar
+de <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p>En los ejemplos anteriores hemos utilizado una variable <em>ad hoc</em> para
+el <strong>centinela</strong>. En muchos problemas no es estrictamente necesario
+utilizarlas. Sin embargo, su uso suele mejorar la legibilidad del código.</p>
+<p>Así, el ejemplo de la determinación de si un número es primo permite usar
+la variable <code class="docutils literal notranslate"><span class="pre">divisor</span></code> como centinela.</p>
+<p><strong>Ejemplo: determinar si un número es primo (versión 3)</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Determina si un número entero es primo. (Versión 3)</span>
+<span class="c1">// Sin usar centinela explícito</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">do</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Deme un entero positivo mayor que 1: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">numero</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; El valor introducido no es válido.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">divisor</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+  <span class="k">for</span> <span class="p">(;</span> <span class="n">divisor</span> <span class="o">&lt;</span> <span class="n">numero</span><span class="p">;</span> <span class="o">++</span><span class="n">divisor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">break</span><span class="p">;</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;El número &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">divisor</span> <span class="o">==</span> <span class="n">numero</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; no es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break6">Edita, compila y ejecuta el código</a></p>
+<p>Véase como nuestro centinela <code class="docutils literal notranslate"><span class="pre">divisor</span></code> se define e inicializa fuera del
+bucle y, por tanto, podemos dejar vacía esa parte del bucle <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p>Para terminar con esta panoplia de ejemplos, véase una última
+implementación con <code class="docutils literal notranslate"><span class="pre">while</span></code> muy compacta.</p>
+<p><strong>Ejemplo: determinar si un número es primo (versión 4)</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Determina si un número entero es primo. (Versión 3)</span>
+<span class="c1">// Con while sin usar centinela explícito</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">do</span>
+  <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Deme un entero positivo mayor que 1: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">numero</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; El valor introducido no es válido.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">numero</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">divisor</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">divisor</span><span class="p">)</span>
+      <span class="o">++</span><span class="n">divisor</span><span class="p">;</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;El número &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">numero</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">divisor</span> <span class="o">==</span> <span class="n">numero</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; no es primo.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://repl.it/&#64;fundprogeiiuva/break7">Edita, compila y ejecuta el código</a></p>
+<p>Nótese que la salida del bucle está garantizada ya que cuando
+<code class="docutils literal notranslate"><span class="pre">divisor</span></code> alcanza el valor <code class="docutils literal notranslate"><span class="pre">numero</span></code>, la expresión <code class="docutils literal notranslate"><span class="pre">numero</span> <span class="pre">%</span> <span class="pre">divisor</span></code>
+se evalúa a <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>Decidir cuál de las implementaciones vistas es <em>superior</em> es cuestión de
+debate.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="introduccion.html" title="previous page">Introducción</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

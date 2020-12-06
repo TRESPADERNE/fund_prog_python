@@ -1,0 +1,23 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Content in Jupyter Book}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Markdown Files}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}What is MyST?}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}What are roles and directives?}{3}{subsection.1.1.2}%
+\contentsline {subsubsection}{Using a directive}{3}{subsubsection*.3}%
+\contentsline {subsubsection}{Using a role}{4}{subsubsection*.4}%
+\contentsline {subsubsection}{Adding a citation}{4}{subsubsection*.5}%
+\contentsline {subsubsection}{Executing code in your markdown files}{4}{subsubsection*.6}%
+\contentsline {section}{\numberline {1.2}Content with notebooks}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Markdown + notebooks}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}MyST markdown}{5}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Code blocks and outputs}{5}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}La entrada/salida.}{6}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Contenidos}{6}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Introducción}{7}{subsection.1.3.2}%
+\contentsline {subsubsection}{La función \sphinxstyleliteralintitle {\sphinxupquote {print()}}}{8}{subsubsection*.7}%
+\contentsline {subsubsection}{La función \sphinxstyleliteralintitle {\sphinxupquote {input()}}}{8}{subsubsection*.8}%
+\contentsline {subsection}{\numberline {1.3.3}Salida con formato}{9}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Introducción}{11}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Salto incondicional \sphinxstyleliteralintitle {\sphinxupquote {break}}}{11}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Centinelas}{14}{subsection.1.5.1}%
+\contentsline {chapter}{Bibliography}{19}{chapter*.9}%
