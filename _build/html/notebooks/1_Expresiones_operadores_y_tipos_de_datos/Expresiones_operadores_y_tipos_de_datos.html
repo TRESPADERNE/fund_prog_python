@@ -1,0 +1,1007 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operadores, expresiones y tipos de datos &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Introducción a Python" href="../0_Python/Introduccion_Python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#el-interprete-como-calculadora">
+   El intérprete como calculadora
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expresiones-operadores-aritmeticos">
+   Expresiones. Operadores aritméticos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reglas-de-precedencia">
+     Reglas de precedencia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operadores-binarios-y-unarios">
+     Operadores binarios y unarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#el-operador-division">
+     El operador división
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-division-entera-y-el-operador-resto">
+     La división entera y el operador resto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos-enteros-y-reales">
+   Tipos de datos enteros y reales
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expresiones-con-mezcla-de-tipos">
+     Expresiones con mezcla de tipos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numeros-complejos">
+     Números complejos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#el-tipo-booleano-y-sus-operadores">
+   El tipo booleano y sus operadores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operadores-de-comparacion">
+     Operadores de comparación
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operadores-logicos-booleanos">
+     Operadores lógicos (booleanos)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabla-de-precedencias">
+   Tabla de precedencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cadenas-de-caracteres">
+   Cadenas de caracteres
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-asignacion-no-es-equivalente-a-la-igualdad-matematica">
+     La asignación no es equivalente a la igualdad matemática
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operadores-de-asignacion-compuestos">
+     Operadores de asignación compuestos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#otras-constantes-literales">
+   Otras constantes literales
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="operadores-expresiones-y-tipos-de-datos">
+<h1>Operadores, expresiones y tipos de datos<a class="headerlink" href="#operadores-expresiones-y-tipos-de-datos" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#El_int%C3%A9rprete_como_calculadora">El intérprete como calculadora</a><br>
+<a class="reference external" href="#Expresiones._Operadores_aritm%C3%A9ticos">Expresiones. Operadores aritméticos</a><br>
+<a class="reference external" href="#Tipos_de_datos_enteros_y_reales">Tipos de datos enteros y reales</a><br>
+<a class="reference external" href="#El_tipo_booleano_y_sus_operadores">El tipo booleano y sus operadores</a><br>
+<a class="reference external" href="#Tabla_de_precedencias">Tabla de precedencias</a><br>
+<a class="reference external" href="#Cadenas_de_caracteres">Cadenas de caracteres</a><br>
+<a class="reference external" href="#Variables">Variables</a><br>
+<a class="reference external" href="#Otras_constantes_literales">Otras constantes literales</a></p>
+<hr class="docutils" />
+<p><a id='El_intérprete_como_calculadora'></a></p>
+</div>
+<div class="section" id="el-interprete-como-calculadora">
+<h2>El intérprete como calculadora<a class="headerlink" href="#el-interprete-como-calculadora" title="Permalink to this headline">¶</a></h2>
+<p>Antes de hacer nuestros primeros programas en Python, conviene familiarizarnos con los valores básicos que pueden ser representados y manipulados en el lenguaje. Lo haremos mediante ejemplos sencillos, utilizando el intérprete como una <strong>calculadora</strong>.</p>
+<p>Véase, por ejemplo, la línea representada en la siguiente celda. Para seleccionar una celda nos situamos sobre ella y para ejecutarla, pulsamos el botón:
+<img alt="Run" src="../../_images/run.jpg" /> o presionamos simultáneamente <strong><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como habrás observado, se obtiene el resultado esperado para la suma planteada de dos <strong>números enteros</strong>. Puedes modificar la suma anterior eligiendo el <em>modo Edición</em> de la celda y cambiando los operandos.</p>
+<p>En programación se llaman <strong>constantes literales</strong> a aquellas cuyo valor aparece <em>tal cual</em> en el código fuente y cuya representación se deduce de forma evidente. En el ejemplo, <code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">3</span></code> son dos constantes literales enteras.</p>
+<p>Algunas combinaciones producen un <strong>error sintáctico</strong>. Véase, por ejemplo, el resultado de la siguiente celda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-2-9cf9af53bfe5&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span>
+           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>El intérprete nos reporta la existencia de un error debido a una construcción <em>sintáctica inválida</em>. Es importante que aprendas a interpretar los mensajes de error para corregir sus causas. ¡Corrige la línea para evitar que se produzca!</p>
+<hr class="docutils" />
+<p><a id='Expresiones._Operadores_aritméticos'></a></p>
+</div>
+<div class="section" id="expresiones-operadores-aritmeticos">
+<h2>Expresiones. Operadores aritméticos<a class="headerlink" href="#expresiones-operadores-aritmeticos" title="Permalink to this headline">¶</a></h2>
+<p>Una <strong>expresión</strong> combina <strong>operandos</strong> (como los literales enteros <code class="docutils literal notranslate"><span class="pre">3</span></code> ó <code class="docutils literal notranslate"><span class="pre">5</span></code>) y <strong>operadores</strong> (como <code class="docutils literal notranslate"><span class="pre">+</span></code> para la suma) siguiendo unas reglas sintácticas simples, similares a las que ya conocemos de la aritmética.
+Como es natural, además de la suma, se tienen operadores para el resto de las operaciones aritméticas:</p>
+<ul class="simple">
+<li><p>  <code class="docutils literal notranslate"><span class="pre">+</span></code>    suma</p></li>
+<li><p>  <code class="docutils literal notranslate"><span class="pre">-</span></code>     resta</p></li>
+<li><p>  <code class="docutils literal notranslate"><span class="pre">*</span></code>     multiplicación</p></li>
+<li><p>  <code class="docutils literal notranslate"><span class="pre">/</span></code>     división</p></li>
+</ul>
+<p>En la celda siguiente multiplican de dos enteros. ¿Te animas a intentar la resta y la división? ¿Cómo harías para multiplicar varios valores? ¿Se pueden combinar operadores diferentes?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reglas-de-precedencia">
+<h3>Reglas de precedencia<a class="headerlink" href="#reglas-de-precedencia" title="Permalink to this headline">¶</a></h3>
+<p>Considera la siguiente expresión y calcula mentalmente el resultado que debe dar. ¿Coincide con el que brinda Python? ¿Sorprendido?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cuando se combinan diferentes operadores, el valor determinado por la expresión se calcula en función de unas <strong>reglas de precedencia</strong>. Estas reglas coinciden con lo esperable a partir de nuestros conocimientos aritméticos: <strong>la multiplicación y la división son prioritarios con respecto a la suma y la resta</strong>.</p>
+<p>La precedencia habitual se puede alterar utilizando paréntesis. Los paréntesis pueden anidarse unos dentro de otros, todo lo que se necesite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En presencia de operadores de <strong>igual precedencia</strong>, el cálculo del valor de una expresión se realiza <strong>típicamente de izquierda a derecha</strong>.</p>
+<p>Por ejemplo, en la siguiente celda, la división (que aparece primero desde la izquierda) tiene preferencia sobre la multiplicación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En general, para evitar dudas y, en muchas ocasiones, para mejorar la legibilidad, <strong>¡usa paréntesis!</strong>.</p>
+<p>En Python el operador <code class="docutils literal notranslate"><span class="pre">**</span></code> eleva un valor a una potencia dada. Este operador tiene mayor preferencia que los anteriormente mencionados y, además, tiene la característica de que la prioridad se evalúa a la inversa de los anteriores, o sea, de derecha a izquierda:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usando paréntesis salimos de dudas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operadores-binarios-y-unarios">
+<h3>Operadores binarios y unarios<a class="headerlink" href="#operadores-binarios-y-unarios" title="Permalink to this headline">¶</a></h3>
+<p>Los operadores anteriores se denominan <strong>binarios</strong> porque afectan a dos valores, situados a su izquierda y a su derecha. Existe también operadores <strong>unarios</strong>.  Por ejemplo, el <code class="docutils literal notranslate"><span class="pre">-</span></code> como operador unario, cambia el signo al valor situado a su izquierda. También existe el <code class="docutils literal notranslate"><span class="pre">+</span></code> unario, pero su utilidad es evidentemente menor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span><span class="o">*-</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe que la precedencia del <code class="docutils literal notranslate"><span class="pre">-</span></code> unario es incluso mayor que la del producto <code class="docutils literal notranslate"><span class="pre">*</span></code>.
+Existen otros operadores unarios y binarios que veremos más adelante. Pero debemos dedicar algo de tiempo a la operación de división.</p>
+</div>
+<div class="section" id="el-operador-division">
+<h3>El operador división<a class="headerlink" href="#el-operador-division" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A diferencia del resto de los operadores vistos, la división brinda un resultado cualitativamente diferente. El cociente contiene un punto decimal (equivalente a la coma decimal en castellano).
+Este resultado es coherente con lo que sabemos de las matemáticas. Si nos limitamos a las operaciones de suma, resta y multiplicación entre enteros, el resultado es otro entero.
+La división, sin embargo, puede dar un cociente que solo puede definirse correctamente para todos los casos si ampliamos su definición, por los menos, al campo de los números racionales.</p>
+<p>El operador división es un ejemplo de expresión que puede dar lugar a <strong>errores en tiempo de ejecución</strong> (<strong>runtime errors</strong>). En este caso, cuando el denominador es nulo, la ejecución del programa lanza una <strong>excepción</strong> llamada <code class="docutils literal notranslate"><span class="pre">ZeroDivisonError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="la-division-entera-y-el-operador-resto">
+<h3>La división entera y el operador resto<a class="headerlink" href="#la-division-entera-y-el-operador-resto" title="Permalink to this headline">¶</a></h3>
+<p>Existen una forma de realizar la división sin abandonar el campo de los enteros. Se tiene para ello el operador de <strong>división entera</strong> que se representa por <code class="docutils literal notranslate"><span class="pre">//</span></code>. También se cuenta con el operador <code class="docutils literal notranslate"><span class="pre">%</span></code> que devuelve el <strong>resto de la división entera</strong> tal y como se muestra en los ejemplos que siguen. Estos operadores, lejos de ser una curiosidad sin importancia, resultan muy útiles en programación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">//</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">%</span><span class="k">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Tipos_de_datos_enteros_y_reales'></a></p>
+</div>
+</div>
+<div class="section" id="tipos-de-datos-enteros-y-reales">
+<h2>Tipos de datos enteros y reales<a class="headerlink" href="#tipos-de-datos-enteros-y-reales" title="Permalink to this headline">¶</a></h2>
+<p>Como se estudiará en detalle, la información se <strong>representa</strong> en los computadores utilizando un conjunto de celdas de memoria que almacenan dígitos binarios (0 ó 1). El rango de los números <strong>enteros</strong> y <strong>reales</strong> en matemáticas es un conjunto infinito. El ordenador, por contra, dispone de un número finito de celdas en las que almacenar bits.</p>
+<p>En lenguajes como C/C++, de forma <em>nativa</em>, el tamaño máximo de un valor entero, <strong>tipo</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code>, está determinado por la arquitectura del ordenador concreto que se utilice, típicamente <strong>32</strong> celdas binarias, <strong>bits</strong>, o sea <strong>4 bytes</strong> (8 <strong>bits</strong> son 1 <strong>byte</strong>). Sin embargo, en Python, un lenguaje de más alto nivel, no hay un límite predeterminado para el valor absoluto del mayor entero representable. Este valor puede crecer ocupando más y más celdas hasta alcanzar los límites de la memoria disponible en el ordenador.</p>
+<p>En la celda que sigue puedes intentar encontrar el límite de la representación de enteros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1222333545345345</span><span class="o">*</span> <span class="mi">123432554356654</span><span class="o">*-</span><span class="mi">12435346543443435</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para los números <strong>reales</strong>, se utiliza una representación muy diferente a la de los enteros, denominada de <strong>punto (o coma) flotante</strong>, definida en el estándar <strong>IEEE 754</strong>. El <strong>tipo</strong> de dato se denomina <code class="docutils literal notranslate"><span class="pre">float</span></code> por ese motivo. El mayor y menor número real representable, en valor absoluto, está en el rango aproximado [1e-323,1.7e308]. Esta es la consecuencia de utilizar un total de <strong>64 bits</strong>, <strong>8 bytes</strong>, para esta representación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e-323</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se debe ser consciente del carácter limitado de la representación de los <code class="docutils literal notranslate"><span class="pre">float</span></code>. No solo no se puede expresar un número real tan grande como se quiera, sino que la precisión no es infinita y, por tanto, relativamente pocos números reales se pueden representar exactamente.</p>
+<div class="section" id="expresiones-con-mezcla-de-tipos">
+<h3>Expresiones con mezcla de tipos<a class="headerlink" href="#expresiones-con-mezcla-de-tipos" title="Permalink to this headline">¶</a></h3>
+<p>En Python se pueden mezclar en una misma expresión valores numéricos de diferentes tipos (ej.: <code class="docutils literal notranslate"><span class="pre">int</span></code> y <code class="docutils literal notranslate"><span class="pre">float</span></code>). Cuando esto ocurre, la operación se convierte hacia el tipo más general que es el <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mf">2.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span><span class="o">**</span><span class="mf">1e2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aumenta el valor del exponente en la celda anterior (ej.: 1e10) ¿Qué pasa? Recuerda que los <code class="docutils literal notranslate"><span class="pre">float</span></code> tienen un tamaño limitado. Sin embargo, observa el resultado de la celda siguiente. ¿Qué conclusión se puede sacar?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span><span class="o">**</span><span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="numeros-complejos">
+<h3>Números complejos<a class="headerlink" href="#numeros-complejos" title="Permalink to this headline">¶</a></h3>
+<p>A diferencia de muchos otros lenguajes, Python soporta de forma nativa el trabajo con los números complejos, <strong>tipo</strong> <code class="docutils literal notranslate"><span class="pre">complex</span></code>. Véanse los ejemplos a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span> <span class="o">+</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="n">J</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esta posibilidad del trabajo con complejos resulta muy útil en muchos campos de aplicación de las ciencias y las ingenierías. La cobertura de este tema en este curso será sin embargo limitada.</p>
+<p>El trabajo con complejos resulta además, como se sabe, una extensión natural del campo de los reales para acomodar la raíz cuadrada (o en general la raíz par) de números negativos. Se debe comentar que la integración de los complejos como dicha extensión está implementada en Python de forma natural, como lo está el paso de los enteros a racionales por efecto de la división.</p>
+<p>Ved el siguiente ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='El_tipo_booleano_y_sus_operadores'></a></p>
+</div>
+</div>
+<div class="section" id="el-tipo-booleano-y-sus-operadores">
+<h2>El tipo booleano y sus operadores<a class="headerlink" href="#el-tipo-booleano-y-sus-operadores" title="Permalink to this headline">¶</a></h2>
+<p>En la discusión previa, hemos visto tipos de datos numéricos y los operadores aritméticos conocidos. Pero existen otros tipos de valores y otras categorías de operaciones que quisiéramos poder realizar.</p>
+<div class="section" id="operadores-de-comparacion">
+<h3>Operadores de comparación<a class="headerlink" href="#operadores-de-comparacion" title="Permalink to this headline">¶</a></h3>
+<p>Muchas veces es necesario comparar valores que pertenezcan a un tipo que tenga definida alguna operación de orden, como, por ejemplo, los propios datos de tipo numéricos. Python tiene para ese propósito los operadores:</p>
+<ul class="simple">
+<li><p>  Menor que:     <code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></li>
+<li><p>  Mayor que:     <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></li>
+<li><p>  Menor o igual:   <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+<li><p>  Mayor o igual:   <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></li>
+<li><p>  Igual que:      <code class="docutils literal notranslate"><span class="pre">==</span></code></p></li>
+<li><p>  Distinto de:     <code class="docutils literal notranslate"><span class="pre">!=</span></code></p></li>
+</ul>
+<p>Observe en la celda siguiente el comportamiento de estos operadores y experimente con varios de ellos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Estas expresiones involucran típicamente operandos de tipo numérico pero el resultado es cualitativamente diferente. Es un resultado <strong>lógico</strong> o <strong>booleano</strong> (en referencia al álgebra de <strong>G. Boole</strong>). Este tipo de datos puede representar solo dos valores, <code class="docutils literal notranslate"><span class="pre">True</span></code> ó <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
+<div class="section" id="operadores-logicos-booleanos">
+<h3>Operadores lógicos (booleanos)<a class="headerlink" href="#operadores-logicos-booleanos" title="Permalink to this headline">¶</a></h3>
+<p>Estos operadores permiten trabajar con las conectivas lógicas habituales. El operador de conjunción (<strong>Y lógico</strong> o <code class="docutils literal notranslate"><span class="pre">and</span></code>), por ejemplo, devuelve un valor que es <code class="docutils literal notranslate"><span class="pre">True</span></code> solo si todas las proposiciones lógicas representadas por sus operandos son simultáneamente también <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Véase el ejemplo a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La otra conectiva lógica básica es el <strong>O lógico</strong> representado por el operador <code class="docutils literal notranslate"><span class="pre">or</span></code>. La operación <code class="docutils literal notranslate"><span class="pre">or</span></code> brinda un resultado cierto (<code class="docutils literal notranslate"><span class="pre">True</span></code>) cuando al menos uno de sus operandos es <code class="docutils literal notranslate"><span class="pre">True</span></code>. Tanto el <code class="docutils literal notranslate"><span class="pre">or</span></code> como el <code class="docutils literal notranslate"><span class="pre">and</span></code> son operadores binarios.</p>
+<p>Una operación lógica aún más simple es la <strong>negación</strong>, representada en Python por el operador <code class="docutils literal notranslate"><span class="pre">not</span></code>. Este último es un operador unario que simplemente <em>invierte</em> el valor lógico del operando al que se aplica. Los operadores lógicos se especifican completamente por sus <strong>tablas de verdad</strong>.</p>
+<p><img alt="TablasLogicas" src="../../_images/TablasLogicas.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se pueden asociar tantos operadores como se deseen. El <code class="docutils literal notranslate"><span class="pre">not</span></code> unario es el de mayor prioridad y el <code class="docutils literal notranslate"><span class="pre">or</span></code> es el de menor. Se deben utilizar paréntesis para modificar esa precedencia por defecto.</p>
+<p>La evaluación de las operaciones lógicas tiene la propiedad de <strong>cortocircuito</strong>: si se puede concluir el valor lógico del resultado a partir de una evaluación parcial de la expresión, no se sigue evaluando la misma.</p>
+<p>Analice, por ejemplo, por qué la siguiente expresión no genera al ejecutarse una <strong>excepción</strong> de división por cero. ¿Qué pasa si se cambia el orden de ambos operandos?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="mi">2</span><span class="o">/</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los valores y operadores lógicos se pueden mezclar con operadores de tipo numérico. En esos casos, un valor numérico cero se comporta como <code class="docutils literal notranslate"><span class="pre">False</span></code> y cualquiera diferente de cero como <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+En cualquier caso, los operadores lógicos típicamente se utilizan junto a los operadores de comparación.</p>
+<p>En el ejemplo siguiente, queremos determinar si el número <code class="docutils literal notranslate"><span class="pre">3</span></code> está entre otros dos números, el <code class="docutils literal notranslate"><span class="pre">10</span></code> y el <code class="docutils literal notranslate"><span class="pre">0</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O sea, tiene que cumplirse que el <code class="docutils literal notranslate"><span class="pre">3</span></code> es simultáneamente menor que el <code class="docutils literal notranslate"><span class="pre">10</span></code> <code class="docutils literal notranslate"><span class="pre">and</span></code> mayor que el <code class="docutils literal notranslate"><span class="pre">0</span></code>. Este tipo de sintaxis es habitual y obligada en la mayoría de los lenguajes de programación. En Python es perfectamente legítima. Sin embargo, este lenguaje ofrece una forma alternativa de <em>encadenar</em> los operadores de comparación, que resulta, en ocasiones como ésta, estar más en concordancia con nuestras intuiciones matemáticas.</p>
+<p>Por ejemplo, la misma proposición se podría haber expresado en Python de la siguiente manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Tabla_de_precedencias'></a></p>
+</div>
+</div>
+<div class="section" id="tabla-de-precedencias">
+<h2>Tabla de precedencias<a class="headerlink" href="#tabla-de-precedencias" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Operador</p></th>
+<th class="text-align:center head"><p>Evaluación</p></th>
+<th class="text-align:center head"><p>Rango</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">()</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<td class="text-align:center"><p>Der. a Izq.</p></td>
+<td class="text-align:center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td class="text-align:center"><p>Unario</p></td>
+<td class="text-align:center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td class="text-align:center"><p>Unario</p></td>
+<td class="text-align:center"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">\\</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>5</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td class="text-align:center"><p>Unario</p></td>
+<td class="text-align:center"><p>7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>8</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td class="text-align:center"><p>Izq. a Der.</p></td>
+<td class="text-align:center"><p>9</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><a id='Cadenas_de_caracteres'></a></p>
+</div>
+<div class="section" id="cadenas-de-caracteres">
+<h2>Cadenas de caracteres<a class="headerlink" href="#cadenas-de-caracteres" title="Permalink to this headline">¶</a></h2>
+<p>Los computadores son conocidos por su capacidad para trabajar con valores numéricos. Hemos visto que también pueden manipular valores lógicos o booleanos. De igual forma, cualquier usuario contemporáneo de los ordenadores sabe que estos se utilizan en muchos otros tipos de aplicaciones que frecuentemente demandan otros tipos de datos.
+El manejo de textos es una tarea conocida de los ordenadores (procesadores de texto, correos electrónicos, sistemas de mensajería, etc.).
+En todos estos casos, las <strong>cadenas de caracteres</strong> juegan un papel fundamental.</p>
+<p>Una <strong>cadena de caracteres</strong>, tipo de dato <code class="docutils literal notranslate"><span class="pre">str</span></code>, representa precisamente eso: una ristra de caracteres alfanuméricos que puede ser tratada como una unidad.</p>
+<p>Las comillas simples o dobles identifican los caracteres alfanuméricos que delimitan un valor constante de tipo <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Esta es una cadena de caracteres&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Se pueden representar con comillas simples&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Las cadenas se pueden &quot;</span> <span class="o">+</span> <span class="s2">&quot;sumar&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Variables'></a></p>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>Sabemos que existen diferentes tipos de valores y operaciones definidas sobre dichos valores, conformando <strong>expresiones</strong>.
+Acabamos de ver que el <strong>intérprete</strong> de Python resulta una calculadora excelente. Sin embargo, a la hora de hacer cálculos más complejos, surge la necesidad de <em>almacenar</em> el valor de algún resultado intermedio para utilizarlo posteriormente. Esta posibilidad de <em>memorizar</em> (que ya está de forma parcial en las calculadoras que conocemos) es una de las capacidades más reconocibles de los lenguajes de programación.
+La solución es darles <strong>nombres</strong> o <strong>identificadores</strong> a los valores. En otros lenguajes de programación (y también en Python) se reconoce esta actividad esencial como asignar valores a <strong>variables</strong>.</p>
+<p>Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radio</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="n">area_circulo</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">PI</span><span class="o">*</span><span class="n">radio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_circulo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esto es, se le ha dado provisionalmente el nombre <code class="docutils literal notranslate"><span class="pre">radio</span></code> al valor numérico entero <code class="docutils literal notranslate"><span class="pre">5</span></code>. O dicho de otra forma, se le ha asignado el valor <code class="docutils literal notranslate"><span class="pre">5</span></code> a la variable <code class="docutils literal notranslate"><span class="pre">radio</span></code>. Luego se ha dado el nombre <code class="docutils literal notranslate"><span class="pre">PI</span></code> a una aproximación de cinco valores decimales del número real <span class="math notranslate nohighlight">\(\pi\)</span> y finalmente se ha asignado a la variable <code class="docutils literal notranslate"><span class="pre">area_circulo</span></code> el valor que resulta de <strong>evaluar</strong> una expresión en la que aparecen <strong>nombres</strong> (de variables) a las que anteriormente se les ha asignado un valor, operadores y constantes literales de tipo numérico.</p>
+<p>Se tiene entonces, de una parte el nombre (o identificador) a la izquierda del signo <code class="docutils literal notranslate"><span class="pre">=</span></code> y a la derecha el valor que va a ser <strong>asignado</strong> a la localización de memoria que dicho nombre identifica.</p>
+<p>Cuando se trabaja con el intérprete, la asignación no produce inmediatamente la salida por pantalla del valor almacenado. Si se desea, se puede poner dicho nombre por sí solo, en una línea aparte y, entonces, el intérprete mostrará el valor al que hace referencia.
+Se puede asignar el mismo valor a varios identificadores simultáneamente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>O diferentes valores a sendas variables utilizando la coma:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="la-asignacion-no-es-equivalente-a-la-igualdad-matematica">
+<h3>La asignación no es equivalente a la igualdad matemática<a class="headerlink" href="#la-asignacion-no-es-equivalente-a-la-igualdad-matematica" title="Permalink to this headline">¶</a></h3>
+<p>La semejanza formal entre la sintaxis de la asignación en computación y la igualdad en matemáticas no debe llevarnos a pensar que son la misma cosa.
+Para convencernos de ello, baste con considerar el siguiente código de Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Sentencias similares a la segunda línea en el fragmento anterior aparecen continuamente en programación, aunque resulten absurdas desde el punto de vista matemático.
+En programación, se trata simplemente de la operación mediante la cual se utiliza el valor previo asociado a la variable <code class="docutils literal notranslate"><span class="pre">a</span></code>  (que era <code class="docutils literal notranslate"><span class="pre">3</span></code> en el ejemplo) se le adiciona la constante <code class="docutils literal notranslate"><span class="pre">1</span></code> (que aparece <strong>literalmente</strong>) y al resultado (<code class="docutils literal notranslate"><span class="pre">4</span></code> en el ejemplo) se le vuelve a asignar el nombre <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>En resumen, se trata de la actualización del valor asociado a <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+</div>
+<div class="section" id="operadores-de-asignacion-compuestos">
+<h3>Operadores de asignación compuestos<a class="headerlink" href="#operadores-de-asignacion-compuestos" title="Permalink to this headline">¶</a></h3>
+<p>Son tan comunes este tipo de operaciones en programación, que Python (al igual que en C/C++) ofrece variantes de la asignación que la combinan con una actualización del valor previamente almacenado en la variable, utilizando algunos de las operaciones aritméticas más comunes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># --&gt; a = a + 1 </span>
+</pre></div>
+</div>
+<p>También se tienen, por ejemplo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">/=</span><span class="mi">2</span>    <span class="c1"># --&gt; a = a/2</span>
+<span class="n">a</span> <span class="o">-=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># --&gt; a = a - (-1)</span>
+<span class="n">a</span> <span class="o">*=</span> <span class="mi">2</span>   <span class="c1"># --&gt; a = a*2</span>
+<span class="n">a</span> <span class="o">**=</span> <span class="mi">2</span>  <span class="c1"># --&gt; a = a**2</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Prueba algunas de estas variantes de la asignación compuesta:</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="o">//=</span> <span class="mi">2</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Otras_constantes_literales'></a></p>
+</div>
+</div>
+<div class="section" id="otras-constantes-literales">
+<h2>Otras constantes literales<a class="headerlink" href="#otras-constantes-literales" title="Permalink to this headline">¶</a></h2>
+<p>Los formatos básicos para introducir las constantes literales para cada tipo de datos han sido introducidos en los ejemplos vistos. Hay, sin embargo, otros formatos menos usuales.</p>
+<ul>
+<li><p><strong>Constantes literales <code class="docutils literal notranslate"><span class="pre">int</span></code></strong></p>
+<ul class="simple">
+<li><p><em>Notación decimal</em>: dígitos decimales, opcionalmente precedidos de signo. El primer digito no puede ser cero.</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">-1234</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>Notación binaria</em>: dígitos binarios {0,1}, precedidos por <code class="docutils literal notranslate"><span class="pre">0B</span></code> o <code class="docutils literal notranslate"><span class="pre">0b</span></code>.</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">0b101</span></code>, <code class="docutils literal notranslate"><span class="pre">0B1110</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>Notación octal</em>: dígitos octales {0,…,7}, precedidos por <code class="docutils literal notranslate"><span class="pre">0o</span></code> ó <code class="docutils literal notranslate"><span class="pre">0O</span></code>:</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">0O2357</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>Notación hexadecimal</em>: dígitos hexadecimales {0,…9,A,…,F} precedidos por <code class="docutils literal notranslate"><span class="pre">0x</span></code> o <code class="docutils literal notranslate"><span class="pre">0X</span></code>:</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">0xFE</span></code>, <code class="docutils literal notranslate"><span class="pre">0X1249</span></code></p>
+</div></blockquote>
+</li>
+<li><p><strong>Constantes literales <code class="docutils literal notranslate"><span class="pre">float</span></code></strong></p>
+<ul class="simple">
+<li><p><em>Notación con punto</em>: puede incluir dígitos decimales, signo y punto decimal</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">234.15</span></code>, <code class="docutils literal notranslate"><span class="pre">-10.85</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>Notación científica</em>: donde la letra <code class="docutils literal notranslate"><span class="pre">e</span></code> simboliza la base 10.</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">-1.01e10</span></code>, <code class="docutils literal notranslate"><span class="pre">23.5e-100</span></code>, <code class="docutils literal notranslate"><span class="pre">1e6</span></code></p>
+</div></blockquote>
+</li>
+<li><p><strong>Constantes literales <code class="docutils literal notranslate"><span class="pre">complex</span></code></strong></p>
+<ul class="simple">
+<li><p>Parte real y parte imaginaria deben ser de tipo real:</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">1.1</span> <span class="pre">+</span> <span class="pre">2j</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">-</span> <span class="pre">1e2J</span></code></p>
+</div></blockquote>
+</li>
+<li><p><strong>Constantes literales <code class="docutils literal notranslate"><span class="pre">bool</span></code></strong></p>
+<ul class="simple">
+<li><p>Las únicas constantes literales booleanas son <code class="docutils literal notranslate"><span class="pre">True</span></code> y <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Constantes literales <code class="docutils literal notranslate"><span class="pre">str</span></code></strong></p>
+<ul class="simple">
+<li><p>Caracteres alfanuméricos rodeados de comillas simple o dobles.</p></li>
+</ul>
+<blockquote>
+<div><p>Ej.: <code class="docutils literal notranslate"><span class="pre">&quot;Esta</span> <span class="pre">es</span> <span class="pre">una</span> <span class="pre">constante</span> <span class="pre">de</span> <span class="pre">cadena&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">'Otra</span> <span class="pre">cadena</span> <span class="pre">que</span> <span class="pre">incluye</span> <span class="pre">al</span> <span class="pre">final</span> <span class="pre">un</span> <span class="pre">fin</span> <span class="pre">de</span> <span class="pre">línea\n'</span></code></p>
+</div></blockquote>
+</li>
+</ul>
+<p>Además de los caracteres convencionales que representan letras del alfabeto (mayúsculas y minúsculas), dígitos y otros signos diversos, se utiliza una codificación especial para hacer referencia a <strong>caracteres especiales</strong>.
+Estos caracteres especiales comienzan con el signo <code class="docutils literal notranslate"><span class="pre">\</span></code> (llamado <strong>carácter de escape</strong> en este contexto) seguido de un código que lo identifica:</p>
+<p>Ejemplos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'\n'</span></code>     Cambio de línea</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'\t'</span></code>     Tabulador</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'\\'</span></code>   Cuando se quiere hacer referencia al carácter <code class="docutils literal notranslate"><span class="pre">\</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'\''</span></code>     Para hacer referencia al carácter <code class="docutils literal notranslate"><span class="pre">'</span></code> y se quiere que no se confunda con el final de la constante de cadena</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;\&quot;&quot;</span></code>     Para hacer referencia al carácter <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> y se quiere que no se confunda con el final de la constante de cadena</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'\dd'</span></code>   Para hacer referencia al carácter ASCII de valor decimal dd</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'\xhh'</span></code>   Para hacer referencia al carácter ASCII de valor hexadecimal hh</p></li>
+</ul>
+<p>Intenta escribir diferentes constantes en el cuadro que sigue:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="se">\65</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\1_Expresiones_operadores_y_tipos_de_datos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../0_Python/Introduccion_Python.html" title="previous page">Introducción a Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

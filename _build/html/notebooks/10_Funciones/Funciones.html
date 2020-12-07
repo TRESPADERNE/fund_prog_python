@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/10_Funciones/Funciones.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/10_Funciones/Funciones.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/10_Funciones/Funciones.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-necesidad-de-las-funciones">
+     La necesidad de las funciones
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#un-ejemplo-usando-funciones-de-biblioteca">
+       Un ejemplo usando funciones de biblioteca
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ventajas-del-uso-de-funciones">
+     Ventajas del uso de funciones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pautas-de-diseno-de-una-funcion">
+     Pautas de diseño de una función
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-funciones">
+   Definición de funciones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-funciones-segun-sus-parametros-de-entrada-y-valores-devueltos">
+   Tipos de funciones según sus parámetros de entrada y valores devueltos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-sin-parametros-de-entrada">
+     Funciones sin parámetros de entrada
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-que-no-devuelven-valores-mediante-return">
+     Funciones que no devuelven valores mediante
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       return
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-con-mas-de-un-parametro">
+     Funciones con más de un parámetro
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-que-devuelven-mas-de-un-parametro">
+     Funciones que devuelven más de un parámetro
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#especificando-el-nombre-de-los-parametros">
+     Especificando el nombre de los parámetros
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parametros-con-valores-por-defecto">
+     Parámetros con valores por defecto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones-y-tratamiento-de-excepciones">
+   Funciones y tratamiento de excepciones
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="funciones">
+<h1>Funciones<a class="headerlink" href="#funciones" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#Introducci%C3%B3n">Introducción</a><br>
+<a class="reference external" href="#Definici%C3%B3n_de_funciones">Definición de funciones</a><br>
+<a class="reference external" href="#Tipos_de_funciones_seg%C3%BAn_sus_par%C3%A1metros_de_entrada_y_valores_devueltos">Tipos de funciones según sus parámetros de entrada y valores devueltos</a><br>
+<a class="reference external" href="#Funciones_excepciones">Funciones y tratamiento de excepciones</a></p>
+<hr class="docutils" />
+<p><a id='Introducción'></a></p>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>En los temas previos ya hemos tenido oportunidad de trabajar con <strong>funciones</strong>. En este tema aprenderemos a definir y utilizar funciones <strong>creadas por nosotros</strong>.</p>
+<p>A lo largo del tiempo y en diferentes lenguajes el concepto de función aparece definido también por otros nombres: <strong>subprograma</strong>, <strong>subrutina</strong> o <strong>procedimiento</strong> son los más habituales y con diferentes matices denotan lo mismo.</p>
+<blockquote>
+<div><p>Una función es un <strong>conjunto de instrucciones</strong> al que se asigna un nombre, opcionalmente parámetros de entrada y de salida, y que puede ser <strong>llamada</strong> desde otras partes de un programa para realizar una tarea concreta.</p>
+</div></blockquote>
+<div class="section" id="la-necesidad-de-las-funciones">
+<h3>La necesidad de las funciones<a class="headerlink" href="#la-necesidad-de-las-funciones" title="Permalink to this headline">¶</a></h3>
+<p>Los lenguajes de programación utilizan los recursos que brinda el <em>hardware</em> del ordenador: la capacidad de codificar diferentes tipos de datos y la posibilidad de realizar sobre ellos operaciones aritméticas y lógicas.</p>
+<p>Las operaciones que el ordenador brinda de forma nativa, son bastante elementales y no van mucho más allá de:</p>
+<ul class="simple">
+<li><p>la capacidad de realizar sumas, restas, multiplicaciones y divisiones, etc.</p></li>
+<li><p>controlar el flujo del programa modificando la ejecución secuencial de las sentencias mediante la utilización de condicionales y bucles.</p></li>
+</ul>
+<p>De manera que la realización de todo el resto de complicadas operaciones que sabemos que son capaces de realizar los programas de ordenador deben ser <em>construidas</em> a partir de esas operaciones básicas.</p>
+<p>Cuando hemos utilizado los operadores más sencillos en Python (suma, resta, etc.), el intérprete <em>traduce</em> los comandos de alto nivel dados por el programador y usa, casi directamente, las funcionalidades del <em>hardware</em>.</p>
+<p>Por tanto, a la hora de hacer operaciones más complejas, estas tienen que ser creadas a partir de esos bloques elementales implementando procedimientos más elaborados. Python y otros lenguajes brindan la posibilidad de agrupar estos bloques de instrucciones en forma de una <strong>función</strong>, para su posterior invocación de forma sencilla.</p>
+<div class="section" id="un-ejemplo-usando-funciones-de-biblioteca">
+<h4>Un ejemplo usando funciones de biblioteca<a class="headerlink" href="#un-ejemplo-usando-funciones-de-biblioteca" title="Permalink to this headline">¶</a></h4>
+<p>La <strong>función</strong> es entonces el recurso que el lenguaje de programación brinda para implementar esos subprogramas. Ya hemos utilizado muchas funciones, algunas intrínsecas y otras disponibles en módulos como el módulo <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p>
+<p>Por ejemplo, supongamos que queremos determinar el siguiente cociente:</p>
+<p>\begin{align}
+\y &amp; = \frac{1-{{sin(x/4)}{cos(x)} }^4}{1+cos(x)^2} \
+\end{align}</p>
+<p>El cálculo de <span class="math notranslate nohighlight">\(y\)</span> se podría implementar en Python con un programa como el siguiente, que hace uso de las funciones trigonométricas <code class="docutils literal notranslate"><span class="pre">sin()</span></code> y <code class="docutils literal notranslate"><span class="pre">cos()</span></code> definidas en el módulo <code class="docutils literal notranslate"><span class="pre">math</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># Desaconsejado este método de importación pero utilizado aquí para argumentar el uso de funciones</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">pi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1464466094067262
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se debe resaltar lo siguiente en el ejemplo anterior:</p>
+<ul class="simple">
+<li><p><strong>Claridad</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Observad la similitud en el uso (que no equivalencia) para este caso concreto de las funciones en Python con el concepto matemático de función. La función <strong>recibe</strong> valores como argumentos y <strong>devuelve</strong> un valor que entonces participa en la evaluación del resto de la expresión.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Abstracción</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Como <em>usuarios</em> de las funciones <code class="docutils literal notranslate"><span class="pre">sin()</span></code> y <code class="docutils literal notranslate"><span class="pre">cos()</span></code> no sabemos cómo están implementadas. Podríamos aventurar que es posible que la implementación de las mismas recurra a la expansión de series que converjan a las funciones requeridas, con una precisión alta pero finita. Pero el hecho cierto es que no lo sabemos, y tampoco nos interesa para utilizarlas: evidentemente hay que dar un <em>salto de fe</em> y confiar en que sean correctas dentro de los límites de la precisión que aseguran.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Reutilización</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Hemos utilizado dos veces la función <code class="docutils literal notranslate"><span class="pre">cos()</span></code> y una el <code class="docutils literal notranslate"><span class="pre">sin()</span></code>. Podemos imaginar que utilizar más expresiones, usando estas funciones un número mayor de veces, no implicaría una dificultad mucho mayor.</p>
+</div></blockquote>
+<p>Imaginemos, por el contrario, que las funciones no existieran. Y que cada vez que quisiéramos determinar el seno o coseno de un número, tuviésemos que programar los bucles y condicionales del algoritmo específico que determina el valor de estas funciones a partir de operaciones más básicas. Ciertamente, sería muy complicado resolver cualquier problema matemático sencillo. El código resultante sería enormemente difícil de entender. Por otra parte, si se decidiera cambiar la implementación del código, para utilizar otro algoritmo más preciso o eficiente, eso implicaría modificar todo el programa.</p>
+<p>Una vez visto el ejemplo, mostramos el mismo ejemplo con la forma recomendada de usar funciones importadas de un módulo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1464466094067262
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Ventajas_del_uso_de_funciones'></a></p>
+</div>
+</div>
+<div class="section" id="ventajas-del-uso-de-funciones">
+<h3>Ventajas del uso de funciones<a class="headerlink" href="#ventajas-del-uso-de-funciones" title="Permalink to this headline">¶</a></h3>
+<p>Las funciones brindan dos beneficios importantes de los que se pueden derivar muchos otros:</p>
+<ul class="simple">
+<li><p><strong>Estructura</strong>: Es un recurso que permite descomponer una tarea compleja en varias subtareas de menor entidad, que puedan ser abordables con mayores garantías de éxito.</p></li>
+<li><p><strong>Abstracción</strong>: Las funciones ocultan detalles tras una <strong>interfaz pública</strong> bien definida. Se hace abstracción de los detalles de implementación y lo que interesa únicamente son los valores de entrada que se le suministran y el(los) resultado(s) que ofrece.</p></li>
+</ul>
+<p>A partir de estas dos características básicas, se derivan el resto de las ventajas que brinda el uso de las funciones:</p>
+<ul class="simple">
+<li><p>Permiten <strong>reutilizar código</strong> sin tener que reescribirlo cada vez.</p></li>
+<li><p>Permite el <strong>encapsulamiento</strong> del código de la función. Así, por ejemplo, una vez dado por válido el código interno de una función, los errores de un programa no serán imputables a la implementación interna de la función.</p></li>
+<li><p>La implementación interna puede cambiar sin que el programador que use esas funciones tenga que preocuparse de ello.</p></li>
+<li><p>Hace que el código resultante sea más claro y mantenible.</p></li>
+<li><p>Las funciones brindan el mecanismo para dividir un problema grande en subproblemas pequeños, acotando la interacción entre los mismos a los datos intercambiados a través de su interfaz pública.</p></li>
+<li><p>Es el mecanismo ideal para permitir la colaboración entre varios programadores: una vez puestos de acuerdo en la interfaz, cada cual tiene la libertad de programar la solución a los subproblemas parciales sin temor a que le afecte lo hecho por otros programadores (siempre que el resultado brindado sea el correcto).</p></li>
+</ul>
+</div>
+<div class="section" id="pautas-de-diseno-de-una-funcion">
+<h3>Pautas de diseño de una función<a class="headerlink" href="#pautas-de-diseno-de-una-funcion" title="Permalink to this headline">¶</a></h3>
+<p>Las  características que deben prevalecer a la hora de diseñar una función son aquellas que refuerzan el hecho de que las funciones son abstracciones.</p>
+<p>Una función como abstracción debe centrarse en 3 propiedades:</p>
+<ul class="simple">
+<li><p>Su <strong>dominio</strong>, conjunto de valores que pueden tomar sus argumentos de entrada.</p></li>
+<li><p>Su <strong>rango</strong>, conjunto de valores que puede devolver.</p></li>
+<li><p>Su <strong>propósito</strong>, la relación existente entre los valores de entrada y los de salida, así como los posibles efectos colaterales que puedan existir.</p></li>
+</ul>
+<p>Cómo se logran las salidas a partir de las entradas queda oculto, ese el mecanismo de la abstracción.</p>
+<p>Para lograr reforzar el mecanismo de abstracción de una función hay algunas pautas que son de ayuda:</p>
+<ol class="simple">
+<li><p>Cada función debe tener un único propósito. Es el <strong>principio de responsabilidad única</strong>.</p>
+<ul class="simple">
+<li><p>El objetivo perseguido con la función debería ser fácilmente identificado con un nombre corto.</p></li>
+<li><p>Si una función hace múltiples tareas de forma consecutiva, debería rehacerse en múltiples funciones.</p></li>
+</ul>
+</li>
+<li><p><strong>No te repitas</strong> (<strong>DRY</strong>, <strong>Don’t repeat yourself</strong>).</p>
+<ul class="simple">
+<li><p>Si un fragmento de código aparece varias veces repetido, es una buena oportunidad para darlo un nombre e invocarlo múltiples veces.</p></li>
+</ul>
+</li>
+<li><p>Las funciones deben ser <strong>generales</strong>.</p>
+<ul class="simple">
+<li><p>No tiene sentido, por ejemplo, definir una función específica para elevar un número a la quinta, cuando podemos definir con carácter general, una función que eleve un número a cualquier exponente.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p><a id='Definición_de_funciones'></a></p>
+</div>
+</div>
+<div class="section" id="definicion-de-funciones">
+<h2>Definición de funciones<a class="headerlink" href="#definicion-de-funciones" title="Permalink to this headline">¶</a></h2>
+<p>Al acto de utilizar una función, tal y como hemos venido haciendo hasta ahora con las funciones nativas (<em>built-in</em>) y también con las de biblioteca, se le conoce con el nombre de <em>llamar</em> o <em>invocar</em> a la función.</p>
+<p>Aprenderemos a continuación cómo definir nuestras propias funciones con algunos ejemplos sencillos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primero definimos la función, especificando su nombre y sus parámetros</span>
+<span class="k">def</span> <span class="nf">area_circulo_v1</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Área del círculo de radio </span><span class="si">{}</span><span class="s2"> es </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">3.1415</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="c1"># El estilo PEP 8 recomienza dejar dos líneas en blanco después de una función</span>
+<span class="c1"># Ahora comienza el programa principal: la primera línea ejecutable es diametro = 10</span>
+<span class="n">diametro</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">area_circulo_v1</span><span class="p">(</span><span class="n">diametro</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Área del círculo de radio 5.0 es 78.53750000000001.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe en lo anterior los dos momentos del trabajo con las funciones, la <strong>definición</strong> y la <strong>llamada</strong>:</p>
+<ul class="simple">
+<li><p><strong>Definición</strong>:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area_circulo_v1</span><span class="p">(</span><span class="n">r</span><span class="p">):</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Área del círculo de radio </span><span class="si">{}</span><span class="s2"> es </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">3.1415</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Debe aparecer <strong>antes de la primera llamada</strong> a la función definida y está formada por dos partes, el <strong>encabezado</strong> y el <strong>cuerpo</strong>:
+- <strong>Encabezado</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area_circulo_v1</span><span class="p">(</span><span class="n">r</span><span class="p">):</span> 
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Se utiliza la palabra reservada `def` seguida del identificador que da nombre a la función, `area_circulo_v1` en el ejemplo. Le sigue entre paréntesis (obligatorios) la lista de **parámetros formales**, que puede estar vacía. En el ejemplo, consta de un sólo parámetro formal al que hemos identificado dentro de la definición de la función con el nombre `r`. 
+
+Note que, al definir la función, todavía no se ejecuta el código que ella representa, aunque aparezca primero dentro de la secuencia del programa. 
+- **Cuerpo**:
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Área del círculo de radio </span><span class="si">{}</span><span class="s2"> es </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">3.1415</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Después del encabezado, se tiene el cuerpo de la función, que en este caso ocupa una sola línea, con una sentencia que a su vez _invoca_ a la función nativa `print()`. Se debe notar que, de nuevo, Python exige el *sangrado* apropiado para identificar el cuerpo de la función. En este ejemplo, la función no *devuelve* ningún valor.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Llamada(s)</strong>:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_circulo_v1</span><span class="p">(</span><span class="n">diametro</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Se realiza escribiendo el nombre de la función, seguido obligatoriamente de los paréntesis con los <strong>parámetros reales</strong> (en este caso uno) que se le <em>pasarán</em> a la misma. Aquí el parámetro real se obtiene evaluando la expresión indicada.</p>
+<p>A tener en cuenta:</p>
+<ul class="simple">
+<li><p>Antes de llamar a una función, esta debe haber sido <strong>definida</strong> en el programa.</p></li>
+<li><p>La ejecución de los encabezados (no del cuerpo) de las funciones se realiza para <em>crear</em> los objetos que representan a las funciones, La primera sentencia <em>“útil”</em> que se ejecuta es la primera sentencia del programa principal. Programa principal es el conjunto de todas las sentencias que <strong>no</strong> están incluidas dentro del cuerpo de ninguna función.</p></li>
+<li><p>Si la función tiene parámetros de entrada, a la hora de llamar a la función se determinan los valores de los parámetros reales, evaluando las expresiones correspondientes (en el ejemplo se evalúa <code class="docutils literal notranslate"><span class="pre">diametro/2</span></code>). El valor del parámetro real resulta asociado al parámetro formal o argumento de la función (en este caso <code class="docutils literal notranslate"><span class="pre">r</span></code>).</p></li>
+</ul>
+<p>La función anterior es correcta. Sin embargo, a la hora de programar funciones, se debe buscar que están sean lo más generales posible, de forma que puedan ser reusadas en diferentes circunstancias. La función anterior no es muy flexible, puesto que siempre <em>imprime</em> en pantalla el resultado y, probablemente, no en todas las ocasiones ese es el comportamiento que se desea. Además, tal y como está, como la función no <em>devuelve</em> nada, ella no puede participar en otras expresiones.</p>
+<p>Desde el punto de vista de la ingeniería del software esta función viola el <strong>principio de responsabilidad única</strong>: es deseable que una función realice una única cosa. En nuestro <em>desafortunado</em> ejemplo, nuestra función tiene dos responsabilidades: calcular el área de un círculo e imprimir su valor por pantalla.
+También, bien mirado, viola el <strong>principio de generalidad</strong>: no en todos los casos en que quiera calcular el área del círculo, se desea imprimir el resultado por pantalla.</p>
+<p>Una implementación más general, es la que se muestra a continuación.</p>
+<p><img alt="definicion_funcion.jpg" src="../../_images/definicion_funcion.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primero definimos la función, especificando su nombre y sus parámetros</span>
+<span class="k">def</span> <span class="nf">area_circulo</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Función que recibe el radio del círculo y calcula su área&#39;&#39;&#39;</span>
+
+    <span class="n">area</span> <span class="o">=</span> <span class="mf">3.1415</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">area</span>
+
+
+<span class="c1"># Programa principal</span>
+<span class="c1"># Ahora se invoca o llama la función, pasando el argumento real</span>
+<span class="c1"># Además, el valor devuelto participa en la expresión</span>
+
+<span class="n">radio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Diga el radio: &quot;</span><span class="p">))</span>
+<span class="n">altura</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Diga la altura: &quot;</span><span class="p">))</span>
+
+<span class="n">area_cilindro</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">area_circulo</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="mf">3.1415</span><span class="o">*</span><span class="n">radio</span><span class="o">*</span><span class="n">altura</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El área lateral de un cilindro de radio </span><span class="si">{}</span><span class="s1"> y altura </span><span class="si">{}</span><span class="s1"> es </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">radio</span><span class="p">,</span> <span class="n">altura</span><span class="p">,</span> <span class="n">area_cilindro</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">b6be4875fcdb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Además, el valor devuelto participa en la expresión</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">radio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Diga el radio: &quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">altura</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Diga la altura: &quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+
+<span class="nn">C:\Anaconda3\lib\site-packages\ipykernel\kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>             <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">858</span>                 <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora el encabezamiento es idéntico pero el cuerpo de la función consta de dos sentencias (líneas 5 y 6), sangradas como exige la sintaxis de Python.</p>
+<ul class="simple">
+<li><p>La primera sentencia <strong>asigna</strong> a la variable <code class="docutils literal notranslate"><span class="pre">area</span></code> el resultado de evaluar la expresión a su derecha</p></li>
+<li><p>La segunda sentencia utiliza la palabra reservada <code class="docutils literal notranslate"><span class="pre">return</span></code> para <strong>devolver</strong> el contenido de <code class="docutils literal notranslate"><span class="pre">area</span></code> al código que haya invocado a la función.</p></li>
+</ul>
+<p>Es importante entender que <code class="docutils literal notranslate"><span class="pre">area</span></code> dentro de la definición de la función da nombre a una <strong>variable local</strong> que solo está definida y <strong>accesible</strong> dentro de la función <code class="docutils literal notranslate"><span class="pre">area_circulo()</span></code>. El identificador <code class="docutils literal notranslate"><span class="pre">r</span></code> de nuevo sirve para nombrar el parámetro formal, que igualmente sólo está definido dentro de la función.</p>
+<p>Luego aparecen las sentencias que se ejecutarán primero de forma secuencial (el <strong>programa principal</strong>), la asignación a las variables <code class="docutils literal notranslate"><span class="pre">radio</span></code> y  <code class="docutils literal notranslate"><span class="pre">altura</span></code> de los valores que el usuario introduzca por teclado, para luego evaluar la expresión que asigna a una nueva variable, <code class="docutils literal notranslate"><span class="pre">area_cilindro</span></code>, el resultado de evaluar la expresión a su derecha. Ahora, como la función <code class="docutils literal notranslate"><span class="pre">area_circulo()</span></code> devuelve un valor, la llamada a dicha función, puede participar de la expresión en la que se calcula el área lateral del cilindro. Véase que, esta forma de utilizar la función que acabamos de definir, no difiere de lo ya visto en temas anteriores o del ejemplo del inicio de este documento con las funciones de biblioteca <code class="docutils literal notranslate"><span class="pre">cos()</span></code> y <code class="docutils literal notranslate"><span class="pre">sin()</span></code>.</p>
+<p>Al evaluar la expresión, se procede siguiendo las reglas de precedencia de los operadores implicados. Primero, cuando se intenta realizar el primer producto, el intérprete de Python <em>comprende</em> que necesita antes evaluar la función <code class="docutils literal notranslate"><span class="pre">area_circulo()</span></code>, con lo que se detiene la evaluación de la expresión para <em>invocar</em> a la función, asociando el contenido de la variable <code class="docutils literal notranslate"><span class="pre">radio</span></code> (argumento real) al parámetro formal <code class="docutils literal notranslate"><span class="pre">r</span></code> de la definición de la función. Tras terminar la ejecución, la función devuelve el valor del área del circulo contenida en la variable local <code class="docutils literal notranslate"><span class="pre">area</span></code>, y dicho valor es recibido en el programa principal para proceder con la evaluación del resto de la expresión.</p>
+<p>Nótese que las funciones definidas siguiendo la pauta de esta segunda versión de <code class="docutils literal notranslate"><span class="pre">area_circulo()</span></code> tienen un comportamiento similar a las funciones matemáticas: a cada valor del dominio de definición (cada valor del parámetro formal <code class="docutils literal notranslate"><span class="pre">r</span></code>) le corresponde un único valor de la imagen (la salida que se logra mediante la sentencia <code class="docutils literal notranslate"><span class="pre">return</span></code>) y que además este valor siempre es el mismo.</p>
+<hr class="docutils" />
+<p><a id='Tipos_de_funciones_según_sus_parámetros_de_entrada_y_valores_devueltos'></a></p>
+</div>
+<div class="section" id="tipos-de-funciones-segun-sus-parametros-de-entrada-y-valores-devueltos">
+<h2>Tipos de funciones según sus parámetros de entrada y valores devueltos<a class="headerlink" href="#tipos-de-funciones-segun-sus-parametros-de-entrada-y-valores-devueltos" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="funciones-sin-parametros-de-entrada">
+<h3>Funciones sin parámetros de entrada<a class="headerlink" href="#funciones-sin-parametros-de-entrada" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Este código sólo imprime este mensaje.&#39;</span><span class="p">)</span>
+
+    
+<span class="n">intro</span><span class="p">()</span>
+<span class="n">intro</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Este código sólo imprime este mensaje
+Este código sólo imprime este mensaje
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las funciones pueden carecer de parámetros de entrada. En la mayoría de los casos, se trataría de un tipo de función conocida como <strong>impura</strong>, debido a que ocasiona <strong>efectos colaterales</strong> (<strong>side effects</strong>). Observe que el único objetivo en este caso es sacar un aviso por pantalla, <strong>¡que es un efecto colateral!</strong>. En el tema de ampliación de funciones abordaremos este aspecto con algo más de detenimiento. Pueden existir funciones <strong>puras</strong> sin parámetros de entrada y sin cambios colaterales: la función trivial <em>que no hace nada</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">funcion</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>En todo caso, los paréntesis deben ser obligatoriamente utilizados tanto en la definición como en cada una de las llamadas a la función.</p>
+</div>
+<div class="section" id="funciones-que-no-devuelven-valores-mediante-return">
+<h3>Funciones que no devuelven valores mediante <code class="docutils literal notranslate"><span class="pre">return</span></code><a class="headerlink" href="#funciones-que-no-devuelven-valores-mediante-return" title="Permalink to this headline">¶</a></h3>
+<p>El caso del ejemplo anterior, también ejemplifica a las funciones que no contienen la sentencia <code class="docutils literal notranslate"><span class="pre">return</span></code>.
+Este tipo de funciones, al ser utilizadas incorrectamente en contextos en que se espera un valor devuelto (al realizar composición de funciones o en sentencias de asignación), <em>devuelven</em> el valor especial <code class="docutils literal notranslate"><span class="pre">None</span></code> que indica la ausencia de un valor válido.</p>
+<p>Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">intro</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Este código sólo imprime este mensaje
+None
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="funciones-con-mas-de-un-parametro">
+<h3>Funciones con más de un parámetro<a class="headerlink" href="#funciones-con-mas-de-un-parametro" title="Permalink to this headline">¶</a></h3>
+<p>Las funciones pueden tener más de un parámetro formal. Tomando como referencia el ejemplo ya visto, definamos una función que reciba el radio y la altura de un cilindro y devuelva su área lateral.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primero definimos la función, especificando su nombre y sus parámetros</span>
+<span class="k">def</span> <span class="nf">area_cilindro</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">area</span>
+
+
+<span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El área lateral del cilindro es </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">area_c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El área lateral del cilindro es 34.55749
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note que los parámetros formales de <code class="docutils literal notranslate"><span class="pre">area_cilindro()</span></code> ahora son dos, representando el radio (<code class="docutils literal notranslate"><span class="pre">r</span></code>) y la altura (<code class="docutils literal notranslate"><span class="pre">h</span></code>). Por simplicidad, invocamos la función pasando como parámetros reales dos valores literales.</p>
+<p>Obsérvese la <strong>correspondencia posicional</strong> entre los parámetros formales y los reales: la constante literal <code class="docutils literal notranslate"><span class="pre">1</span></code> será copiada en el primer parámetro formal <code class="docutils literal notranslate"><span class="pre">r</span></code> y la constante <code class="docutils literal notranslate"><span class="pre">4.5</span></code> en el segundo <code class="docutils literal notranslate"><span class="pre">h</span></code>.</p>
+</div>
+<div class="section" id="funciones-que-devuelven-mas-de-un-parametro">
+<h3>Funciones que devuelven más de un parámetro<a class="headerlink" href="#funciones-que-devuelven-mas-de-un-parametro" title="Permalink to this headline">¶</a></h3>
+<p>En Python, las funciones pueden devolver mediante la sentencia <code class="docutils literal notranslate"><span class="pre">return</span></code> un número arbitrario de valores separados por coma. Esta característica es una novedad del lenguaje que lo diferencia de otros como el C/C++.</p>
+<p>Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Devuelve el mínimo y el máximo de la lista que recibe como argmento&#39;&#39;&#39;</span>
+    <span class="n">mn</span> <span class="o">=</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>  <span class="c1">#[1:] evita comparar con el índice 0</span>
+        <span class="k">if</span> <span class="n">mn</span> <span class="o">&gt;</span> <span class="n">elem</span><span class="p">:</span>
+            <span class="n">mn</span> <span class="o">=</span> <span class="n">elem</span>
+        <span class="k">if</span> <span class="n">mx</span> <span class="o">&lt;</span> <span class="n">elem</span><span class="p">:</span>
+            <span class="n">mx</span> <span class="o">=</span> <span class="n">elem</span>
+    <span class="k">return</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mx</span>  <span class="c1"># Devolvemos una tupla</span>
+
+
+<span class="n">lista_prueba</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="n">mn</span><span class="p">,</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">lista_prueba</span><span class="p">)</span>  <span class="c1"># Desempaquetado de la tupla</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min: &#39;</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="s1">&#39;Max: &#39;</span><span class="p">,</span> <span class="n">mx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min:  -3 Max:  10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe que en el ejemplo anterior, el parámetro que espera la función <code class="docutils literal notranslate"><span class="pre">min_max()</span></code> es de tipo lista. Este ejemplo, además, ilustra mejor el hecho de que las funciones deben ser entendidas como subprogramas, capaces de utilizar todas las posibilidades vistas: definir sus propias variables, utilizar estructuras de control de flujo como condicionales y bucles, etc.</p>
+<p>La sentencia <code class="docutils literal notranslate"><span class="pre">return</span></code> devuelve el mínimo y máximo valor de la misma, creando una <strong>tupla</strong>.</p>
+<p>En la línea en que se realiza la llamada, se asigna el resultado a dos variables, <strong>desempaquetando</strong> la tupla.</p>
+</div>
+<div class="section" id="especificando-el-nombre-de-los-parametros">
+<h3>Especificando el nombre de los parámetros<a class="headerlink" href="#especificando-el-nombre-de-los-parametros" title="Permalink to this headline">¶</a></h3>
+<p>Python permite especificar los nombres de los parámetros formales a la hora de invocar a la función.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área lateral del cilindro&quot;</span><span class="p">,</span> <span class="n">area_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El área lateral del cilindro 34.55749
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área lateral del cilindro&quot;</span><span class="p">,</span> <span class="n">area_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por supuesto, no se permite que un parámetro que no tenga nombre, <strong>argumento posicional</strong>, esté a la derecha de un argumento con nombre.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área lateral del cilindro&quot;</span><span class="p">,</span> <span class="n">area_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-10-7328e50cc47a&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+                               <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poder especificar nombres permite que los parámetros reales pueden ser enviados a la función en cualquier orden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_c</span> <span class="o">=</span> <span class="n">area_cilindro</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El área lateral del cilindro&quot;</span><span class="p">,</span> <span class="n">area_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El área lateral del cilindro 34.55749
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parametros-con-valores-por-defecto">
+<h3>Parámetros con valores por defecto<a class="headerlink" href="#parametros-con-valores-por-defecto" title="Permalink to this headline">¶</a></h3>
+<p>En ocasiones resulta útil definir funciones para las que uno o varios parámetros tengan valores por defecto.</p>
+<p>Supongamos, por ejemplo, que hacemos una función para garantizar que el valor que se pasa como argumento está entre dos límites dados:</p>
+<ul class="simple">
+<li><p>si lo está, devuelve el valor tal cual.</p></li>
+<li><p>si no lo está, devuelve el límite superior o inferior, según el caso.</p></li>
+</ul>
+<p>Se sabe además que, en la aplicación de que se trata, el rango de valores que interesa normalmente suele ser el [0,1]. Una implementación posible de dicha función es la que se muestra:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">inf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Devuelve valor si inf&lt;valor&lt;sup.</span>
+<span class="sd">    Si valor&lt;inf devuelve inf.</span>
+<span class="sd">    Si valor&gt;sup devuel sup&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">inf</span> <span class="o">&lt;=</span> <span class="n">valor</span> <span class="o">&lt;=</span> <span class="n">sup</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">valor</span>
+    <span class="k">elif</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">sup</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sup</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inf</span>
+
+
+<span class="c1"># con límites por defecto</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Deme entero: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor limitado&#39;</span><span class="p">,</span> <span class="n">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">))</span>
+
+<span class="c1"># con un límite cambiado: inf -&gt; -1</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Deme entero: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor limitado&#39;</span><span class="p">,</span> <span class="n">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># con un límite cambiado: sup -&gt; 5</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Deme entero: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor limitado&#39;</span><span class="p">,</span> <span class="n">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># con los dos límites cambiados: inf -&gt; -1, sup -&gt; 5</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Deme entero: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor limitado&#39;</span><span class="p">,</span> <span class="n">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deme entero: 1
+Valor limitado 1.0
+Deme entero: 1
+Valor limitado 1.0
+Deme entero: 1
+Valor limitado 1.0
+Deme entero: 1
+Valor limitado 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe que, en el encabezado de la definición de la función, a los parámetros formales <code class="docutils literal notranslate"><span class="pre">inf</span></code>y <code class="docutils literal notranslate"><span class="pre">sup</span></code> se les asignan respectivamente los valores <code class="docutils literal notranslate"><span class="pre">0.0</span></code> y <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. Esto significa que, si esos parámetros no son utilizados (no se les pasa un valor o parámetro real) durante la llamada a la función, se utilizarán en el cuerpo de la misma esos valores por defecto.</p>
+<p>Esto es lo que ocurre en los tres primeros ejemplos de la llamada a la función <code class="docutils literal notranslate"><span class="pre">limita()</span></code>.</p>
+<p>En la tercera llamada a la función, se requiere cambiar el límite superior solamente. Para estos casos, se puede utilizar una llamada a función que utiliza, no la posición del argumento como criterio de emparejamiento de los parámetros reales a formales, sino utilizar directamente el nombre del parámetro formal y el signo <code class="docutils literal notranslate"><span class="pre">=</span></code> para pasar el parámetro real. De no hacerlo así, y utilizar el paso de parámetro posicional, habría que haber utilizado una llamada a función como la que se muestra a continuación, perdiendo la ventaja de los parámetros por defecto:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">limita</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a id='Funciones_excepciones'></a></p>
+</div>
+</div>
+<div class="section" id="funciones-y-tratamiento-de-excepciones">
+<h2>Funciones y tratamiento de excepciones<a class="headerlink" href="#funciones-y-tratamiento-de-excepciones" title="Permalink to this headline">¶</a></h2>
+<p>El <strong>tratamiento estructurado de excepciones</strong> y el enfoque <strong>EAFP</strong> (<strong>Easier to Ask Forgiveness than Permission</strong>), visto con anterioridad, alcanza su mayor utilidad cuando es aplicado conjuntamente con las funciones.</p>
+<p>Veamos un ejemplo que implementa una función clónica del método <code class="docutils literal notranslate"><span class="pre">index()</span></code> de las listas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función clónica del método index() de las listas</span>
+<span class="k">def</span> <span class="nf">indice</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valor</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not in list.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valor</span><span class="p">))</span>
+
+
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">valor</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> está en la posición </span><span class="si">{}</span><span class="s1"> de la lista </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">indice</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">valor</span><span class="p">),</span> <span class="n">lista</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+<span class="c1"># Usando el método index()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">valor</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> está en la posición </span><span class="si">{}</span><span class="s1"> de la lista </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">lista</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">valor</span><span class="p">),</span> <span class="n">lista</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 is not in list.
+0 is not in list
+</pre></div>
+</div>
+</div>
+</div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">indice()</span></code> utiliza el mecanismo de excepciones para comunicar la existencia de un error que lanza una excepción <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, utilizando la sentencia <code class="docutils literal notranslate"><span class="pre">raise</span></code>. Esta excepción será manejada por el primer bloque <code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">...</span> <span class="pre">except:</span></code> que englobe la llamada a la función.</p>
+<p>Nótese que una excepción termina inmediatamente el <strong>hilo de ejecución</strong> de la función. Veamos un ejemplo en el que dividimos valor por valor dos listas. La idea es que si un valor de la lista <em>denominador</em> es nulo, asignemos el valor <strong>Not a number</strong> <code class="docutils literal notranslate"><span class="pre">nan</span></code>.</p>
+<p>Para el resto de excepciones, será el ususario de la función quien deba manejarlas:</p>
+<ul class="simple">
+<li><p>Las listas tienen tamaños diferentes</p></li>
+<li><p>Datos incompatibles entre sí</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función que divide valor por valor dos listas</span>
+<span class="k">def</span> <span class="nf">divide_dos_listas_entre_si</span><span class="p">(</span><span class="n">lista_num</span><span class="p">,</span> <span class="n">lista_den</span><span class="p">):</span>
+    <span class="n">lista_coc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lista_coc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lista_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">lista_den</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+            <span class="n">lista_coc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">))</span>            
+    <span class="k">return</span> <span class="n">lista_coc</span>
+
+
+<span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<span class="n">lista_den_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">lista_den_2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<span class="n">lista_den_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">divide_dos_listas_entre_si</span><span class="p">(</span><span class="n">lista_num</span><span class="p">,</span> <span class="n">lista_den_1</span><span class="p">))</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">divide_dos_listas_entre_si</span><span class="p">(</span><span class="n">lista_num</span><span class="p">,</span> <span class="n">lista_den_2</span><span class="p">))</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">divide_dos_listas_entre_si</span><span class="p">(</span><span class="n">lista_num</span><span class="p">,</span> <span class="n">lista_den_3</span><span class="p">))</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list index out of range
+unsupported operand type(s) for /: &#39;int&#39; and &#39;str&#39;
+[1.0, nan, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\10_Funciones"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

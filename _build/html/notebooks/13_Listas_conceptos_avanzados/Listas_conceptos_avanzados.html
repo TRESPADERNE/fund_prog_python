@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listas: conceptos avanzados &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/13_Listas_conceptos_avanzados/Listas_conceptos_avanzados.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/13_Listas_conceptos_avanzados/Listas_conceptos_avanzados.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/13_Listas_conceptos_avanzados/Listas_conceptos_avanzados.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cortes-slices">
+   Cortes (slices)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-mutabilidad-de-las-listas">
+   La mutabilidad de las listas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creando-alias">
+     Creando
+     <em>
+      Alias
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#la-funcion-id-y-operador-is">
+       La función
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         id()
+        </span>
+       </code>
+       y operador
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         is
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#revisitando-las-asignaciones-de-valores-simples">
+     Revisitando las asignaciones de valores simples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mecanismo-del-recolector-de-basura">
+       Mecanismo del recolector de basura
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-que-muestra-la-inmutabilidad-de-los-datos-simples">
+       Ejemplo que muestra la inmutabilidad de los datos simples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copia-superficial-y-copia-profunda">
+   Copia superficial y copia profunda
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copia-superficial-shallow-copy">
+     Copia superficial (shallow copy)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copia-profunda-deep-copy">
+     Copia profunda (Deep copy)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="listas-conceptos-avanzados">
+<h1>Listas: conceptos avanzados<a class="headerlink" href="#listas-conceptos-avanzados" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#Cortes">Cortes (slices)</a><br>
+<a class="reference external" href="#La_mutabilidad_de_las_listas">La mutabilidad de las listas</a><br>
+<a class="reference external" href="#Copia_superficial">Copia superficial y copia profunda</a></p>
+<hr class="docutils" />
+<p><a id='Cortes'></a></p>
+</div>
+<div class="section" id="cortes-slices">
+<h2>Cortes (slices)<a class="headerlink" href="#cortes-slices" title="Permalink to this headline">¶</a></h2>
+<p>Existe un modo muy conveniente para hacer referencia a un conjunto de elementos, una sublista, dentro de la lista. Son los llamados <strong>cortes</strong> (<strong>slices</strong>).</p>
+<p>La especificación del <strong>corte</strong> involucra el uso del signo <code class="docutils literal notranslate"><span class="pre">:</span></code> dentro de los corchetes, flanqueado opcionalmente por dos enteros que especifican los extremos del <strong>corte</strong>. El extremo inferior estará incluido en el corte, pero el superior no.</p>
+<p>Véanse los ejemplos que siguen, ejecutando las celdas en orden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">datos</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20, 30]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si alguno de los extremos falta, eso implica que todos los elementos desde el principio de la lista (en caso de que falte el primero) y/o hasta el final (en caso de que falte el segundo) son incluidos en el corte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[1:]   --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>   <span class="c1">#imprime los elementos desde el segundo hasta el final de la lista</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[:3]   --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1">#imprime los elementos desde el primero hasta el índice 2 incluído</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[:]    --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[:])</span>    <span class="c1">#imprime todos los elementos de la lista</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[:-1]  --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1">#imprime todos los elementos de la lista, exluyendo el último</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[:-2]  --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>  <span class="c1">#imprime todos los elementos de la lista, exluyendo los dos últimos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;   datos[2:2]  --&gt; &#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>  <span class="c1">#imprime la lista vacía</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 20, 30, 40, 5]    datos[1:]   --&gt;  [20, 30, 40, 5]
+[1, 20, 30, 40, 5]    datos[:3]   --&gt;  [1, 20, 30]
+[1, 20, 30, 40, 5]    datos[:]    --&gt;  [1, 20, 30, 40, 5]
+[1, 20, 30, 40, 5]    datos[:-1]  --&gt;  [1, 20, 30, 40]
+[1, 20, 30, 40, 5]    datos[:-2]  --&gt;  [1, 20, 30]
+[1, 20, 30, 40, 5]    datos[2:2]  --&gt;  []
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué ha pasado en el último ejemplo? Si los índices superior e inferior del <em>corte</em> coinciden, la lista resultante es la lista vacía. Más adelante encontraremos utilidad a este tipo de construcción.</p>
+<p>En realidad, la sintaxis del corte permite un tercer parámetro entero opcional que indica el <em>paso</em> con el que se van a tomar los datos. Si falta, el <em>paso</em> por defecto es 1. Ver ejemplo a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+[2, 4, 6, 8, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe el uso del <em>paso</em> para elegir de la lista original los números de dos en dos.</p>
+<hr class="docutils" />
+<p><a id='La_mutabilidad_de_las_listas'></a></p>
+</div>
+<div class="section" id="la-mutabilidad-de-las-listas">
+<h2>La mutabilidad de las listas<a class="headerlink" href="#la-mutabilidad-de-las-listas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creando-alias">
+<h3>Creando <em>Alias</em><a class="headerlink" href="#creando-alias" title="Permalink to this headline">¶</a></h3>
+<p>Las listas son <strong>objetos mutables</strong> que pueden ser modificados <em>in situ</em>. Cuando se utiliza el signo <code class="docutils literal notranslate"><span class="pre">=</span></code> para realizar una <em>asignación</em> de listas, en realidad lo que ocurre es que existirán, a partir de ese momento, dos <em>nombres</em> (dos <em>etiquetas</em> por así decirlo) que hacen referencia al mismo objeto en memoria: los datos de la lista original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A través de b vemos el cambio hecho con a.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 2, 3]
+A través de b vemos el cambio hecho con a.
+[10, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Que ha pasado?</p>
+<p>Es importante comprender que, a diferencia de lo que ocurre en otros lenguajes de programación, cuando se utiliza el signo de asignación <code class="docutils literal notranslate"><span class="pre">=</span></code>, como en la línea 2 del código previo, no se crea un nuevo objeto en memoria, sino que se define un nuevo nombre, un <strong>alias</strong>, para referirnos al objeto previamente existente.</p>
+<p>Para los objetos <strong>inmutables</strong>, como las cadenas de caracteres, este hecho no tiene mayores implicaciones, porque el dato referenciado nunca va a cambiar. Sin embargo, en el caso de las listas (y otras colecciones que veremos), como son <strong>mutables</strong>, el hecho de que se modifique el objeto subyacente a través de uno de los identificadores, hace que la operación también sea <em>percibida</em> a través de los otros identificadores que constituyen <em>alias</em> del primero. Este resultado suele sorprender a aquellos programadores sin experiencia previa en Pyhton.</p>
+<p>El siguiente esquema ilustra lo que ha pasado.</p>
+<p><img alt="Listas2.jpg" src="../../_images/Listas2.jpg" /></p>
+<p>De manera que ahora se entiende por qué el cambio del primer elemento de <code class="docutils literal notranslate"><span class="pre">a</span></code> implica también un cambio en <code class="docutils literal notranslate"><span class="pre">b</span></code>, puesto que hacen referencia al mismo conjunto de datos</p>
+<div class="section" id="la-funcion-id-y-operador-is">
+<h4>La función <code class="docutils literal notranslate"><span class="pre">id()</span></code> y operador <code class="docutils literal notranslate"><span class="pre">is</span></code><a class="headerlink" href="#la-funcion-id-y-operador-is" title="Permalink to this headline">¶</a></h4>
+<p>En este contexto, la función nativa <code class="docutils literal notranslate"><span class="pre">id()</span></code> y el operador <code class="docutils literal notranslate"><span class="pre">is</span></code> son recursos que nos ayudan a verificar los conceptos que se están discutiendo.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id()</span></code> nos devuelve un entero que identifica de manera única los valores en memoria. Puede concebirse como una identificación de la localización de memoria en que se encuentra el dato.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is</span></code> es un operado binario que devuelve un valor lógico que será <code class="docutils literal notranslate"><span class="pre">True</span></code> si dos identificadores hacer referencia al mismo valor en memoria.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La dirección en memoria de &#39;a&#39; es </span><span class="si">{}</span><span class="s2"> y la de su alias &#39;b&#39; es </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Por tanto, podemos concluir que &#39;a&#39; es &#39;b&#39; y viceversa es una afirmación&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sin embargo, &#39;c&#39; (aunque tiene el mismo contenido) tiene dirección: &quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Por tanto que &#39;a&#39; (y &#39;b&#39;) no son el mismo objeto que &#39;c&#39; es&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pero afirmar que si tienen contenidos idénticos es&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La dirección en memoria de &#39;a&#39; es 2695594051208 y la de su alias &#39;b&#39; es 2695594051208
+Por tanto, podemos concluir que &#39;a&#39; es &#39;b&#39; y viceversa es una afirmación True
+Sin embargo, &#39;c&#39; (aunque tiene el mismo contenido) tiene dirección:  2695594054856
+Por tanto que &#39;a&#39; (y &#39;b&#39;) no son el mismo objeto que &#39;c&#39; es True
+Pero afirmar que si tienen contenidos idénticos es True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="revisitando-las-asignaciones-de-valores-simples">
+<h3>Revisitando las asignaciones de valores simples<a class="headerlink" href="#revisitando-las-asignaciones-de-valores-simples" title="Permalink to this headline">¶</a></h3>
+<p>Los valores simples como los de tipo <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, etc. que hemos visto son calificados por Python como <strong>valores inmutables</strong>. Esta afirmación puede resultar sorprendente. ¿Qué pasa entonces cuando se ejecuta un simple código de actualización como el siguiente?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">cont</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cont</span> <span class="o">=</span> <span class="n">cont</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>La interpretación correcta, si se tratara de un lenguaje como C/C++, sería la que se muestra en el siguiente diagrama.
+<img alt="Listas3.jpg" src="../../_images/Listas3.jpg" /></p>
+<p>El lenguaje asignaría una localización de memoria concreta a la <strong>variable</strong> <code class="docutils literal notranslate"><span class="pre">cont</span></code> (en el ejemplo se ha utilizado para el propósito de ilustración una <em>localización</em> de memoria concreta de dirección 0x00FF en hexadecimal). Esta asociación entre las celdas de memoria y el nombre de la variable perdurará mientras dicha variable exista. De manera que, cuando se ejecuta la segunda línea del programa, la localización de memoria que antes contenía un <code class="docutils literal notranslate"><span class="pre">1</span></code> ahora pasaría a contener un <code class="docutils literal notranslate"><span class="pre">2</span></code> (el valor que resulta de evaluar la expresión a la derecha del signo <code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
+<p>Por otra parte, si el mismo código lo interpretáramos como perteneciente a un programa de Python, aunque desde el punto de vista práctico el resultado sea idéntico, la <em>mecánica</em> interna sería completamente diferente.</p>
+<p><img alt="Listas4.jpg" src="../../_images/Listas4.jpg" /></p>
+<p>Evidentemente, también en el caso de Python, los valores serán almacenados en localizaciones de memoria concretas. Lo que ocurre es que, cuando se ejecuta la segunda sentencia, el resultado da lugar a un nuevo valor y ese valor será almacenado en una localización de memoria que en principio es completamente diferente.</p>
+<p>¿Qué pasa con el antiguo valor del <code class="docutils literal notranslate"><span class="pre">1</span></code>? Bueno, en principio no es necesario que permanezca en memoria. Eventualmente el <strong>motor de tiempo de ejecución</strong> (<strong>runtime engine</strong>) de Python se encargará de eliminarlo de la memoria utilizando un proceso que se conoce como <strong>recolección de basura</strong> (<strong>garbage collection</strong>).</p>
+<div class="section" id="mecanismo-del-recolector-de-basura">
+<h4>Mecanismo del recolector de basura<a class="headerlink" href="#mecanismo-del-recolector-de-basura" title="Permalink to this headline">¶</a></h4>
+<p>Python mantiene internamente un <em>contador</em> que registra cuantos <strong>identificadores</strong> están en cada momento haciendo referencia a una localización en memoria. Cuando ese contador llega a cero, quiere decir que la memoria que ocupaba deja de ser necesaria y puede ser devuelta al Sistema Operativo, para ser reutilizada posteriormente, por nuestro programa o por cualquier otro. Esta es otra de las tantas diferencias notables entre C/C++ y Python. En C/C++, siendo un lenguaje de más bajo nivel, el programador es completamente responsable del manejo de memoria.</p>
+</div>
+<div class="section" id="ejemplo-que-muestra-la-inmutabilidad-de-los-datos-simples">
+<h4>Ejemplo que muestra la inmutabilidad de los datos simples<a class="headerlink" href="#ejemplo-que-muestra-la-inmutabilidad-de-los-datos-simples" title="Permalink to this headline">¶</a></h4>
+<p>¿Por qué en el caso de los datos simples no nos habíamos percatado del comportamiento derivado de los <strong>alias</strong> como hemos visto más arriba con las listas?</p>
+<p>Precisamente debido a que los datos simples son <strong>inmutables</strong>. Vea la siguiente situación:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lado1</span> <span class="o">=</span> <span class="n">lado2</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">lado2</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lado1</span><span class="o">*</span><span class="n">lado2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>¿Qué saldrá por pantalla? Nuestra intuición (y probablemente la intención del programador) nos dice que saldrá el valor <code class="docutils literal notranslate"><span class="pre">6.0</span></code>.</p>
+<p>Pero ¿acaso saldrá el valor <code class="docutils literal notranslate"><span class="pre">9.0</span></code> y tendremos un comportamiento similar al experimentado antes con las listas?</p>
+<p>Afortunadamente la respuesta es <code class="docutils literal notranslate"><span class="pre">6.0</span></code> (pueden comprobarlo) y la razón es precisamente que, aunque es cierto que en Python los identificadores de valores actúan como etiquetas, en este caso, como los valores son inmutables, cualquier asignación crea un valor nuevo diferente en una localización de memoria también distinta.</p>
+<p>Véase la traza y el esquema de lo que ocurre.</p>
+<p><img alt="Listas5.jpg" src="../../_images/Listas5.jpg" /></p>
+<p>Inicialmente, tanto <code class="docutils literal notranslate"><span class="pre">lado1</span></code>como <code class="docutils literal notranslate"><span class="pre">lado2</span></code> hacían referencia al mismo valor <code class="docutils literal notranslate"><span class="pre">2.0</span></code>. En la siguiente sentencia, <code class="docutils literal notranslate"><span class="pre">lado2</span></code> deja de hacer referencia al valor previo y ahora apunta a un nuevo valor (<code class="docutils literal notranslate"><span class="pre">3.0</span></code>) en alguna otra localización de memoria. Pero el valor <code class="docutils literal notranslate"><span class="pre">2.0</span></code> sigue en memoria, donde antes estaba, porque todavía hay una referencia (<code class="docutils literal notranslate"><span class="pre">lado1</span></code>) que <em>apunta</em> a él y eso impide que dicha memoria sea reclamada por el <strong>recolector de basura</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lado1</span> <span class="o">=</span> <span class="n">lado2</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;id(lado1) =&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">lado2</span><span class="p">),</span> <span class="s2">&quot;  id(lado2) =&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">lado2</span><span class="p">),</span> <span class="s2">&quot;   lado1 is lado2 =&quot;</span><span class="p">,</span> <span class="n">lado1</span> <span class="ow">is</span> <span class="n">lado2</span><span class="p">)</span>
+
+<span class="n">lado2</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;id(lado1) =&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">lado1</span><span class="p">),</span> <span class="s2">&quot;  id(lado2) =&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">lado2</span><span class="p">),</span> <span class="s2">&quot;   lado1 is lado2 =&quot;</span><span class="p">,</span> <span class="n">lado1</span> <span class="ow">is</span> <span class="n">lado2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lado1</span><span class="o">*</span><span class="n">lado2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(lado1) = 2695594378544   id(lado2) = 2695594378544    lado1 is lado2 = True
+id(lado1) = 2695594378544   id(lado2) = 2695594378352    lado1 is lado2 = False
+6.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>La discusión previa, en lo que se refiere a los datos simples, puede ser ignorada en el día a día de la programación. En el caso de los datos mutables como las listas, estas consideraciones si que son relavantes.</p>
+<hr class="docutils" />
+<p><a id='Copia_superficial'></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="copia-superficial-y-copia-profunda">
+<h2>Copia superficial y copia profunda<a class="headerlink" href="#copia-superficial-y-copia-profunda" title="Permalink to this headline">¶</a></h2>
+<p>Hemos visto que, el uso del operador <code class="docutils literal notranslate"><span class="pre">=</span></code> para copiar una lista completa, en realidad lo que logra es crear una nueva referencia al mismo objeto de memoria, que es además mutable. Muchas veces es precisamente esto lo que se quiere lograr: dar un nuevo nombre, un <em>alias</em> al objeto subyacente: el contenido de la lista almacenado en memoria.</p>
+<p>Pero en otras ocasiones queremos obtener otra lista que tenga los mismos elementos, pero que haga referencia a objetos distintos en memoria. En este caso, lo apropiado es hacer realmente una copia de los datos.</p>
+<p>Esto se puede realizar, para el caso de las listas no anidadas, utilizando el concepto de <strong>corte</strong> (<strong>slice</strong>) de la forma que se recoge a continuación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="n">vector1</span><span class="p">[:]</span>
+</pre></div>
+</div>
+<p><img alt="Listas6.jpg" src="../../_images/Listas6.jpg" /></p>
+<p>La copia que se realiza con código similar al anterior, utilizando <strong>cortes</strong>, realiza una copia <em>bit a bit</em> desde la fuente al destino. Este tipo de copia funciona perfectamente para listas simples como las del ejemplo, como se puede comprobar en la celda siguiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="n">vector1</span><span class="p">[:]</span>
+<span class="n">vector2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vector2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1, 2.0, 4.5]
+[1.1, 2.0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Otra forma de realizar la copia superficial anterior es utilizando la función <code class="docutils literal notranslate"><span class="pre">list()</span></code> de la siguiente forma:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>o usando el método <code class="docutils literal notranslate"><span class="pre">copy()</span></code> de las listas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;a&#39; es igual a &#39;b&#39;&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;porque de hecho b es un &#39;alias de a: la memoria es la misma:&#39;&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;b&#39; sigue siendo igual a &#39;c&#39;&quot;</span><span class="p">,</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pero ya no constituyen el mismo objeto en memoria:&quot;</span><span class="p">,</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;a&#39; es igual a &#39;b&#39; True
+porque de hecho b es un &#39;alias de a: la memoria es la misma:&#39; True
+&#39;b&#39; sigue siendo igual a &#39;c&#39; True
+pero ya no constituyen el mismo objeto en memoria: False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="copia-superficial-shallow-copy">
+<h3>Copia superficial (shallow copy)<a class="headerlink" href="#copia-superficial-shallow-copy" title="Permalink to this headline">¶</a></h3>
+<p>Para estructuras más complicadas como, por ejemplo, para la lista del ejemplo siguiente, la copia con <em>cortes</em> tampoco brinda el resultado satisfactorio que se busca de obtener dos listas completamente separadas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+</pre></div>
+</div>
+<p><img alt="Listas7.jpg" src="../../_images/Listas7.jpg" /></p>
+<p>Se puede observar en el diagrama que la sublista <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> que está incluida en <code class="docutils literal notranslate"><span class="pre">a</span></code>, es accedida a su vez mediante una referencia que apunta a las localizaciones de memoria que realmente la almacenan. Cuando ahora se realiza la copia <em>bit a bit</em> de <code class="docutils literal notranslate"><span class="pre">a</span></code> hacia <code class="docutils literal notranslate"><span class="pre">b</span></code> utilizando <em>cortes</em>, se copian, no los datos de la sublista, sino los bits (apuntadores) que hacen referencia a la misma. La copia que se logra de esta forma es una <strong>copia superficial</strong> (<strong>shallow copy</strong>).</p>
+<p>Si ahora se cambia el valor del primer elemento de la lista <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>solamente se modifica la copia que pertenece en exclusiva a dicha variable.</p>
+<p>Pero si se intenta modificar un elemento de la sublista que aparece como tercer elemento de <code class="docutils literal notranslate"><span class="pre">a</span></code>, se modificará la lista compartida común entre <code class="docutils literal notranslate"><span class="pre">a</span></code> y <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:  [10, 2, [20, 4]]
+b:  [1, 2, [20, 4]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="copia-profunda-deep-copy">
+<h3>Copia profunda (Deep copy)<a class="headerlink" href="#copia-profunda-deep-copy" title="Permalink to this headline">¶</a></h3>
+<p>Se puede realizar una <strong>copia profunda</strong> (<strong>deep copy</strong>) que funcione para listas anidadas. Pero, para ello, hay que recurrir a bibliotecas de funciones: en particular en el módulo <code class="docutils literal notranslate"><span class="pre">copy</span></code> tenemos la función <code class="docutils literal notranslate"><span class="pre">deepcopy()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>El diagrama resultante después de la copia profunda será el que se muestra a continuación.</p>
+<p><img alt="Listas8.jpg" src="../../_images/Listas8.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:  [10, 2, [20, 4]]
+b:  [1, 2, [3, 4]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\13_Listas_conceptos_avanzados"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

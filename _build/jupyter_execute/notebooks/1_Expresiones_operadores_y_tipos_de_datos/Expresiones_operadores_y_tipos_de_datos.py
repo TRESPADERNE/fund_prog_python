@@ -289,9 +289,7 @@
 # 
 # Una operación lógica aún más simple es la **negación**, representada en Python por el operador `not`. Este último es un operador unario que simplemente *invierte* el valor lógico del operando al que se aplica. Los operadores lógicos se especifican completamente por sus **tablas de verdad**.
 # 
-# <div>
-# <img src="attachment:TablasLogicas.JPG" width="750"/>
-# </div>
+# ![TablasLogicas](img/TablasLogicas.jpg)
 
 # In[ ]:
 

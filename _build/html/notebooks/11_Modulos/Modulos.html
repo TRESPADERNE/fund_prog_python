@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulos &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/11_Modulos/Modulos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/11_Modulos/Modulos.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/11_Modulos/Modulos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Módulos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-es-un-modulo">
+     ¿Qué es un módulo?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-diferencia-hay-entre-los-modulos-y-un-guion">
+     ¿Qué diferencia hay entre los módulos y un guion?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-funcion-juegan-entonces-los-modulos">
+     ¿Qué función juegan entonces los módulos?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#espacio-de-nombres-namespace">
+   Espacio de nombres (namespace)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importacion-de-un-modulo">
+   Importación de un módulo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-1">
+     Forma 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-2">
+     Forma 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcionamiento-de-la-importacion-de-un-modulo">
+     Funcionamiento de la importación de un módulo
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#localizacion-del-modulo">
+       Localización del módulo
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-creacion-de-un-modulo">
+   Ejemplo de creación de un módulo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#documentacion">
+     Documentación
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programa-versus-modulo">
+   Programa versus módulo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-distinguir-el-uso-como-modulo-del-uso-como-programa-principal">
+     ¿Cómo distinguir el uso como módulo del uso como programa principal?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion-a-las-pruebas-unitarias-unit-tests">
+   Introducción a las pruebas unitarias (Unit tests)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biblioteca-estandar">
+   Biblioteca estándar
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="modulos">
+<h1>Módulos<a class="headerlink" href="#modulos" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#Introducci%C3%B3n">Introducción</a><br>
+<a class="reference external" href="#Modulos">Módulos</a><br>
+<a class="reference external" href="#Espacio_de_nombres">Espacio de nombres (namespace)</a><br>
+<a class="reference external" href="#Importaci%C3%B3n">Importación de un módulo</a><br>
+<a class="reference external" href="#Ejemplo">Ejemplo de creación de un módulo</a><br>
+<a class="reference external" href="#Diferencias">Programa versus módulo</a><br>
+<a class="reference external" href="#Pruebas_unitarias">Introducción a las pruebas unitarias (Unit Tests)</a><br>
+<a class="reference external" href="#Biblioteca">Biblioteca estándar</a></p>
+<hr class="docutils" />
+<p><a id='Introducción'></a></p>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Desde el inicio del curso, desde el primer momento, hemos estado utilizando una serie de funciones de Python, tales como las de la <strong>biblioteca</strong> (<strong>library</strong>) matemática <code class="docutils literal notranslate"><span class="pre">math</span></code>. Estas funciones matemáticas y otras muchas están distribuidas en <strong>módulos</strong> que se consideran <strong>estándar</strong>. Así, hemos utilizado estas funciones definidas en <strong>módulos</strong> siguiendo el procedimiento que consiste en <strong>importar</strong> el módulo. De esta forma, estos <strong>objetos</strong> definidos en el módulo pasan a partir de ese momento a estar disponibles para su uso en nuestro programa o guion. Estos <strong>objetos</strong> pueden ser <strong>valores constantes</strong> como <code class="docutils literal notranslate"><span class="pre">math.pi</span></code> o <strong>funciones</strong> como <code class="docutils literal notranslate"><span class="pre">math.cos()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cos(Pi) = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos(Pi) = -1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>En este cuaderno vamos a comprender mejor:</p>
+<ul class="simple">
+<li><p>el mecanismo que se utiliza para <em>incorporar</em> estas funciones y valores a nuestro programa.</p></li>
+<li><p>la naturaleza de estos módulos.</p></li>
+<li><p>el concepto de <strong>espacio de nombres</strong> (<strong>namespaces</strong>).</p></li>
+<li><p>cómo crear un módulo sencillo.</p></li>
+<li><p>cómo documentar nuestros módulos.</p></li>
+<li><p>cómo hacer módulos que hagan explícita la forma de <strong>testearlos</strong> (<strong>pruebas unitarias</strong>).</p></li>
+<li><p>diferencias (y similitudes) entre el programa principal y un módulo de biblioteca.</p></li>
+</ul>
+<p>Adicionalmente, se hará un recorrido muy rápido por los principales módulos de la <strong>biblioteca estándar</strong>.</p>
+<hr class="docutils" />
+<p><a id='Modulos'></a></p>
+</div>
+<div class="section" id="id1">
+<h2>Módulos<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="que-es-un-modulo">
+<h3>¿Qué es un módulo?<a class="headerlink" href="#que-es-un-modulo" title="Permalink to this headline">¶</a></h3>
+<p>Un <strong>módulo</strong> es un <strong>fichero</strong>, con extensión <code class="docutils literal notranslate"><span class="pre">*.py</span></code> y, por tanto, accesible al intérprete de Python y ejecutable por el <strong>núcleo</strong> de Python. Puede contener:</p>
+<ul class="simple">
+<li><p>Variables globales, funciones,  clases (patrones de objetos) y sentencias ejecutables.</p></li>
+</ul>
+<blockquote>
+<div><p>El concepto de clase lo veremos más adelante en otro tema.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Un módulo, a su vez, puede <em>importar</em> otros módulos.</p></li>
+</ul>
+<p><img alt="modulo.jpg" src="../../_images/modulo.jpg" /></p>
+</div>
+<div class="section" id="que-diferencia-hay-entre-los-modulos-y-un-guion">
+<h3>¿Qué diferencia hay entre los módulos y un guion?<a class="headerlink" href="#que-diferencia-hay-entre-los-modulos-y-un-guion" title="Permalink to this headline">¶</a></h3>
+<p>En lo que concierne exclusivamente a la <strong>sintaxis</strong> del lenguaje, <strong>no hay diferencias esenciales</strong>.</p>
+<p>La diferencia reside en el <strong>propósito</strong> asignado a cada una de estas piezas:</p>
+<ul class="simple">
+<li><p>El programa principal o guion (<strong>script</strong>) es el que está <strong>diseñado</strong> para contener la lógica de la <strong>aplicación</strong> y, típicamente, es <em>lanzado</em> el primero, ya sea desde la consola o desde una herramienta de desarrollo como <strong>Spyder</strong>.</p></li>
+</ul>
+<blockquote>
+<div><p>Las sentencias del programa principal se ejecutan, de la primera a la última, siguiendo el <strong>hilo</strong> lógico de ejecución, bajo el control de las sentencias de control de flujo programadas y realizando las llamadas a las funciones indicadas.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Como parte del proceso de ejecución del programa principal, se realiza la <strong>importación  de los módulos</strong> de los que dicho programa depende, en el orden de aparición de las correspondientes sentencias <code class="docutils literal notranslate"><span class="pre">import</span></code>.</p></li>
+</ul>
+<blockquote>
+<div><p>El proceso de importación implica la <strong>ejecución</strong> de los módulos. Debe comprender que <strong>la ejecución de la definición de una función no ejecuta la función</strong>, sino que <strong>crea el objeto función</strong> con accesibilidad <strong>global</strong>. Esta función con acceso global podrá posteriormente ser ejecutada cuando se <strong>invoque</strong> desde el código del programa principal o desde el código de una función (quizá de otro módulo).</p>
+</div></blockquote>
+</div>
+<div class="section" id="que-funcion-juegan-entonces-los-modulos">
+<h3>¿Qué función juegan entonces los módulos?<a class="headerlink" href="#que-funcion-juegan-entonces-los-modulos" title="Permalink to this headline">¶</a></h3>
+<p>Los módulos nos permiten:</p>
+<ul class="simple">
+<li><p>Un nivel de organización superior al que por sí solas nos dan las funciones, permitiendo <strong>estructurar</strong> de manera más simple nuestros programas.</p></li>
+<li><p>Implementan un <strong>espacio de nombres</strong> (<strong>namespace</strong>) propio, que limita el riesgo de colisiones entre <strong>identificadores</strong> de valores y funciones.</p></li>
+<li><p>Agrupan en un fichero conjuntos de objetos relacionados (funciones, clases, y valores) típicamente codificados alrededor de un propósito que puede estar definido con mayor o menor precisión.</p></li>
+</ul>
+<blockquote>
+<div><p>Los siguientes serían ejemplos de módulos:
+- el módulo <code class="docutils literal notranslate"><span class="pre">math</span></code> de la biblioteca estándar brinda un conjunto de funciones y valores relacionados con las matemáticas en el campo de los números reales.
+- el módulo <code class="docutils literal notranslate"><span class="pre">random</span></code> tiene el propósito (más restringido) de permitir trabajar con números <em>pseudoaleatorios</em>.
+- un módulo, hecho a medida por nosotros, llamado por ejemplo <code class="docutils literal notranslate"><span class="pre">auxiliares</span></code>, que contenga funciones de apoyo a nuestro programa.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Los módulos pueden, a su vez, utilizar otros módulos, con tantos niveles de <strong>anidamiento</strong> como se requiera.</p></li>
+</ul>
+<p>Idealmente, se deben hacer esfuerzos para que los <strong>módulos</strong> los diseñemos de forma que sean:</p>
+<ul class="simple">
+<li><p><strong>generales</strong>, con funciones <strong>cohesivas</strong>, <strong>bien testadas</strong> y <strong>desacopladas</strong>.</p></li>
+<li><p>con códigos ocultos tras <strong>interfaces</strong> bien diseñadas y <strong>documentadas</strong>.</p></li>
+<li><p>de forma que se promueva su <strong>reutilización</strong>, contribuyendo al aumento de la <strong>productividad</strong> del programador.</p></li>
+</ul>
+<hr class="docutils" />
+<p><a id='Espacio_de_nombres'></a></p>
+</div>
+</div>
+<div class="section" id="espacio-de-nombres-namespace">
+<h2>Espacio de nombres (namespace)<a class="headerlink" href="#espacio-de-nombres-namespace" title="Permalink to this headline">¶</a></h2>
+<p>Cada módulo define un <strong>espacio de nombres</strong> (<strong>namespace</strong>) propio. Esto significa que los <strong>nombres</strong> o <strong>identificadores</strong> de los objetos definidos en el módulo deben ser diferentes solamente dentro de los límites del fichero donde se define el módulo.</p>
+<p>Un espacio de nombres establece una <strong>correspondencia</strong> entre los nombres y los objetos. Ejemplos que ya hemos visto de espacios de nombres son:</p>
+<ul class="simple">
+<li><p>las funciones nativas, como <code class="docutils literal notranslate"><span class="pre">print()</span></code> o <code class="docutils literal notranslate"><span class="pre">abs()</span></code>,  definidos en un módulo llamado <code class="docutils literal notranslate"><span class="pre">builtins</span></code></p></li>
+<li><p>las funciones matemáticas definidas en un módulo, como el módulo <code class="docutils literal notranslate"><span class="pre">math</span></code></p></li>
+<li><p>cualquier variable local que hemos usado en nuestras funciones constituye un espacio de nombres local a esa función</p></li>
+</ul>
+<p>Lo que permite el concepto de espacio de nombres es que no exista absolutamente ninguna relación entre nombres pertenecientes a diferentes espacios de nombres. Cuando hacemos referencia a un nombre de un módulo, estamos haciendo referencia a un <strong>atributo</strong> del módulo. La forma de acceder a un atributo es a través de la sintaxis <code class="docutils literal notranslate"><span class="pre">nombre_modulo.nombre_atributo</span></code>.</p>
+<p>Los módulos evitan la <strong>contaminación del espacio de nombres</strong> de un programa y esto es un elemento imprescindible en la creación de aplicaciones de tamaño moderado a grande.</p>
+<hr class="docutils" />
+<p><a id='Importación'></a></p>
+</div>
+<div class="section" id="importacion-de-un-modulo">
+<h2>Importación de un módulo<a class="headerlink" href="#importacion-de-un-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Las formas recomendadas (y obligatorias en este curso) de importar un módulo son las siguientes:</p>
+<div class="section" id="forma-1">
+<h3>Forma 1<a class="headerlink" href="#forma-1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nombre_modulo1</span> 
+</pre></div>
+</div>
+<p>Los diferentes objetos definidos con <strong>alcance global</strong> en el módulo <code class="docutils literal notranslate"><span class="pre">nombre_modulo1</span></code> son <em>incorporados</em> a los espacios de nombres de los respectivos módulos y/o programa principal, accesibles mediante el operador <code class="docutils literal notranslate"><span class="pre">.</span></code>. Como ya hemos comentado, los identificadores de un espacio de nombres, un módulo en este caso, son atributos del módulo. Por ello, la notación <code class="docutils literal notranslate"><span class="pre">.</span></code> es idéntica a la usada para el caso de acceso desde un objeto a sus atributos: datos y métodos.</p>
+<blockquote>
+<div><p>Es lo que venimos haciendo cuando usamos, por ejemplo, <code class="docutils literal notranslate"><span class="pre">math.cos(x)</span></code> o <code class="docutils literal notranslate"><span class="pre">math.pi</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="forma-2">
+<h3>Forma 2<a class="headerlink" href="#forma-2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nombre_modulo2</span> <span class="k">as</span> <span class="nn">nom</span>
+</pre></div>
+</div>
+<p>En esta segunda variante se especifica un <strong>alias</strong>, <code class="docutils literal notranslate"><span class="pre">nom</span></code> en el ejemplo, lo que permitiría utilizar <code class="docutils literal notranslate"><span class="pre">nom.</span></code> como alias del nombre del módulo.</p>
+<blockquote>
+<div><p>Es lo que hemos hecho con el módulo <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, el alias <code class="docutils literal notranslate"><span class="pre">np</span></code> y la función <code class="docutils literal notranslate"><span class="pre">linspace</span></code>, por ejemplo, <code class="docutils literal notranslate"><span class="pre">np.linspace(0,</span> <span class="pre">2,</span> <span class="pre">10)</span></code>.</p>
+</div></blockquote>
+<p>En la siguiente figura se muestra un ejemplo <em>artificial</em> para ver como el correcto uso de los espacios de nombres permite no contaminarlos.</p>
+<p>Existen dos módulos, <code class="docutils literal notranslate"><span class="pre">Modulo_A</span></code> y <code class="docutils literal notranslate"><span class="pre">Modulo_B</span></code>, cuyos programadores han elegido para una de sus funciones el mismo identificador, <code class="docutils literal notranslate"><span class="pre">ident</span></code>. La función <code class="docutils literal notranslate"><span class="pre">ident()</span></code> podría hacer exactamente lo mismo, tareas similares pero con alguna diferencia o, directamente, no tener nada que ver la una con la otra respecto a su cometido.</p>
+<blockquote>
+<div><p>Hemos visto en un tema anterior como el identificador <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> es utilizado para un cometido similar, pero con resultados diferentes, por los módulos <code class="docutils literal notranslate"><span class="pre">math</span></code>y <code class="docutils literal notranslate"><span class="pre">cmath</span></code>.</p>
+</div></blockquote>
+<p>Véase como <code class="docutils literal notranslate"><span class="pre">Modulo_A</span></code>, en la propia definición de su función <code class="docutils literal notranslate"><span class="pre">ident()</span></code> usa sin problemas la definición de <code class="docutils literal notranslate"><span class="pre">ident()</span></code> de <code class="docutils literal notranslate"><span class="pre">Modulo_B</span></code>. El programa principal muestra tres usos de <code class="docutils literal notranslate"><span class="pre">ident()</span></code> donde queda inequívocamente claro cual de las dos definiciones se está utilizando.</p>
+<p><img alt="importar.jpg" src="notebooks\11_Modulos\attachment:importar.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Modulo_A</span>
+<span class="kn">import</span> <span class="nn">Modulo_B</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Módulo A llama a módulo B&#39;</span><span class="p">)</span>
+<span class="n">Modulo_A</span><span class="o">.</span><span class="n">ident</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Se llama a módulo B a través de A&#39;</span><span class="p">)</span>
+<span class="n">Modulo_A</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">ident</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Se llama a módulo B directamente&#39;</span><span class="p">)</span>
+<span class="n">Modulo_B</span><span class="o">.</span><span class="n">ident</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Módulo A llama a módulo B
+Estamos en módulo A y llamo a:
+Módulo B
+Se llama a módulo B a través de A
+Módulo B
+Se llama a módulo B directamente
+Módulo B
+</pre></div>
+</div>
+</div>
+</div>
+<p>Existe otra forma de importar módulos, tal vez más cómoda para guiones de poca complejidad, pero que no respeta el concepto de <strong>espacio de nombres</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nombre_modulo1</span> <span class="kn">import</span> <span class="o">*</span>  
+<span class="kn">from</span> <span class="nn">nombre_modulo2</span> <span class="kn">import</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span>
+</pre></div>
+</div>
+<p>Esta forma de importar, hace que los valores y funciones importadas se <strong>incorporen</strong> al espacio de nombres global del <em>guion</em> que realiza la importación. Ahora no se antepone el <strong>calificador</strong> con el nombre del módulo y el operador <code class="docutils literal notranslate"><span class="pre">.</span></code> como el caso previo, pero a costa de <strong>contaminar</strong> el <strong>espacio de nombres</strong> común.</p>
+<p>La primera opción <strong>importa</strong> todos los objetos del módulo <code class="docutils literal notranslate"><span class="pre">nombre_modulo1</span></code> mientras que la segunda opción, que resultaría dentro de lo malo preferible, <strong>importa</strong> solamente los nombres <code class="docutils literal notranslate"><span class="pre">obj1</span></code> y <code class="docutils literal notranslate"><span class="pre">obj2</span></code> desde el módulo <code class="docutils literal notranslate"><span class="pre">nombre_modulo2</span></code> resultando una <strong>contaminación</strong> más limitada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Modulo_A</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">Modulo_B</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ident</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Módulo B
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="funcionamiento-de-la-importacion-de-un-modulo">
+<h3>Funcionamiento de la importación de un módulo<a class="headerlink" href="#funcionamiento-de-la-importacion-de-un-modulo" title="Permalink to this headline">¶</a></h3>
+<p>El proceso de importación de un módulo conlleva por parte de Python los siguientes pasos:</p>
+<ol class="simple">
+<li><p>Localizar el módulo en el sistema de ficheros del Sistema Operativo.</p></li>
+<li><p>Si el código está escrito en Python, convertirlo a <strong>bytecode</strong>. Recordad que este concepto lo estudiamos brevemente en el tema de Lenguajes de Programación. Se trata de una traducción previa del módulo generando una codificación intermedia: el <strong>código intermedio</strong> o <strong>bytecode</strong> (extensión .pyc en Python).</p></li>
+<li><p>Pueden existir módulos <strong>compilados</strong> desarrollados en otros lenguajes (C, por ejemplo).</p></li>
+<li><p>Ejecutar el módulo. La ejecución de la definición de funciones consiste en crear los <strong>objetos</strong> función respectivos.</p></li>
+</ol>
+<div class="section" id="localizacion-del-modulo">
+<h4>Localización del módulo<a class="headerlink" href="#localizacion-del-modulo" title="Permalink to this headline">¶</a></h4>
+<p>Durante la importación, el módulo nombrado en la sentencia <code class="docutils literal notranslate"><span class="pre">import</span></code> es buscado, por orden, en los siguientes lugares:</p>
+<ol class="simple">
+<li><p>El propio directorio dónde se encuentra el programa que hace la importación. Esto se utiliza por módulos creados por el propio programador como parte de un programa relativamente pequeño.</p></li>
+<li><p>Directorios o carpetas recogidos en la variable de configuración de Python llamada <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>. Se puede acceder desde IDEs como Spyder.</p></li>
+<li><p>Desde los directorios designados por Python durante la instalación, para albergar los módulos de la <strong>biblioteca estándar</strong>.</p></li>
+<li><p>Lo especificado en ficheros con extensión <code class="docutils literal notranslate"><span class="pre">.pth</span></code> si estuvieran presentes (no lo veremos en el curso).</p></li>
+</ol>
+<hr class="docutils" />
+<p><a id='Ejemplo'></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-de-creacion-de-un-modulo">
+<h2>Ejemplo de creación de un módulo<a class="headerlink" href="#ejemplo-de-creacion-de-un-modulo" title="Permalink to this headline">¶</a></h2>
+<p>A modo de ejemplo, vamos a crear un módulo <strong>polinomios</strong>, que <em>exporte</em> un conjunto de funciones que permitan realizar algunas operaciones básicas con polinomios. Los polinomios serán descritos por <strong>listas</strong> de números reales que representan sus coeficientes en orden decreciente de las potencias de x.</p>
+<p>El siguiente polinomio de orden <code class="docutils literal notranslate"><span class="pre">3</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[
+p\left(x\right) =a_3x^3 + a_2.x^{2}+ a_1.x + a_0
+\]</div>
+<p>sería representado por una lista de Python de <code class="docutils literal notranslate"><span class="pre">4</span></code> elementos, conteniendo los coeficientes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a_3</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>En general, para polinomios de orden <span class="math notranslate nohighlight">\(n\)</span>, será necesario utilizar listas de <code class="docutils literal notranslate"><span class="pre">n+1</span></code> elementos.</p>
+<div class="math notranslate nohighlight">
+\[
+p\left(x\right) =a_nx^n + a_{n-1}.x^{n-1}+ ...+ a_2x^2 + a_1.x + a_0
+\]</div>
+<p>El diseño del módulo requiere analizar el campo de aplicación de que se trate y el elegir un conjunto de objetos, funciones en este caso, que sean generales, cohesivas y con interfaces bien definidas.</p>
+<p>Para nuestro ejemplo de modulo, sin ánimo de ser exhaustivos, definiremos las siguientes funciones iniciales:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">polyval(pol,</span> <span class="pre">x)</span></code>: evalúa el polinomio en <code class="docutils literal notranslate"><span class="pre">x</span></code> y devuelve un número real.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polyconv(pol1,</span> <span class="pre">pol2)</span></code>: devuelve un polinomio que es la multiplicación (<em>convolución</em>) de los polinomios <code class="docutils literal notranslate"><span class="pre">pol1</span></code> y <code class="docutils literal notranslate"><span class="pre">pol2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polyder(pol)</span></code>: devuelve el polinomio derivada del polinomio que se pasa como argumento.</p></li>
+</ul>
+<p>En el fichero <code class="docutils literal notranslate"><span class="pre">polinomios.py</span></code>, que colocaremos en el mismo directorio del programa que va a importarlo, se definirán las funciones anteriormente mencionadas.
+Nótese que, para este ejemplo, en aras a simplificar, el fichero que implementa el módulo se encuentra en el misma carpeta en la que se encuentra nuestro <strong>cuaderno</strong>.
+La siguiente celda muestra la definición de una de las funciones incluidas en <code class="docutils literal notranslate"><span class="pre">polinomios.py</span></code>.
+El fichero completo puede ser accedido a través de este <span class="xref myst">enlace</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polyder</span><span class="p">(</span><span class="n">pol</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Devuelve el polinomio derivada.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pol: list</span>
+<span class="sd">        Polinomio a derivar.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        Lista con los coeficientes del polinomio derivada.</span>
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; print(polyder([2, 5, 3, 1]))</span>
+<span class="sd">    [6, 10, 3]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">der</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
+    <span class="n">der</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">orden</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">der</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">der</span><span class="p">):</span>
+        <span class="n">der</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">orden</span> <span class="o">-</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">der</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentacion">
+<h3>Documentación<a class="headerlink" href="#documentacion" title="Permalink to this headline">¶</a></h3>
+<p>Es buena práctica incluir inmediatamente después del <strong>encabezado</strong>, una cadena de caracteres (típicamente utilizando triples comillas para que pueda ser definida en múltiples líneas) que describe sucintamente la función: lo que hace, sus parámetros de entrada y de salida, si genera excepciones, un ejemplo de uso, etc.</p>
+<p>La función nativa <code class="docutils literal notranslate"><span class="pre">help()</span></code>, cuando es llamada con el nombre de una función, imprime en la consola o ventana esta información.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecute la celda anterior antes que esta para que esté definido el objeto polyder()</span>
+<span class="n">help</span><span class="p">(</span><span class="n">polyder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function polyder in module __main__:
+
+polyder(pol)
+    Devuelve el polinomio derivada.
+    Parameters
+    ----------
+    pol: list
+        Polinomio a derivar.
+    
+    Returns
+    -------
+    list
+        Lista con los coeficientes del polinomio derivada.
+    Example
+    -------
+    &gt;&gt;&gt; print(polyder([2, 5, 3, 1]))
+    [6, 10, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>La <strong>cadena de documentación</strong> (<strong>docstring</strong>) utiliza un lenguaje de marcado ligero. Están concebidas para la generación de documentación de forma automática. El formato utilizado aquí se llama <strong>reStructuredText</strong> (<strong>reST</strong>), con unos estilos añadidos <strong>Numpydoc</strong> estándares habituales en el mundillo de la computación científica.</p>
+<blockquote>
+<div><p>En <strong>Spyder</strong>, podemos visualizar la documentación asociada a un objeto en la ventana de ayuda. Basta clicar en el editor sobre la variable deseada y pulsar <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">I</span></code> para que aparezca la documentación de la función.</p>
+</div></blockquote>
+<p>Nótese en el código anterior el uso del <em>docstring</em>, que describe el objetivo de la función, así como el parámetro de entrada y lo que se devuelve mediante <code class="docutils literal notranslate"><span class="pre">return</span></code>. Además, es buena práctica añadir uno o varios ejemplos de uso.
+En este caso se trata de recibir la lista que da cuenta de los coeficientes del polinomio que se desea derivar simbólicamente, para devolver otra lista con los coeficientes del polinomio que representa la derivada.</p>
+<p>El uso de la documentación provista por el <em>docstring</em> es siempre recomendable, pero lo es aún más a la hora de crear módulos con la intención de ser utilizados en diferentes proyectos.</p>
+<p>Veamos el uso de nuestro módulo y función con dos ejemplos alternativos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">polinomios</span> <span class="k">as</span> <span class="nn">pol</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">pol</span><span class="o">.</span><span class="n">polyder</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pol</span><span class="o">.</span><span class="n">polyder</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function polyder in module polinomios:
+
+polyder(pol)
+    Devuelve el polinomio derivada.
+    Parameters
+    ----------
+    pol: list
+        Polinomio a derivar.
+    
+    Returns
+    -------
+    list
+        Lista con los coeficientes del polinomio derivada.
+    Example
+    -------
+    &gt;&gt;&gt; print(polyder([2, 5, 3, 1]))
+    [6, 10, 3]
+
+[4, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">polinomios</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">polinomios</span><span class="o">.</span><span class="n">polyder</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Diferencias'></a></p>
+</div>
+</div>
+<div class="section" id="programa-versus-modulo">
+<h2>Programa versus módulo<a class="headerlink" href="#programa-versus-modulo" title="Permalink to this headline">¶</a></h2>
+<p>¿Existen diferencias fundamentales entre un módulo y un programa principal?</p>
+<p>Desde el punto de vista de la sintaxis de Python <strong>no hay diferencia alguna</strong>. La diferencia la impone el <em>uso</em> que se le otorga a uno y otro. No hay ningún impedimento para ejecutar un módulo como si de un programa principal se tratase.</p>
+<p>La cuestión relevante es que un módulo puede contener sentencias que el programador sólo desea que sean ejecutadas cuando lo hacemos directamente desde el intérprete de Python. Por el contrario, cuando el módulo es importado, esas mismas sentencias no deseamos que se ejecuten.</p>
+<div class="section" id="como-distinguir-el-uso-como-modulo-del-uso-como-programa-principal">
+<h3>¿Cómo distinguir el uso como módulo del uso como programa principal?<a class="headerlink" href="#como-distinguir-el-uso-como-modulo-del-uso-como-programa-principal" title="Permalink to this headline">¶</a></h3>
+<p>En Python, cada fichero <code class="docutils literal notranslate"><span class="pre">*.py</span></code> tiene asociado un atributo global predefinido por el sistema, de tipo <code class="docutils literal notranslate"><span class="pre">str</span></code>, llamado <code class="docutils literal notranslate"><span class="pre">__name__</span></code>.  Esta variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> tendrá un valor u otro, en dependencia de si se trata del programa principal que está siendo ejecutado o de un módulo que ha sido importado.</p>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> contiene:</p>
+<ul class="simple">
+<li><p>La cadena <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code> si el fichero en el que es utilizada ha sido invocado directamente por el sistema, es decir, es el programa principal.</p></li>
+<li><p>La cadena con el nombre del módulo, si el fichero en el que es utilizada ha sido importado con alguna de las variantes descritas.</p></li>
+</ul>
+<p>Es importante que resete el núcleo aquí para que se cargue <code class="docutils literal notranslate"><span class="pre">Modulo_C</span></code> por primera vez.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resetea el núcleo antes de jecutar la celda: Kernel -&gt; Restart &amp; Clear Output</span>
+<span class="kn">import</span> <span class="nn">Modulo_C</span> <span class="k">as</span> <span class="nn">mod</span>
+
+<span class="n">mod</span><span class="o">.</span><span class="n">ident</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor de __name__ en programa principal:&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valor de __name__ en Modulo_C: Modulo_C
+Función ident en Modulo_C.
+Valor de __name__ en programa principal: __main__
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fichero: Modulo_C.py</span>
+<span class="k">def</span> <span class="nf">ident</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Función ident en Modulo_C.&#39;</span><span class="p">)</span>
+
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valor de __name__ en Modulo_C:&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valor de __name__ en Modulo_C: __main__
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe en las dos celdas anteriores, un ejemplo elemental que muestra lo que ocurre.</p>
+<p>La primera celda representa el programa principal y se encontraría almacenada en un fichero <code class="docutils literal notranslate"><span class="pre">programa_principal.py</span></code>.</p>
+<p>La segunda celda muestra el contenido del módulo llamado <code class="docutils literal notranslate"><span class="pre">Modulo_C</span></code> que se encuentra en el fichero <code class="docutils literal notranslate"><span class="pre">Modulo_C.py</span></code>.</p>
+<p>Observe que en ambos ficheros existe una línea ejecutable declarada a nivel global que saca por pantalla el valor de la variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code>.</p>
+<p><strong>Al ejecutar la primera celda</strong>, ocurre los siguiente:</p>
+<ul class="simple">
+<li><p>El programa de <strong>nivel superior</strong> es el programa que se ejecuta directamente, y que corresponde a nuestro programa principal.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Se ejecuta la línea <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">Modulo_C</span> <span class="pre">as</span> <span class="pre">mod</span></code> que ejecuta el fichero <code class="docutils literal notranslate"><span class="pre">Modulo_C.py</span></code> (que se encuentra en el directorio de este cuaderno) y cuyo contenido es mostrado en la segunda celda.</p></li>
+<li><p>La ejecución del módulo implica la definición de la función <code class="docutils literal notranslate"><span class="pre">ident()</span></code>, que crea el objeto correspondiente, y la ejecución de la sentencia <code class="docutils literal notranslate"><span class="pre">print()</span></code> mostrada en la segunda celda. Como resultado de esta ejecución, sabemos que la variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> del módulo tiene el valor <code class="docutils literal notranslate"><span class="pre">'Modulo_C'</span></code>, o sea, el nombre del módulo.</p></li>
+<li><p>Continúa la ejecución del programa principal, se ejecuta la función del módulo <code class="docutils literal notranslate"><span class="pre">mod.ident()</span></code> y luego se imprime la variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> desde el programa principal y aquí el valor de la misma es la cadena de caracteres <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>.</p></li>
+</ol>
+<p><strong>Al ejecutar la segunda celda</strong>:</p>
+<ul class="simple">
+<li><p>El programa de <strong>nivel superior</strong> es el programa que se ejecuta directamente, y que corresponde al módulo <code class="docutils literal notranslate"><span class="pre">Modulo_C.py</span></code>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Se ejecuta la definición de la función <code class="docutils literal notranslate"><span class="pre">ident()</span></code> que crea el objeto función.</p></li>
+<li><p>Se ejecuta la sentencia que aparece declarada de forma global y que llama a la función <code class="docutils literal notranslate"><span class="pre">print()</span></code> para sacar el valor de variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> y comprobamos que, ahora, contiene la cadena <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>.</p></li>
+</ol>
+<p>En resumen, se puede sacar la conclusión de que el valor de <code class="docutils literal notranslate"><span class="pre">__name__</span></code> va a depender de si el código ha sido invocado directamente o indirectamente como parte del mecanismo de importación de módulos.</p>
+<p>Teniendo en cuenta lo discutido, es práctica habitual en Python utilizar la construcción condicional que se muestra en la celda siguiente para ejecutar las sentencias definidas a nivel global (fuera de las funciones) sólo en el caso de que el fichero haya sido ejecutado directamente como programa de <strong>nivel superior</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fichero: programa_principal.py</span>
+
+<span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Las funciones locales son definidas en cualquier caso.&quot;</span><span class="p">)</span>
+
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+     
+    <span class="c1">#Sentencias que conforman el programa se ejecutan sólo si el mismo ha sido</span>
+    <span class="c1">#llamado directamente</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable __name__ en programa principal:&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">intro</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable __name__ en programa principal: __main__
+Las funciones locales son definidas en cualquier caso.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las funciones son definidas, típicamente, fuera del condicional. Esto abre la puerta a que nuestro código pueda ser utilizado como si fuera un módulo, por otros programas, en el caso de que las definiciones de las funciones fueran lo suficientemente generales y útiles para los mismos. En este caso, el código dentro del condicional no se ejecutaría, porque <code class="docutils literal notranslate"><span class="pre">__name__</span></code> no contendría <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>, sino el nombre del fichero, es decir, el nombre del módulo que contiene el código.</p>
+<p>Una importante aplicación de esta construcción la tenemos en las <strong>pruebas unitarias</strong> (<strong>unit tests</strong>) como se comenta en la siguiente sección.</p>
+<hr class="docutils" />
+<p><a id='Pruebas_unitarias'></a></p>
+</div>
+</div>
+<div class="section" id="introduccion-a-las-pruebas-unitarias-unit-tests">
+<h2>Introducción a las pruebas unitarias (Unit tests)<a class="headerlink" href="#introduccion-a-las-pruebas-unitarias-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Una <strong>buena práctica de programación</strong> exige que comprobemos que el funcionamiento de nuestro código es el correcto, realizando <strong>test</strong> que nos permitan asegurar, por ejemplo, que las <strong>funciones</strong> diseñadas cumplan con todos los requerimientos, y funcionen de forma correcta para todos los casos, incluidos los casos límite.</p>
+<p>Si bien estos <strong>test</strong> son siempre necesarios, lo son aún más en el caso de los módulos que se supone contienen <strong>funciones</strong> y otros objetos programados de forma general, para formar parte de <strong>bibliotecas</strong> que van a ser utilizadas, una y otra vez, conformando diferentes programas. Un error en una función de este tipo de módulos compromete la fiabilidad de todos los programas que la utilizan.</p>
+<p>Se recomienda entonces que, junto con el código de cada función, se diseñe e implemente también el código con aquellas llamadas que realizan los test sobre esa función.</p>
+<p>El mecanismo que ofrece la variable o atributo <code class="docutils literal notranslate"><span class="pre">__name__</span></code> para chequear mediante una sentencia condicional si un fichero fuente (<code class="docutils literal notranslate"><span class="pre">.py</span></code>) ha sido  ejecutado directamente o no, resulta muy apropiado para programar estos <strong>test o pruebas unitarias</strong> (<strong>Unit Tests</strong>).</p>
+<p>Aunque existen métodos mucho más sofisticados, una forma simple de hacer un test es ayudándonos de la función nativa <code class="docutils literal notranslate"><span class="pre">assert()</span></code>. Una <strong>aserción</strong> (<strong>assert</strong>) es una sentencia que verifica si una determinada condición es cierta o falsa, deteniendo la ejecución del programa en este último caso, lanzando un mensaje.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">expresion</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Funciones para trabajar con polinomios</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Se han eliminado los docstrings para hacer menos prolija la celda</span>
+<span class="k">def</span> <span class="nf">polyval</span><span class="p">(</span><span class="n">pol</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">orden</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pol</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">coef</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">orden</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">polyder</span><span class="p">(</span><span class="n">pol</span><span class="p">):</span>
+    <span class="n">der</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
+    <span class="n">der</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">orden</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">der</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">der</span><span class="p">):</span>
+        <span class="n">der</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">orden</span> <span class="o">-</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">der</span>
+
+
+<span class="k">def</span> <span class="nf">polyconv</span><span class="p">(</span><span class="n">pol1</span><span class="p">,</span> <span class="n">pol2</span><span class="p">):</span>
+    <span class="n">orden1</span><span class="p">,</span> <span class="n">orden2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pol1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pol2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">orden1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">orden2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">producto</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">orden</span> <span class="o">=</span> <span class="n">orden1</span> <span class="o">+</span> <span class="n">orden2</span>
+        <span class="n">producto</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">orden</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pol1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">elem2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pol2</span><span class="p">):</span>
+                <span class="n">producto</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">elem1</span><span class="o">*</span><span class="n">elem2</span>
+    <span class="k">return</span> <span class="n">producto</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">pol</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="n">polyder</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">polyder</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test -&gt; polyder(pol) == [12, 6, 2]</span><span class="se">\n</span><span class="s1">Ok&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">polyval</span><span class="p">(</span><span class="n">pol</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test -&gt; polyval(pol, 0.) == 1.</span><span class="se">\n</span><span class="s1">Ok&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">polyval</span><span class="p">(</span><span class="n">pol</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">==</span> <span class="mf">10.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test -&gt; polyval(pol, 1.) == 10.</span><span class="se">\n</span><span class="s1">Ok&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">polyval</span><span class="p">(</span><span class="n">pol</span><span class="p">,</span> <span class="mf">2.</span><span class="p">)</span> <span class="o">==</span> <span class="mf">49.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test -&gt; polyval(pol, 2.) == 49.</span><span class="se">\n</span><span class="s1">Ok&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">polyconv</span><span class="p">(</span><span class="n">pol</span><span class="p">,</span> <span class="n">pol</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test -&gt; polyconv(pol, pol) == [16, 24, 25, 20, 10, 4, 1]</span><span class="se">\n</span><span class="s1">Ok&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test -&gt; polyder(pol) == [12, 6, 2]
+Ok
+Test -&gt; polyval(pol, 0.) == 1.
+Ok
+Test -&gt; polyval(pol, 1.) == 10.
+Ok
+Test -&gt; polyval(pol, 2.) == 49.
+Ok
+Test -&gt; polyconv(pol, pol) == [16, 24, 25, 20, 10, 4, 1]
+Ok
+</pre></div>
+</div>
+</div>
+</div>
+<p>En la celda anterior se muestra un fragmento del módulo <code class="docutils literal notranslate"><span class="pre">polinomios</span></code> que previamente ha sido introducido.</p>
+<p>Observe que aparecen definiciones de las funciones <code class="docutils literal notranslate"><span class="pre">polyconv()</span></code>, <code class="docutils literal notranslate"><span class="pre">polyder()</span></code> y <code class="docutils literal notranslate"><span class="pre">polyval()</span></code> para determinar la convolución (producto), la derivada y para evaluar un polinomio en un punto, respectivamente.</p>
+<p>La definición de estas funciones es el propósito fundamental de la existencia del módulo. En el caso de que el mismo sea importado por un guion u otro módulo, el código de estas definiciones sería ejecutado para crear los respectivos objetos. Sin embargo, en ese caso, como <code class="docutils literal notranslate"><span class="pre">__name__</span></code> tendría un valor diferente de <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code> el código en el cuerpo del <code class="docutils literal notranslate"><span class="pre">if</span></code> no se ejecutaría.</p>
+<p>Sin embargo, cuando el fichero que implementa el módulo es ejecutado directamente, entonces si se cumpliría la condición del <code class="docutils literal notranslate"><span class="pre">if</span></code>, con lo cual serían ejecutadas las sentencias asociadas a este bloque. De esta forma, tenemos la oportunidad ideal para programar en este punto una serie de llamadas a las funciones del módulo que sirvan como <strong>test unitarios</strong>, es decir, que demuestren mediante resultados conocidos, la <em>corrección</em> de las mismas.</p>
+<hr class="docutils" />
+<p><a id='Biblioteca'></a></p>
+</div>
+<div class="section" id="biblioteca-estandar">
+<h2>Biblioteca estándar<a class="headerlink" href="#biblioteca-estandar" title="Permalink to this headline">¶</a></h2>
+<p>Python ofrecen multitud de módulos en la biblioteca estándar, convenientemente clasificados por temática. En el siguiente enlace a la página web oficial del lenguaje, se ofrece una descripción completa de los mismos.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/">Enlace a descripción biblioteca estándar</a></p>
+<p>De especial interés se tienen los siguientes:</p>
+<ul class="simple">
+<li><p><strong>math</strong>, <strong>cmath</strong>: funciones matemáticas reales y complejas</p></li>
+<li><p><strong>random</strong>: generación de números pseudoaleatorios</p></li>
+<li><p><strong>os</strong>: para utilizar servicios del Sistema Operativo</p></li>
+<li><p><strong>time</strong>: acceso al tiempo y funciones relativas al calendario</p></li>
+<li><p><strong>csv</strong>, <strong>json</strong>, <strong>xml</strong>, <strong>html</strong>: para leer y escribir ficheros en diferentes formatos (csv, json, xml, html)</p></li>
+<li><p><strong>tkinter</strong>: implementación de interfaces gráficas con el usuario</p></li>
+<li><p><strong>pydoc</strong>, <strong>doctest</strong>: para generar y “testear” automáticamente documentación de programas python</p></li>
+<li><p><strong>timeit</strong>: para medir el tiempo de ejecución de fragmentos de código</p></li>
+<li><p><strong>sys</strong>: acceso a funciones que interaccionan con el intérprete</p></li>
+</ul>
+<p>En el curso ya hemos utilizado funciones del módulo <code class="docutils literal notranslate"><span class="pre">math</span></code> y <code class="docutils literal notranslate"><span class="pre">cmath</span></code>. En diversos temas, y de forma transversal, estamos incorporando funciones provenientes de otros módulos y ¡<strong>paquetes</strong>!.</p>
+<p>El análisis del concepto de <strong>paquete</strong> (<strong>package</strong>), conjunto estructurado formado por otros módulos y paquetes, lo postponemos para un próximo tema. No obstante, señalar que ya hemos utilizado los paquetes <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> y <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\11_Modulos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

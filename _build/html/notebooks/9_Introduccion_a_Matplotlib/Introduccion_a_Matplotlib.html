@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Matplotlib. &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/9_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/9_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/9_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenidos">
+   Contenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos-basicos">
+   Gráficos básicos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-plot">
+     Función
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-scatter">
+     Función
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scatter()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dibujando-funciones-de-una-variable">
+   Dibujando funciones de una variable
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dibujando-varias-graficas-superpuestas">
+     Dibujando varias gráficas superpuestas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valores-indefinidos-en-la-lista-de-ordenadas">
+     Valores indefinidos en la lista de ordenadas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#titulo-y-etiquetas-en-ejes">
+   Título y etiquetas en ejes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-funcion-linspace-del-paquete-numpy">
+   La función
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     linspace()
+    </span>
+   </code>
+   del paquete Numpy
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduccion-a-matplotlib">
+<h1>Introducción a Matplotlib.<a class="headerlink" href="#introduccion-a-matplotlib" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="contenidos">
+<h2>Contenidos<a class="headerlink" href="#contenidos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#Introducci%C3%B3n">Introducción</a><br>
+<a class="reference external" href="#Gr%C3%A1ficos_b%C3%A1sicos">Gráficos básicos</a><br>
+<a class="reference external" href="#Dibujando_funciones_de_una_variable">Dibujando funciones de una variable</a><br>
+<a class="reference external" href="#T%C3%ADtulo_y_etiquetas_en_ejes">Título y etiquetas en ejes</a><br>
+<a class="reference external" href="#La_funci%C3%B3n_linspace_del_paquete_Numpy">La función <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> del paquete Numpy</a></p>
+<hr class="docutils" />
+<p><a id='Introducción'></a></p>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>El paquete <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> es una extensa biblioteca de funciones para generar gráficos 2D y 3D.</p>
+<p>Algunas de sus características son:</p>
+<ul class="simple">
+<li><p>Curva de aprendizaje suave: ofrece funcionalidades simples para usuarios ocasionales.</p></li>
+<li><p>Todo tipo de ajustes <em>programables</em> de los elementos de una ventana gráfica.</p></li>
+<li><p>Gran variedad de formatos de exportación de las figuras.</p></li>
+</ul>
+<p><strong>Matplotlib</strong> está construido sobre el paquete <strong>Numpy</strong> y trabaja de forma natural con los vectores y matrices (<em>arrays</em>) a ella asociados. Veremos más adelante las funcionalidades del paquete <strong>Numpy</strong>. Pero, por ahora, trabajaremos con las <strong>listas nativas</strong> de <strong>Python</strong> (que serán transformadas internamente a <em>numpy arrays</em> en las funciones del paquete <strong>Matlotlib</strong>). Nótese que restringimos el uso a listas formadas por valores del mismo tipo de dato.</p>
+<p>Aunque no es la forma usual, utilizar en este momento listas nos permite:</p>
+<ul class="simple">
+<li><p>visualizar desde ya los resultados de algunos de nuestros ejercicios.</p></li>
+<li><p>nos obliga a practicar con el manejo de las estructuras de control; no olvidemos que nuestro objetivo es aprender a programar. De la otra forma, muchas operaciones de <em>bajo nivel</em> quedan ocultas detrás de las poderosas herramientas que nos brinda el paquete <strong>Numpy</strong>.</p></li>
+</ul>
+<p>Dentro del <strong>paquete</strong> <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> destaca el <strong>módulo</strong> <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>.
+Este módulo <strong>oculta</strong> muchas de las funcionalidades de bajo nivel de la biblioteca permitiendo el
+uso de sencillas funciones para los elementos gráficos más habituales, tales como creación de figuras, trazado de líneas, visualización de imágenes, inserción de texto, etc.</p>
+<p>En la bibliografía podéis encontrar otro módulo llamado <code class="docutils literal notranslate"><span class="pre">pylab</span></code> que tiene una funcionalidad similar, en apariencia incluso más simple. Sin embargo, su uso está hoy en día desaconsejado por diferentes razones que sería prolijo comentar.</p>
+<p>El módulo <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> emula el entorno de programación gráfica de <strong>MATLAB</strong>, herramienta software <strong>de pago</strong> muy popular en universidades y empresas. En la misma línea, ya hemos comentado que <strong>Spyder</strong> es un <strong>IDE</strong> muy similar al de <strong>MATLAB</strong>. Más adelante, en otras asignaturas o en vuestra vida profesional, si necesitáis <em>dar el cambio</em>, éste será sencillo.</p>
+<p>Para comenzar usando el módulo <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>de <strong>Matplotlib</strong> en un programa <strong>Python</strong> la forma estándar es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Gráficos_básicos'></a></p>
+</div>
+<div class="section" id="graficos-basicos">
+<h2>Gráficos básicos<a class="headerlink" href="#graficos-basicos" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="funcion-plot">
+<h3>Función <code class="docutils literal notranslate"><span class="pre">plot()</span></code><a class="headerlink" href="#funcion-plot" title="Permalink to this headline">¶</a></h3>
+<p>Mediante la función <code class="docutils literal notranslate"><span class="pre">plot()</span></code> suministramos una lista para su trazado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b0da803808&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_9_1.png" src="../../_images/Introduccion_a_Matplotlib_9_1.png" />
+</div>
+</div>
+<p>Por defecto, <code class="docutils literal notranslate"><span class="pre">plot(lista)</span></code> une con una línea la secuencia de puntos de coordenadas <span class="math notranslate nohighlight">\((i,lista[i])\)</span>, siendo <span class="math notranslate nohighlight">\(i\)</span> los índices válidos de la lista desde <span class="math notranslate nohighlight">\(0\)</span>. En nuestro ejemplo, los puntos <span class="math notranslate nohighlight">\(\{(0,6),(1,2),(2,5),...,(7,6),(8,7),(9,3)\}\)</span>.</p>
+<p>Debe notarse que la figura donde reside la línea trazada se crea de forma automática para contener el dibujo. No sólo eso, en ausencia de indicaciones, se usan diferentes opciones por defecto, como tamaño de la figura, color y grosor de la línea, etc.</p>
+<p>Si proporcionamos dos listas, <code class="docutils literal notranslate"><span class="pre">plot(lista_x,lista_y)</span></code>, se une con una línea la secuencia de puntos de coordenadas <span class="math notranslate nohighlight">\((lista\_x[i],lista\_y[i])\)</span>, siendo <span class="math notranslate nohighlight">\(i\)</span> los índices válidos de las listas desde <span class="math notranslate nohighlight">\(0\)</span>. Es decir, la primera lista corresponde a las abcisas y la segunda a las ordenadas. Obviamente, ambas listas tendrán el mismo número de elementos. ¿Qué ocurre en caso contrario? ¡Prueba a eliminar un elemento de una de las listas!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.23</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">7.34</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.123</span><span class="p">,</span> <span class="mf">4.17</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">,</span> <span class="mf">8.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.35</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b0dd21c388&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_12_1.png" src="../../_images/Introduccion_a_Matplotlib_12_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="funcion-scatter">
+<h3>Función <code class="docutils literal notranslate"><span class="pre">scatter()</span></code><a class="headerlink" href="#funcion-scatter" title="Permalink to this headline">¶</a></h3>
+<p>Mediante la función <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> podemos dibujar los puntos <span class="math notranslate nohighlight">\((lista\_x[i],lista\_y[i])\)</span> sin unir por líneas, apareciendo los puntos de forma <em>dispersa</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.23</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">7.34</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.123</span><span class="p">,</span> <span class="mf">4.17</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">,</span> <span class="mf">8.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.35</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2b0dd285f08&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_14_1.png" src="../../_images/Introduccion_a_Matplotlib_14_1.png" />
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Dibujando_funciones_de_una_variable'></a></p>
+</div>
+</div>
+<div class="section" id="dibujando-funciones-de-una-variable">
+<h2>Dibujando funciones de una variable<a class="headerlink" href="#dibujando-funciones-de-una-variable" title="Permalink to this headline">¶</a></h2>
+<p>Un uso habitual de las herramientas gráficas es dibujar una función <span class="math notranslate nohighlight">\(y=f(x)\)</span> para una colección de puntos en un intervalo de valores.</p>
+<p>Por ejemplo, supongamos que deseamos dibujar la función <span class="math notranslate nohighlight">\(y=cos^2(x)\)</span> utilizando <span class="math notranslate nohighlight">\(100\)</span> puntos <strong>equidistantes</strong> en el intervalo <span class="math notranslate nohighlight">\(-2\pi\leq x\leq2\pi\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">num_puntos</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="n">x_min</span>
+
+<span class="c1"># Hay (num_puntos - 1) intervalos incluyendo x_min y x_max</span>
+<span class="n">incremento</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_puntos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">lista_x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>  <span class="c1"># Rellenamos de 0&#39;s ambas listas. Así evitamos usar el método append().</span>
+<span class="n">lista_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_puntos</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">incremento</span>  <span class="c1"># x va tomando los num_puntos valores equidistantes entre x_min y x_max</span>
+    <span class="n">lista_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b0dd2f6808&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_17_1.png" src="../../_images/Introduccion_a_Matplotlib_17_1.png" />
+</div>
+</div>
+<div class="section" id="dibujando-varias-graficas-superpuestas">
+<h3>Dibujando varias gráficas superpuestas<a class="headerlink" href="#dibujando-varias-graficas-superpuestas" title="Permalink to this headline">¶</a></h3>
+<p>Es muy sencillo dibujar varias funciones superpuestas sin más que invocar a la función <code class="docutils literal notranslate"><span class="pre">plot()</span></code> de manera consecutiva, incluso con listas de abscisas diferentes. En el ejemplo, se añade una gráfica de la función <span class="math notranslate nohighlight">\(y=sin(x)cos(x)\)</span> utilizando <span class="math notranslate nohighlight">\(50\)</span> puntos en el intervalo <span class="math notranslate nohighlight">\(-3\leq x\leq3\)</span>.</p>
+<p>Nótese cómo <strong>Matplotlib</strong> configura el gráfico de forma automática para adaptarse a los distintos rangos y eligiendo colores diferentes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_puntos</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="n">x_min</span>
+
+<span class="n">incremento</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">-</span><span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_puntos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">lista_x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="n">lista_y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_puntos</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">incremento</span>
+    <span class="n">lista_x2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">lista_y2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x2</span><span class="p">,</span> <span class="n">lista_y2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b0dd229348&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_19_1.png" src="../../_images/Introduccion_a_Matplotlib_19_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="valores-indefinidos-en-la-lista-de-ordenadas">
+<h3>Valores indefinidos en la lista de ordenadas<a class="headerlink" href="#valores-indefinidos-en-la-lista-de-ordenadas" title="Permalink to this headline">¶</a></h3>
+<p>La función <strong>seno cardinal</strong> desnormalizada <span class="math notranslate nohighlight">\(sinc(x)\)</span> tiene por ecuación:</p>
+<div class="math notranslate nohighlight">
+\[y = \frac{sin(x)}{x}\]</div>
+<p>En la abscisa <span class="math notranslate nohighlight">\(x=0\)</span>, esta función presenta una singularidad evitable, que sabemos por la teoría de límites del cálculo que tiene el valor 1.</p>
+<p>Sin embargo, cuando en un programa generamos los posibles valores de una función, no siempre el código está <em>sintonizado</em> para detectar estas singularidades.</p>
+<p>Vamos a elegir <span class="math notranslate nohighlight">\(301\)</span> puntos en el intervalo <span class="math notranslate nohighlight">\(-15\leq x\leq15\)</span>. Sabemos que vamos a tener problemas si intentamos generar la lista de abscisas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">num_puntos</span> <span class="o">=</span> <span class="mi">301</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="n">x_min</span>
+
+<span class="n">incremento</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">-</span><span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_puntos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">lista_x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="n">lista_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_puntos</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">incremento</span>
+    <span class="n">lista_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">7161</span><span class="n">d3dbbeee</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">incremento</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">lista_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+
+<span class="ne">ZeroDivisionError</span>: float division by zero
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vemos que se ha generado la excepción <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError:</span> <span class="pre">float</span> <span class="pre">division</span> <span class="pre">by</span> <span class="pre">zero</span></code>.</p>
+<p>Una opción que podemos emplear en este caso particular es evitar añadir a la lista de abscisas el valor <span class="math notranslate nohighlight">\(x=0\)</span>. Este método es engorroso, pues, en el caso general, para cada función debemos identificar previamente los valores conflictivos.</p>
+<p>Una opción más inteligente es capturar la <strong>excepción</strong> y, en esos casos, a esos valores conflictivos les asignamos como valor de la función un valor <code class="docutils literal notranslate"><span class="pre">float</span></code> especial llamado <code class="docutils literal notranslate"><span class="pre">nan</span></code>, <strong>not a number</strong>. La buena noticia es que cuando la función <code class="docutils literal notranslate"><span class="pre">plot()</span></code> detecta un valor <code class="docutils literal notranslate"><span class="pre">nan</span></code> en una lista, omite la representación de ese punto.</p>
+<blockquote>
+<div><p>Por supuesto, en este ejemplo concreto también podemos asignar el valor <span class="math notranslate nohighlight">\(1\)</span> de nuestro conocimiento de la <em>teoría de límites</em>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">num_puntos</span> <span class="o">=</span> <span class="mi">301</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="n">x_min</span>
+
+<span class="n">incremento</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">-</span><span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_puntos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">lista_x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="n">lista_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_puntos</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">incremento</span>
+    <span class="n">lista_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>  <span class="c1"># Podríamos haber puesto en este ejemplo lista_y[i] = 1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En el siguiente ejemplo, dibujamos la función:
+$<span class="math notranslate nohighlight">\(y = \frac{cos(x)}{(x-10)(x+2)(x+12)}\)</span>$</p>
+<p>que tiene 3 singularidades, pero nos <em>despreocupamos</em> con el método propuesto de su posición.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utilizamos lista de abscisas de la celda anterior</span>
+<span class="n">lista_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">lista_x</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lista_x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">12</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='Título_y_etiquetas_en_ejes'></a></p>
+</div>
+</div>
+<div class="section" id="titulo-y-etiquetas-en-ejes">
+<h2>Título y etiquetas en ejes<a class="headerlink" href="#titulo-y-etiquetas-en-ejes" title="Permalink to this headline">¶</a></h2>
+<p>Mediante la función <code class="docutils literal notranslate"><span class="pre">title()</span></code> podemos añadir un título al gráfico. Mediante las funciones <code class="docutils literal notranslate"><span class="pre">xlabel()</span></code> e <code class="docutils literal notranslate"><span class="pre">ylabel()</span></code>añadimos etiquetas a los ejes de coordenadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Función con tres singularidades&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;${cos(x)}/{((x-10)(x+2)(x+12))}$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Estas son sólo un pequeño ejemplo de las enormes opciones de personalización que ofrece <strong>Matplotlib</strong>.</p>
+<hr class="docutils" />
+<p><a id='La_función_linspace_del_paquete_Numpy'></a></p>
+</div>
+<div class="section" id="la-funcion-linspace-del-paquete-numpy">
+<h2>La función <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> del paquete Numpy<a class="headerlink" href="#la-funcion-linspace-del-paquete-numpy" title="Permalink to this headline">¶</a></h2>
+<p>Hemos visto un método relativamente engorroso de generar las abscisas:</p>
+<ol class="simple">
+<li><p>Elegimos un límite inferior.</p></li>
+<li><p>Elegimos un límite superior.</p></li>
+<li><p>Decidimos cuantos puntos necesitamos.</p></li>
+<li><p>Calculamos el tamaño del intervalo entre dos abscisas adyacentes.</p></li>
+<li><p>Generamos la lista correspondiente.</p></li>
+</ol>
+<p>La función <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> del paquete <strong>Numpy</strong> hace todo esto de forma cómoda, proporcionándonos un nivel de <strong>abstracción</strong> superior y <strong>encapsulando</strong> todo ese código en una función. Basta introducir los 3 primeros parámetros como argumentos. Para utilizarla, debemos importar el paquete <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<p>Veámosla en acción para dibujar la función <strong>campana de Gauss</strong>:
+$<span class="math notranslate nohighlight">\(y = \frac{1}{{\sigma\sqrt{2\pi}}}e^{{-(x-\mu)^2}/{2\sigma^2}}\)</span>$</p>
+<p>Elegiremos <span class="math notranslate nohighlight">\(1000\)</span> valores en el intervalo <span class="math notranslate nohighlight">\(-5\leq x\leq5\)</span> para una distribución normal de <em>media</em> <span class="math notranslate nohighlight">\(\mu=0\)</span> y <em>desviación estándar</em> <span class="math notranslate nohighlight">\(\sigma=1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">num_puntos</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">lista_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">num_puntos</span><span class="p">)</span>
+
+<span class="n">media</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">desviacion_estandar</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">factor</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">desviacion_estandar</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+<span class="n">den</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">desviacion_estandar</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">lista_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_puntos</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lista_x</span><span class="p">):</span>
+    <span class="n">lista_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">factor</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">media</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">den</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lista_x</span><span class="p">,</span> <span class="n">lista_y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Gauss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N(</span><span class="si">{}</span><span class="s1">,</span><span class="si">{}</span><span class="s1">)$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">desviacion_estandar</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$N(0,1)$&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/Introduccion_a_Matplotlib_33_1.png" src="../../_images/Introduccion_a_Matplotlib_33_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\9_Introduccion_a_Matplotlib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

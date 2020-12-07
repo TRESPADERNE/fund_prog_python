@@ -2,9 +2,7 @@
 # coding: utf-8
 
 # # Introducción a Python
-# **Autores**: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.   
 
-# ## Contenidos
 # [Introducción](#Introducción)<br>
 # [Instalación y consideraciones prácticas](#Instalación_y_consideraciones_prácticas)<br>
 # [El Zen de Python](#El_Zen_de_Python)<br>
@@ -50,7 +48,7 @@
 # 
 # Desde principio del 2014, todos los paquetes relevantes dentro de los ecosistemas de computación científica y de la ciencia de datos ya son plenamente compatibles con ambas sintaxis, por lo que en el ámbito académico se ha optado por utilizar **Python 3** por sus mejores características sintácticas.
 # 
-# Además, ¡**Python 2** deja de ser mantenido y mejorado desde el 1 de Enero de 2020!
+# Además, ¡**Python 2** ha dejado de ser mantenido y mejorado desde el 1 de Enero de 2020!
 
 # ### Instalación con Anaconda
 # 
@@ -120,7 +118,10 @@ import this
 # Type "help", "copyright", "credits" or "license" for more information.
 # >>>
 # ```
-# Una vez que el intérprete está en funcionamiento, podemos comenzar a teclear y ejecutar fragmentos de código. Lo usual es usar este formato para ejecutar secuencias cortas de operaciones, utilizando el intérprete como una potente y versátil calculadora.
+# Una vez que el intérprete está en funcionamiento, podemos comenzar a teclear y ejecutar fragmentos de código.
+# 
+# Python, en este contexto de uso, se utilizar normalmente para ejecutar secuencias cortas de operaciones, utilizando así el intérprete como una potente y versátil calculadora.
+# 
 # ``` python
 # >>> 6*5
 # 30
@@ -177,15 +178,15 @@ import this
 # Ejecutándose ejemplo.py
 # El resultado de 5 + 3 es 8
 # ```
-# Una alternativa a:
-# 1. la utilización de un editor más o menos convencional de textos 
-# 2. el uso de la línea de comandos para ejecutar el guion
+# El ejemplo anterior supone que debemos realizar dos etapas para ejecutar el programa:
+# 1. utilización de un editor más o menos convencional de textos 
+# 2. uso de la línea de comandos para ejecutar el guion
 # 
-# es utilizar un **Entorno de Desarrollo Integrado**, **IDE** (**I**ntegrated **D**evelopment **E**nvironment). **Spyder** es un ejemplo de esta alternativa: entre otros componentes posee un editor con herramientas tan útiles como *autocompletado* de código, terminales **IPython**, *explorador* de variables, *depurador*, *chequeo* de inconsistencias, etc.
+# Una alternativa es utilizar un **Entorno de Desarrollo Integrado**, **IDE** (**I**ntegrated **D**evelopment **E**nvironment). **Spyder** es un buen ejemplo: entre otros componentes posee un editor con herramientas tan útiles como *autocompletado* de código, terminales **IPython**, *explorador* de variables, *depurador*, *chequeo* de inconsistencias, etc. **Spyder**, incorporado en la distribución **Anaconda**, será la herramienta que utilizaremos para trabajar con guiones.
 
 # ### Jupyter Notebook
 # 
-# **Jupyter Notebook** es un entorno interactivo que permite combinar en un mismo documento código con otros elementos, tales como texto enriquecido, imágenes, enlaces, etc. **Jupyter** es un nombre que proviene de *jugar* con los nombres de los lenguajes **Ju**lia, **Py**thon y **R**, pilares de muchos desarrollos en la computación científica y la ciencia de datos. También es un homenaje a los **cuadernos** de Galileo que registran el decubrimiento de los satélites de Júpiter. 
+# **Jupyter Notebook** es un entorno interactivo que permite combinar en un mismo documento código con otros elementos, tales como texto enriquecido, imágenes, enlaces, etc. **Jupyter** es un nombre que proviene de *jugar* con los nombres de los lenguajes **Ju**lia, **Py**thon y **R**, pilares de muchos desarrollos en la computación científica y la ciencia de datos. También es un homenaje a los **cuadernos** de Galileo que registran el descubrimiento de los satélites de Júpiter. 
 # 
 # Inicialmente los **cuadernos** (**notebooks**) formaban parte del proyecto **IPython**, de ahí que en muchas fuentes bibliográficas aparezcan mencionados como **IPython notebooks**. A partir de cierto momento, el [**Proyecto IPython**](https://ipython.org/) se desgajó, de tal forma que en el [**Proyecto Jupyter**](https://jupyter.org/) se integraron los componentes que debían ser *agnósticos* respecto al lenguaje.
 # 
@@ -210,7 +211,8 @@ import this
 # ## Licencia de uso
 # <a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/p/zero/1.0/88x31.png" /></a><br />  
 # <a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0">Creative Commons Public Domain CC0</a>.
-
+# 
+# 
 # 
 # ```{toctree}
 # :hidden:
@@ -219,4 +221,3 @@ import this
 # 
 # ../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos
 # ```
-# 

@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listas: matrices restos &#8212; Fundamentos de Programación en Python</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Fundamentos de Programación en Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../0_Python/Introduccion_Python.html">
+   Introducción a Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos.html">
+   Operadores, expresiones y tipos de datos
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebooks/XX_RESTOS/XX_Listas_matrices_restos/Listas_matrices_restos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://https://github.com/TRESPADERNE/fund_prog_python/issues/new?title=Issue%20on%20page%20%2Fnotebooks/XX_RESTOS/XX_Listas_matrices_restos/Listas_matrices_restos.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/TRESPADERNE/fund_prog_python/master?urlpath=tree/notebooks/XX_RESTOS/XX_Listas_matrices_restos/Listas_matrices_restos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices-matematicas-utilizando-lista-anidadas">
+   Matrices matemáticas utilizando lista anidadas
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="listas-matrices-restos">
+<h1>Listas: matrices restos<a class="headerlink" href="#listas-matrices-restos" title="Permalink to this headline">¶</a></h1>
+<p><strong>Autores</strong>: Rogelio Mazaeda Echevarría, Félix Miguel Trespaderne.</p>
+<div class="section" id="matrices-matematicas-utilizando-lista-anidadas">
+<h2>Matrices matemáticas utilizando lista anidadas<a class="headerlink" href="#matrices-matematicas-utilizando-lista-anidadas" title="Permalink to this headline">¶</a></h2>
+<p>Las matrices son uno de los conceptos matemáticos más importantes. Aunque hay módulos, como <strong>Numpy</strong> que permiten trabajar con matrices de forma eficiente Una forma de implementarlas en Python es utilzar listas, y en particular listas anidadas, como en el ejemplo que sigue:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">=</span> <span class="p">[[</span><span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">a1n</span><span class="p">],[</span><span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">a2n</span><span class="p">],</span><span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="n">am1</span><span class="p">,</span> <span class="n">am2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">amn</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>El anterior código podría interpretarse como la creación de una matriz de <strong>nxm</strong>: <code class="docutils literal notranslate"><span class="pre">n</span></code> columnas y <code class="docutils literal notranslate"><span class="pre">m</span></code> filas. Nótese que otra manera de verla, sería como una lista de <strong>m</strong> sublistas (filas) cada una de las cuales tiene <strong>n</strong> elementos (columnas).</p>
+<p>En el código que sigue se utiliza esta representación para realizar la suma (matemática) de dos matrices de enteros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+
+<span class="c1">#Inicializamos matriz suma </span>
+<span class="n">mat_suma</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="c1">#Recorremos la matriz con un doble bucle anidado, sumando elementos correspondientes</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="n">fila</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="n">suma</span><span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">fila</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+    <span class="n">mat_suma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+
+<span class="c1">#Sacamos por pantalla la lista anidada en forma de matriz matemática</span>
+<span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">mat_suma</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">fila</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:5d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    2     3     4     5 
+    7     8     9    10 
+   12    13    14    15 
+</pre></div>
+</div>
+</div>
+</div>
+<p>En el codigo anterior se utiliza un doble bucle anidado para recorrer las filas y las columnas de las dos matrices de igual dimensión que actúan como sumandos.</p>
+<p>Al inicio y fuera de ambos bucles, se inicializa la lista que actuará como matriz resultado de la suma.</p>
+<p>En cada iteración del bucle externo, primero se inicializa una lista vacía (<code class="docutils literal notranslate"><span class="pre">fila</span></code>) que actuará precisamente como la fila actual de la matriz resultado. En el bucle interno se va actualizando la lista fila, añadiendo el elemento que toca como suma de los elementos correspondientes de los dos sumandos.</p>
+<p>Una vez creada la fila, se añade a la matriz suma también utilizando el método <code class="docutils literal notranslate"><span class="pre">.append()</span></code>, pero en este caso de la matriz resultado.</p>
+<p>El siguiente doble bucle anidado se encarga de sacar por pantalla el contenido de la lista resultante en forma de matriz matemática.</p>
+<p>El código anterior es correcto. Muchas veces, a la hora de recorrer listas (también en el caso de las listas anidadas) se utiliza una construcción como la que se muestra a continuación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
+    <span class="c1"># Hacer algo con los elementos</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Esta construcción es válida, pero un estilo mucho más en consonancia con las posibilidades y el estilo de Python, es acceder directamente al los elementos del iterable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+    <span class="c1"># Hacer algo con los elementos</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>¿Como resultaría el código anterior, utilizando esta última construcción? Se debe tomar como referencia el bucle del programa principal que muestra por pantalla la matriz.</p>
+<p>Un posible resultado se muestra a continuación, utilizando también una función:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función (no pura) para sacar matriz por pantalla</span>
+<span class="k">def</span> <span class="nf">muestra_matriz</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">fila</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:5d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+    
+<span class="c1"># Función (pura) para sumar dos matrices </span>
+<span class="k">def</span> <span class="nf">suma_mat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span> 
+    <span class="n">mat_suma</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">fila</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="n">fila</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fila</span><span class="p">):</span>
+            <span class="n">suma</span><span class="o">=</span> <span class="n">elem</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">fila</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+        <span class="n">mat_suma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mat_suma</span>
+
+<span class="c1"># Programa principal para probar las funciones previas</span>
+
+<span class="n">suma</span> <span class="o">=</span> <span class="n">suma_mat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">muestra_matriz</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En el código previo se utiliza el <strong>for</strong> de la manera correcta para recorrer el <strong>iterable</strong> que es la lista. Surge, sin embargo, la necesidad de obtener no sólo el elemento adecuado de la matriz <code class="docutils literal notranslate"><span class="pre">a</span></code>, sino también el elemento correspondiente (en la misma fila y columna) de la matriz <code class="docutils literal notranslate"><span class="pre">b</span></code>. Para ello resulta conveniente obtener adicionalmente el índice de las listas (<code class="docutils literal notranslate"><span class="pre">i</span></code> para la fila y <code class="docutils literal notranslate"><span class="pre">j</span></code> para la columna) para utilizar la sintaxis de los corchetes (<code class="docutils literal notranslate"><span class="pre">b[i][j]</span></code>). Esto se puede lograr utilizando el <strong>iterable</strong> que devuelve <strong>enumerate</strong>.</p>
+<p>Una alternativa al uso de <strong>enumerate</strong>, para este caso concreto, sería el uso de la función <strong>zip()</strong> que permite <em>unir</em> dos listas, para obtener simultáneamente los elementos a sumar de ambas matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función (no pura) para sacar matriz por pantalla</span>
+<span class="k">def</span> <span class="nf">muestra_matriz</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:5d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+    
+<span class="c1"># Función (pura) para sumar dos matrices </span>
+<span class="k">def</span> <span class="nf">suma_mat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
+    <span class="n">mat_suma</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">fila_a</span><span class="p">,</span> <span class="n">fila_b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">fila</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">elem_a</span><span class="p">,</span> <span class="n">elem_b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fila_a</span><span class="p">,</span> <span class="n">fila_b</span><span class="p">):</span>
+            <span class="n">suma</span><span class="o">=</span> <span class="n">elem_a</span> <span class="o">+</span> <span class="n">elem_b</span>
+            <span class="n">fila</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+        <span class="n">mat_suma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mat_suma</span>
+
+<span class="c1"># Programa principal para probar las funciones previas</span>
+
+<span class="n">suma</span> <span class="o">=</span> <span class="n">suma_mat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">muestra_matriz</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    2     3     4     5 
+    7     8     9    10 
+   12    13    14    15 
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué sucede, en el código previo, si los argumentos que se pasan no son matrices, o no tiene las mismas dimensiones? ¿Cómo se podría modificar el código de las funciones previas de forma que se implemente el concepto <strong>EAFP</strong> utilizando excepciones?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks\XX_RESTOS\XX_Listas_matrices_restos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
