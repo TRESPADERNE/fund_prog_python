@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Introducción a Python
+# Introducción
 
 +++ {"hideCode": false}
 
@@ -21,7 +21,6 @@ kernelspec:
 [El Zen de Python](#El_Zen_de_Python)<br>
 [Cómo ejecutar código Python](#Cómo_ejecutar_código_Python)<br>
 [Bibliografía](#Bibliografía)<br>
-[Licencia de uso](#Licencia_de_uso)
 
 +++
 
@@ -33,7 +32,7 @@ kernelspec:
 ## Introducción
 [**Python**](https://www.python.org) fue concebido a finales de los años 80 como un **lenguaje interpretado** orientado a la enseñanza. Con el paso del tiempo, **Python** se ha convertido en una herramienta esencial para todo tipo de programadores, ingenieros e investigadores, tanto en el ámbito académico como industrial.
 
-El creador del lenguaje fue el informático holandés **Guido van Rossum**, conocido durante muchos años con el *título* de **BDFL** (**B**enevolent **D**ictator **f**or **L**ife). Esto era debido a que Guido tenía asignada la tarea de fijar las directrices sobre la evolución de **Python**, tarea de la que se retiró en 2018. El nombre **Python** se debe a su afición al programa de la BBC *Monty Python's Flying Circus*, del célebre grupo de humoristas británico [**Monty Python**](https://es.wikipedia.org/wiki/Monty_Python).
+El creador del lenguaje fue el informático holandés [**Guido van Rossum**](https://en.wikipedia.org/wiki/Guido_van_Rossum), conocido durante muchos años con el *título* de **BDFL** (**B**enevolent **D**ictator **f**or **L**ife). Esto era debido a que Guido tenía asignada la tarea de fijar las directrices sobre la evolución de **Python**, tarea de la que se retiró en 2018. El nombre **Python** se debe a su afición al programa de la BBC *Monty Python's Flying Circus*, del célebre grupo de humoristas británico [**Monty Python**](https://es.wikipedia.org/wiki/Monty_Python).
 
 El éxito de **Python** reside no sólo en su simplicidad, sino que sobre él se ha construido una enorme cantidad de herramientas disponibles para todo tipo de dominios de aplicación.
 
@@ -215,7 +214,7 @@ Para ejecutar este guion, debemos situarnos en el mismo directorio y teclear `py
 Ejecutándose ejemplo.py
 El resultado de 5 + 3 es 8
 ```
-El ejemplo anterior supone que debemos realizar dos etapas para ejecutar el programa:
+Del ejemplo anterior podemos deducir que debemos realizar dos etapas para ejecutar el programa:
 1. utilización de un editor más o menos convencional de textos 
 2. uso de la línea de comandos para ejecutar el guion
 
@@ -255,6 +254,5 @@ La versión *notebook* del libro está disponible en [**GitHub**](https://github
 
 +++
 
-## Licencia de uso
 <a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/p/zero/1.0/88x31.png" /></a><br />  
 <a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0">Creative Commons Public Domain CC0</a>.
