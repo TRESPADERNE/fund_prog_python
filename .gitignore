@@ -33,3 +33,7 @@
 
 # Directorios
 _build
+
+# Notebooks checkpoints
+*.ipynb_checkpoints*
+*checkpoint.ipynb
