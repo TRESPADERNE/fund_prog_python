@@ -12,14 +12,31 @@ kernelspec:
   name: python3
 ---
 
-# Funciones nativas. Concepto de objeto.
+# Funciones predefinidas
 
 +++
 
+[Introducción](#Introducción)<br>
 [Funciones nativas](#Funciones_nativas)<br>
 [Funciones definidas en módulos](#Funciones_definidas_en_módulos)<br>
-[(*) _Introspección y conversiones de tipo_](#Introspección_y_conversiones_de_tipo)<br>
-[(*) _Introducción al concepto de objeto: atributos y métodos_](#Introducción_al_concepto_de_objeto:_atributos_y_métodos)
+[Introspección](#Introspección)<br>
+[El operador ``.``](#El_operador_punto)<br>
+[Conversiones de tipos](#Conversiones_de_tipos)
+
++++
+
+***
+<a id='Introducción'></a>
+
++++
+
+## Introducción
+
+Las expresiones combinan valores y operadores para obtener un nuevo valor. No obstante, si nos concentramos por el momento en la aritmética, existen operaciones matemáticas a las que usualmente tenemos acceso en una calculadora comercial convencional, como la aplicación de funciones matemáticas comunes, tales como raíz cuadrada, potencias, funciones trigonométricas, logaritmos, etc. entre muchas otras.
+
+Python, al igual que otros lenguajes de programación, tiene también el concepto de **función**, cuyo significado no coincide de forma exacta con la definición matemática, pero que puede ser utilizada para dar cuerpo a estas últimas.
+
+Las funciones de Python serán objeto de un estudio más detallado posteriormente, donde aprenderemos a programar nuestras propias funciones. De momento, sin embargo, iremos introduciendo las **funciones nativas** (**built-in functions**) que Python pone a nuestra disposición. 
 
 +++
 
@@ -29,13 +46,6 @@ kernelspec:
 +++
 
 ## Funciones nativas
-
-Las expresiones combinan valores y operadores para obtener un nuevo valor. No obstante, si nos concentramos por el momento en la aritmética, existen operaciones matemáticas a las que usualmente tenemos acceso en una calculadora comercial convencional, como la aplicación de funciones matemáticas comunes, tales como raíz cuadrada, potencias, funciones trigonométricas, logaritmos, etc. entre muchas otras.
-
-Python, al igual que otros lenguajes de programación, tiene también el concepto de **función**, cuyo significado no coincide de forma exacta con la definición matemática, pero que puede ser utilizada para dar cuerpo a estas últimas.
-
-Las funciones de Python serán objeto de un estudio más detallado posteriormente, donde aprenderemos a programar nuestras propias funciones. De momento, sin embargo, iremos introduciendo las **funciones nativas** (**built-in functions**) que Python pone a nuestra disposición. 
-
 Un ejemplo de función numérica que está siempre a nuestra disposición es `abs()`, que se utiliza para hallar el valor absoluto de valores enteros o reales y el módulo de números complejos. 
 
 Nótese en la celda siguiente el uso de **comentarios**: líneas de texto libre, que comienzan con el carácter `#` y que se extienden hasta el final de la línea. Estos comentarios son ignorados por el intérprete, pero son útiles para aclarar el funcionamiento del código.
@@ -106,11 +116,11 @@ Funciones como `abs()`, `round()` o `len()` están predefinidas y directamente d
 +++
 
 ## Funciones definidas en módulos
-Además de las funciones **nativas** del lenguaje existe muchas otras, útiles en diferentes campos, que están disponibles si se **importa** el **módulo** adecuado.
+Además de las funciones **nativas** del lenguaje existen muchas otras, útiles en diferentes campos, que están disponibles si se **importa** el **módulo** adecuado.
 
 Una discusión completa del significado de los módulos, cómo trabajar con ellos y cómo crearlos se hará más adelante. Por ahora baste mencionar que mediante ellos podemos acceder a un conjunto suplementario de funciones. 
 
-Una forma (**¡desaconsejada!**) de *importar* todas las funciones de un módulo es con la expresión:
+Una forma de *importar* todas las funciones de un módulo es con la expresión:
 ```python
 from modulo import *
 
@@ -131,18 +141,23 @@ Por ejemplo, los módulos `math` y `cmath` (este último adaptado al cálculo co
 
 En el ejemplo siguiente, al importarse en segundo lugar el módulo `math` se **sobrescribe** la función `sqrt()` para complejos y el cálculo produce un **error en tiempo de ejecución** `ValueError`. ¡Se ha producido una **colisión** entre identificadores!
 
-Nótese que el hecho de que se produzca este error es una buena noticia. Imaginad una **colisión** entre dos funciones con desempeños diferentes que no generen este tipo de error. ¡Tendríamos un **error semántico** de difícil detección!
-
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 from cmath import *
 from math import *
 
 sqrt(-3)
 ```
 
+Nótese que el hecho de que se produzca este error es una buena noticia. Imaginad una **colisión** entre dos funciones con desempeños diferentes que no generen este tipo de error. ¡Tendríamos un **error semántico** de difícil detección!
+
 Si en la celda anterior cambiamos el orden de importación, el error desaparece. ¡Verifícalo! 
 
-¿Cuál es la manera de proceder? Veámoslo con el mismo ejemplo.
++++
+
+### Procedimiento de importación
+¿Cuál es la manera correcta de proceder? Veámoslo con el mismo ejemplo.
 
 ```{code-cell} ipython3
 import cmath
@@ -153,147 +168,87 @@ cmath.sqrt(-3)
 
 Ahora, para acceder a las funciones de cada módulo anteponemos su nombre seguido del operador `.`. 
 
-Es cierto que el código resultante es más verboso, pero evitamos colisiones entre los identificadores de los objetos definidos en cada módulo. Estos identificadores constituyen el **espacio de nombres** de cada módulo.
+Es cierto que el código resultante es más verboso, pero evitamos colisiones entre los identificadores de los objetos definidos en cada módulo. Tanto ``cmath.`` como ``math.`` actúan como **espacio de nombres** que permiten acceder al correcto identificador contenido en cada módulo.
 
 +++
 
 ***
-<a id='Introspección_y_conversiones_de_tipo'></a>
+<a id='Introspección'></a>
 
 +++
 
-## (*) _Introspección y conversiones de tipo_
+## Introspección
+Ya hemos ocmentado que en Python, tanto las variables como las funciones son objetos. Entre las funciones nativas que proporciona Python, se encuentran aquellas que permiten examinar las propiedades de un objeto en **tiempo de ejecución**.
 
-Las funciones disponibles en Python son de muy diversa naturaleza. Por ejemplo, hay funciones que permiten hacer **introspección** interrogando el tipo de los valores.
++++
+
+#### La función ``type()``
+La función ``type()`` interroga el tipo del valor de un objeto.
 
 ```{code-cell} ipython3
 a = 1
 type(a)      # Devuelve el tipo de datos del valor que representa a
 ```
 
-O **convertir** valores entre diferentes tipos siempre que esto sea posible.
-
 ```{code-cell} ipython3
-b = float(a) # Existen funciones de conversión de tipo: float(), int (), bool(), complex()
-type(b)
-```
-
-Estos tipos de funciones son muy versátiles: pueden recibir como argumentos diferentes valores *representando* distintos tipos de datos. Son incluso capaces de convertir una cadena de caracteres, que puede representar un valor (entero en el ejemplo), al valor numérico equivalente.
-
-```{code-cell} ipython3
-a = "1221"   # Se obtiene el entero representado en la cadena, si es posible
-int(a)
-```
-
-La función `str()` por su parte, recibe como argumento un valor y lo convierte a su representación como cadena de caracteres.
-
-```{code-cell} ipython3
-str(1.e-12)
-```
-
-Las cadenas de caracteres son *colecciones* de caracteres alfanuméricos. Veremos algunas de las diferentes formas de codificar estos caracteres a partir de valores numéricos (**ASCII**, **UNICODE**). Las funciones `ord()` y `chr()` brindan respectivamente el código que representa una letra determinada y el carácter representado por un código numérico. Las mayúsculas y las minúsculas tienen códigos diferentes.
-
-```{code-cell} ipython3
-ord('a')
+a = 1.1
+type(a)      # Devuelve el tipo de datos del valor que representa a
 ```
 
 ```{code-cell} ipython3
-chr(65)
+a = 'Hola'
+type(a)      # Devuelve el tipo de datos del valor que representa a
 ```
 
-***
-<a id='Introducción_al_concepto_de_objeto:_atributos_y_métodos'></a>
-
-+++
-
-## (*) _Introducción al concepto de objeto: atributos y métodos_
-
-Tanto las variables como las funciones son **objetos** en Python. 
-
-Un **objeto** es una entidad conformada por:
-
-* **Atributos**, conjunto de datos que determinan el **estado** del objeto, en definitiva, el **valor** del objeto.
-* **Métodos**, funciones específicas que pueden ser aplicadas a los **atributos** del objeto para obtener información acerca de este o, en ocasiones, para modificarlo.
-
-Todo **objeto** en Python tiene una **identidad**, un **tipo** y un **valor**.
-
-#### Identidad
-La **identidad** de un objeto nunca cambia una vez que ha sido creado. Puede asimilarse como su dirección en memoria.
-* mediante el operador nativo `is` podemos comparar la identidad de dos objetos, es decir, si dos variables referencian al mismo objeto.
-* la función nativa `id()` devuelve un entero que representa su identidad
-
-#### Tipo
-El **tipo** determina los posibles valores y operadores que ese objeto soporta.
-* la función nativa `type()` devuelve el tipo de un objeto
-
-Al igual que la identidad, el tipo de un objeto es inalterable.
-
-#### Valor
-El **valor** de un objeto puede o no variar en función del tipo. Los objetos cuyo valor puede cambiar son objetos **mutables** mientras que los que no pueden ser alterados son objetos **inmutables**. Por ejemplo, los tipos de datos `int`, `float`, `bool` y `str` son inmutables. Más adelante veremos tipos como las **listas** y los **diccionarios** que son mutables.
-
-+++
-
-###  **_Variables_** de Python en memoria
-
-El tratamiento que _internamente_ reciben las **variables** de Python difiere del que reciben en otros lenguajes más convencionales como el C/C++.
-
-+++
-
-![traza1.jpg](attachment:traza1.jpg)
-
-+++
-
-En lenguajes como el C/C++, en los que el tipo de cada variable se declara antes de usarlo, los nombres de estas últimas hacen referencia a **localizaciones** o **bloques** de memoria **diferentes** en el ordenador. Cada uno de estos **bloques** tiene la _capacidad_ de almacenar el **tipo** de dato declarado. De manera que, en el ejemplo, `x` e `y` representan dos conjuntos de celdas diferentes. La primera asignación, hace que en el **bloque** correspondiente a `x` se almacene un `1` y en la segunda asignación, que el contenido de `x` (un `1` como se ha visto) sea **colocado** en las celdas de memoria que representan a `y`.
-
-En el caso de Python, la interpretación es diferente. Python es un lenguaje de **_tipado dinámico_** en que no hay que declarar el tipo de las variables antes de usarlas. De manera que, cuando se realiza la primera asignación, se deposita el valor `1` en algún **bloque** de memoria del ordenador, y se le asigna a ese valor el **nombre** o **identificador** `x`. Cuando se realiza la siguiente asignación, se le asigna un nuevo nombre (un **alias**), en este caso `y`, al **mismo bloque** de memoria donde estaba colocado el `1`.
-
-En lenguajes como el C/C++, cada **variable** identifica una localización de memoria diferente que puede **modificar** su contenido: de ahí el nombre de variable.
-
-En Python los **nombres**  son como **etiquetas** que puede hacer referencia al mismo valor en la misma localización de memoria. En cualquier caso, también nos referimos a estos como variables.
-
-+++
-
-![traza2.jpg](attachment:traza2.jpg)
-
-+++
-
-Si ahora, en el código de C/C++ se ejecuta la siguiente asignación, simplemente se **modifica** el valor de la **variable** `x` que ahora pasará a contener un `2`.
-
-En el caso de Python, como los enteros (y otros valores simples `float`, `bool`, etc) se consideran **inmutables**, cuando se hace la asignación ```x = 2```, en realidad se está creando, en otra localización de memoria, espacio para almacenar el nuevo valor `2`, haciendo ahora que la _etiqueta_ `x`, que antes estaba _unida_ al valor `1`, se refiera ahora al `2`. Finalmente, se tiene la situación que se muestra en el esquema previo.
-
-De manera que, aunque el mecanismo de funcionamiento de la memoria en Python es diferente, para el caso de los tipos **inmutables** el resultado neto, es el mismo.
+#### La función ``id()`` y el operador ``is``
+La función nativa ``id()`` muestra por pantalla un entero, que es **único** para cada objeto almacenado en memoria. Es equivalente a su dirección de memoria.
 
 ```{code-cell} ipython3
-# Tras asignar y = x ambos identificadores referencian al mismo objeto
-x = 3
+x = 3.5
+id(x)
+```
+
+```{code-cell} ipython3
 y = x
-print(x is y)
+id(y)
 ```
 
-```{code-cell} ipython3
-# El objeto 1, un entero, es inmutable
-# El identificador x referencia en cada momento a dos objetos distintos
-x = 1
-print(id(x))
+Nótese que la función ``id()`` devuelve la identificación del objeto ``float`` de valor ``3.5``. Las variables ``x`` e ``y`` son meras etiquetas ligadas a ese objeto.
 
-x += 1 # Se crea un nuevo objeto de valor 2
-print(id(x))
+El operador ``is`` permite determinar si dos variables están ligadas al mismo objeto.
+
+```{code-cell} ipython3
+x is y
 ```
 
-Incluso los **valores** aparentemente más simples son objetos en Python. La función nativa `dir()` , al sacar por pantalla todos los atributos y métodos de la **clase** a la que pertenece un **objeto**, nos revela este hecho.
+Nótese que la salida de la celda anterior es ``True``. Es un resultado lógico o booleano (en referencia al álgebra de G. Boole). El otro posible valor es ``False``.
 
 ```{code-cell} ipython3
-a = 1
+x = 5.6
+x is y
+```
+
+#### La función ``dir()``
+La función nativa ``dir()`` muestra por pantalla todos los atributos, datos y métodos, de la **clase** a la que pertenece un **objeto**.
+
+```{code-cell} ipython3
+a = 1.1
 dir(a)
 ```
 
-```{code-cell} ipython3
-st = "Una cadena"
-dir(st)
-```
+***
+<a id='El_operador_punto'></a>
 
-### El operador `.`
-Para acceder a un atributo o utilizar un método de un objeto debe utilizarse el operador `.`.
++++
+
+## El operador `.`
+Para acceder a un atributo tipo dato o utilizar un método de un objeto, debe utilizarse el operador `.`.
+
+Por ejemplo, los valores de tipo `complex` tienen, entre otros, dos atributos llamados `real` e `imag`, que permiten acceder de forma individual a la parte real e imaginaria del valor.
+
++++
+
+#### Ejemplos con ``complex``
 
 Por ejemplo, los valores de tipo `complex` tienen, entre otros, dos atributos llamados `real` e `imag`, que permiten acceder de forma individual a la parte real e imaginaria del valor.
 
@@ -313,6 +268,7 @@ b = a.conjugate()
 b
 ```
 
+#### Ejemplos con ``str``
 El método `.upper()` actúa sobre el valor de una variable de tipo `str` transformando todos sus caracteres a mayúsculas.
 
 ```{code-cell} ipython3
@@ -338,6 +294,7 @@ cad = "1232"
 cad.isdigit()
 ```
 
+#### Ejemplos para ``float``
 Para valores numéricos también disponemos de métodos. Por ejemplo, el método `.as_integer_ratio()` de los `float` devuelve la representación fraccionaria del número real.
 
 ```{code-cell} ipython3
@@ -345,5 +302,47 @@ a = 1.5
 a.as_integer_ratio()
 ```
 
+El método `.is_integer()` devuelve ``True`` si el valor no tiene parte fraccionaria.
+
+```{code-cell} ipython3
+a = 2.0
+a.is_integer()
+```
+
 Tanto en el entorno **Jupyter Notebook** como en **Spyder**, pulsando el tabulador después de escribir
 `variable.` se muestra un menú desplegable que nos muestra los atributos y métodos asociados al tipo de objeto al que pertenece `variable`.
+
++++
+
+***
+<a id='Conversiones_de_tipos'></a>
+
++++
+
+## Conversiones de tipos
+Para determinados tipos, es posible realizar **conversiones** entre ellos.
+
+```{code-cell} ipython3
+b = float(a) # Existen funciones de conversión de tipo: float(), int (), bool(), complex()
+type(b)
+```
+
+Estos tipos de funciones son muy versátiles: pueden recibir como argumentos diferentes valores *representando* distintos tipos de datos. Son incluso capaces de convertir una cadena de caracteres, que puede representar un valor (entero en el ejemplo), al valor numérico equivalente.
+
+```{code-cell} ipython3
+a = "1221"   # Se obtiene el entero representado en la cadena, si es posible
+int(a)
+```
+
+Si la conversión no es posible, se genera una **excepción**.
+
+```{code-cell} ipython3
+a = "12.21"   # Se obtiene el entero representado en la cadena, si es posible
+int(a)
+```
+
+La función `str()` por su parte, recibe como argumento un valor y lo convierte a su representación como cadena de caracteres.
+
+```{code-cell} ipython3
+str(1.e-12)
+```

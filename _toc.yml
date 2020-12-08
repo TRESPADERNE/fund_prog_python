@@ -3,5 +3,5 @@
 #
 - file: notebooks/0_Introduccion/Introduccion
 - file: notebooks/1_Tipos_y_variables/Tipos_y_variables
-- file: notebooks/2_Funciones_predefinidas_Concepto_de_objeto/Funciones_predefinidas
+- file: notebooks/2_Funciones_predefinidas/Funciones_predefinidas
 

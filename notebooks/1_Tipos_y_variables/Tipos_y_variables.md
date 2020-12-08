@@ -20,6 +20,7 @@ kernelspec:
 [Expresiones y sentencias](#Expresiones_y_sentencias)<br>
 [Tipos de datos](#Tipos_de_datos)<br>
 [Variables](#Variables)<br>
+[Introducción al concepto de objeto](#Concepto_objeto)
 
 +++
 
@@ -562,3 +563,34 @@ Si ahora, en el código de C/C++ se ejecuta la asignación ``x = 2``, simplement
 En el caso de Python, los enteros, ``int``, reales, ``float`` y otros tipos se consideran **inmutables**. Esto significa que una vez almacenado en memoria el valor, este no se puede modificar. Ese bloque de memoria es **inmutannle**. Por ello, cuando se hace la asignación ``x = 2``, en realidad se está creando, en otra localización de memoria, espacio para almacenar el nuevo valor `2`, haciendo ahora que la **etiqueta** `x`, que antes estaba **ligada** al bloque de memoria con valor `1`, se refiera ahora al bloque de memoria con valor `2`. 
 
 De manera que, aunque el mecanismo de funcionamiento de la memoria en Python es diferente, para el caso de los tipos **inmutables** el resultado neto, es el mismo.
+
++++
+
+***
+<a id='Concepto_objeto'></a>
+
++++
+
+## Introducción al concepto de objeto
+
+Tanto las variables como las funciones, que veremos más adelante, son **objetos** en Python. 
+
+Un **objeto** es una entidad conformada por **atributos** de dos tipos:
+
+* Un conjunto de **datos** que determinan el **estado** del objeto.
+* Una serie de **métodos**, funciones específicas que pueden ser aplicadas a los **datos** del objeto para obtener información acerca de este o, en ocasiones, para modificarlo.
+
+Todo **objeto** en Python tiene una **identidad**, un **tipo** y un **valor**.
+
+#### Identidad
+La **identidad** de un objeto nunca cambia una vez que ha sido creado. Puede asimilarse como su dirección en memoria.
+
+#### Tipo
+El **tipo**, del que ya hemos hablado, determina los posibles valores y operadores que ese objeto soporta.
+
+Al igual que la identidad, el tipo de un objeto es inalterable.
+
+#### Valor
+El **valor** de un objeto puede o no variar en función del tipo. Los objetos cuyo valor puede cambiar son objetos **mutables** mientras que los que no pueden ser alterados son objetos **inmutables**.
+
+Ya hemos comentado que los objetos con tipos  `int`, `float` o `str` entre otros, son inmutables. Más adelante veremos tipos como las **listas** y los **diccionarios** que son mutables.
