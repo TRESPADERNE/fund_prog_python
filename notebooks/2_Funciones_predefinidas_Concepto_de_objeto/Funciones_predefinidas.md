@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Funciones nativas. Concepto de objeto.  
+# Funciones nativas. Concepto de objeto.
 
 +++
 
@@ -235,7 +235,7 @@ El **valor** de un objeto puede o no variar en función del tipo. Los objetos cu
 
 ###  **_Variables_** de Python en memoria
 
-El tratamiento que _internamente_ reciben las **variables** de Python difiere del que reciben en otros lenguajes más convencionales como el C/C++. 
+El tratamiento que _internamente_ reciben las **variables** de Python difiere del que reciben en otros lenguajes más convencionales como el C/C++.
 
 +++
 

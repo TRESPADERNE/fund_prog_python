@@ -2,5 +2,6 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: notebooks/0_Introduccion/Introduccion
-- file: notebooks/1_Expresiones_operadores_y_tipos_de_datos/Expresiones_operadores_y_tipos_de_datos
+- file: notebooks/1_Tipos_y_variables/Tipos_y_variables
+- file: notebooks/2_Funciones_predefinidas_Concepto_de_objeto/Funciones_predefinidas
 
