@@ -5,10 +5,15 @@ title: Fundamentos de Programación en Python
 author: Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría
 logo: logo.png
 
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+# Auto-exclude files not in the toc
+only_build_toc_files        : true
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: cache
+ 
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -26,3 +31,4 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+

@@ -1,7 +1,8 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-- file: notebooks/0_Introduccion/Introduccion
-- file: notebooks/1_Tipos_y_variables/Tipos_y_variables
-- file: notebooks/2_Funciones_predefinidas/Funciones_predefinidas
+- file: notebooks/00_Introduccion/Introduccion
+- file: notebooks/01_Tipos_y_variables/Tipos_y_variables
+- file: notebooks/02_Funciones_predefinidas/Funciones_predefinidas
+- file: notebooks/03_E_S/Entrada_salida
 

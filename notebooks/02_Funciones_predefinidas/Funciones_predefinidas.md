@@ -36,7 +36,7 @@ Las expresiones combinan valores y operadores para obtener un nuevo valor. No ob
 
 Python, al igual que otros lenguajes de programación, tiene también el concepto de **función**, cuyo significado no coincide de forma exacta con la definición matemática, pero que puede ser utilizada para dar cuerpo a estas últimas.
 
-Las funciones de Python serán objeto de un estudio más detallado posteriormente, donde aprenderemos a programar nuestras propias funciones. De momento, sin embargo, iremos introduciendo las **funciones nativas** (**built-in functions**) que Python pone a nuestra disposición. 
+Las funciones de Python serán objeto de un estudio más detallado posteriormente, donde aprenderemos a programar nuestras propias funciones. De momento, sin embargo, iremos introduciendo las **funciones nativas** (**built-in functions**) que Python pone a nuestra disposición.
 
 +++
 
@@ -152,7 +152,7 @@ sqrt(-3)
 
 Nótese que el hecho de que se produzca este error es una buena noticia. Imaginad una **colisión** entre dos funciones con desempeños diferentes que no generen este tipo de error. ¡Tendríamos un **error semántico** de difícil detección!
 
-Si en la celda anterior cambiamos el orden de importación, el error desaparece. ¡Verifícalo! 
+Si en la celda anterior cambiamos el orden de importación, el error desaparece. ¡Verifícalo!
 
 +++
 
@@ -178,7 +178,7 @@ Es cierto que el código resultante es más verboso, pero evitamos colisiones en
 +++
 
 ## Introspección
-Ya hemos ocmentado que en Python, tanto las variables como las funciones son objetos. Entre las funciones nativas que proporciona Python, se encuentran aquellas que permiten examinar las propiedades de un objeto en **tiempo de ejecución**.
+Ya hemos comentado que en Python, tanto las variables como las funciones son objetos. Entre las funciones nativas que proporciona Python, se encuentran aquellas que permiten examinar las propiedades de un objeto en **tiempo de ejecución**.
 
 +++
 
@@ -229,7 +229,7 @@ x is y
 ```
 
 #### La función ``dir()``
-La función nativa ``dir()`` muestra por pantalla todos los atributos, datos y métodos, de la **clase** a la que pertenece un **objeto**.
+La función nativa ``dir()`` muestra por pantalla todos los atributos, datos y métodos, utilizables con un **objeto**.
 
 ```{code-cell} ipython3
 a = 1.1
@@ -320,10 +320,10 @@ Tanto en el entorno **Jupyter Notebook** como en **Spyder**, pulsando el tabulad
 +++
 
 ## Conversiones de tipos
-Para determinados tipos, es posible realizar **conversiones** entre ellos.
+Para determinados tipos, es posible realizar **conversiones** entre ellos. Existen diversas funciones de conversión de tipo: ``float()``, ``int()``, ``complex()``, etc.
 
 ```{code-cell} ipython3
-b = float(a) # Existen funciones de conversión de tipo: float(), int (), bool(), complex()
+b = float(a) # 
 type(b)
 ```
 
@@ -337,6 +337,8 @@ int(a)
 Si la conversión no es posible, se genera una **excepción**.
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 a = "12.21"   # Se obtiene el entero representado en la cadena, si es posible
 int(a)
 ```
