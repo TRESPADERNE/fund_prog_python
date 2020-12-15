@@ -1,5 +1,0 @@
-Lista de productos y precios en Euros
-ref_1 1.5
-ref_2 2.1
-ref_3 9.98
-ref_4 4.41

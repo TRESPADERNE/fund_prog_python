@@ -207,6 +207,6 @@ Si se omite esta especificación, se asume el mismo orden en que los argumentos 
 Véase el ejemplo siguiente. Haced modificaciones y razonad el resultado.
 
 ```{code-cell} ipython3
-print("{:5d}{:15.3f}".format(123,1.234343))
-print("{1:5f}{0:15d}".format(1,1180.2))
+print("{:5d}{:15.3f}".format(123, 1.234343))
+print("{1:5f}{0:15d}".format(1, 1180.2))
 ```

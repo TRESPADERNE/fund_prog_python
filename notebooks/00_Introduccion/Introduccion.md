@@ -19,8 +19,7 @@ kernelspec:
 [Introducción](#Introducción)<br>
 [Instalación y consideraciones prácticas](#Instalación_y_consideraciones_prácticas)<br>
 [El Zen de Python](#El_Zen_de_Python)<br>
-[Cómo ejecutar código Python](#Cómo_ejecutar_código_Python)<br>
-[Bibliografía](#Bibliografía)<br>
+[Cómo ejecutar código Python](#Cómo_ejecutar_código_Python)
 
 +++
 
@@ -233,26 +232,3 @@ Los **cuadernos** se ejecutan localmente en un navegador sin necesidad de estar 
 La aplicación **Jupyter Notebook** tiene un componente fundamental, el **núcleo** (**kernel**), encargado de ejecutar el código contenido en el documento. Por defecto, se ejecuta el **núcleo IPython**, pero existen núcleos para otros muchos lenguajes. 
 
 Los *notebooks* están basando su éxito no sólo en su utilidad como herramienta de desarrollo, sino como un extraordinario medio de compartir el trabajo científico o el material académico a través de una narrativa interactiva que mezcla código, texto, datos, etc.
-
-+++
-
-***
-<a id='Bibliografía'></a>
-
-+++
-
-## Bibliografía
-Este cuaderno está basado en los dos primeros cuadernos introductorios del libro de **Jake Vanderplas**:
-> A Whirlwind Tour of Python by Jake VanderPlas (O’Reilly). Copyright 2016 O’Reilly Media, Inc., 978-1-491-96465-1.
-
-La versión *notebook* del libro está disponible en [**GitHub**](https://github.com/jakevdp/WhirlwindTourOfPython).
-
-+++
-
-***
-<a id='Licencia_de_uso'></a>
-
-+++
-
-<a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/p/zero/1.0/88x31.png" /></a><br />  
-<a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0">Creative Commons Public Domain CC0</a>.

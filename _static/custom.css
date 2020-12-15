@@ -1,0 +1,32 @@
+
+table p {
+  margin-top: 0em ;
+  margin-bottom: 0em ;
+}
+
+
+
+div.section table, td
+{
+  white-space: normal !important;
+
+  margin-left: 1em !important;
+  
+}
+
+div.section tbody, tr, td, th
+{
+	border: 1px solid #dee2e6;
+}
+
+table 
+{
+    padding-left: 2em !important;
+}
+
+code
+{
+	#font-size:100% !important
+	margin-top: 0em ;
+  	margin-bottom: 0em ;
+}

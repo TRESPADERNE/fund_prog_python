@@ -182,7 +182,7 @@ Ya hemos comentado que en Python, tanto las variables como las funciones son obj
 
 +++
 
-#### La función ``type()``
+### La función ``type()``
 La función ``type()`` interroga el tipo del valor de un objeto.
 
 ```{code-cell} ipython3
@@ -200,7 +200,7 @@ a = 'Hola'
 type(a)      # Devuelve el tipo de datos del valor que representa a
 ```
 
-#### La función ``id()`` y el operador ``is``
+### La función ``id()`` y el operador ``is``
 La función nativa ``id()`` muestra por pantalla un entero, que es **único** para cada objeto almacenado en memoria. Es equivalente a su dirección de memoria.
 
 ```{code-cell} ipython3
@@ -228,10 +228,12 @@ x = 5.6
 x is y
 ```
 
-#### La función ``dir()``
+### La función ``dir()``
 La función nativa ``dir()`` muestra por pantalla todos los atributos, datos y métodos, utilizables con un **objeto**.
 
 ```{code-cell} ipython3
+:tags: [scroll-output]
+
 a = 1.1
 dir(a)
 ```
@@ -248,7 +250,7 @@ Por ejemplo, los valores de tipo `complex` tienen, entre otros, dos atributos ll
 
 +++
 
-#### Ejemplos con ``complex``
+**Ejemplos con ``complex``**
 
 Por ejemplo, los valores de tipo `complex` tienen, entre otros, dos atributos llamados `real` e `imag`, que permiten acceder de forma individual a la parte real e imaginaria del valor.
 
@@ -268,7 +270,8 @@ b = a.conjugate()
 b
 ```
 
-#### Ejemplos con ``str``
+**Ejemplos con ``str``**
+
 El método `.upper()` actúa sobre el valor de una variable de tipo `str` transformando todos sus caracteres a mayúsculas.
 
 ```{code-cell} ipython3
@@ -294,7 +297,8 @@ cad = "1232"
 cad.isdigit()
 ```
 
-#### Ejemplos para ``float``
+**Ejemplos para ``float``**
+
 Para valores numéricos también disponemos de métodos. Por ejemplo, el método `.as_integer_ratio()` de los `float` devuelve la representación fraccionaria del número real.
 
 ```{code-cell} ipython3

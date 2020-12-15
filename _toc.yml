@@ -5,4 +5,6 @@
 - file: notebooks/01_Tipos_y_variables/Tipos_y_variables
 - file: notebooks/02_Funciones_predefinidas/Funciones_predefinidas
 - file: notebooks/03_E_S/Entrada_salida
+- file: notebooks/04_Control_de_flujo_condicional/Control_de_flujo_condicional
+- file: notebooks/05_Listas_y_tuplas/Listas_y_tuplas
 
