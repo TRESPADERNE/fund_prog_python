@@ -160,7 +160,7 @@ Los operadores lógicos se especifican completamente por sus **tablas de verdad*
 |  ``x``    | ``not x``  | 
 |:------:|:--------:|
 | ``True``  | ``False``  | 
-| ``False`` | ``True``   | 
+| ``False`` | ``True``   |
 
 +++
 
@@ -241,7 +241,7 @@ La siguiente tabla muestra las precedencias de los operadores estudiados hasta e
 La estructura **condicional**, en su versión más sencilla, permite decidir si ejecutar o no determinadas sentencias, en base a si es cierta una expresión lógica dada.
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Estructura condicional simple
 
@@ -318,7 +318,7 @@ Nótese además que en Python no es obligatorio que la expresión de control est
 La **estructura condicional ampliada** establece, como en el caso previo, las sentencias que se han de ejecutar si la expresión lógica de control se satisface. Pero, adicionalmente, indica aquellas sentencias que se ejecutarán en el caso contrario, cuando la expresión de control es falsa, introduciendo la palabra reservada `else`. Véase el siguiente ejemplo:
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Estructura condicional ampliada (if ... else)
 
@@ -353,7 +353,7 @@ Se utilizará mes 2
 En el caso de que existan, en lugar de dos, **n** caminos de ejecución alternativos, se puede extender la estructura anterior de la manera que se muestra a continuación:
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Estructura condicional anidada (if ... elif ...else)
 
@@ -389,7 +389,7 @@ else:
 
 Una posible ejecución de la celda sería:
 
-```cpp
+```
 Introduzca el mes del año 12
 El mes es de diciembre tiene 31 días
 ```
@@ -402,10 +402,10 @@ Algunas cosas sobre las que reflexionar en el código de la celda previa:
 - Si la expresión de control de un `if` **múltiple** evalúa a cierta, el resto de las expresiones de control *aguas abajo* no son ni siquiera evaluadas.
 - El último `else` es opcional.
 
-Frecuentemente se utilizan conectivas lógicas en las expresiones de control del `if`. Vea una variante. más compacta, del código previo. Eso sí, se pierde la información respecto al mes.
+Frecuentemente se utilizan conectivas lógicas en las expresiones de control del `if`. Vea una variante, más compacta, del código previo. Eso sí, se pierde la información respecto al mes.
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Estructura condicional anidada (if ... elif ...else) (con conectivas lógicas)
 
@@ -421,42 +421,23 @@ else:
     print("Mes no válido")
 ```
 
-Una alternativa más **"económica"** a la solución anterior y más en consonancia con la filosofía de Pyhton, es la que se ofrece en el siguiente fragmento. Está solución se basa en el hecho de que Python maneja de forma muy eficiente secuencias de datos (listas, tuplas) que se definirán en el siguiente tema. En particular el operador especial ```in``` es capaz de determinar la **pertenencia** o no de un valor a una colección de valores. De manera que, aunque el código siguiente se comprenderá en su justa dimensión más adelante, lo insertamos aquí para futura referencia.
-
-```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
-
-# Estructura condicional anidada (if ... elif ...else) (con tuplas)
-
-mes = int(input("Introduzca el mes del año "))
-
-if mes in  (1, 3, 5, 7, 8, 10, 11):
-    print("El mes tiene 31 días")
-elif mes == 2: 
-    print("El mes tiene 28 o 29 días")
-elif mes in (4, 6, 9, 11):
-    print("El mes tiene 30 días")
-else:
-    print("Mes no válido")
-```
-
 La naturaleza anidada puede verse en el siguiente ejemplo. Es una variante idéntica a la anterior, sin utilizar ``elif``.
 Lógicamente, la fórmula anidada aporta legibilidad.
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Estructura condicional anidada (if ... elif ...else) (con tuplas)
 
 mes = int(input("Introduzca el mes del año "))
 
-if mes in  (1, 3, 5, 7, 8, 10, 11):
+if mes == 1 or mes == 3 or mes == 5 or mes ==7 or mes == 8 or mes == 10 or mes == 11:
     print("El mes tiene 31 días")
 else:
     if mes == 2: 
         print("El mes tiene 28 o 29 días")
     else:
-        if mes in (4, 6, 9, 11):
+        if mes == 4 or mes == 6 or mes == 9 or mes == 11:
             print("El mes tiene 30 días")
         else:
             print("Mes no válido")

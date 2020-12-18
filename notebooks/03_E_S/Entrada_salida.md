@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# La entrada/salida.
+# La entrada/salida
 
 +++
 

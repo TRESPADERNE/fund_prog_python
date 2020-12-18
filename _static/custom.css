@@ -30,3 +30,9 @@ code
 	margin-top: 0em ;
   	margin-bottom: 0em ;
 }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
