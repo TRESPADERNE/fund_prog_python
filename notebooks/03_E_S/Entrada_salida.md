@@ -115,7 +115,7 @@ Para lograr la introducción vía teclado de los valores de los datos (`radio` y
 :hidePrompt: false
 :tags: [raises-exception, remove-output]
 
-## Programa que calcula el área de un cilindro con entrada y salida
+# Programa que calcula el área de un cilindro con entrada y salida
 from math import pi
 
 cadena_radio = input()
@@ -134,6 +134,8 @@ print("El área del cilindro es:", area_cilindro)
 ```
 
 Una posible ejecución de la celda sería:
+
++++
 
 ```cpp
 1

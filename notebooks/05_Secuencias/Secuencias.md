@@ -409,7 +409,16 @@ tupla = (0,)*num
 print("Una tupla de {} elementos inicializada a 0:\n  {}".format(num, tupla))
 ```
 
-Por razones obvias, los operadores ``+`` y ``*`` no están permitidos en los tipos ``range``, dado que su aplicación generaría con caracter general una secuencia que no correspondería a un rango.
+Para concatenar listas y tuplas se puede usar el operador sobrecargado `+=`. Debe notarse que en el caso de tuplas no se mantiene la identidad de la tupla original, algo lógico dado su inmutabilidad.
+
+```{code-cell} ipython3
+tupla = 1, 2
+identidad = id(tupla)
+tupla += 3, 4
+print('La nueva tupla {} tiene una identidad {}, que es diferente de la original, {}'.format(tupla, identidad, id(tupla)))
+```
+
+Por razones obvias, los operadores ``+``, ``+=`` y ``*`` no están permitidos en los tipos ``range``, dado que su aplicación generaría con caracter general una secuencia que no correspondería a un rango.
 
 +++
 
@@ -593,7 +602,7 @@ lista.remove(4)  # Excepción ValueError
 
 ### Añadiendo elementos
 #### Concatenación 
-Para concatenar la secuencia original con otra se puede usar el operador sobrecargado `+=` o el método ``.extend()``.
+Para concatenar la secuencia original con otra se puede usar el operador sobrecargado `+=` o el método ``.extend()``. Como ya hemos comentado, en el caso de listas, se mantiene la identidad de la lista original.
 
 ```{code-cell} ipython3
 # Concatenando listas
@@ -721,7 +730,7 @@ La principal diferencia entre listas y tuplas es la mutabilidad. Si la aplicaci�
 Tanto listas como tuplas pueden contener elementos de diferentes tipos de datos. Un elemento de una lista puede ser a su vez otra lista (**listas anidadas**) o una tupla, y viceversa. 
 
 En general, es un uso extendido pero no obligado:
-* Usar listas para almacenar datos homogéneos en secuencias que puedan cambiar de tamaño durante el programa o que puedan 
+* Usar listas para almacenar datos homogéneos en secuencias que puedan cambiar de tamaño durante la ejecución del programa o que puedan 
   alterar el valor de sus elementos. Sería el equivalente a los vectores de lenguajes como C++.
 * Usar tuplas para almacenar datos homogéneos o heterogéneos cuya estructura o valor no vaya a sufrir modificaciones. Sería el 
   equivalente a las estructuras en C++.
@@ -764,7 +773,7 @@ print(lista_alumnos)
 +++
 
 ## Cadenas de caracteres
-Las cadenas de caracteres son **secuencias inmutables de caracteres alfanuméricos**. La mayor parte de las veces, se trabaja con las cadenas tomándolas en su conjunto. Pero es perfectamente posible acceder a los caracteres individuales, utilizando los conceptos vistos previamente.
+Las cadenas de caracteres son **secuencias inmutables de caracteres alfanuméricos**. La mayor parte de las veces se trabaja con las cadenas tomándolas en su conjunto. Pero es perfectamente posible acceder a los caracteres individuales, utilizando los conceptos vistos previamente.
 
 ```{code-cell} ipython3
 cadena = "La cadena de caracteres es una secuencia"
@@ -789,6 +798,15 @@ cadena = 'La vida es dura'
 subcadena = 'dura'
 if 'dura' in cadena:
     print('La subcadena \'{}\' está contenida en la cadena \'{}\''.format(subcadena, cadena))
+```
+
+Otro operador habitual, utilizado para concatenar cadenas de caracteres, es ``+=``. Recordemos que, dada la inmutabilidad, la identidad de la cadena puede variar.
+
+```{code-cell} ipython3
+cadena = 'Hola'
+identidad = id(cadena)
+cadena += ' mundo.'
+print('La nueva cadena \'{}\' tiene una identidad {}, que es diferente de la original, {}'.format(cadena, identidad, id(cadena)))
 ```
 
 ```{code-cell} ipython3

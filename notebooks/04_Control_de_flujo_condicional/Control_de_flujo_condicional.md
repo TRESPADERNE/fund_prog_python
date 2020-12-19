@@ -263,7 +263,9 @@ Esta línea se ejecuta en cualquier caso
 
 +++
 
-La sintaxis incluye la palabra reservada `if` seguida de una **expresión lógica** y el **delimitador** `:`. Las sentencias que aparecen **sangradas** a partir del delimitador `:` son aquellas que se evaluarán si la expresión lógica es `True`. ¡El sangrado (4 espacios es el valor recomendado) es obligatorio!
+La sintaxis incluye la palabra reservada `if` seguida de una **expresión lógica** y el **delimitador** `:`.
+
+Las sentencias asociadas al bloque ``if`` aparecen **sangradas** a partir del delimitador `:`. Son aquellas que se evaluarán si la expresión lógica es `True`. ¡El sangrado es obligatorio!, es parte de la sintaxis. (4 espacios es el valor recomendado). 
 
 En este ejemplo, se *pregunta* si el valor referido por `a` es diferente de cero.
 * Si durante la ejecución del programa el valor de `a` es diferente de `0` (porque el usuario lo decidió de ese modo al introducir el dato), entonces la expresión entre el `if` y el `:` se evalúa como `True` y esto implicará que se ejecuten las dos sentencias que aparecen sangradas hacia la derecha en el código.
