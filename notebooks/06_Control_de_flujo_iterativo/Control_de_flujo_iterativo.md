@@ -21,7 +21,6 @@ kernelspec:
 [Bucle `for`](#Bucle_for)<br>
 [Iterables](#Iterables)<br>
 [Sentencia `break`: salida temprana de un bucle](#Sentencia_break:_salida_temprana_de_un_bucle)<br>
-[Sentencia `continue`](#Sentencia_continue)<br>
 [Bucles anidados](#Bucles_anidados)
 
 +++
@@ -353,7 +352,7 @@ print(lista_tuplas)
 ```
 
 Para no tener que explicitar el contador ``i`` del ejemplo anterior, Python proporciona la función nativa `enumerate()`. 
-Esta función devuelve un objeto que es capaz de asociar en una tupla el índice y el elemento de un objeto iterable si se la invoca con la herramienta adecuada, como por ejemplo con un bucle ``for``. 
+Esta función devuelve un objeto que es capaz de asociar en una tupla el índice y el elemento de un objeto iterable si se la invoca con la herramienta adecuada, como por ejemplo con un bucle ``for``.
 
 ```{code-cell} ipython3
 # Asociando índice y elemento de un iterable en una lista de tuplas con enumerate() 
@@ -544,6 +543,8 @@ En muchas ocasiones resulta conveniente salir de un bucle, no mediante la evalua
 En el siguiente código se muestra un ejemplo típico. Se trata de determinar si un determinado número entero es primo o no.
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # Determina si un número entero es primo. (Versión 1)
 
 numero = int(input('Deme un entero positivo mayor que 1: '))
@@ -559,6 +560,14 @@ if es_primo:
 else:
     print("El número {} no es primo".format(numero))
 ```
+
+Una posible ejecución de la celda es:
+```
+Deme un entero positivo mayor que 1: 97
+El número 97 es primo
+```
+
++++
 
 Una advertencia: existen formas más eficientes de realizar la tarea propuesta; el código anterior debe verse como un intento inicial. 
 
@@ -578,13 +587,17 @@ Ya fuera del bucle, se interroga el valor del **centinela** para informar al usu
 
 +++
 
-Las variables **testigo** son inicializadas a un valor conocido antes de entrar a una zona del código y luego tomarán diferentes valores en dependencia de las sentencias que sean ejecutadas o no. De esta manera, cuando su valor sea interrogado al final, indicarán el *camino* concreto que siguió el programa, permitiendo sacar las oportunas conclusiones. 
+Las variables **testigo** son inicializadas a un valor **de reposo** antes de entrar a una zona del código en la que deseamos señalar si un determinado evento se ha producido o no. Las variables centinela suelen ser booleanas, pero en ocasiones pueden usarse enteros que tomarán diferentes valores en dependencia de las sentencias que sean ejecutadas o no. De esta manera, cuando su valor sea interrogado al final, indicarán el *camino* concreto que siguió el programa, permitiendo sacar las oportunas conclusiones. 
+
++++
 
 Se debe comprender que la salida anticipada de un bucle constituye un recurso que puede mejorar la escritura o legibilidad del código. No obstante, siempre se puede modificar el bucle de manera que sólo se pueda decidir la permanencia o salida del mismo a partir de la expresión de control. 
 
 En el ejemplo que nos ocupa:
 
 ```{code-cell} ipython3
+:tags: [remove-output, raises-exception]
+
 # Determina si un número entero es primo. Versión sin salida incondicional break. (Versión 2)
 
 numero = int(input('Deme un entero positivo mayor que 1: '))
@@ -611,6 +624,8 @@ Una versión más compacta se logra si nos damos cuenta que el propio contador `
 Así:
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # Determina si un número entero es primo. Versión usando while y el contador como testigo. (Versión 3)
 
 numero = int(input('Deme un entero positivo mayor que 1: '))
@@ -628,6 +643,8 @@ else:
 Y en su versión con bucle `for` **por rango**:
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # Determina si un número entero es primo. Versión usando for y el contador como testigo. (Versión 4)
 
 numero = int(input('Deme un entero positivo mayor que 1: '))
@@ -651,20 +668,38 @@ Decidir cuál de las implementaciones es superior es cuestión de debate. Más a
 
 +++
 
-## Sentencia `continue`
+### Sentencia `continue`
 
-De forma similar al `break`, la sentencia `continue` representa un _salto incondicional_ que se asocia a la ejecución de los bucles. La sentencia `continue` a diferencia del `break` no abandona el bucle, sino que cuando es ejecutada provoca un _salto_ inmediato al inicio del bucle, para procesar la siguiente iteración.
+De forma similar al `break`, la sentencia `continue` provoca un _salto incondicional_ durante la ejecución de un bucle. La sentencia `continue`, a diferencia del `break`, no abandona el bucle, sino que cuando es ejecutada provoca un _salto_ inmediato al inicio del bucle, para procesar la siguiente iteración.
 
 ```{code-cell} ipython3
-# Ejemplo de uso de la sentencia continue
+# Ejemplo de uso de la sentencia continue: no se imprimen los múltiplos de 3 (versión 1)
 
-for i in range(21):
+lista = []
+limite = 25
+for i in range(limite):
     if i%3 == 0:
         continue
-    print(i)
+    lista.append(i)
+    
+print(lista)
 ```
 
-Aunque la sentencia `continue` es menos utilizada que `break`, y al igual que esta última puede ser sustituida por construcciones `if: ...elif ...else:`, en algunas circunstancias ofrece una solución más estructurada y comprensible.
+Una forma más lógica sin ``continue`` es la que sigue:
+
+```{code-cell} ipython3
+# Ejemplo de uso de la sentencia continue: no se imprimen los múltiplos de 3 (versión 2)
+
+lista = []
+limite = 25
+for i in range(limite):
+    if i%3 != 0:
+        lista.append(i)
+    
+print(lista)
+```
+
+La sentencia `continue` es poco utilizada. En algunas circunstancias ofrece una solución más estructurada y comprensible. No la usaremos durante el curso.
 
 +++
 
@@ -675,7 +710,7 @@ Aunque la sentencia `continue` es menos utilizada que `break`, y al igual que es
 
 ## Bucles anidados
 
-Con cierta frecuencia la solución de un problema exige el uso de bucles que estén contenidos dentro de otros. Los bucles anidados pueden tener tantos niveles como se quiera. 
+Con cierta frecuencia la solución de un problema exige el uso de bucles que estén contenidos dentro de otros. Los **bucles anidados** pueden tener tantos niveles como se quiera. 
 
 La idea clave es: en cada iteración de un bucle externo, ocurren todas las iteraciones posibles de los bucles internos.
 
@@ -694,6 +729,52 @@ Dentro del bucle interno se saca por pantalla, utilizando un formato útil para 
 
 +++
 
-El sangrado existente en el segundo `print()` informa al intérprete de Python que este debe ser ejecutado, como parte del bucle externo, cada vez que el interno termina su ejecución. Su propósito es simplemente sacar por pantalla un cambio de línea. 
+El sangrado existente en el segundo `print()` informa al intérprete de Python que este debe ser ejecutado, como parte del bucle externo, cada vez que el interno termina su ejecución. Su propósito es simplemente provocar un cambio de línea. 
 
 El objetivo final logrado es la salida por la consola de la tabla de multiplicar. El ejemplo utilizado en este caso puede resultar trivial, pero el concepto ilustrado tiene muchas otras aplicaciones.
+
++++
+
+El siguiente ejemplo ilustra algunos de los conceptos vistos en este tema. La celda calcula una lista con las posiciones de la primera ocurrencia de cada elemento de una lista en otra.
+
+```{code-cell} ipython3
+# Posiciones de la primera ocurrencia de los elementos de lista2 en lista1
+lista1 = [1, 3, 5, 7, 9, 2, 4, 6, 8]
+lista2 = [1, 1, 3, 3, -3, 7, -8]
+posiciones = [0]*len(lista2)
+for i, x in enumerate(lista2):
+    encontrado = False
+    for j, y in enumerate(lista1):
+        if x == y:
+            encontrado = True
+            break
+    if encontrado:
+        posiciones[i] = j
+    else:
+        posiciones[i] = None
+        
+print('Los elementos de la lista \n {} \nse encuentran en las posiciones \n {} \nde la lista \n {}'.
+     format(lista2, posiciones, lista1))
+```
+
+### El tipo ``NoneType``
+El tipo ``NoneType`` permite representar aquellos objetos que **no tienen valor**. Es el equivalente a ``null`` en lenguajes como C++.
+
+Una variable de tipo ``NoneType`` solo puede tener el valor ``None``, que es una constante literal predefinida, igual que los son ``True`` o ``False``.
+
+El ejemplo anterior muestra uno de los usos habituales de este tipo. Algunos de los elementos buscados no se encuentran en la lista. Una forma concisa de reflejarlo es con el literal ``None``.
+
+La forma correcta de comprobar si una variable no tiene asignada un valor es con el operador ``is``.
+
+```{code-cell} ipython3
+# Listado de los elementos de lista2 ausentes en lista1 usando la lista de posiciones
+lista_ausentes = []
+for i, x in enumerate(posiciones):
+    if x is None:
+        lista_ausentes.append(lista2[i])
+print('Los valores {} de la lista\n {} \nno se encuentran en la lista \n {}.'.format(lista_ausentes, lista2, lista1))
+```
+
+```{code-cell} ipython3
+
+```

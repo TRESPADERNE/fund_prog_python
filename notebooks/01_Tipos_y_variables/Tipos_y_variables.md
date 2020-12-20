@@ -589,7 +589,3 @@ Todo **objeto** en Python tiene una **identidad**, un **tipo** y un **valor**:
 * El **valor** de un objeto puede o no variar en función del tipo. Los objetos cuyo valor puede cambiar son objetos **mutables** mientras que los que no pueden ser alterados son objetos **inmutables**.
 
 Ya hemos comentado que los objetos con tipos  `int`, `float` o `str` entre otros, son inmutables. Más adelante veremos tipos como las **listas** y los **diccionarios** que son mutables.
-
-```{code-cell} ipython3
-
-```
