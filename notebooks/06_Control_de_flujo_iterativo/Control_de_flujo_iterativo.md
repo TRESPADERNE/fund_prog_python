@@ -21,7 +21,8 @@ kernelspec:
 [Bucle `for`](#Bucle_for)<br>
 [Iterables](#Iterables)<br>
 [Sentencia `break`: salida temprana de un bucle](#Sentencia_break:_salida_temprana_de_un_bucle)<br>
-[Bucles anidados](#Bucles_anidados)
+[Bucles anidados](#Bucles_anidados)<br>
+[Listas por comprensión](#Listas_por_comprension)
 
 +++
 
@@ -587,7 +588,7 @@ Ya fuera del bucle, se interroga el valor del **centinela** para informar al usu
 
 +++
 
-Las variables **testigo** son inicializadas a un valor **de reposo** antes de entrar a una zona del código en la que deseamos señalar si un determinado evento se ha producido o no. Las variables centinela suelen ser booleanas, pero en ocasiones pueden usarse enteros que tomarán diferentes valores en dependencia de las sentencias que sean ejecutadas o no. De esta manera, cuando su valor sea interrogado al final, indicarán el *camino* concreto que siguió el programa, permitiendo sacar las oportunas conclusiones. 
+Las variables **testigo** son inicializadas a un valor **de reposo** antes de entrar a una zona del código en la que deseamos señalar si un determinado evento se ha producido o no. Las variables centinela suelen ser booleanas, pero en ocasiones pueden usarse enteros que tomarán diferentes valores en dependencia de las sentencias que sean ejecutadas o no. De esta manera, cuando su valor sea interrogado al final, indicarán el *camino* concreto que siguió el programa, permitiendo sacar las oportunas conclusiones.
 
 +++
 
@@ -775,6 +776,63 @@ for i, x in enumerate(posiciones):
 print('Los valores {} de la lista\n {} \nno se encuentran en la lista \n {}.'.format(lista_ausentes, lista2, lista1))
 ```
 
-```{code-cell} ipython3
+***
+<a id='Listas_por_comprension'></a>
 
++++
+
+## Listas por comprensión
+Un uso habitual que hemos visto de un bucle ``for`` es transformar una lista en otra. Las **listas por comprensión** (**comprehension list**) es una forma compacta de lograr el mismo efecto en una única línea.
+
+Supongamos un sencillo ejemplo en el que deseamos obtener una lista con los cuadrados de otra. Una solución con un bucle ``for`` sería la siguiente:
+
+```{code-cell} ipython3
+lista = [1, 2, 3, 4, 5]
+lista_cuad = []
+for x in lista:
+    lista_cuad.append(x*x)
+print(lista_cuad)
 ```
+
+Este mismo resultado podríamos obtenerle con una comprensión mediante el siguiente fragmento de código:
+
+```{code-cell} ipython3
+lista = [1, 2, 3, 4, 5]
+lista_cuad = [x*x for x in lista]
+print(lista_cuad)
+```
+
+Entre los corchetes ``[]`` podríamos *traducir*:
+> Crea una lista con la expresión ``x*x`` para cada ``x`` perteneciente al iterable ``lista``
+
++++
+
+Las listas por comprensión no son sino mero **azúcar sintáctico**, pero su uso está muy extendido en Python. Hasta que el programador novel se acostumbra, pueden parecer una construcción sintáctica que empeora la legibilidad. Sin embargo:
+* son construcciones más compactas
+* son más rápidas que su equivalente con bucle ``for``, porque internamente se reserva espacio para la nueva lista antes de empezar a formarla.
+
++++
+
+Veamos a continuación otro uso habitual. En este caso, deseamos formar una lista a partir de otra **filtrando** algunos de los elementos.
+
+Por ejemplo, formemos una lista solo con los cuadrados de los elementos pares de otra. La solución con un bucle ``for`` sería la siguiente:
+
+```{code-cell} ipython3
+lista = [1, 2, 3, 4, 5]
+lista_cuad = []
+for x in lista:
+    if x%2 == 0: 
+        lista_cuad.append(x*x)
+print(lista_cuad)
+```
+
+Ahora, su equivalente con una lista por comprensión:
+
+```{code-cell} ipython3
+lista = [1, 2, 3, 4, 5]
+lista_cuad = [x*x for x in lista if x%2 == 0]
+print(lista_cuad)
+```
+
+Entre los corchetes ``[]`` podríamos *traducir*:
+> Crea una lista con la expresión ``x*x`` para cada ``x`` perteneciente al iterable ``lista`` que cumpla ``x%2 == 0``
