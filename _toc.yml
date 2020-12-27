@@ -13,7 +13,8 @@
     - file: notebooks/05_Secuencias/Secuencias
     - file: notebooks/06_Control_de_flujo_iterativo/Control_de_flujo_iterativo
     - file: notebooks/07_Manejo_de_excepciones/Manejo_de_excepciones
+    - file: notebooks/09_Funciones/Funciones
 
 - part: BIBLIOTECAS
   chapters:
-    - file: notebooks/09_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
+    - file: notebooks/08_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib

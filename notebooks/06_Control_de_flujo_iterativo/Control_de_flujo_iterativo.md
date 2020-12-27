@@ -836,3 +836,7 @@ print(lista_cuad)
 
 Entre los corchetes ``[]`` podríamos *traducir*:
 > Crea una lista con la expresión ``x*x`` para cada ``x`` perteneciente al iterable ``lista`` que cumpla ``x%2 == 0``
+
++++
+
+En general, en este curso no haremos un uso exhaustivo de listas por comprensión, pues preferimos en un nivel inicial que el alumno trabaje con construcciones más explícitas usando ``for``.
