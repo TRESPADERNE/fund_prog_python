@@ -561,7 +561,7 @@ La función `indice()` utiliza el mecanismo de excepciones para comunicar la exi
 
 Nótese que una excepción termina inmediatamente el **hilo de ejecución** de la función.
 
-Veamos un ejemplo en el que dividimos valor por valor dos listas. La idea es que si un valor de la lista *denominador* es nulo, asignemos el valor **Not a number** `nan`. 
+Veamos un ejemplo en el que dividimos valor por valor dos listas. La idea es que si un valor de una lista que actúa como *denominador* es nulo, asignamos el valor **Not a number** `nan`. 
 
 Para el resto de excepciones:
 * Las listas tienen tamaños diferentes
@@ -613,32 +613,733 @@ except (IndexError, TypeError) as error:
 
 +++
 
-### Proceso de desarrollo de un programa
-Una vez conocido cómo definir funciones, tenemos muchas de las herramientas para acometer el **desarrollo de un programa**.
+## Proceso de desarrollo de un programa
+Una vez conocido cómo definir funciones, tenemos muchas de las herramientas necesarias para acometer el **desarrollo de un programa**.
 
-La programación es una tarea compleja a la que es mejor enfrentarse de manera **iterativa**. En los diferentes ejemplos de determinación de si un número es primo estamos viendo una prueba de ello.
+La programación es una tarea compleja a la que es mejor enfrentarse de manera **iterativa**.
 
 Algunos pasos generales para hacerlo son:
 
-1. Analizar cuidadosamente el problema a resolver. Utilizar en esta etapa **lápiz y papel** y la ayuda de **bosquejos**, entre otros recursos. Identificar los **datos de entrada** y cuales deben ser las **salidas** buscadas, para todas las posibles condiciones. Hacer cálculos paso a paso. Identificar **resultados intermedios** tratando de encontrar el algoritmo adecuado. 
+### 1. Análisis del problema a resolver
+* Utilizar en esta etapa **lápiz y papel** y la ayuda de **bosquejos**, entre otros recursos.
+* Identificar los **datos de entrada** y cuales deben ser las **salidas** buscadas, para todas las posibles condiciones.
+* Hacer cálculos paso a paso. Identificar **resultados intermedios** tratando de encontrar el algoritmo adecuado. 
 
-2. Una vez se llega a una primera solución *en papel* razonable, se pasa a programar, utilizando los recursos provistos por el lenguaje. Como se ha dicho, ya se poseen los elementos imprescindibles para resolver cualquier problema solucionable por un ordenador. Por supuesto, en la medida que avance el curso, los recursos a nuestra disposición crecerán.
+### 2. Versión inicial del problema
+Una vez se llega a una primera solución *en papel* razonable, se pasa a programar, utilizando los recursos provistos por el lenguaje. Como se ha dicho, ya se poseen los elementos imprescindibles para resolver cualquier problema solucionable por un ordenador. Por supuesto, en la medida que avance el curso, los recursos a nuestra disposición crecerán.
 
-3. Puede darse el caso de que el programa no funcione para los **casos límites o especiales** (¿funciona para el 2, que es el primer posible primo?, etc.). Es importante identificar esos casos para poder testarlos y, en su caso, corregir los fallos. 
+### 3. Identificación de casos límite o especiales
+Puede darse el caso de que el programa no funcione para los **casos límites o especiales** (¿funciona para el 2, que es el primer posible primo?, ¿pueden producirse divisiones por 0?, etc.). Es importante identificar esos casos para poder testarlos y, en su caso, corregir los fallos. 
 
-4. Por otro lado, es frecuente que en un primera esbozo del programa, se asuma que el usuario va a actuar de la forma prevista pero ¿qué pasa si no lo hace? ¿qué pasa si el número introducido es menor que dos o incluso negativo?. En ocasiones, el no prever todas estas posibles situaciones puede dar un resultado incorrecto o que el programa se interrumpa bruscamente por un error de ejecución. La solución de cada uno de los problemas detectados, implicará probablemente volver al paso 1 y la realización de modificaciones del código más o menos importantes, hasta que se llega a un código robusto y que funcione para todas las posibles entradas de datos. 
+### 4. Casos de uso por parte del usuario
+Por otro lado, es frecuente que en un primera esbozo del programa, se asuma que el usuario va a actuar de la forma prevista pero ¿qué pasa si no lo hace? (En el caso de los primos, ¿qué pasa si el número introducido es menor que dos o incluso negativo?). En ocasiones, el no prever todas estas posibles situaciones puede dar un resultado incorrecto o que el programa se interrumpa bruscamente por un error de ejecución. La solución de cada uno de los problemas detectados, implicará probablemente volver al paso 1 y la realización de modificaciones del código más o menos importantes, hasta que se llega a un código robusto y que funcione para todas las posibles entradas de datos. El **manejo de excepciones** tiene aquí un papel importante.
 
-5. El primer programa seguramente no constituye la forma más **eficiente** (más rápida, por ejemplo) de resolver el problema. Un código que ya funciona correctamente puede estar sujeto a mejoras y optimizaciones. Aunque no se hará hincapié sobre este tema en un curso básico, en algunas ocasiones, sobre todo cuando se manipulan grandes volúmenes de datos, son importantes las consideraciones de cómo crece, por ejemplo, el tiempo de ejecución del programa cuando aumenta el *tamaño* de los datos de entrada. El encontrar un código eficiente es una tarea en general difícil, y debe ser en todo caso enfrentada cuando ya se tenga un programa básico que funcione correctamente. ¡No se debe caer en la trampa de la **optimización prematura**! En este sentido, es útil conocer que en la gran mayoría de los casos es bueno sacrificar la velocidad de ejecución en aras de una mayor claridad del código.
+### 5. Legibilidad
+Se debe tener en cuenta que un programa tiene otras virtudes además de dar las salidas correctas para todas los casos. Los programas deben ser **legibles**, estar escritos de forma clara y consistente, de manera que otros programadores o el mismo programador original pasado un tiempo, puedan comprenderlos con facilidad para hacer las modificaciones que son frecuentemente necesarias.
 
-6. Así, se debe tener en cuenta que un programa tiene otras virtudes además de dar las salidas correctas para todas los casos. Los programas deben ser **legibles**, estar escritos de forma clara y consistente, de manera que otros programadores o el mismo programador original pasado un tiempo, puedan comprenderlos con facilidad para hacer las modificaciones que son frecuentemente necesarias. Los identificadores de las variables deben ser **autoexplicativos**, las estructuras de control deberán estar bien elegidas. El sangrado del código y el uso correcto de los espacios en blanco ayuda notablemente en este aspecto. En este sentido, Python ha adoptado la decisión de *exigir* sintácticamente un sangrado correcto del código. Los comentarios son útiles pero es mejor evitarlos usando código autoexplicativo. Aprenderemos a **documentar** nuestros programas.
+Los identificadores de las variables deben ser **autoexplicativos**, las estructuras de control deberán estar bien elegidas.
 
-7. Frecuentemente ocurre que, en la medida en que el programa crece, se debe **reestructurar** el código. Buena legibilidad y facilidad de reestructuración están íntimamente ligadas. Sobre este concepto se abundará cuando se discutan las funciones y la forma de enfrentar el diseño de los programas, utilizando técnicas como la del **refinamiento descendente**.
+El sangrado del código y el uso correcto de los espacios en blanco ayuda notablemente en este aspecto. En este sentido, Python ha adoptado la decisión de *exigir* sintácticamente un sangrado correcto del código.
 
-El alumno atento observará que en muchos de los ejemplos no nos *preocupamos* de **manejar las excepciones**, por ejemplo las causadas por entradas con un formato incorrecto de datos por parte del usuario. La razón principal es la de centrarnos en los aspectos clave de Python, evitando *distracciones* y exponiendo código de la forma más escueta posible. Esta *táctica* es la habitual en cualquier texto introductorio sobre lenguajes de programación.  
+### 6. Refinamiento descendente
+Frecuentemente ocurre que, en la medida en que el programa crece, se debe **reestructurar** el código. Buena legibilidad y facilidad de reestructuración están íntimamente ligadas. El **refinamiento descendente** agrupando código en funciones es la estrategia habitual.
+
+### 7. Optimización del código
+Las primeras veresiones de un programa seguramente no constituyen la forma más **eficiente** (más rápida, por ejemplo) de resolver el problema. Un código que ya funciona correctamente puede estar sujeto a mejoras y optimizaciones. Aunque no se hará hincapié sobre este tema en un curso básico, en algunas ocasiones, sobre todo cuando se manipulan grandes volúmenes de datos, son importantes las consideraciones de cómo crece, por ejemplo, el tiempo de ejecución del programa cuando aumenta el *tamaño* de los datos de entrada. El encontrar un código eficiente es una tarea en general difícil, y debe ser en todo caso enfrentada cuando ya se tenga un programa básico que funcione correctamente. 
+
+Por otro lado, ¡no se debe caer en la trampa de la **optimización prematura**! En este sentido, es útil conocer que en la gran mayoría de los casos es bueno sacrificar la velocidad de ejecución en aras de una mayor claridad del código.
+
+### 8. Documentación
+Los comentarios en el código son útiles pero es mejor evitarlos usando código autoexplicativo. Lo que sí es importante es **documentar** nuestros programas y, en especial, las funciones. Añadir en las zonas adecuadas del código información para explicar qué hacen, en su caso, cómo lo hacen, y cómo deben ser utilizadas.
+
++++
+
+### Ejemplos de desarrollo de un programa sencillo
+Vamos a analizar a continuación algunos ejemplos, aplicando algunos de los pasos que acabamos de relatar.
+
+El alumno atento observará que en muchos de los ejemplos que hemos visto o que veremos más adelante
+en temas sucesivos, no nos *preocupamos* de **manejar las excepciones**, por ejemplo, las causadas por entradas con un formato incorrecto de datos por parte del usuario. La razón principal es la de centrarnos en los aspectos clave de Python, evitando *distracciones* y exponiendo código de la forma más escueta posible. Esta *táctica* es la habitual en cualquier texto introductorio sobre lenguajes de programación.
+
++++
+
+#### Ejemplo 1: Determinación de si una serie de enteros son primos
+La última versión para determinar si un número es primo sólo puede *analizar* un número cada vez. ¿Cómo modificarlo para darle la oportunidad al usuario de que analice sucesivamente varios enteros sin tener que ejecutar varias veces el programa?
+
+La solución es utilizar otro bucle (bucles anidados), que incluya el código anterior, de manera que se pueda repetir cuantas veces se desee.
+
++++
+
+Comenzemos por una versión ya vista en temas anteriores:
 
 ```{code-cell} ipython3
+:tags: [raise-exception, remove-output]
 
+# Determina si un número entero es primo. (Versión 1)
+numero = int(input('Deme un entero positivo mayor que 1: '))
+
+es_primo = True  # Variable centinela o bandera
+for div in range(2, numero):
+    if numero % div == 0:
+        es_primo = False
+        break
+
+if es_primo:
+    print("El número {} es primo".format(numero))
+else:
+    print("El número {} no es primo".format(numero))
 ```
+
+Vamos a estructurar el código usando refinamiento descendente usando una función ``es_primo(n)``.
+
+```{code-cell} ipython3
+:tags: [raises-eception, remove-output]
+
+# Determina si un número entero es primo, usando una función. (Versión 2)
+
+def es_primo(n):
+    '''Si el número entero n es primo devuelve True. False en caso contrario.
+       La función solo acepta valores enteros y mayores que 1'''
+    
+    for div in range(2, numero):
+        if numero % div == 0:
+            return False
+    return True
+
+
+numero = int(input('Deme un entero positivo mayor que 1: '))
+
+if es_primo(numero):
+    print("El número {} es primo".format(numero))
+else:
+    print("El número {} no es primo".format(numero))
+```
+
+Ahora, mediante un bucle, podemos conseguir que el programa solicite nuevos números hasta que el usuario desee finalizar.
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Determina si una serie de enteros son primos. Bucle infinito. (Versión 1)
+
+while True:
+    numero = int(input('Deme un entero positivo mayor que 1: '))
+    if es_primo(numero):
+        print("El número {} es primo".format(numero))
+    else:
+        print("El número {} no es primo".format(numero))
+    
+    opcion = input("Desea salir (s/n):")
+    if opcion == 's' or opcion == 'S':
+        break
+```
+
+La expresión de control del bucle `while` externo es la constante literal `True`: es un *bucle infinito*. Este tipo de bucles, muy habituales en programación, tienen asociada una sentencia `break` interna que permite su terminación prematura. Es el caso con el `break` de la estructura condicional donde se pregunta al usuario si quiere seguir introduciendo enteros.
+
++++
+
+Una alternativa al bucle infinito podría haber sido la siguiente:
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Determina si una serie de enteros son primos. Sin bucle infinito. (Versión 2)
+
+opcion = 'n'
+while opcion != 's' and opcion != 'S':
+    numero = int(input('Deme un entero positivo mayor que 1: '))
+    if es_primo(numero):
+        print("El número {} es primo".format(numero))
+    else:
+        print("El número {} no es primo".format(numero))
+    
+    opcion = input("Desea salir (s/n):")
+```
+
+```{code-cell} ipython3
+# Determina si una serie de enteros son primos, sin bucle infinito (Versión 2)
+
+opcion = 'n'
+while opcion != 's' and opcion != 'S':
+    try:
+        numero = int(input('Deme un entero positivo mayor que 1: '))
+        if numero < 2:
+            raise ValueError('El valor introducido debe ser mayor que 1.')
+    except ValueError as e:
+        print(e)
+    else:
+        es_primo = True
+        for div in range(2, numero):
+            if numero % div == 0:
+                es_primo = False
+                break
+        if es_primo:
+            print("El número {} es primo.".format(numero))
+        else:
+            print("El número {} no es primo.".format(numero))
+    finally:
+        opcion = input("Desea salir (s/n):")
+        if opcion == 's' or opcion == 'S':
+            break
+```
+
+En esta parte del desarrollo del programa ya podemos introducir los elementos que protegen al programa de entradas de datos incorrectas por parte del usuario, manejando las excepciones:
+* el usuario no introduce un valor entero
+* el valor entero introducido es inferior a ``2``
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Determina si una serie de enteros son primos. Con manejo de excepciones. (Versión 3)
+
+while True:
+    try:
+        numero = int(input('Deme un entero positivo mayor que 1: '))
+        if numero < 2:
+            raise ValueError('El valor introducido debe ser mayor que 1.')
+    except ValueError as e:
+        print(e)
+    else:
+        if es_primo(numero):
+            print("El número {} es primo.".format(numero))
+        else:
+            print("El número {} no es primo.".format(numero))
+    finally:
+        opcion = input("Desea salir (s/n):")
+        if opcion == 's' or opcion == 'S':
+            break
+```
+
+Nótese que el manejo de excepciones se ha realizado de forma externa a la función ``es_primo()``.
+Podríamos haber diseñado la función de tal forma que sea ésta la que se preocupa de que el entero recibido es válido.
+
+```{code-cell} ipython3
+# Función es_primo() con manejo interno de excepciones
+def es_primo_con_excepciones(n):
+    '''Si el número entero n es primo devuelve True. False en caso contrario.
+       Si el valor n no es entero o es menor que 1 lanza una excepción ValueError'''
+    
+    if type(n) != int:
+        raise ValueError('El argumento de entrada no es de tipo int: {}'.format(n))
+    elif n < 2:
+        raise ValueError('El valor introducido debe ser mayor que 1.')
+    for div in range(2, numero):
+        if numero % div == 0:
+            return False
+    return True
+
+
+try:
+    if es_primo_con_excepciones(3.4):
+        print('3.4 es primo.')
+except ValueError as error:
+    print(error)
+try:
+    if es_primo_con_excepciones(-1):
+        print('-1 es primo.')
+except ValueError as error:
+    print(error)
+try:
+    if es_primo_con_excepciones(97):
+        print('97 es primo.')
+except ValueError as error:
+    print(error)
+```
+
+El criterio para manejar o no las excepciones dentro de una función no es una ciencia exacta. Verificar la validez de los datos de entrada o de algún resultado intermedio es una tarea que consume tiempo de computación. Y, en determinadas aplicaciones, puede que sea más práctico dejar esa responsabilidad al programador usuario de la función y que sea éste el que garantice su correcto uso. Es lo que hicimos en la versión previa.
+
+Esto pone de relevancia lo importante que es la **documentación** de las funciones. Entre otras cosas, la documentación debe informar de aquellas situaciones que eventualmente se puedan generar excepciones, si éstas son manejadas (`try`) o si son levantadas (`raise`).
+
++++
+
+La versión 3 del programa hace lo que nos proponíamos, aunque su uso por el usuario puede ser algo engorroso debido a la pregunta explícita sobre si se desea salir o no del programa. 
+
+En ocasiones, la naturaleza del problema es tal que el rango posible de la entrada de datos está limitado. Este hecho se puede utilizar en nuestra ventaja para simplificar el diseño del programa y mejorar la experiencia del usuario. ¿Cómo se hace? Simplemente se utilizan los valores no útiles del rango de entrada para señalar otros *caminos* al programa.
+
+En el caso que nos ocupa se puede hacer, por ejemplo, que la introducción por parte del usuario de un valor menor que 2 señale su deseo de abandonar el programa. En caso contrario, se continuaría con las iteraciones en el bucle externo, preguntando por otros enteros a considerar.
+
+Por tanto, la introducción de un valor menor que 2 deja de ser una excepción. Es parte de los valores válidos que puede utilizar el usuario.
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Determina si una serie de enteros son primos (versión 3)
+
+numero = 2         # Valor incial arbitrario para que entre al bucle la primera vez
+while numero > 1:
+    print('\nPara salir introduzca un entero menor que 2.')
+    try:
+        numero = int(input('Deme un entero: '))
+    except ValueError as e:
+        print(e)
+    else:
+        if numero > 1:
+            if es_primo(numero):
+                print("El número {} es primo.".format(numero))
+            else:
+                print("El número {} no es primo.".format(numero))
+                
+print("Fin del programa.")
+```
+
+#### Ejemplo 2: Determinación del número $\pi$ mediante la serie de Euler
+
+La constante $\pi$ es una de la más importantes en matemáticas. Conocemos que se trata de un número real con infinitas cifras no periódicas tanto en su representación decimal como en cualquier otra base numérica.
+
+En el módulo `math` se tiene una aproximación bastante precisa del mismo, suficiente para las aplicaciones ingenieriles concebibles. 
+
+En el siguiente ejemplo, se va a proceder a su estimación, utilizando uno de las tantas series que se demuestra que convergen a dicho número.
+
+En particular, se tiene la siguiente serie infinita definida para todos los enteros positivos $k$:
+\begin{align}
+\\\frac{\pi^2}{12} & = 1 - \frac{1}{2^2}+  \frac{1}{3^2} ...+\frac{(-1)^{k+1}}{k^2} \\
+\end{align}
+
+Nótese que la solución de este problema, la suma en principio ilimitada de un conjunto de números, no se puede emprender sin la presencia de un bucle. 
+
+Conviene, antes de comenzar, analizar en detalle el mecanismo propuesto para la generación de una aproximación de $\pi$:
+
+- ¿Sabríamos antes de entrar al bucle el número de iteraciones a ejecutar? Unicamente lo sabríamos si alguien nos dijera que quiere hacer una aproximación que involucre $n$ términos. Esto haría decantarnos hacia la utilización de un bucle `for`. 
+- Sin embargo, lo razonable es plantear el problema de forma que el resultado se aproxime a $\pi$ por debajo de una **tolerancia** o cuando se cumpla una **condición de terminación** previamente elegida por el usuario. Esto hace que nos decantemos por utilizar un bucle `while`.
+
+- El trabajo con bucles frecuentemente requiere:
+    - Inicializar variables  antes de entrar al bucle.
+    - Identificar qué es lo que variará de una iteración a otra y qué objetivos parciales se van cumpliendo de forma tal que en cada iteración nos vayamos acercando cada vez más a la solución buscada.
+    - Establecer la condición lógica que determine la permanencia en el bucle.
+    - Finalmente, comprobar que el bucle funcione también para los casos límite.
+
+```{code-cell} ipython3
+# Determinación del número pi mediante la serie de Euler (Versión 1)
+
+tolerancia = 1e-6
+
+suma_parcial = 0.0
+termino = tolerancia + 1 # Para obligar a entrar en el bucle
+k = 1
+while abs(termino) > tolerancia:
+    termino = (-1)**(k + 1)/k**2
+    suma_parcial += termino
+    k += 1
+    
+    
+pi_aprox = (12.0*suma_parcial)**0.5
+    
+print("La aproximación de PI hallada es {} y se obtuvo en {} iteraciones".format(pi_aprox, k - 1))
+```
+
+* En el ejemplo anterior, se requiere un **contador** (`k`) que recorra los enteros que participan en la definición de cada término de la serie y que debe ser incrementado en cada iteración. 
+* También de una variable tipo **acumulador** (`suma_parcial`) que siempre va a contener la suma de todos los términos que se hayan calculado hasta la iteración de que se trate.
+* Observe el uso de de la asignación compuesta `+=` para actualizar tanto el acumulador como el contador.
+* Se define por comodidad una variable (`termino`) que contine el valor del término que se añade a la serie en cada iteración. Se hace esto porque se ha decidido utilizar como criterio de permanencia en el bucle el hecho de que el *aporte* nuevo a la estimación del valor de `suma_parcial`sea (en valor absoluto) mayor que un valor elegido pequeño, `tolerancia` (en este caso una millonésima: `1e-6`).
+* Vea que el uso de la función `abs()` en la expresión de control del `while` es indispensable, puesto que el valor de los términos nuevos van cambiando de signo de una iteración a la siguiente. 
+* Antes de entrar al bucle, se eligen los valores iniciales para el contador y el acumulador. En el caso del contador se inicializa a `1`, para que tengamos el primer valor `1` presente en la propia definición de la serie. El acumulador se inicializa a `0.0`. 
+* A la variable `termino`, que participa en la expresión de control del bucle, se le da un valor inicial arbitrario, en este caso `tolerancia + 1`. El objetivo aquí es darle un valor que sea mayor que `tolerancia` y que permita por tanto la primera entrada al bucle.
+
+El orden en que aparecen las sentencias dentro del bucle es importante (aunque no es la única posible si el problema se replanteara de otra forma). Es conveniente realizar algunas iteraciones manuales para ver que el esquema elegido funciona correctamente.
+
+Al salir del bucle se saca por pantalla tanto la aproximación hallada como el número de iteraciones que tomó el calcularla.
+
+Pruebe a cambiar el valor de la tolerancia. En cualquier caso, se debe recordar que la precisión con la que son manipulados los `float` en Python es limitada.
+
++++
+
+Vamos a estructurar el código, encapsulando la serie dentro de una función `calcula_pi_euler(tol=1e-6)`. Nótese el valor de la tolerancia por defecto.
+
+* Dado que el numerador es alternadamente `1` y `-1` se ha hecho una pequeña optimización sustituyendo el cálculo del numerador ``(-1)**(k + 1)``.
+* Si ha sustituido el bucle por una versión alternativa con *bucle infinito*.
+
+```{code-cell} ipython3
+# Determinación del número pi mediante la serie de Euler, usando una función (Versión 2)
+
+def calcula_pi_euler(tol=1e-6):
+    '''Calcula el número pi mediante la serie de Euler.
+       El valor tol determina la precisión. Cuando abs(termino) <= tol
+       se da por finalizado el cálculo.'''
+    
+    suma_parcial = 0.0
+    termino = tol + 1 # Para obligar a entrar en el bucle
+    k = 1
+    num = 1
+    while abs(termino) > tol:
+        termino = num/k**2
+        suma_parcial += termino
+        k += 1
+        num = -num
+    
+    return (12.0*suma_parcial)**0.5
+    
+
+pi_aprox = calcula_pi_euler(0.0)
+print("La aproximación de PI hallada es {}".format(pi_aprox))
+```
+
+Nótese que si el usuario utiliza una tolerancia cercana a `0` o negativa como parámetro de entrada, el bucle será *de facto* un bucle infinito. Dejamos al alumno que modifique la función anterior levantando una excepción cuando el parámetro de entrada cumpla `tol <= tol_minima`.
+
+El alumno no debe perder de vista aspectos relativos a la precisión con sumatorios con muchos términos y con expresiones tales como:
+$$\frac{(-1)^{k+1}}{k^2}$$
+Conforme el valor $k$ aumenta, la representación finita de los datos `float` entra en juego, por lo que el error cometido al calcular cada término hará inservible el utilizar una tolerancia excesivamente pequeña.
+
+El siguiente sencillo ejemplo ilustra este problema:
+
+```{code-cell} ipython3
+incr = 0.1  # La representación no es exacta
+suma = 0
+
+for i in range(0, 10**6):
+    suma += incr
+    
+print('El valor esperado es {} frente al obtenido {}'.format(10**6, suma))
+```
+
+#### Ejemplo 3: Algoritmo para la determinación del máximo comúm divisor (MCD)
+
+Se trata de encontrar el mayor número que divida exactamente dos números enteros positivos dados. El algoritmo que resuelve el problema es uno de los más antiguos y famosos y se atribuye a Euclides.
+
+Sean dos enteros positivos: $p$ y $q$ (suponiendo $p >= q$). En general se puede plantear que $p=q*b+r$.
+
+Es posible demostrar que el máximo común divisor de $p$ y $q$ es el mismo que el de $q$ y $r$. Sea $mcd$ el máximo común divisor de $p$ y $q$. Como $p=q*b+r$ y $mcd$ divide a $p$ y $q$ también divide a $q$ y $r$. Si existiera otro número mayor que $mcd$ que divide a $q$ y $r$, también dividiría a $p$, lo que contradiría que $mcd$ es un máximo común divisor.
+
+Este mismo razonamiento puede repetirse cuantas veces se quiera, haciendo que el dividendo sea el anterior divisor y el nuevo divisor el antiguo resto, hasta que eventualmente, con toda seguridad, se obtendrá un resto igual a cero (puesto que los sucesivos restos van inevitablemente descendiendo y deben ser positivos). Cuando el resto es cero, el último divisor que se utilizó es precisamente el **MCD**.
+
+Si el divisor inicial es $0$, el **MCD** es el dividendo y si ambos son ceros el **MCD** es $0$.
+
+Una primera versión del algoritmo de Euclides podría ser la siguiente: 
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Halla el MCD de dos numeros enteros naturales, incluido el 0 (Versión 1)
+
+# ENTRADA DE DATOS
+print('Introduzca dos enteros, para los que se calculará el MCD.')
+while True:
+    dividendo = int(input('Introduzca el primer número (>=0): '))
+    divisor = int(input('Introduzca el segundo número (>=0): '))
+    if dividendo < 0 or divisor < 0:
+        print("Ambos números deben ser iguales o mayores que 0.\n")
+    else:
+        break
+
+        
+# ALGORITMO MCD
+if dividendo < divisor: # Asegurando que el dividendo sea mayor que el divisor
+    dividendo, divisor = divisor, dividendo
+
+if dividendo == divisor == 0:
+    mcd = 0
+elif divisor == 0:
+    mcd = dividendo
+else:
+    dividendo_copia = dividendo
+    divisor_copia = divisor
+    resto = dividendo % divisor          # Hallamos el primero resto fuera del bucle
+    while resto != 0:
+        dividendo = divisor
+        divisor = resto
+        resto = dividendo % divisor
+    mcd = divisor
+
+# SALIDA
+print('El MCD de {} y {} es {}.'.format(dividendo_copia, divisor_copia, mcd))
+```
+
+Podemos ver claramente las tres partes típicas de un programa:
+* Entrada de datos
+* Algoritmo
+* Salida de datos
+
+Centrándonos en el algoritmo, nótese que:
+* la condición de permanencia en el bucle es que el resto sea diferente de cero.
+* antes de entrar al bucle se hace una primera división para obtener un resto válido.
+* dentro del bucle la tarea es entonces acomodar lo que antes era el divisor de forma que se convierta en el nuevo dividendo y que el antiguo resto pase a ser el divisor. El orden de estas asignaciones es crucial.
+* la última sentencia del bucle halla el nuevo resto que será considerado en la siguiente evaluación del control del bucle.
+* al salir del bucle el **MCD** es el valor que está en la variable `divisor`.
+* para la salida ha sido necesario guardar una copia de los valores originales de `dividendo` y `divisor`.
+
+Debido al caracter iterativo de un bucle, es primordial elegir el momento clave en que se realiza la división entera y que las variables que participan hallan sido actualizadas de forma que desempeñen el _rol_ adecuado en la iteración de que se trate. Esto implica, en muchas ocasiones, hacer reasignaciones como se muestra en el ejemplo.
+
+Es importante antes de entrar al bucle, garantizar que el dividendo es mayor o igual que el divisor. Esto se hace mediante el correspondiente `if`. Véase que el intercambio entre los contenidos de `dividendo` y `divisor` se hace en una sola línea, aprovechando la fácilidad que brinda Python y que no existe en muchos otros lenguajes. ¿Se podría hacer uso de esta **asignación doble** dentro del bucle? ¿Cómo se haría?
+
++++
+
+En la siguiente versión, vamos a encapsular la entrada de datos en una función `pide_valores()` y el algoritmo de Euclides en una función `mcd_euclides(n, m)`.
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Halla el MCD de dos numeros enteros naturales, incluido el 0. Versión usando funciones (Versión 2)
+
+def pide_valores():
+    '''Solicita dos valores enteros exigiendo que sean >= que 0'''
+    
+    print('Introduzca dos enteros, para los que se calculará el MCD.')
+    while True:
+        num1 = int(input('Introduzca el primer número (>=0): '))
+        num2 = int(input('Introduzca el segundo número (>=0): '))
+        if num1 < 0 or num2 < 0:
+            print("Ambos números deben ser iguales o mayores que 0.\n")
+        else:
+            break
+    return num1, num2
+
+
+def mcd_euclides(dividendo, divisor):
+    '''Calcula es Máximo Común Divisor de los valores de entrada.
+       Para el correcto funcionamiento los dos valores deben ser enteros y >= que 0.
+       El orden relativo es indiferente.'''
+    
+    if dividendo < divisor: 
+        dividendo, divisor = divisor, dividendo
+
+    if dividendo == divisor == 0:
+        mcd = 0
+    elif divisor == 0:
+        mcd = dividendo
+    else:
+        resto = dividendo % divisor         
+        while resto != 0:
+            dividendo, divisor = divisor, resto
+            resto = dividendo % divisor
+        mcd = divisor
+        
+    return mcd
+
+
+num1, num2 = pide_valores()
+print('El MCD de {} y {} es {}.'.format(num1, num2, mcd_euclides(num1, num2)))
+```
+
+Véase como el uso de funciones y su poder de abstracción ha reducido el programa principal al uso de dos sentencias.
+
+Veamos una posible versión de la función `pide_valores()` más robusta manejando excepciones.
+
+```{code-cell} ipython3
+# Versión manejando excepciones
+def pide_valores(): 
+    '''Solicita dos valores enteros exigiendo que sean >= que 0'''
+    
+    print('Introduzca dos enteros, para los que se calculará el MCD.')
+    while True:
+        try:
+            num1 = int(input('Introduzca el primer número (>=0): '))
+            num2 = int(input('Introduzca el segundo número (>=0): '))
+            if num1 < 0 or num2 < 0:
+                raise ValueError('Ambos números deben ser iguales o mayores que 0.')
+        except ValueError as error:
+            print(error)
+        else:
+            break
+            
+    return num1, num2
+```
+
+Nótese que esta versión maneja un posible error en el formato de la entrada de datos sin que el programa finalice brúscamente.
+
+En este caso, consideramos que la documentación de la función `mcd_euclides()` ya advierte de que debe usarse con enteros positivos o nulos. Es responsabilidad del usuario garantizar esa restricción. De hecho, es lo que hace la función `pide_valores()` en el programa.
+
++++
+
+#### Ejemplo 4: Conjetura de Collatz
+
+La conjetura de Collatz propone que para cualquier número positivo, tras el proceso iterativo:
+$$
+n=\begin{cases}
+    n/2,  & &\text{si $n$ par}.\\
+    3n+1, & & \text{si $n$ impar}.
+  \end{cases}
+$$
+se alcanza en algún momento para $n$ la unidad.
+
+Este hecho no está demostrado, de ahí que se trate de una **conjetura**. El siguiente código implementa el algoritmo propuesto pero añade un contador para acotar el número máximo de iteraciones.
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Conjetura de Collatz (Versión 1)
+# ENTRADA DE DATOS
+n = 0
+while n < 1:
+    n = int(input("Dame un número entero positivo: "))
+    if n < 1:
+        print("¡ERROR!. El número debe ser positivo.")
+
+num_max_iteraciones = 1e10
+
+# ALGORITMO
+iteraciones = 0
+while n != 1 and iteraciones < num_max_iteraciones:
+    if n % 2 == 0:  # Par
+        n = n // 2
+    else:
+        n = 3*n + 1
+    iteraciones += 1
+
+# SALIDA
+if n == 1:
+    print("Se ha llegado a 1 en {} iteraciones.".format(iteraciones))
+else:
+    print("No se ha llegado a 1 en {} iteraciones. ¡Se debe investigar más!".format(iteraciones))
+```
+
+Fuera del bucle se solicita el valor inicial de $n$ y se inicializa el contador. Dentro del bucle, simplemente se actualiza el valor de $n$ según el procedimiento dado. Se saldrá del bucle cuando $n$ llega al valor de $1$ (reforzando nuestra convicción de que la conjetura de Collatz es válida) o cuando el contador llega al valor de la constante utilizada.
+
+De forma similar al ejemplo anterior, vamos a utilizar funciones y manejo de excepciones para mejorar el programa.
+
+```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
+# Conjetura de Collatz con funciones y manejo de excepciones (Versión 2)
+
+def pide_valor(inf=0): 
+    '''Solicita un valor entero exigiendo que sea >= que el argumento de entrada inf'''
+    
+    while True:
+        try:
+            num = int(input('Introduzca un entero (>={}): '.format(inf)))
+            if num < inf:
+                raise ValueError('Ambos números deben ser iguales o mayores que 0.')
+        except ValueError as error:
+            print(error)
+        else:
+            break
+            
+    return num
+
+
+def collatz(n, max_iter=1e10):
+    '''Implementa la conjetura de Collatz con un valor límite de iteraciones max_iter.
+       Devuelve True o False en función de si se cumple la conjetura para el valor de entrada num
+       y el número de iteraciones que se han necesitado'''
+    
+    iteraciones = 0
+    while n != 1 and iteraciones < max_iter:
+        if n % 2 == 0: 
+            n = n // 2
+        else:
+            n = 3*n + 1
+        iteraciones += 1
+    
+    if n == 1:
+        return True, iteraciones
+    else:
+        return False, iteraciones
+    
+
+n = pide_valor(1)
+resultado = collatz(n, 1000)
+
+if resultado[0]:
+    print('Desde el valor {}, se ha llegado a 1 en {} iteraciones.'.format(n, resultado[1]))
+else:
+    print('Desde el valor {}, no se ha llegado a 1 en {} iteraciones. ¡Se debe investigar más!'.format(n, resultado[1]))
+```
+
+En esta variante, la función `pedir_valor(inf=0)` incorpora como argumento un límite inferior para que el valor introducido desde teclado sea válido. Por defecto, el valor `0`.
+
++++
+
+Los valores intermedios por los que pasa $n$ hasta finalmente llegar a $1$ oscilan con amplitudes muy grandes. 
+
+Aprovechando esta característica, vamos a introducir otra idea básica, que al igual que los **acumuladores**, permite obtener alguna característica del conjunto de números procesados mediante un bucle. 
+
+Se trata de obtener, el valor máximo o mínimo de todos los valores procesados. En el caso que nos ocupa, sería interesante obtener al final cuál ha sido el valor mayor por el que ha pasado $n$.
+
+La idea para resolver este tipo de problema es tan sencilla como efectiva y se puede enunciar de la siguiente forma para el caso de querer obtener el valor máximo:
+
+- Fuera del bucle, incializar una variable, `maximo`, con el primer valor del conjunto de números (o con el menor de los valores del rango esperado, si es que esta información se conoce)
+
+- Si el algoritmo encuentra un $n$ impar, interrogar mediante un condicional, si el valor actualmente inspeccionado del conjunto de números es mayor que el que teníamos *memorizado* en `maximo` y, en caso afirmativo, actualizar el valor de esta última variable. Nótese que si $n$ es par, el nuevo valor $n$ será necesariamente inferior.
+
+Basta añadir a la función `collatz()` un nuevo parámetro de salida.
+
+```{code-cell} ipython3
+def collatz(n, max_iter=1e10):
+    '''Implementa la conjetura de Collatz con un valor límite de iteraciones max_iter.
+       Devuelve True o False en función de si se cumple la conjetura para el valor de entrada num,
+       el número de iteraciones que se han necesitado y el máximo valor alcanzado'''
+    
+    iteraciones = 0
+    maximo = n    # inicializamos a un valor conocido
+    while n != 1 and iteraciones < max_iter:
+        if n % 2 == 0: 
+            n = n // 2
+        else:
+            n = 3*n + 1
+            if n > maximo:
+                maximo = n
+        iteraciones += 1
+    
+    if n == 1:
+        return True, iteraciones, maximo
+    else:
+        return False, iteraciones, maximo
+```
+
+#### Ejemplo 5: Algoritmo de ordenación por inserción
+Una de las actividades más habituales en programación es la de ordenar una colección de datos. Es tan común esta tarea que existen funciones y métodos ya listos para ser utilizados, predefinidos en el lenguaje, como por ejemplo, la función nativa `sorted()` o el método `.sort()`  de las listas.
+
+La razón que justifica la importancia de tener listas ordenadas radica en la facilidad posterior de encontrar elementos en una lista ordenada, al poder realizar sobre ellas las llamadas **búsquedas binarias**, mucho más eficientes que una búsqueda **secuencial**.
+
+Existen muchos algoritmos de ordenación, de diferente grado de complejidad y eficiencia. El algoritmo de ordenación por **inserción** o **método de la baraja** es bastante simple y resulta eficaz para colecciones no muy grandes.
+
+Supongamos que se quiere ordenar una lista dada de menor a mayor. La idea básica consiste en dividir (conceptualmente) la lista en dos: 
+* una primera sublista que se mantiene siempre ordenada
+* una sublista con los elementos restantes, que están en principio desordenados
+
+De forma iterada, se extrae el primer elemento de la sublista desordenada y se inserta en el lugar adecuado en la sublista ordenada.
+De esta forma, en cada iteración la sublista ordenada crece en un elemento y la desordenada disminuirá en uno. 
+
+¿Cómo inicializar el algortimo? El tamaño inicial de la sublista ordenada será uno y el elemento que la compone será el primer elemento de la lista original ¡que está, por supuesto, ordenado!. El resto de elementos constituyen la lista inicial desordenada.
+
+```{code-cell} ipython3
+enteros = [20, 1, 4, -1, -10, 0, 1, 6]
+
+for i in range(1, len(enteros)): # Recorre la sublista desordenada
+    j = i
+    tmp = enteros[i]  # Copia temporal del nuevo elemento
+    while j > 0 and enteros[j-1] > tmp: # Bucle que deja un hueco para insertar el nuevo elemento en la sublista ordenada
+        enteros[j] = enteros[j-1]
+        j -= 1
+    enteros[j] = tmp  # Inserta el nuevo elemento
+
+print(enteros)
+```
+
+Es importante entender que el algoritmo anterior ordena la lista _in situ_. Se trata de dos bucles anidados. El `for` externo _recorre_ todos los elementos, a partir del segundo utilizando el índice ```i```, esto es recorre uno por uno todos los elementos de la sublista desordenada. El bucle interno, por su parte, utiliza un `while` y otro índice ```j``` para recorrer la sublista de los elementos ya ordenados, hasta encontrar el sitio que le corresponde al elemento que debe ser insertado y que está provisionalmente almacenado en ```tmp```. Nótese que mientras no se encuetra la posición adecuado en la sublista ordenada, los elementos de la misma son _recolocados_ apropiadamente *ascendiéndolos* una posición. 
+
+¿Cómo modificarías el código previo para que se ordene de mayor a menor?
+
++++
+
+Vamos ahora a encapsular el algoritmo en una función `sort_insercion(lista, reverse=False)`. Si el parámetro `reverse` es `True`, se ordenará de mayor a menor.
+
+```{code-cell} ipython3
+def compara(x, y, reverse):
+    '''Compara dos valores en función del argumento reverse'''
+    
+    if reverse:
+        return x < y
+    else:
+        return x > y
+
+    
+def sort_insercion(lista, reverse=False):
+    '''Ordena una lista de menor a mayor si reverse es False. De mayor a menor si reverse es True'''
+    
+    for i in range(1, len(lista)): 
+        j = i
+        tmp = lista[i]  
+        while j > 0 and compara(lista[j-1], tmp, reverse): 
+            lista[j] = lista[j-1]
+            j -= 1
+        lista[j] = tmp
+
+
+enteros = [20, 1, 4, -1, -10, 0, 1, 6]
+sort_insercion(enteros, True)
+print(enteros)
+```
+
+Nótese que la lista `enteros`, externa a la función, ha sido modificada dentro de la función. Esto no es sino la consecuencia de su caracter **mutable**. Tanto la variable local `lista` como la variable externa `enteros` están ligadas a la misma zona de memoria donde residen los datos de la secuencia. Modificar la secuencia `lista`, por tanto, implica estar haciéndolo con la secuencia `enteros`.
 
 ```{code-cell} ipython3
 
