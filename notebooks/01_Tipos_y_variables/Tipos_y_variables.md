@@ -559,7 +559,7 @@ Analicemos a continuación la siguiente figura:
 Si ahora, en el código de C/C++ se ejecuta la asignación ``x = 2``, simplemente se **modifica** el valor de la **variable** `x`, que ahora pasará a contener un `2`.
 
 
-En el caso de Python, los enteros, ``int``, reales, ``float`` y otros tipos se consideran **inmutables**. Esto significa que una vez almacenado en memoria el valor, este no se puede modificar. Ese bloque de memoria es **inmutannle**. Por ello, cuando se hace la asignación ``x = 2``, en realidad se está creando, en otra localización de memoria, espacio para almacenar el nuevo valor `2`, haciendo ahora que la **etiqueta** `x`, que antes estaba **ligada** al bloque de memoria con valor `1`, se refiera ahora al bloque de memoria con valor `2`. 
+En el caso de Python, los enteros, ``int``, reales, ``float`` y otros tipos se consideran **inmutables**. Esto significa que una vez almacenado en memoria el valor, este no se puede modificar. Ese bloque de memoria es **inmutable**. Por ello, cuando se hace la asignación ``x = 2``, en realidad se está creando, en otra localización de memoria, espacio para almacenar el nuevo valor `2`, haciendo ahora que la **etiqueta** `x`, que antes estaba **ligada** al bloque de memoria con valor `1`, se refiera ahora al bloque de memoria con valor `2`. 
 
 De manera que, aunque el mecanismo de funcionamiento de la memoria en Python es diferente, para el caso de los tipos **inmutables** el resultado neto, es el mismo.
 

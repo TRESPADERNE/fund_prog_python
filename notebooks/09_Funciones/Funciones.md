@@ -20,7 +20,8 @@ kernelspec:
 
 [Introducción](#Introducción)<br>
 [Definición de funciones](#Definición_de_funciones)<br>
-[Tipos de funciones según sus parámetros de entrada y valores devueltos](#Tipos_de_funciones_según_sus_parámetros_de_entrada_y_valores_devueltos)<br>
+[Tipos de funciones según sus parámetros de entrada y resultados devueltos](#Tipos_de_funciones_según_sus_parámetros_de_entrada_y_valores_devueltos)<br>
+[Parámetros y argumentos](#Parametros_argumentos)<br>
 [Funciones y tratamiento de excepciones](#Funciones_excepciones)<br>
 [Proceso de desarrollo de un programa](#Proceso_desarrollo_programa)
 
@@ -36,7 +37,7 @@ kernelspec:
 En los temas previos ya hemos tenido oportunidad de trabajar con **funciones**. En este tema aprenderemos a definir y utilizar funciones **creadas por nosotros**.
 
 A lo largo del tiempo y en diferentes lenguajes el concepto de función aparece definido también por otros nombres: **subprograma**, **subrutina** o **procedimiento** son los más habituales y con diferentes matices denotan lo mismo.
->Una función es un **conjunto de instrucciones** al que se asigna un nombre, opcionalmente parámetros de entrada y de salida, y que puede ser **llamada** desde otras partes de un programa para realizar una tarea concreta.
+>Una función es un **conjunto de instrucciones** al que se asigna un nombre, opcionalmente **parámetros** de entrada y **resultados** de salida, y que puede ser **llamada** desde otras partes de un programa para realizar una tarea concreta.
 
 +++ {"hideCode": false, "hidePrompt": false}
 
@@ -87,7 +88,7 @@ print(y)
 Se debe resaltar lo siguiente en el ejemplo anterior:
 
 - **Claridad**
-> Observad la similitud en el uso (que no equivalencia) para este caso concreto de las funciones en Python con el concepto matemático de función. La función **recibe** valores como argumentos y **devuelve** un valor que entonces participa en la evaluación del resto de la expresión.
+> Observad la similitud en el uso (que no equivalencia) para este caso concreto de las funciones en Python con el concepto matemático de función. La función **recibe** valores como parámetros y **devuelve** un **resultado** que entonces participa en la evaluación del resto de la expresión.
 
 - **Abstracción**
 > Como *usuarios* de las funciones `sin()` y `cos()` no sabemos cómo están implementadas. Podríamos aventurar que es posible que la implementación de las mismas recurra a la expansión de series que converjan a las funciones requeridas, con una precisión alta pero finita. Pero el hecho cierto es que no lo sabemos, y tampoco nos interesa para utilizarlas: evidentemente hay que dar un *salto de fe* y confiar en que sean correctas dentro de los límites de la precisión que aseguran.
@@ -141,8 +142,8 @@ A partir de estas dos características básicas, se derivan el resto de las vent
 Las  características que deben prevalecer a la hora de diseñar una función son aquellas que refuerzan el hecho de que las funciones son abstracciones.
 
 Una función como abstracción debe centrarse en 3 propiedades:
-* Su **dominio**, conjunto de valores que pueden tomar sus argumentos de entrada.
-* Su **rango**, conjunto de valores que puede devolver.
+* Su **dominio**, conjunto de valores que pueden tomar sus parámetros de entrada.
+* Su **rango**, conjunto de valores que puede devolver como resultado.
 * Su **propósito**, la relación existente entre los valores de entrada y los de salida, así como los posibles efectos colaterales que puedan existir.
 
 Cómo se logran las salidas a partir de las entradas queda oculto, ese el mecanismo de la abstracción.
@@ -205,7 +206,7 @@ Observe en lo anterior los dos momentos del trabajo con las funciones, la **defi
       ```python
       def area_circulo(r): 
       ```  
-        Se utiliza la palabra reservada `def` seguida del identificador que da **nombre a la función**, `area_circulo` en el ejemplo. Le sigue entre paréntesis (obligatorios) la lista de **parámetros formales**, que puede estar vacía. En el ejemplo, consta de un sólo parámetro formal al que hemos identificado dentro de la definición de la función con el nombre `r`. 
+        Se utiliza la palabra reservada `def` seguida del identificador que da **nombre a la función**, `area_circulo` en el ejemplo. Le sigue entre paréntesis (obligatorios) la lista de **parámetros**, que puede estar vacía. En el ejemplo, consta de un sólo parámetro al que hemos identificado dentro de la definición de la función con el nombre `r`. 
     
         Note que, al definir la función, todavía no se ejecuta el código que ella representa, aunque aparezca primero dentro de la secuencia del programa. 
     - **Cuerpo**:
@@ -223,14 +224,14 @@ Observe en lo anterior los dos momentos del trabajo con las funciones, la **defi
     ```python
     area = area_circulo(diametro/2)
     ```
-    Se realiza escribiendo el nombre de la función, seguido obligatoriamente de los paréntesis con los **parámetros reales** (en este caso uno) que se le *pasarán* a la misma. Aquí el parámetro real se obtiene evaluando la expresión indicada, `diametro/2`.
+    Se realiza escribiendo el nombre de la función, seguido obligatoriamente de los paréntesis con los **argumentos** (en este caso uno) que se le *pasarán* a la misma. Aquí el argumento se obtiene evaluando la expresión indicada, `diametro/2`.
 
 +++ {"hideCode": false, "hidePrompt": false}
 
 A tener en cuenta:
 - Antes de llamar a una función, esta debe haber sido **definida** previamente en el programa.
 - La primera sentencia _útil_ que se ejecuta es la primera sentencia del **programa principal**. Programa principal es el conjunto de todas las sentencias que **no** están incluidas dentro del cuerpo de ninguna función.
-- Si la función tiene parámetros de entrada, a la hora de llamar a la función se calculan los valores de los parámetros reales, evaluando las expresiones correspondientes (en el ejemplo se evalúa `diametro/2`). El valor del parámetro real resulta asociado al parámetro formal o argumento de la función (en este caso `r`).
+- Si la función tiene parámetros de entrada, a la hora de llamar a la función se calculan los valores de los argumentos, evaluando las expresiones correspondientes (en el ejemplo se evalúa `diametro/2`). El valor del argumento resulta asociado al parámetro de la función (en este caso `r`).
 
 +++ {"hideCode": true, "hidePrompt": true}
 
@@ -268,9 +269,9 @@ Las sentencias que se ejecutarán primero de forma secuencial corresponden al **
 * la evaluación de la expresión que se asigna a una nueva variable, `area_cilindro`. Como la función `area_circulo()` devuelve un valor, la llamada a dicha función puede participar de la expresión en la que se calcula el área lateral del cilindro. Nótese que esta forma de utilizar la función que acabamos de definir, no difiere de lo ya visto en temas anteriores o del ejemplo del inicio de este documento con las funciones de biblioteca `cos()` y `sin()`.
 * la salida por pantalla de los resultados
 
-Al evaluar la expresión en la que aparece la llamada a `area_circulo()`, se procede siguiendo las reglas de precedencia de los operadores implicados. Primero, cuando se intenta realizar el primer producto, el intérprete de Python *comprende* que necesita antes evaluar la función `area_circulo()`, con lo que se detiene la evaluación de la expresión para *invocar* a la función, asociando el contenido de la variable `radio` (argumento real) al parámetro formal `r` de la definición de la función. Tras terminar la ejecución, la función devuelve el valor del área del circulo contenida en la variable local `area`, y dicho valor es recibido en el programa principal para proceder con la evaluación del resto de la expresión.
+Al evaluar la expresión en la que aparece la llamada a `area_circulo()`, se procede siguiendo las reglas de precedencia de los operadores implicados. Primero, cuando se intenta realizar el primer producto, el intérprete de Python *comprende* que necesita antes evaluar la función `area_circulo()`, con lo que se detiene la evaluación de la expresión para *invocar* a la función, asociando el contenido del argumento `radio` al parámetro `r` de la definición de la función. Tras terminar la ejecución, la función devuelve el valor del área del circulo contenida en la variable local `area`, y dicho valor es recibido en el programa principal para proceder con la evaluación del resto de la expresión.
 
-Nótese que `area_circulo()` tiene un comportamiento similar a las funciones matemáticas: a cada valor del dominio de definición (cada valor del parámetro formal `r`) le corresponde un único valor de la imagen (la salida que se logra mediante la sentencia `return`) y que además este valor siempre es el mismo.
+Nótese que `area_circulo()` tiene un comportamiento similar a las funciones matemáticas: a cada valor del dominio de definición (cada valor del parámetro `r`) le corresponde un único valor de la imagen (la salida que se logra mediante la sentencia `return`) y que además este valor siempre es el mismo.
 
 +++ {"hideCode": false, "hidePrompt": false}
 
@@ -304,7 +305,7 @@ Por tanto, desde otro punto de vista, violaría un **principio de generalidad**:
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-## Tipos de funciones según sus parámetros de entrada y valores devueltos
+## Tipos de funciones según sus parámetros de entrada y resultados devueltos
 ### Funciones sin parámetros de entrada
 
 ```{code-cell} ipython3
@@ -355,7 +356,7 @@ print(a)
 
 ### Funciones con más de un parámetro
 
-Las funciones pueden tener más de un parámetro formal. Tomando como referencia el ejemplo ya visto, definamos una función que reciba el radio y la altura de un cilindro y devuelva su área lateral.
+Las funciones pueden tener más de un parámetro. Tomando como referencia el ejemplo ya visto, definamos una función que reciba el radio y la altura de un cilindro y devuelva su área lateral.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -376,13 +377,13 @@ print('El área lateral del cilindro es {}.'.format(area_c))
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-Note que los parámetros formales de ```area_cilindro()``` ahora son dos, representando el radio (```r```) y la altura (```h```).
+Note que los parámetros de ```area_cilindro()``` ahora son dos, representando el radio (```r```) y la altura (```h```).
 
-Obsérvese la **correspondencia posicional** entre los parámetros formales y los reales: la constante literal `1` será copiada en el primer parámetro formal `r` y la constante `4.5` en el segundo `h`.
+Obsérvese la **correspondencia posicional** entre los parámetros y los argumentos: la constante literal `1` será copiada en el primer parámetro `r` y la constante `4.5` en el segundo `h`.
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-### Funciones que devuelven más de un parámetro
+### Funciones que devuelven más de un resultado
 
 En Python, las funciones pueden devolver mediante la sentencia ```return``` un número arbitrario de valores separados por coma, es decir, **tuplas**. Esta característica es una potente característica del lenguaje que lo diferencia de otros que no lo poseen de forma directa, como el C/C++.
 
@@ -422,7 +423,7 @@ En la línea en que se realiza la llamada, se asigna el resultado a dos variable
 +++ {"hideCode": false, "hidePrompt": false}
 
 ### Especificando el nombre de los parámetros
-Python permite especificar los nombres de los parámetros formales a la hora de invocar a la función.
+Python permite especificar los nombres de los parámetros a la hora de invocar a la función.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -442,7 +443,7 @@ print("El área lateral del cilindro", area_c)
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-Por supuesto, no se permite que un parámetro que no tenga nombre, **argumento posicional**, esté a la derecha de un argumento con nombre.
+Por supuesto, en la llamada no se permite que un argumento que no tenga nombre, **argumento posicional**, esté a la derecha de un argumento con nombre.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -455,7 +456,7 @@ print("El área lateral del cilindro", area_c)
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-Poder especificar nombres permite que los parámetros reales pueden ser enviados a la función en cualquier orden.
+Poder especificar nombres permite que los argumentos pueden ser enviados a la función en cualquier orden.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -508,12 +509,218 @@ print('Valor {} limitado en el rango [-1.0, 5.0]: {}'.format(valor, limita(valor
 
 +++ {"hideCode": false, "hidePrompt": false}
 
-Observe que, en el encabezado de la definición de la función, a los parámetros formales `inf`y `sup` se les asignan respectivamente los valores `0.0` y `1.0`. Esto significa que, si esos parámetros no son utilizados (no se les pasa un valor o parámetro real) durante la llamada a la función, se utilizarán en el cuerpo de la misma esos valores por defecto.
+Observe que, en el encabezado de la definición de la función, a los parámetros `inf`y `sup` se les asignan respectivamente los valores `0.0` y `1.0`. Esto significa que, si a esos parámetros no se les pasa un valor durante la llamada a la función, se utilizarán en el cuerpo de la misma esos valores por defecto.
 
-En la tercera llamada a la función, se requiere cambiar el límite superior solamente. Para estos casos, se puede utilizar una llamada a función que utiliza, no la posición del argumento como criterio de emparejamiento de los parámetros reales a formales, sino utilizar directamente el nombre del parámetro formal y el signo ```=``` para pasar el parámetro real. De no hacerlo así, y utilizar el paso de parámetro posicional, habría que haber utilizado una llamada a función como la que se muestra a continuación, perdiendo la ventaja de los parámetros por defecto:
+En la tercera llamada a la función, se requiere cambiar el límite superior solamente. Para estos casos, se puede utilizar una llamada a función que utiliza, no la posición del argumento como criterio de emparejamiento, sino utilizar directamente el nombre del parámetro y el signo ```=``` para pasar el argumento. De no hacerlo así, y utilizar el paso posicional, habría que haber utilizado una llamada a función como la que se muestra a continuación, perdiendo la ventaja de los parámetros por defecto:
 ```python
 limita(valor, 0, 5)
 ```
+
++++ {"hideCode": false, "hidePrompt": false}
+
+***
+<a id='Parametros_argumentos'></a>
+
++++
+
+## Parámetros y argumentos
+En los apartados anteriores hemos establecido una clara diferencia entre los términos **parámetro** y **argumento**, que con frecuencia aparecen usados como sinónimos. A los primeros a veces se les denomina **parámetros formales** y a los segundos **parámetros reales** en otros lenguajes.
+
+* los **argumentos** se utilizan en las **llamadas** a las funciones
+* los **parámetros** son internos a las funciones y reciben inicialmente los valores de los argumentos.
+
++++
+
+### Paso por referencia a objeto
+Como ya hemos comentado, las variables en Python son identificadores que **referencian** a objetos almacenados en bloques de memoria.
+
+En el mecanismo de llamada a una función se relaciona típicamente una variable correspondiente a un argumento con una variable correspondiente a un parámetro. El mecanismo que subyace en esta asociación entre argumento y parámetro es el de que la variable parámetro pasa a estar ligada al mismo objeto al que referencia la variable argumento. Por ello, este mecanismo se conoce como **paso por referencia a objeto**. 
+
++++
+
+La siguiente celda ilustra claramente el mecanismo. La variable `num` referencia a un objeto con valor entero `3`.
+Tras la llamada, ambas variables están ligadas al mismo objeto, como prueba la función `id()`.
+
+```{code-cell} ipython3
+def square(x):
+    print('Dentro de la función: x= {}, id={}'.format(x, id(x)))
+    return x**2
+
+num = 3
+print('Antes de la llamada: num= {}, id= {}'.format(num, id(num)))
+square(num)
+```
+
+Este mecanismo es muy efectivo puesto que ahorra crear un nuevo objeto en memoria para el parámetro, copia del correspondiente al argumento. Esto es lo que ocurre en otros lenguajes en el mecanismo de **paso por valor**.
+
++++
+
+Veamos lo que ocurre en la siguiente celda:
+
+```{code-cell} ipython3
+def square(x):
+    print('Dentro de la función: x= {}, id={}'.format(x, id(x)))
+    x = x**2
+    print('Dentro de la función tras asignación: x= {}, id={}'.format(x, id(x)))
+    return x
+
+num = 3
+print('Antes de la llamada: num= {}, id= {}'.format(num, id(num)))
+square(num)
+```
+
+La sentencia superflua `x = x**2` crea un nuevo objeto, en el ejemplo de valor `9`, al que pasa ahora a estar ligada la variable local `x`. No es sino una consecuencia del caracter **inmutable** de los tipos `int`, entre otros.
+
+Los parámetros de la función y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y sólo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
+
+Esto parece contradecir lo que ocurre en el siguiente ejemplo, que usa como parámetro una lista. En esta caso la aparente variable local `lista` afecta a la variable externa `enteros`:
+
+```{code-cell} ipython3
+def square_lista(lista):
+    print('Dentro de la función, antes de realizar cálculos: lista= {}, id={}'.format(lista, id(lista)))
+    for i, x in enumerate(lista):
+        lista[i] = x**2
+    print('Dentro de la función, después de realizar cálculos: lista= {}, id={}'.format(lista, id(lista)))        
+
+
+enteros = [1, 3, 5, 2, 4]
+print('Antes de la llamada: enteros= {}, id= {}'.format(enteros, id(enteros)))
+square_lista(enteros)
+print('Después de la llamada: enteros= {}, id= {}'.format(enteros, id(enteros)))
+```
+
+¡**Vemos que se cumple el paso por referencia a objeto**! El argumento `enteros` y el parámetro `lista` antes, durante y después de la llamada **referencian al mismo objeto**. Sin embargo, dentro de la función se han modificado sus elementos. Se ha producido un **efecto colateral**, en el que la función modifica objetos externos a ella.
+
+Esto es una consecuencia del carácter **mutable** de las listas. En realidad, lo que ocurre es que una variable de tipo `list`
+es un **objeto compuesto de objetos**. El bloque de memoria asociado al objeto contenedor original permanece inalterado, pero las referencias internas a sus elementos, que son objetos enteros inmutables, cambian necesariamente.
+
+La figura representa con fondo naranja varios objetos: un objeto tipo `list`y objetos tipo `int`, que son elementos de la lista y que pueden referenciarse a través del operador de indexación `lista[i]`. El mecanismo del objeto tipo `list` para acceder a sus elementos se representa en la figura de forma abstracta con los cuadrados de fondo azul.
+
++++
+
+![Esquema de una listas.jpg](img/listas_1_35.jpg)
+
++++
+
+Tras llamar a la función `square_lista(lista)` la situación pasa a ser la siguiente:
+
++++
+
+![Esquema de una listas.jpg](img/listas_2_35.jpg)
+
++++
+
+Se crean nuevos objetos `int`, `9`, `16` y `25`, y otros permanecen o ¡son reutilizados! Los objetos `int` `2`, `3` y `5` ya no están ligados a `lista`, pero podrían estarlo a otras variables del programa.
+
+Veamos en el ejemplo lo que ha ocurrido con los elementos:
+
+```{code-cell} ipython3
+def square_lista(lista):
+    for i, x in enumerate(lista):
+        print('\nEl elemento {} de la lista está asociado\nantes al objeto con dirección \n {}'.format(i, id(lista[i])))
+        lista[i] = x**2
+        print('después al objeto con dirección \n {}'.format(id(lista[i])))
+        
+enteros = [1, 3, 5, 2, 4]
+square_lista(enteros)
+```
+
+### Funciones puras e impuras
+
+Las **funciones** de Python que tienen un comportamiento **similar a las funciones matemáticas**, esto es, constituyen una relación unívoca entre el dominio de los valores de entrada y el valor de la salida, se denominan **funciones puras**.
+
+![funcion_pura.jpg](img/funcion_pura.jpg)
+
++++
+
+Se puede decir de las **funciones puras** que:
+
+- Devuelven el **mismo resultado** al ser _llamadas_ con los **mismos argumentos de entrada**.
+- El resultado sólo depende de la entrada: no tienen **memoria**, no conservan un **estado** que les permita _recordar_ que la misma ha sido _invocada_ antes, para entonces devolver un valor distinto en llamadas sucesivas.
+- No tiene **efectos colaterales** (**side effects**). La única forma de interacción con el resto de programa, o el contexto en que éste se desarrolla, es a través de la sentencia `return`. En especial:
+    - No modifican **variables externas** a la función.
+    - No imprime nada por pantalla, ni interaccionan de ninguna otra manera con el _mundo exterior_. 
+    
+Las **funciones impuras** son el resto de las funciones, entre ellas aquellas modifican los argumentos que sean **mutables**.
+
++++
+
+#### Ventajas de las funciones puras
+
+El trabajar preferentemente con **funciones puras** está en la base del **paradigma funcional** de programación, que en los últimos años está recobrando un nuevo auge. 
+
+El uso de **funciones puras** permite utilizar en programación las herramientas de análisis en las matemáticas y _demostrar_, en el sentido matemático del término, la _corrección_ de un programa de ordenador. En cualquier caso, una descripción de los principios y prácticas de la **programación funcional** está fuera de los marcos de este curso introductorio.
+
+Eso no impide que recomendemos, siempre que sea razonable, el uso **funciones puras**:
+- Al _prohibir_ los *efectos colaterales*, hace que los programas sean más fácilmente depurables. 
+- Permite además la **composición** de funciones: el pasar como argumentos de funciones, directamente el valor devuelto por otra función (con cualquier grado de anidamiento). Ejemplo: `cos(log(x))`.
+
++++
+
+La función `square_lista(lista)` podría fácilmente reimplementarse como una función pura:
+
+```{code-cell} ipython3
+def square_lista_pura(lista):
+    '''Se recibe una lista y se devuelve una lista con los elementos de la original elevados
+       al cuadrado. La lista original no sufre modificación'''
+    lista_salida = [0]*len(lista)
+    for i, x in enumerate(lista):
+        lista_salida[i] = x**2
+    return lista_salida
+        
+
+enteros = [1, 3, 5, 2, 4]
+lista_salida = square_lista_pura(enteros)
+print(enteros, '\n', lista_salida)
+```
+
+El caracter puro cuando se usan argumentos mutables es un auto de fe. Salvo que nos aseguremos mediante la inspección del código, solo nos queda confiar en la documentación de la función al respecto.
+
+La versión que vemos a continuación es un ejemplo de un error típico:
+
+```{code-cell} ipython3
+def square_lista_fallida(lista):
+    lista_salida = lista
+    for i, x in enumerate(lista_salida):
+        lista_salida[i] = x**2
+    return lista_salida
+        
+
+enteros = [1, 3, 5, 2, 4]
+lista_salida = square_lista_fallida(enteros)
+print(enteros, '\n', lista_salida)
+```
+
+Debemos recordar que las sentencias del tipo `lista_salida = lista` no crean un nuevo objeto. Crean una nueva referencia al objeto original, pero el objeto es el mismo.
+
+Sin embargo, en la versión pura, `lista_salida = [0]*len(lista)` crea un objeto lista totalmente diferente.
+
+Otra alternativa podría haber sido utilizar una notación especial de los **cortes** de listas:
+
+```{code-cell} ipython3
+def square_lista_pura_v2(lista):
+    lista_salida = lista[:]  
+    for i, x in enumerate(lista_salida):
+        lista_salida[i] = x**2
+    return lista_salida
+```
+
+Finalmente, a modo de recordatorio, una forma elegante de sustituir la llamada a la función hubiese sido usar simplemente una lista por comprensión:
+
+```{code-cell} ipython3
+lista_salida = [x**2 for x in lista]
+```
+
+#### Las funciones impuras son inevitables
+
+El objetivo de la programación es **aceptar datos** del *mundo exterior*, **procesarlos** de alguna forma y **devolverlos** al usuario. O sea, la utilidad global de los programas está precisamente en lograr determinados **efectos colaterales**.
+
+En todo caso, resulta útil, confinar estás interacciones con el **mundo exterior** a determinadas funciones bien _localizadas_.
+
+Ejemplos de funciones impuras imprescindibles o útiles:
+- Las funciones de entrada y salida, utilizando la consola, ficheros o redes informáticas, entre otras:
+> Por ejemplo, la función `input()`: aunque sea llamada con el mismo parámetro de entrada, puede devolver cada vez valores diferentes: el usuario humano tiene un **estado** o **memoria**.
+- Función que devuelve un número aleatorio: resulta útil porque precisamente tiene **memoria**: devuelve un valor diferente cada vez.
 
 +++ {"hideCode": false, "hidePrompt": false}
 
@@ -819,7 +1026,7 @@ def es_primo_con_excepciones(n):
        Si el valor n no es entero o es menor que 1 lanza una excepción ValueError'''
     
     if type(n) != int:
-        raise ValueError('El argumento de entrada no es de tipo int: {}'.format(n))
+        raise ValueError('El parámetro de entrada no es de tipo int: {}'.format(n))
     elif n < 2:
         raise ValueError('El valor introducido debe ser mayor que 1.')
     for div in range(2, numero):
@@ -972,7 +1179,7 @@ pi_aprox = calcula_pi_euler(0.0)
 print("La aproximación de PI hallada es {}".format(pi_aprox))
 ```
 
-Nótese que si el usuario utiliza una tolerancia cercana a `0` o negativa como parámetro de entrada, el bucle será *de facto* un bucle infinito. Dejamos al alumno que modifique la función anterior levantando una excepción cuando el parámetro de entrada cumpla `tol <= tol_minima`.
+Nótese que si el usuario utiliza una tolerancia cercana a `0` o negativa como argumento, el bucle será *de facto* un bucle infinito. Dejamos al alumno que modifique la función anterior levantando una excepción cuando el parámetro de entrada cumpla `tol <= tol_minima`.
 
 El alumno no debe perder de vista aspectos relativos a la precisión con sumatorios con muchos términos y con expresiones tales como:
 $$\frac{(-1)^{k+1}}{k^2}$$
@@ -1002,7 +1209,7 @@ Este mismo razonamiento puede repetirse cuantas veces se quiera, haciendo que el
 
 Si el divisor inicial es $0$, el **MCD** es el dividendo y si ambos son ceros el **MCD** es $0$.
 
-Una primera versión del algoritmo de Euclides podría ser la siguiente: 
+Una primera versión del algoritmo de Euclides podría ser la siguiente:
 
 ```{code-cell} ipython3
 :tags: [raises-exception, remove-output]
@@ -1190,7 +1397,7 @@ De forma similar al ejemplo anterior, vamos a utilizar funciones y manejo de exc
 # Conjetura de Collatz con funciones y manejo de excepciones (Versión 2)
 
 def pide_valor(inf=0): 
-    '''Solicita un valor entero exigiendo que sea >= que el argumento de entrada inf'''
+    '''Solicita un valor entero exigiendo que sea >= que el parámetro de entrada inf'''
     
     while True:
         try:
@@ -1249,7 +1456,7 @@ La idea para resolver este tipo de problema es tan sencilla como efectiva y se p
 
 - Si el algoritmo encuentra un $n$ impar, interrogar mediante un condicional, si el valor actualmente inspeccionado del conjunto de números es mayor que el que teníamos *memorizado* en `maximo` y, en caso afirmativo, actualizar el valor de esta última variable. Nótese que si $n$ es par, el nuevo valor $n$ será necesariamente inferior.
 
-Basta añadir a la función `collatz()` un nuevo parámetro de salida.
+Basta añadir a la función `collatz()` un nuevo resultado de salida.
 
 ```{code-cell} ipython3
 def collatz(n, max_iter=1e10):
@@ -1314,7 +1521,7 @@ Vamos ahora a encapsular el algoritmo en una función `sort_insercion(lista, rev
 
 ```{code-cell} ipython3
 def compara(x, y, reverse):
-    '''Compara dos valores en función del argumento reverse'''
+    '''Compara dos valores en función del parámetro reverse'''
     
     if reverse:
         return x < y
