@@ -152,8 +152,12 @@ Para lograr reforzar el mecanismo de abstracción de una función hay algunas pa
 1. Cada función debe tener un único propósito. Es el **principio de responsabilidad única**.
     * El objetivo perseguido con la función debería ser fácilmente identificado con un nombre corto.
     * Si una función hace múltiples tareas de forma consecutiva, debería rehacerse en múltiples funciones.
+    
+    
 2. **No te repitas** (**DRY**, **Don't repeat yourself**).
     * Si un fragmento de código aparece varias veces repetido, es una buena oportunidad para darlo un nombre e invocarlo múltiples veces.
+    
+    
 3. Las funciones deben ser **generales**.
     * No tiene sentido, por ejemplo, definir una función específica para elevar un número a la quinta, cuando podemos definir con carácter general, una función que eleve un número a cualquier exponente.
 
@@ -534,7 +538,9 @@ En los apartados anteriores hemos establecido una clara diferencia entre los té
 ### Paso por referencia a objeto
 Como ya hemos comentado, las variables en Python son identificadores que **referencian** a objetos almacenados en bloques de memoria.
 
-En el mecanismo de llamada a una función se relaciona típicamente una variable correspondiente a un argumento con una variable correspondiente a un parámetro. El mecanismo que subyace en esta asociación entre argumento y parámetro es el de que la variable parámetro pasa a estar ligada al mismo objeto al que referencia la variable argumento. Por ello, este mecanismo se conoce como **paso por referencia a objeto**. 
+En el mecanismo de llamada a una función se relaciona típicamente una variable correspondiente a un argumento con una variable correspondiente a un parámetro. El mecanismo que subyace en esta asociación entre argumento y parámetro es el de que la variable parámetro pasa a estar ligada al mismo objeto al que referencia la variable argumento. Por ello, este mecanismo se conoce como **paso por referencia a objeto**.
+
+En definitiva, el mecanismo es idéntico al que ocurre en una **asignación**: `parametro = argumento`. La particularidad es que los parámetros son locales a la función.
 
 +++
 
@@ -573,7 +579,7 @@ La sentencia superflua `x = x**2` crea un nuevo objeto, en el ejemplo de valor `
 
 Los parámetros de la función y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y sólo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
 
-Esto parece contradecir lo que ocurre en el siguiente ejemplo, que usa como parámetro una lista. En esta caso la aparente variable local `lista` afecta a la variable externa `enteros`:
+Esto parece contradecir lo que ocurre en el siguiente ejemplo, que usa como parámetro una lista. En este caso, la aparente variable local `lista` afecta a la variable externa `enteros`:
 
 ```{code-cell} ipython3
 def square_lista(lista):
@@ -596,13 +602,15 @@ es un **objeto compuesto de objetos**. El bloque de memoria asociado al objeto c
 
 La figura representa con fondo naranja varios objetos: un objeto tipo `list`y objetos tipo `int`, que son elementos de la lista y que pueden referenciarse a través del operador de indexación `lista[i]`. El mecanismo del objeto tipo `list` para acceder a sus elementos se representa en la figura de forma abstracta con los cuadrados de fondo azul.
 
+La situación justo tras la llamada a la función es la siguiente:
+
 +++
 
 ![Esquema de una listas.jpg](img/listas_1_35.jpg)
 
 +++
 
-Tras llamar a la función `square_lista(lista)` la situación pasa a ser la siguiente:
+Antes de la abandonar la función `square_lista(lista)`, la situación pasa a ser la siguiente:
 
 +++
 
@@ -610,9 +618,9 @@ Tras llamar a la función `square_lista(lista)` la situación pasa a ser la sigu
 
 +++
 
-Se crean nuevos objetos `int`, `9`, `16` y `25`, y otros permanecen o ¡son reutilizados! Los objetos `int` `2`, `3` y `5` ya no están ligados a `lista`, pero podrían estarlo a otras variables del programa.
+Se crean nuevos objetos `int`, `9`, `16` y `25` y otros ¡son reutilizados!, como los objetos `1` y `4`. Los objetos `int` `2`, `3` y `5` ya no están ligados a `lista`, pero podrían estarlo a otras variables del programa.
 
-Veamos en el ejemplo lo que ha ocurrido con los elementos:
+Veamos en el ejemplo lo que ha ocurrido con las identidades de los elementos de la lista:
 
 ```{code-cell} ipython3
 def square_lista(lista):
@@ -649,10 +657,10 @@ Las **funciones impuras** son el resto de las funciones, entre ellas aquellas mo
 
 El trabajar preferentemente con **funciones puras** está en la base del **paradigma funcional** de programación, que en los últimos años está recobrando un nuevo auge. 
 
-El uso de **funciones puras** permite utilizar en programación las herramientas de análisis en las matemáticas y _demostrar_, en el sentido matemático del término, la _corrección_ de un programa de ordenador. En cualquier caso, una descripción de los principios y prácticas de la **programación funcional** está fuera de los marcos de este curso introductorio.
+El uso de **funciones puras** permite utilizar en programación las herramientas de análisis en las matemáticas y *demostrar*, en el sentido matemático del término, la *corrección* de un programa de ordenador. En cualquier caso, una descripción de los principios y prácticas de la **programación funcional** está fuera de los marcos de este curso introductorio.
 
 Eso no impide que recomendemos, siempre que sea razonable, el uso **funciones puras**:
-- Al _prohibir_ los *efectos colaterales*, hace que los programas sean más fácilmente depurables. 
+- Al desparecer los *efectos colaterales*, los programas son más fácilmente depurables. 
 - Permite además la **composición** de funciones: el pasar como argumentos de funciones, directamente el valor devuelto por otra función (con cualquier grado de anidamiento). Ejemplo: `cos(log(x))`.
 
 +++
@@ -663,6 +671,7 @@ La función `square_lista(lista)` podría fácilmente reimplementarse como una f
 def square_lista_pura(lista):
     '''Se recibe una lista y se devuelve una lista con los elementos de la original elevados
        al cuadrado. La lista original no sufre modificación'''
+    
     lista_salida = [0]*len(lista)
     for i, x in enumerate(lista):
         lista_salida[i] = x**2
@@ -691,9 +700,9 @@ lista_salida = square_lista_fallida(enteros)
 print(enteros, '\n', lista_salida)
 ```
 
-Debemos recordar que las sentencias del tipo `lista_salida = lista` no crean un nuevo objeto. Crean una nueva referencia al objeto original, pero el objeto es el mismo.
+Debemos recordar que las sentencias del tipo `lista_salida = lista` no crean un nuevo objeto. Crean una nueva referencia al objeto original, pero el objeto es el mismo. De hecho, como ya hemos comentado, el paso por referencia a objeto no es sino la asignación `lista = enteros`.
 
-Sin embargo, en la versión pura, `lista_salida = [0]*len(lista)` crea un objeto lista totalmente diferente.
+Sin embargo, en la versión pura, `lista_salida = [0]*len(lista)` crea un objeto tipo `list` totalmente diferente.
 
 Otra alternativa podría haber sido utilizar una notación especial de los **cortes** de listas:
 
@@ -708,7 +717,7 @@ def square_lista_pura_v2(lista):
 Finalmente, a modo de recordatorio, una forma elegante de sustituir la llamada a la función hubiese sido usar simplemente una lista por comprensión:
 
 ```{code-cell} ipython3
-lista_salida = [x**2 for x in lista]
+lista_salida = [x**2 for x in enteros]
 ```
 
 #### Las funciones impuras son inevitables
@@ -768,13 +777,7 @@ La función `indice()` utiliza el mecanismo de excepciones para comunicar la exi
 
 Nótese que una excepción termina inmediatamente el **hilo de ejecución** de la función.
 
-Veamos un ejemplo en el que dividimos valor por valor dos listas. La idea es que si un valor de una lista que actúa como *denominador* es nulo, asignamos el valor **Not a number** `nan`. 
-
-Para el resto de excepciones:
-* Las listas tienen tamaños diferentes
-* Datos incompatibles entre sí
-
-será el usuario de la función quien deba manejarlas:
+Veamos otro ejemplo, en el que dividimos valor por valor dos listas. La idea es que si un valor de una lista que actúa como *denominador* es nulo, asignamos el valor **Not a number** `nan`.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -813,6 +816,17 @@ except (IndexError, TypeError) as error:
     print(error)
 ```
 
+En este ejemplo, podríamos haber optado por verificar de forma explícita las excepciones debidas a:
+* Las listas tienen tamaños diferentes
+* Datos incompatibles entre sí
+
+Por ejemplo, para manejar los tamaños diferentes algo del tipo:
+```python
+if len(lista_num) != len(lista_den):
+    raise IndexError('Las listas tienen tamaños diferentes.')
+```
+Sin embargo, tal y como está programada la función, podemos ahorrárnoslo, pues el propio intérprete hará ese trabajo por nosotros.
+
 +++ {"hideCode": false, "hidePrompt": false}
 
 ***
@@ -827,37 +841,54 @@ La programación es una tarea compleja a la que es mejor enfrentarse de manera *
 
 Algunos pasos generales para hacerlo son:
 
-### 1. Análisis del problema a resolver
-* Utilizar en esta etapa **lápiz y papel** y la ayuda de **bosquejos**, entre otros recursos.
-* Identificar los **datos de entrada** y cuales deben ser las **salidas** buscadas, para todas las posibles condiciones.
-* Hacer cálculos paso a paso. Identificar **resultados intermedios** tratando de encontrar el algoritmo adecuado. 
+1. **Análisis del problema a resolver**
 
-### 2. Versión inicial del problema
-Una vez se llega a una primera solución *en papel* razonable, se pasa a programar, utilizando los recursos provistos por el lenguaje. Como se ha dicho, ya se poseen los elementos imprescindibles para resolver cualquier problema solucionable por un ordenador. Por supuesto, en la medida que avance el curso, los recursos a nuestra disposición crecerán.
+    * Utilizar en esta etapa **lápiz y papel** y la ayuda de **bosquejos**, entre otros recursos.
+    * Identificar los **datos de entrada** y cuales deben ser las **salidas** buscadas, para todas las posibles condiciones.
+    * Hacer cálculos paso a paso. Identificar **resultados intermedios** tratando de encontrar el algoritmo adecuado. 
 
-### 3. Identificación de casos límite o especiales
-Puede darse el caso de que el programa no funcione para los **casos límites o especiales** (¿funciona para el 2, que es el primer posible primo?, ¿pueden producirse divisiones por 0?, etc.). Es importante identificar esos casos para poder testarlos y, en su caso, corregir los fallos. 
 
-### 4. Casos de uso por parte del usuario
-Por otro lado, es frecuente que en un primera esbozo del programa, se asuma que el usuario va a actuar de la forma prevista pero ¿qué pasa si no lo hace? (En el caso de los primos, ¿qué pasa si el número introducido es menor que dos o incluso negativo?). En ocasiones, el no prever todas estas posibles situaciones puede dar un resultado incorrecto o que el programa se interrumpa bruscamente por un error de ejecución. La solución de cada uno de los problemas detectados, implicará probablemente volver al paso 1 y la realización de modificaciones del código más o menos importantes, hasta que se llega a un código robusto y que funcione para todas las posibles entradas de datos. El **manejo de excepciones** tiene aquí un papel importante.
+2. **Versión inicial del problema**
+    
+    Una vez se llega a una primera solución *en papel* razonable, se pasa a programar, utilizando los recursos provistos por el lenguaje. Como se ha dicho, ya se poseen los elementos imprescindibles para resolver cualquier problema solucionable por un ordenador. Por supuesto, en la medida que avance el curso, los recursos a nuestra disposición crecerán.
 
-### 5. Legibilidad
-Se debe tener en cuenta que un programa tiene otras virtudes además de dar las salidas correctas para todas los casos. Los programas deben ser **legibles**, estar escritos de forma clara y consistente, de manera que otros programadores o el mismo programador original pasado un tiempo, puedan comprenderlos con facilidad para hacer las modificaciones que son frecuentemente necesarias.
 
-Los identificadores de las variables deben ser **autoexplicativos**, las estructuras de control deberán estar bien elegidas.
+3. **Identificación de casos límite o especiales**
 
-El sangrado del código y el uso correcto de los espacios en blanco ayuda notablemente en este aspecto. En este sentido, Python ha adoptado la decisión de *exigir* sintácticamente un sangrado correcto del código.
+    Puede darse el caso de que el programa no funcione para los **casos límites o especiales** (¿funciona para el 2, que es el primer posible primo?, ¿pueden producirse divisiones por 0?, etc.). Es importante identificar esos casos para poder testarlos y, en su caso, corregir los fallos. 
 
-### 6. Refinamiento descendente
-Frecuentemente ocurre que, en la medida en que el programa crece, se debe **reestructurar** el código. Buena legibilidad y facilidad de reestructuración están íntimamente ligadas. El **refinamiento descendente** agrupando código en funciones es la estrategia habitual.
 
-### 7. Optimización del código
-Las primeras veresiones de un programa seguramente no constituyen la forma más **eficiente** (más rápida, por ejemplo) de resolver el problema. Un código que ya funciona correctamente puede estar sujeto a mejoras y optimizaciones. Aunque no se hará hincapié sobre este tema en un curso básico, en algunas ocasiones, sobre todo cuando se manipulan grandes volúmenes de datos, son importantes las consideraciones de cómo crece, por ejemplo, el tiempo de ejecución del programa cuando aumenta el *tamaño* de los datos de entrada. El encontrar un código eficiente es una tarea en general difícil, y debe ser en todo caso enfrentada cuando ya se tenga un programa básico que funcione correctamente. 
+4. **Casos de uso por parte del usuario**
 
-Por otro lado, ¡no se debe caer en la trampa de la **optimización prematura**! En este sentido, es útil conocer que en la gran mayoría de los casos es bueno sacrificar la velocidad de ejecución en aras de una mayor claridad del código.
+    Por otro lado, es frecuente que en un primera esbozo del programa, se asuma que el usuario va a actuar de la forma prevista pero ¿qué pasa si no lo hace? (En el caso de los primos, ¿qué pasa si el número introducido es menor que dos o incluso negativo?). En ocasiones, el no prever todas estas posibles situaciones puede dar un resultado incorrecto o que el programa se interrumpa bruscamente por un error de ejecución. La solución de cada uno de los problemas detectados, implicará probablemente volver al paso 1 y la realización de modificaciones del código más o menos importantes, hasta que se llega a un código robusto y que funcione para todas las posibles entradas de datos. El **manejo de excepciones** tiene aquí un papel importante.
 
-### 8. Documentación
-Los comentarios en el código son útiles pero es mejor evitarlos usando código autoexplicativo. Lo que sí es importante es **documentar** nuestros programas y, en especial, las funciones. Añadir en las zonas adecuadas del código información para explicar qué hacen, en su caso, cómo lo hacen, y cómo deben ser utilizadas.
+
+5. **Legibilidad**
+
+    Se debe tener en cuenta que un programa tiene otras virtudes además de dar las salidas correctas para todas los casos. Los programas deben ser **legibles**, estar escritos de forma clara y consistente, de manera que otros programadores o el mismo programador original pasado un tiempo, puedan comprenderlos con facilidad para hacer las modificaciones que son frecuentemente necesarias.
+
+    Los identificadores de las variables deben ser **autoexplicativos**, las estructuras de control deberán estar bien elegidas.
+
+    El sangrado del código y el uso correcto de los espacios en blanco ayuda notablemente en este aspecto. En este sentido, Python ha adoptado la decisión de *exigir* sintácticamente un sangrado correcto del código.
+
+
+6. **Refinamiento descendente**
+
+    Frecuentemente ocurre que, en la medida en que el programa crece, se debe **reestructurar** el código. Buena legibilidad y facilidad de reestructuración están íntimamente ligadas. El **refinamiento descendente** agrupando código en funciones es la estrategia habitual.
+
+
+7. **Optimización del código**
+
+    Las primeras veresiones de un programa seguramente no constituyen la forma más **eficiente** (más rápida, por ejemplo) de resolver el problema. Un código que ya funciona correctamente puede estar sujeto a mejoras y optimizaciones. Aunque no se hará hincapié sobre este tema en un curso básico, en algunas ocasiones, sobre todo cuando se manipulan grandes volúmenes de datos, son importantes las consideraciones de cómo crece, por ejemplo, el tiempo de ejecución del programa cuando aumenta el *tamaño* de los datos de entrada. El encontrar un código eficiente es una tarea en general difícil, y debe ser en todo caso enfrentada cuando ya se tenga un programa básico que funcione correctamente. 
+
+    Por otro lado, ¡no se debe caer en la trampa de la **optimización prematura**! En este sentido, es útil conocer que en la gran mayoría de los casos es bueno sacrificar la velocidad de ejecución en aras de una mayor claridad del código.
+
+
+8. **Documentación**
+
+    Los comentarios en el código son útiles pero es mejor evitarlos usando código autoexplicativo. Lo que sí es importante es **documentar** nuestros programas y, en especial, las funciones. Añadir en las zonas adecuadas del código información para explicar qué hacen, en su caso, cómo lo hacen, y cómo deben ser utilizadas.
+    
+    A partir de ahora, utilizaremos el estándar de documentación [Numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html).
 
 +++
 
@@ -879,7 +910,7 @@ La solución es utilizar otro bucle (bucles anidados), que incluya el código an
 Comenzemos por una versión ya vista en temas anteriores:
 
 ```{code-cell} ipython3
-:tags: [raise-exception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Determina si un número entero es primo. (Versión 1)
 numero = int(input('Deme un entero positivo mayor que 1: '))
@@ -899,7 +930,7 @@ else:
 Vamos a estructurar el código usando refinamiento descendente usando una función ``es_primo(n)``.
 
 ```{code-cell} ipython3
-:tags: [raises-eception, remove-output]
+:tags: [remove-output, raises-exception]
 
 # Determina si un número entero es primo, usando una función. (Versión 2)
 
@@ -962,33 +993,6 @@ while opcion != 's' and opcion != 'S':
     opcion = input("Desea salir (s/n):")
 ```
 
-```{code-cell} ipython3
-# Determina si una serie de enteros son primos, sin bucle infinito (Versión 2)
-
-opcion = 'n'
-while opcion != 's' and opcion != 'S':
-    try:
-        numero = int(input('Deme un entero positivo mayor que 1: '))
-        if numero < 2:
-            raise ValueError('El valor introducido debe ser mayor que 1.')
-    except ValueError as e:
-        print(e)
-    else:
-        es_primo = True
-        for div in range(2, numero):
-            if numero % div == 0:
-                es_primo = False
-                break
-        if es_primo:
-            print("El número {} es primo.".format(numero))
-        else:
-            print("El número {} no es primo.".format(numero))
-    finally:
-        opcion = input("Desea salir (s/n):")
-        if opcion == 's' or opcion == 'S':
-            break
-```
-
 En esta parte del desarrollo del programa ya podemos introducir los elementos que protegen al programa de entradas de datos incorrectas por parte del usuario, manejando las excepciones:
 * el usuario no introduce un valor entero
 * el valor entero introducido es inferior a ``2``
@@ -1029,8 +1033,8 @@ def es_primo_con_excepciones(n):
         raise ValueError('El parámetro de entrada no es de tipo int: {}'.format(n))
     elif n < 2:
         raise ValueError('El valor introducido debe ser mayor que 1.')
-    for div in range(2, numero):
-        if numero % div == 0:
+    for div in range(2, n):
+        if n % div == 0:
             return False
     return True
 
@@ -1052,7 +1056,7 @@ except ValueError as error:
     print(error)
 ```
 
-El criterio para manejar o no las excepciones dentro de una función no es una ciencia exacta. Verificar la validez de los datos de entrada o de algún resultado intermedio es una tarea que consume tiempo de computación. Y, en determinadas aplicaciones, puede que sea más práctico dejar esa responsabilidad al programador usuario de la función y que sea éste el que garantice su correcto uso. Es lo que hicimos en la versión previa.
+El criterio para manejar o no las excepciones dentro de una función no es una ciencia exacta. Verificar la validez de los datos de entrada o de algún resultado intermedio es una tarea que consume tiempo de computación. Y en determinadas aplicaciones puede que sea más práctico dejar esa responsabilidad al programador usuario de la función y que sea éste el que garantice su correcto uso. Es lo que hicimos en la versión previa.
 
 Esto pone de relevancia lo importante que es la **documentación** de las funciones. Entre otras cosas, la documentación debe informar de aquellas situaciones que eventualmente se puedan generar excepciones, si éstas son manejadas (`try`) o si son levantadas (`raise`).
 
@@ -1175,17 +1179,19 @@ def calcula_pi_euler(tol=1e-6):
     return (12.0*suma_parcial)**0.5
     
 
-pi_aprox = calcula_pi_euler(0.0)
+pi_aprox = calcula_pi_euler(1.e-7)
 print("La aproximación de PI hallada es {}".format(pi_aprox))
 ```
 
 Nótese que si el usuario utiliza una tolerancia cercana a `0` o negativa como argumento, el bucle será *de facto* un bucle infinito. Dejamos al alumno que modifique la función anterior levantando una excepción cuando el parámetro de entrada cumpla `tol <= tol_minima`.
 
 El alumno no debe perder de vista aspectos relativos a la precisión con sumatorios con muchos términos y con expresiones tales como:
+
 $$\frac{(-1)^{k+1}}{k^2}$$
+
 Conforme el valor $k$ aumenta, la representación finita de los datos `float` entra en juego, por lo que el error cometido al calcular cada término hará inservible el utilizar una tolerancia excesivamente pequeña.
 
-El siguiente sencillo ejemplo ilustra este problema:
+Respecto a los errores acumulados en series de muchos términos, el siguiente sencillo ejemplo ilustra este problema:
 
 ```{code-cell} ipython3
 incr = 0.1  # La representación no es exacta
@@ -1201,7 +1207,7 @@ print('El valor esperado es {} frente al obtenido {}'.format(10**6, suma))
 
 Se trata de encontrar el mayor número que divida exactamente dos números enteros positivos dados. El algoritmo que resuelve el problema es uno de los más antiguos y famosos y se atribuye a Euclides.
 
-Sean dos enteros positivos: $p$ y $q$ (suponiendo $p >= q$). En general se puede plantear que $p=q*b+r$.
+Sean dos enteros positivos: $p$ y $q$ (suponiendo $p >= q$). En general, se puede plantear que $p=q*b+r$.
 
 Es posible demostrar que el máximo común divisor de $p$ y $q$ es el mismo que el de $q$ y $r$. Sea $mcd$ el máximo común divisor de $p$ y $q$. Como $p=q*b+r$ y $mcd$ divide a $p$ y $q$ también divide a $q$ y $r$. Si existiera otro número mayor que $mcd$ que divide a $q$ y $r$, también dividiría a $p$, lo que contradiría que $mcd$ es un máximo común divisor.
 
@@ -1249,6 +1255,16 @@ else:
 print('El MCD de {} y {} es {}.'.format(dividendo_copia, divisor_copia, mcd))
 ```
 
+Una posible ejecución del programa sería:
+```
+Introduzca dos enteros, para los que se calculará el MCD.
+Introduzca el primer número (>=0): 11025
+Introduzca el segundo número (>=0): 6615
+El MCD de 11025 y 6615 es 2205.
+```
+
++++
+
 Podemos ver claramente las tres partes típicas de un programa:
 * Entrada de datos
 * Algoritmo
@@ -1273,7 +1289,7 @@ En la siguiente versión, vamos a encapsular la entrada de datos en una función
 ```{code-cell} ipython3
 :tags: [raises-exception, remove-output]
 
-# Halla el MCD de dos numeros enteros naturales, incluido el 0. Versión usando funciones (Versión 2)
+##### Halla el MCD de dos numeros enteros naturales, incluido el 0. Versión usando funciones (Versión 2)
 
 def pide_valores():
     '''Solicita dos valores enteros exigiendo que sean >= que 0'''
@@ -1315,11 +1331,13 @@ num1, num2 = pide_valores()
 print('El MCD de {} y {} es {}.'.format(num1, num2, mcd_euclides(num1, num2)))
 ```
 
-Véase como el uso de funciones y su poder de abstracción ha reducido el programa principal al uso de dos sentencias.
+Véase como el uso de funciones y su poder de abstracción ha reducido el programa principal al uso de ¡dos sentencias!
 
-Veamos una posible versión de la función `pide_valores()` más robusta manejando excepciones.
+Veamos una versión de la función `pide_valores()` más robusta manejando excepciones.
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # Versión manejando excepciones
 def pide_valores(): 
     '''Solicita dos valores enteros exigiendo que sean >= que 0'''
@@ -1341,19 +1359,21 @@ def pide_valores():
 
 Nótese que esta versión maneja un posible error en el formato de la entrada de datos sin que el programa finalice brúscamente.
 
-En este caso, consideramos que la documentación de la función `mcd_euclides()` ya advierte de que debe usarse con enteros positivos o nulos. Es responsabilidad del usuario garantizar esa restricción. De hecho, es lo que hace la función `pide_valores()` en el programa.
+En este caso, consideramos que la documentación de la función `mcd_euclides()` ya advierte de que debe usarse con enteros positivos o nulos. Es responsabilidad del usuario garantizar esa restricción. Por ello, no hemos añadido manejo de excepciones. De hecho, es lo que hacemos en la función `pide_valores()` en el programa como paso previo a utilizar `mcd_euclides()`.
 
 +++
 
 #### Ejemplo 4: Conjetura de Collatz
 
 La conjetura de Collatz propone que para cualquier número positivo, tras el proceso iterativo:
+
 $$
 n=\begin{cases}
     n/2,  & &\text{si $n$ par}.\\
     3n+1, & & \text{si $n$ impar}.
   \end{cases}
 $$
+
 se alcanza en algún momento para $n$ la unidad.
 
 Este hecho no está demostrado, de ahí que se trate de una **conjetura**. El siguiente código implementa el algoritmo propuesto pero añade un contador para acotar el número máximo de iteraciones.
@@ -1387,6 +1407,14 @@ else:
     print("No se ha llegado a 1 en {} iteraciones. ¡Se debe investigar más!".format(iteraciones))
 ```
 
+Una posible ejecución del programa sería:
+```
+Dame un número entero positivo: 347373673
+Se ha llegado a 1 en 269 iteraciones.
+```
+
++++
+
 Fuera del bucle se solicita el valor inicial de $n$ y se inicializa el contador. Dentro del bucle, simplemente se actualiza el valor de $n$ según el procedimiento dado. Se saldrá del bucle cuando $n$ llega al valor de $1$ (reforzando nuestra convicción de que la conjetura de Collatz es válida) o cuando el contador llega al valor de la constante utilizada.
 
 De forma similar al ejemplo anterior, vamos a utilizar funciones y manejo de excepciones para mejorar el programa.
@@ -1403,7 +1431,7 @@ def pide_valor(inf=0):
         try:
             num = int(input('Introduzca un entero (>={}): '.format(inf)))
             if num < inf:
-                raise ValueError('Ambos números deben ser iguales o mayores que 0.')
+                raise ValueError('El número debe ser positivo.')
         except ValueError as error:
             print(error)
         else:
@@ -1415,7 +1443,8 @@ def pide_valor(inf=0):
 def collatz(n, max_iter=1e10):
     '''Implementa la conjetura de Collatz con un valor límite de iteraciones max_iter.
        Devuelve True o False en función de si se cumple la conjetura para el valor de entrada num
-       y el número de iteraciones que se han necesitado'''
+       y el número de iteraciones que se han necesitado.
+       El valor introducido debe ser un entero positivo.'''
     
     iteraciones = 0
     while n != 1 and iteraciones < max_iter:
@@ -1442,6 +1471,8 @@ else:
 
 En esta variante, la función `pedir_valor(inf=0)` incorpora como argumento un límite inferior para que el valor introducido desde teclado sea válido. Por defecto, el valor `0`.
 
+El resultado es una tupla, formada por una boolena que determina si la conjetura se cumplió y el número de iteraciones.
+
 +++
 
 Los valores intermedios por los que pasa $n$ hasta finalmente llegar a $1$ oscilan con amplitudes muy grandes. 
@@ -1456,7 +1487,7 @@ La idea para resolver este tipo de problema es tan sencilla como efectiva y se p
 
 - Si el algoritmo encuentra un $n$ impar, interrogar mediante un condicional, si el valor actualmente inspeccionado del conjunto de números es mayor que el que teníamos *memorizado* en `maximo` y, en caso afirmativo, actualizar el valor de esta última variable. Nótese que si $n$ es par, el nuevo valor $n$ será necesariamente inferior.
 
-Basta añadir a la función `collatz()` un nuevo resultado de salida.
+Basta añadir a la función `collatz()` un nuevo componente en la tupla resultado de salida.
 
 ```{code-cell} ipython3
 def collatz(n, max_iter=1e10):
@@ -1482,9 +1513,9 @@ def collatz(n, max_iter=1e10):
 ```
 
 #### Ejemplo 5: Algoritmo de ordenación por inserción
-Una de las actividades más habituales en programación es la de ordenar una colección de datos. Es tan común esta tarea que existen funciones y métodos ya listos para ser utilizados, predefinidos en el lenguaje, como por ejemplo, la función nativa `sorted()` o el método `.sort()`  de las listas.
+Una de las tareas más habituales en programación es la de ordenar una colección de datos. Es tan común que existen funciones y métodos ya listos para ser utilizados, predefinidos en el lenguaje, como por ejemplo, la función nativa `sorted()` o el método `.sort()`  de las listas.
 
-La razón que justifica la importancia de tener listas ordenadas radica en la facilidad posterior de encontrar elementos en una lista ordenada, al poder realizar sobre ellas las llamadas **búsquedas binarias**, mucho más eficientes que una búsqueda **secuencial**.
+La razón que justifica la importancia de tener listas ordenadas radica en la facilidad posterior para encontrar elementos, al poder realizar sobre ellas las llamadas **búsquedas binarias**, mucho más eficientes que una búsqueda **secuencial**.
 
 Existen muchos algoritmos de ordenación, de diferente grado de complejidad y eficiencia. El algoritmo de ordenación por **inserción** o **método de la baraja** es bastante simple y resulta eficaz para colecciones no muy grandes.
 
@@ -1511,7 +1542,10 @@ for i in range(1, len(enteros)): # Recorre la sublista desordenada
 print(enteros)
 ```
 
-Es importante entender que el algoritmo anterior ordena la lista _in situ_. Se trata de dos bucles anidados. El `for` externo _recorre_ todos los elementos, a partir del segundo utilizando el índice ```i```, esto es recorre uno por uno todos los elementos de la sublista desordenada. El bucle interno, por su parte, utiliza un `while` y otro índice ```j``` para recorrer la sublista de los elementos ya ordenados, hasta encontrar el sitio que le corresponde al elemento que debe ser insertado y que está provisionalmente almacenado en ```tmp```. Nótese que mientras no se encuetra la posición adecuado en la sublista ordenada, los elementos de la misma son _recolocados_ apropiadamente *ascendiéndolos* una posición. 
+Es importante entender que el algoritmo anterior ordena la lista _in situ_. Consta de dos bucles anidados:
+
+* El `for` externo _recorre_ todos los elementos a partir del segundo, utilizando el índice ```i```, esto es recorre uno por uno todos los elementos de la sublista desordenada.
+* El bucle interno, por su parte, utiliza un `while` y otro índice ```j``` para recorrer la sublista de los elementos ya ordenados, hasta encontrar el sitio que le corresponde al elemento que debe ser insertado y que está provisionalmente almacenado en ```tmp```. Nótese que mientras no se encuetra la posición adecuado en la sublista ordenada, los elementos de la misma son _recolocados_ apropiadamente *ascendiéndolos* una posición. 
 
 ¿Cómo modificarías el código previo para que se ordene de mayor a menor?
 
@@ -1546,8 +1580,182 @@ sort_insercion(enteros, True)
 print(enteros)
 ```
 
-Nótese que la lista `enteros`, externa a la función, ha sido modificada dentro de la función. Esto no es sino la consecuencia de su caracter **mutable**. Tanto la variable local `lista` como la variable externa `enteros` están ligadas a la misma zona de memoria donde residen los datos de la secuencia. Modificar la secuencia `lista`, por tanto, implica estar haciéndolo con la secuencia `enteros`.
+Nótese que la lista `enteros`, externa a la función, ha sido modificada dentro de la función. No es una función pura: es la consecuencia del caracter **mutable** de las listas.
+
++++
+
+#### Ejemplo 6: La búsqueda binaria
+La **búsqueda binaria** es un método de búsqueda extraordinariamente eficiente cuando el **ítem** buscado pertenece a una **secuencia ordenada**. Tambiéb se conoce al algoritmo como **búsqueda por bisección** o **búsqueda docotómica**.
+
+La idea es en cada iteración, dividir el espacio de búsqueda entre dos, tomando el valor intermedio de la secuencia. Esta **subdivisión entre dos** es la que da nombre al algoritmo.
+
+Comparando el valor buscado con el valor situado en la **posición intermedia** de la secuencia, tenemos 3 opciones:
+1. El valor intermedio **coincide** con el buscado, con lo que el objetivo está conseguido.
+2. El valor intermedio es **inferior**, con lo que, de encontrarse en la secuencia el valor buscado, al estar ordenada, debemos seguir intentándolo en la **subsecuencia de valores superiores** al intermedio.
+3. El valor intermedio es **superior**, con lo que, de forma análoga al punto 2, debemos seguir buscándolo en la **subsecuencia de valores inferiores** al intermedio.
+
++++
+
+Para ver paso a paso el desempeño del algoritmo, vamos utilizar un ejemplo con una lista ordenada de números enteros.
 
 ```{code-cell} ipython3
-
+lista = [-5, 2, 3, 4, 12, 21, 23, 34, 43, 123]
 ```
+
+Para controlar la sublista con la que vamos a trabajar de forma iterada, vamos a manejar dos valores, dos **punteros**, que nos indican los **índices inferior** y **superior** de la sublista.
+
+Inicialmente, nuestra sublista es la lista original. Por tanto, tendríamos:
+
+```python
+inf = 0
+sup = len(lista) - 1
+```
+
++++
+
+Imaginemos que el valor a buscar es el `0`. Veamos la evolución del algoritmo paso a paso sin usar bucles y actualizando los **punteros** `inf` y `sup` de forma manual. Probemos el valor situado en la posición intermedia de la lista original.
+
+```{code-cell} ipython3
+def obtiene_nuevos_limites(lista, valor, inf, sup):
+    '''Devuelve los nuevos límites de búsqueda de valor en la lista'''
+
+    mitad = (inf+sup)//2  # División entera, pues los índices son enteros
+    print('Vamos a probar con la posición {}.'.format(mitad))
+
+    if valor_buscado < lista[mitad]:
+        print('El valor {} se encontraría en la sublista inferior [{},{}].'.format(valor_buscado, inf, mitad-1))
+        return inf, mitad-1
+    elif valor_buscado > lista[mitad]:
+        print('El valor {} se encontraría en la sublista superior [{},{}].'.format(valor_buscado, mitad+1, sup))
+        return mitad+1, sup
+    else:
+        print('El valor {} se encuentra en la posición {}.'.format(valor_buscado, mitad))
+        return mitad, mitad
+
+valor_buscado = 0
+inf = 0
+sup = len(lista) - 1
+inf, sup = obtiene_nuevos_limites(lista, valor_buscado, inf, sup)
+```
+
+Dado que el índice `mitad` inicialmente vale `4` y `lista[4]` es `12`, de encontrarse en la lista inicial, el valor buscado `0` deberá estar en la sublista comprendida entre los valores `inf` y `mitad-1`, es decir, en la sublista comprendida entre los índices `0` y `3`.
+
+Repitamos el proceso con una celda similar a la anterior, con los valores `inf` y `sup` actualizados.
+
+```{code-cell} ipython3
+inf, sup = obtiene_nuevos_limites(lista, valor_buscado, inf, sup)
+```
+
+Ahora el índice `mitad` vale `1` y `lista[1]` es `2`. Al igual que antes, de encontrarse en la lista inicial, el valor buscado `0` deberá estar en la sublista comprendida entre los valores `inf` y `mitad-1`, es decir, en la sublista comprendida entre los índices `0` y `0`. Nótese que esta sublista tiene ya un único elemento. ¡Se nos acaban las oportunidades!
+
+Repitamos el proceso con una celda similar a la anterior, con los valores `inf` y `sup` actualizados.
+
+```{code-cell} ipython3
+inf, sup = obtiene_nuevos_limites(lista, valor_buscado, inf, sup)
+```
+
+Obviamente el valor `0` no se encuentra en la sublista y, además, nuestro proceso nos arroja un **resultado absurdo**: el valor buscado debe estar en la sublista situada entre las posiciones `[1,0]`. Es absurdo puesto que lógicamente debe cumplirse `inf <= sup`.
+
+Esta situación es la prueba de que el valor buscado no se encuentra en la lista. Además, nos da la clave para transformar nuestro proceso secuencial en un proceso iterativo.
+
+Veámoslo ya todo integrado en el siguiente fragmento de código:
+
+```{code-cell} ipython3
+lista = [-5, 1, 3, 4, 12, 21, 23, 34, 43, 123]
+
+inf = 0
+sup = len(lista) - 1
+
+valor = int(input('Introduzca un valor entero:'))
+
+encontrado = False  # Centinela
+while inf <= sup and not encontrado:
+    mitad = (inf+sup)//2  
+    if valor < lista[mitad]:
+        sup = mitad - 1  
+    elif valor > lista[mitad]:
+        inf = mitad + 1  
+    else:
+        encontrado = True
+        
+if encontrado:
+    print('El valor {} se encuentra en la posición {}.'.format(valor, mitad))
+else:
+    print('El valor {} no se encuentra en la lista.'.format(valor))
+```
+
+La búsqueda binaria necesita en el peor de los casos un **tiempo logarítmico** de operaciones, $O(\log n)$ comparaciones, donde $n$ es el número de elementos de la lista. Así, para una lista con $2^n$ ítems se necesitarán a lo sumo $n$ comprobaciones.
+
++++
+
+Lo lógico es que este algoritmo de búsqueda binaria lo **encapsulemos** en una función, `busqueda_binaria(lista, valor)`, para su fácil reutilización. Esta función devolverá la posición en la que se encuentra el elemento. La cuestión que nos podemos plantear es: ¿qué devolvemos si el valor buscado no se encuentra en la lista?
+
+En la bibliografía aparecen diferentes posibilidades:
+1. Devolver un valor negativo, típicamente -1. Dado que un valor negativo no puede ser un índice válido de una lista es una forma de indicarle al usuario de la función que no se ha encontrado el valor.
+2. Devolver la palabra reservada `None`, que es una forma de indicar que no se devuelve nada.
+3. Levantar una excepción `ValueError`. Es la estrategia más *pitónica*. De hecho, com ya hemos visto, es la que adopta Python con el método `index()` de las listas, donde la única diferencia con la búsqueda binaria es que no se presupone que la lista esté previamente ordenada. El mensaje que lanza Python en este método asociado a la excepción es: `x is not in list`, donde `x` es el valor buscado.
+
+Adoptaremos, por tanto, la tercera opción.
+
+```{code-cell} ipython3
+def busqueda_binaria(lista, valor):
+    '''
+    Devuelve la posición de valor en una lista ordenada. El funcionamiento será incorrecto si la lista no está ordenada.
+
+    Parameters
+    ----------
+    lista: list
+        Lista ordenada de valores para los que están definidos los operadores ==, < y >.
+    valor: _T
+        Cualquier valor del mismo tipo o compatible con los de la lista.
+    Returns
+    -------
+    indice: int
+        Índice de la lista en la que se ha encontrado el valor.
+    Raises
+    ------
+    ValueError
+        Si el valor no se encuentra en la lista.
+    Example
+    -------
+    >>>lista = [-5, 1, 3, 4, 12, 21, 23, 34, 43, 123]
+    >>>print(busqueda_binaria(lista, 3))
+    2
+    '''
+    
+    
+    inf = 0
+    sup = len(lista) - 1
+
+    while inf <= sup:
+        indice = (inf+sup)//2  
+        
+        if valor < lista[indice]:
+            sup = indice - 1  
+        elif valor > lista[indice]:
+            inf = indice + 1  
+        else:
+            return indice  #  Nos ahorramos la booleana encontrado
+        
+    # Si llegamos aquí es que el valor no se encuentra en la lista
+    raise ValueError('{} is not in list'.format(valor))
+
+    
+lista = ['adiós', 'buenos días', 'hasta luego', 'hola', 'suerte']
+try:
+    valor = 'hola'
+    print('{} está en la posición {} de la lista {}.'.format(valor, busqueda_binaria(lista, valor), lista)) 
+except ValueError as error:
+    print(error)
+    
+lista = [-5, 1, 3, 4, 12, 21, 23, 34, 43, 123]
+try:
+    valor = 0
+    print('{} está en la posición {} de la lista {}.'.format(valor, busqueda_binaria(lista, valor), lista))
+except ValueError as error:
+    print(error, lista)
+```
+
++++ {"hideCode": false}
+
+En la anterior celda vemos la función **documentada** y unas líneas que nos permiten probarla. **Testar** nuestro código y, en particular, las funciones, es fundamental antes de incorporarlo a otras partes de nuestros programas. **¡Acostúmbrate a comprobar por partes tú código!** En breve, veremos cómo hacerlo de forma algo más sistemática.
