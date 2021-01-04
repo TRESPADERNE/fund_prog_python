@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Módulo random   
+# Módulo random
 
 +++
 
@@ -48,26 +48,32 @@ Empezar a usar [valores aleatorios en Python](https://docs.python.org/3/library/
 
 ```{code-cell} ipython3
 import random
-print(random.random())
+```
+
+## Distribuciones uniformes
+
+```{code-cell} ipython3
+random.random()
 ```
 
 Cada vez que ejecutamos el fragmento anterior, obtenemos diferentes valores. Son valores reales en el intervalo semiabierto $[0,1)$. Estadísticamente, la secuencia de estos valores conforman una **distribución uniforme**, es decir, tienen la misma probabilidad de ser generados.
 
-Los valores son diferentes porque, cada vez que ejecutamos el fragmento, Python elige internamente una semilla diferente, al ser el tiempo transcurrido desde el **UNIX epoch** diferente. Sin embargo, si elegimos una semilla inicial, usando `random.seed(semilla)`, obtenemos siempre la misma secuencia. Veámoslo generando una lista de 10 valores aleatorios y ejecutando varias veces la celda.
+Los valores son diferentes porque, cada vez que ejecutamos el fragmento, Python elige internamente una semilla diferente, al ser el tiempo transcurrido desde el **UNIX epoch** diferente. Sin embargo, si elegimos una semilla inicial, usando `random.seed(semilla)`, obtenemos siempre la misma secuencia.
+
+Veámoslo generando 5 veces una lista de 5 valores aleatorios utilizando la misma semilla.
 
 ```{code-cell} ipython3
 import random
 
-lista = []
-semilla = 23  # Cambia este valor para comprobar que la lista cambia a su vez
-random.seed(semilla)  # Comenta esta línea si quieres que la lista cambie cada vez que se ejecute la celda
-for i in range(10):
-    lista.append(random.random())
-    
-print(lista)
+for _ in range(5):
+    lista = []
+    semilla = 23  # Cambia este valor para comprobar que la lista cambia a su vez
+    random.seed(semilla)  # Comenta esta línea si quieres que la lista cambie cada vez que se ejecute la celda
+    for _ in range(5):
+        lista.append(random.random())
+    print(lista)
 ```
 
-## Distribuciones uniformes
 ### Valores reales distribuidos uniformemente dentro de un rango
 Si queremos obtener valores aleatorios de forma uniforme en un intervalo $[inf,sup]$ tenemos el método `uniform(inf, sup)`, que devuelve un real $x$ en el intervalo $inf \leq x \leq sup$.
 
@@ -75,9 +81,9 @@ Si queremos obtener valores aleatorios de forma uniforme en un intervalo $[inf,s
 lista = []
 inf = -10.5
 sup = 20.8
-for i in range(10):
+for _ in range(5):
     lista.append(random.uniform(inf, sup))
-    
+
 print(lista)
 ```
 
@@ -94,7 +100,7 @@ y = [0]*num_puntos
 for i in range(num_puntos):
     x[i] = random.uniform(inf, sup)
     y[i] = random.uniform(inf, sup)
-    
+
 plt.scatter(x,y)
 ```
 
@@ -105,21 +111,37 @@ Para generar valores enteros uniformemente distribuidos en un rango de valores p
 inf = -10
 sup = 6
 lista = []
-for i in range(10):
+for _ in range(10):
     lista.append(random.randint(inf, sup))
-    
+
 print(lista)
+```
+
+## Distribución normal
+La distribución normal de una variable tiene dos parámetros:
+* la media $\mu$
+* la desviación típica $\sigma$
+
+$$y = \frac{1}{{\sigma\sqrt{2\pi}}}e^{{-(x-\mu)^2}/{2\sigma^2}}$$
+
+La función `gauss(mu, sigma)` devuelve un valor pseudoaleatorio `float` que sigue esa distribución.
+
+```{code-cell} ipython3
+mu = 10
+sigma = 1
+  
+random.gauss(mu, sigma)
 ```
 
 ## Ejemplos de aplicación
 ### Adivinar un número entero *pensado* por el ordenador
-Ayudándose del algoritmo de bisección, el usuario el que deberá calcular *a mano* (o con ayuda de otro programa en paralelo) la secuencia de valores que permitirá en el menor número promedio posible de intentos adivinar un número generado aleatoriamente por el ordenador.
+Ayudándose del **algoritmo de bisección**, el usuario deberá calcular *a mano* (o con ayuda de otro programa en paralelo) la secuencia de valores que permitirá, en el menor número promedio posible de intentos, adivinar un número entero generado aleatoriamente por el ordenador.
 
 El programa tendrá las siguientes características:
 1. El usuario fijará un rango inicial de valores enteros.
 2. El programa avisará del número de intentos disponibles.
 3. Mediante un bucle solicitará al usuario la introducción del valor, indicando en el caso de que no se haya acertado si el valor a adivinar es inferior o superior. Si se acierta o se sobrepasa el número de intentos el bucle finalizará.
-4. Mostrar un mensaje indicando si se ha acertado o no y el número de intentos empleado. 
+4. Mostrar un mensaje indicando si se ha acertado o no y el número de intentos empleado.
 
 +++
 
@@ -134,17 +156,17 @@ def introduce_rango_int(mensaje=''):
 
     Parameters
     ----------
-    mensaje: str
-        Mensaje que se mostrará por pantalla para indicar el objeto de la solicitud de los valores del rango
+    mensaje : str
+        Mensaje por pantalla para indicar el objeto de la solicitud de los valores del rango
     Returns
     -------
-    inf, sup: tuple
-        Tupla con los valores del rango
+    inf, sup : tuple of int
+        Tupla con los valores enteros del rango
     Example
     -------
-    >>>inf, sup = introduce_rango('Introduce un rango de valores:')
+    >>> inf, sup = introduce_rango('Introduce un rango de valores:')
     '''
-    
+
     print(mensaje)
     while True:
         try:
@@ -173,25 +195,30 @@ def introduce_valor_int(inf, sup):
 
     Parameters
     ----------
-    inf: numérico, int
-        Valor inferior del rango
-    sup: numérico, int
-        Valor superior del rango
+    inf, sup : numérico, int
+        Valores inferior y superior del rango
     Returns
     -------
-    valor: int
+    valor : int
         Entero introducido por teclado por el usuario
+    Raises
+    ------
+    ValueError
+        Si inf > sup
     Example
     -------
-    >>>valor = introduce_valor_int(0, 100)
+    >>> valor = introduce_valor_int(0, 100)
     '''
-    
+
+    if inf > sup:
+        raise ValueError('El rango de valores [{},{}] no cumple inf <= sup'.format(inf, sup))
     while True:
         print('Introduzca un valor entero dentro del rango de valores [{},{}]'.format(inf, sup))
         try:
             valor = int(input('Valor:'))
             if inf > valor or sup < valor:
-                raise ValueError('El valor introducido no pertenece al rango [{},{}]'.format(inf, sup))
+                raise ValueError('El valor introducido no pertenece al rango [{},{}]'.
+                                 format(inf, sup))
         except ValueError as error:
             print(error)
         else:
@@ -211,29 +238,27 @@ def adivina_numero(inf, sup):
 
     Parameters
     ----------
-    inf: numérico, int
-        Valor inferior del rango
-    sup: numérico, int
-        Valor superior del rango
+    inf, sup : numérico, int
+        Valores inferior y superior del rango
     Returns
     -------
-    exito: bool
+    exito : bool
         True si se ha acertado el número
-    i+1: int
+    i+1 : int
         Número de intentos empleados
-    num_intentos_max: int
+    num_intentos_max : int
         Número de intentos máximos permitidos, en consonancia con el algoritmo de bisección
-    valor_a_adivinar: int
-        Número pensad por el ordenador
+    valor_a_adivinar : int
+        Número pensado por el ordenador
     Example
     -------
-    >>>exito, num_intentos, num_intentos_max, valor_a_adivinar = adivina_numero(0, 100)
+    >>> exito, num_intentos, num_intentos_max, valor_a_adivinar = adivina_numero(0, 100)
     '''
-    
+
     num_intentos_max = int(math.log2(sup-inf+1)+1)
     print('Te daré {} oportunidades para acertar.'.format(num_intentos_max))
 
-    valor_a_adivinar = random.randint(inf,sup)
+    valor_a_adivinar = random.randint(inf, sup)
 
     exito = False
     for i in range(num_intentos_max):
@@ -245,7 +270,7 @@ def adivina_numero(inf, sup):
         else:
             exito = True
             break
-            
+
     return exito, i+1, num_intentos_max, valor_a_adivinar
 ```
 
@@ -314,22 +339,42 @@ Mediante **fuerza burta** podemos generar una secuencia de números aleatorios d
 En lugar de todo el cuadrado, podemos escoger sólo el primer cuadrante y utilizar directamente la función `random()`.
 
 ```{code-cell} ipython3
-n = 10000  # Puedes probar con otros valores para ver como varía la precisión
+def pi_numerico(n):
+    '''
+    Devuelve el valor de pi estimado para una muestra de n valores aleatorios usando
+    el método de los dardos caídos en un c´rculo inscrito en un cuadrado
 
-contador = 0
-for _ in range(n):
-    x = random.random()
-    y = random.random()
-    
-    if x*x + y*y < 1:
-        contador += 1
-        
-print('La aproximación obtenida para pi con {} dardos es {}'.format(n, 4*contador/n))
+    Parameters
+    ----------
+    n : int
+        Número de ensayos
+    Returns
+    -------
+    pi : float
+        Valor estimado de pi
+    Example
+    -------
+    >>> pi = pi_numerico(10000)
+    '''
+
+    contador = 0
+    for _ in range(n):
+        x = random.random()
+        y = random.random()
+
+        if x*x + y*y < 1:
+            contador += 1
+
+    return 4*contador/n
+
+
+n = 10000  # Puedes probar con otros valores para ver como varía la precisión
+print('La aproximación obtenida para pi con {} dardos es {}'.format(n, pi_numerico(n)))
 ```
 
-Nótese el uso del símbolo `_` como indicativo que el índice del bucle no es necesario y, por tanto, lo **ignoramos**.
+Nótese el uso del símbolo `_` indicativo de que el índice del bucle no es necesario y, por tanto, lo **ignoramos**.
 
-Podemos dibujar el algoritmo usando la biblioteca Matplotlib. Para ello, debemos almacenar los valores obtenidos dentro y fuera del círculo en sendas parejas de listas.
+Podemos simular el algoritmo usando la biblioteca Matplotlib. Para ello, debemos almacenar los valores obtenidos dentro y fuera del círculo en sendas parejas de listas.
 
 ```{code-cell} ipython3
 import matplotlib.pyplot as plt
@@ -343,7 +388,7 @@ y_fuera = []
 for _ in range(n):
     x = random.random()
     y = random.random()
-    
+
     if x*x + y*y < 1.:
         contador += 1
         x_dentro.append(x)
@@ -351,7 +396,7 @@ for _ in range(n):
     else:
         x_fuera.append(x)
         y_fuera.append(y)
-        
+
 print('La aproximación obtenida para pi con {} dardos es {}'.format(n, 4*contador/n))
 
 plt.scatter(x_fuera, y_fuera, color='red', s=0.1)
@@ -360,8 +405,75 @@ plt.axis('scaled')
 plt.show()
 ```
 
-Veremos más adelante cómo generar en una sóla sentencia una lista de aleatorios cuando estudiemos la biblioteca Numpy. 
+Veremos más adelante cómo generar en una sóla sentencia una lista de aleatorios cuando estudiemos la biblioteca Numpy.
+
++++
+
+### Creación sintética de un segmento de recta afectado de ruido gaussiano
+
++++
+
+Para validar algoritmos en fase de desarrollo es habitual simular determinadas configuraciones de los datos de entrada con valores aleatorios.
+
+En este caso, vamos a crear un segmento de recta sintético al que le vamos a añadir un **ruido**, una pequeña perturbación a las coordenadas de cada punto. Normalmente se elige un ruido gaussiano, caracterizado por una media $\mu$ (típicamente 0) y una desviación típica $\sigma$. Los puntos se generan uniformemente entre ambos extremos.
+
+Este tipo de figuras geométricas con ruido añadido son utilizadas para validar algoritmos de estimación de sus parámetros por mínimos cuadrados.
 
 ```{code-cell} ipython3
+# Dibujando manualmente un segmento de recta aleatorio
+import matplotlib.pyplot as plt
 
+
+def genera_coordenadas_segmento_rnd(p_i, p_f, desv, num_puntos):
+    '''
+    Devuelve las listas de num_puntos distribuidos uniformemente en un segmento de recta de puntos
+    extremos p_i y p_f. Estos puntos tienen además un ruido gaussiano aditivo de media 0
+    y desviación típica desv.
+
+    Parameters
+    ----------
+    p_i : tuple, float
+        Tupla con el extremo inicial del segmento
+    p_f : tuple, float
+        Tupla con el extremo final del segmento
+    desv : float
+        Desviación típica del ruido gaussiano aditivo de media 0
+    num_puntos : int
+        Número de puntos aleatorios que se generarán
+    Returns
+    -------
+    lista_x, lista_y : tuple of float
+        Tupla con las listas de coordenadas de los puntos generados
+    Example
+    -------
+    >>> lista_x, lista_y = genera_coordenadas_segmento_rnd((0, 0), (100, 50), 1.2, 400)
+    '''
+
+    v_x, v_y = (p_f[0]-p_i[0], p_f[1]-p_i[1])  # (v_x, v_y) Vector director
+
+    # Creamos las listas de coordenadas
+    lista_x = [0]*num_puntos
+    lista_y = [0]*num_puntos
+    for i in range(num_puntos):
+        l = random.random()  # Posición aleatoria uniforme del punto dentro del segmento
+        ruido_x = random.gauss(0, desv)
+        ruido_y = random.gauss(0, desv)
+        lista_x[i] = p_i[0] + l*v_x + ruido_x
+        lista_y[i] = p_i[1] + l*v_y + ruido_y
+
+    return lista_x, lista_y
+
+
+p_i = (100, 50)
+p_f = (-150, 300)
+num_puntos = 100
+desv_std = 3
+lista_x, lista_y = genera_coordenadas_segmento_rnd(p_i, p_f, desv_std, num_puntos)
+
+plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
+
+plt.title('Segmento aleatorio de {} puntos\nentre {} y {}\n y desviación estándar {}.'.
+          format(num_puntos, p_i, p_f, desv_std))
+plt.axis('scaled')
+plt.show()
 ```

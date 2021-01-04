@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Introducción a Matplotlib.
+# Introducción a Matplotlib
 
 +++
 
@@ -20,7 +20,8 @@ kernelspec:
 [Gráficos básicos](#Gráficos_básicos)<br>
 [Dibujando funciones de una variable](#Dibujando_funciones_de_una_variable)<br>
 [Título y etiquetas en ejes](#Título_y_etiquetas_en_ejes)<br>
-[La función `linspace()` del paquete Numpy](#La_función_linspace_del_paquete_Numpy)
+[La función `linspace()` del paquete Numpy](#La_función_linspace_del_paquete_Numpy)<br>
+[Ejemplos](#Ejemplos)
 
 +++
 
@@ -28,7 +29,6 @@ kernelspec:
 <a id='Introducción'></a>
 
 +++
-
 
 ## Introducción
 
@@ -264,6 +264,7 @@ Hemos visto un método relativamente engorroso de generar las abscisas:
 La función `linspace(inf, sup, num_puntos)` del paquete **Numpy** hace todo esto de forma cómoda, proporcionándonos un nivel de **abstracción** superior y **encapsulando** todo ese código en una función. Basta introducir los 3 primeros parámetros como argumentos. Para utilizarla, debemos importar el paquete `numpy`.
 
 Veámosla en acción para dibujar la función **campana de Gauss**:
+
 $$y = \frac{1}{{\sigma\sqrt{2\pi}}}e^{{-(x-\mu)^2}/{2\sigma^2}}$$
 
 Elegiremos $1000$ valores en el intervalo $-5\leq x\leq5$ para una distribución normal de *media* $\mu=0$ y *desviación estándar* $\sigma=1$.
@@ -293,6 +294,132 @@ plt.xlabel('$x$')
 plt.ylabel('$N({},{})$'.format(media, desviacion_estandar))
 ```
 
-```{code-cell} ipython3
+***
+<a id='Ejemplos'></a>
 
++++
+
+## Ejemplos
+Vamos a ver a continuación cómo dibujar de forma *manual* dos de los tipos de figuras geométricas bidimensionales más usuales:
+* un segmento de recta
+* una circunferencia. 
+
+Matplotlib ofrece para estas y otras figuras funciones poderosas para hacerlo. Además, algunas operaciones con funciones de biblioteca se hacen de forma más efectiva y compacta con el módulo `Numpy`. Pero recordad que lo que perseguimos es **aprender a programar**.
+
+Como veremos más adelante, saber crear manualmente puntos pertenecientes a una figura puede sernos de gran utilidad.
+
++++
+
+### Dibujando un segmento de recta
+#### La ecuación de un segmento de recta
+
+Un segmento de recta viene definido por sus dos puntos extremos $\mathbf{p_1}=(x_1,y_1)$ y $\mathbf{p_2}=(x_2,y_2)$.
+
+Una característica importante es el vector director $\vec{\mathbf{v}}=(v_x,v_y)$ del segmento, que podemos obtenerle fácilmente como:
+
+$$\begin{align}
+v_x & =x_2-x_1 \\
+v_y & =y_2-y_1
+\end{align}$$
+
+Nótese que cualquier punto del segmento cumple la ecuación:
+
+$$\mathbf{p}=\mathbf{p_1}+\lambda \vec{\mathbf{v}}, \quad\quad \lambda \in [0,1]$$
+
+Esto nos da una idea de cómo pintar $n$ puntos equidistantes pertenecientes al segmento, incluidos sus extremos. Basta elegir $n$ valores de $\lambda$ equidistantes en el intervalo $[0,1]$.
+
++++
+
+Como acabamos de ver, nos aprovecharemos de la función `linspace()` del módulo Numpy para generar los valores en el intervalo $[0,1]$.
+
+```{code-cell} ipython3
+# Dibujando manualmente un segmento de recta
+import matplotlib.pyplot as plt
+import numpy as np
+
+num_puntos = 1000
+lambdas = np.linspace(0, 1, num_puntos)  # num_puntos valores equidistantes en el intervalo [0,1]
+
+p1 = (100, 50)    # (x1, y1) Utilizamos tuplas, aunque podría usarse otro contenedor
+p2 = (-150, 300)  # (x2, y2)
+
+v_x, v_y = (p2[0]-p1[0], p2[1]-p1[1])  # (vx, vy) Vector director
+
+# Creamos las listas de coordenadas
+lista_x = [0]*num_puntos
+lista_y = [0]*num_puntos
+for i, l in enumerate(lambdas):
+    lista_x[i] = p1[0] + l*v_x
+    lista_y[i] = p1[1] + l*v_y
+
+plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
+
+plt.title('Segmento de recta entre los puntos {} y {}'.format(p1, p2))
+plt.axis('scaled')  # Esta orden hace que la escala de ambos ejes sea la misma
 ```
+
+No es muy difícil darse cuenta que si lo único que queremos es dibujar el segmento, hubiese sido mucho más rápido lo siguiente:
+
+```{code-cell} ipython3
+# Dibujando manualmente un segmento de recta
+import matplotlib.pyplot as plt
+
+p1 = (100, 50)  # Utilizamos una tupla, aunque podría usarse otro contenedor
+p2 = (-150, 300)  # Utilizamos una tupla, aunque podría usarse otro contenedor
+
+plt.plot((p1[0], p2[0]), (p1[1], p2[1]))
+plt.title('Segmento de recta entre los puntos {} y {}'.format(p1, p2))
+plt.axis('scaled')  # Esta orden hace que la escala de ambos ejes sea la misma
+```
+
+En otro tutorial veremos que tener el *control* sobre qué puntos interiores al segmento pintamos nos será de gran utilidad.
+
++++
+
+### Dibujando una circunferencia
+#### La ecuación de una circunferencia
+
+Una circunferencia viene definida por su centro $\mathbf{c}=(c_x,c_y)$ y por su radio $R$.
+
+La forma paramétrica de la ecuación de una circunferencia es la que nos interesa para nuestro problema.
+
+$$\begin{align}
+x & =c_x+R\cos(\theta) \\
+y & =c_y+R\sin(\theta)
+\end{align}$$
+
+Para pintar $n$ puntos equidistantes pertenecientes a la circunferencia, basta elegir $n$ valores de $\theta$ equidistantes en el intervalo $[0,2\pi]$.
+
++++
+
+Algún alumno se habrá dado cuenta que para los valores $0$ y $2\pi$ de $\theta$ obtenemos el mismo punto. Aunque podría evitarse, no tiene mayor importancia que esto ocurra.
+
+```{code-cell} ipython3
+# Dibujando manualmente una circunferencia
+# Aprovechamos que el módulo numpy nos brinda pi, cos() y sin()
+import matplotlib.pyplot as plt
+import numpy as np
+
+num_puntos = 1000
+titas = np.linspace(0, 2*np.pi, num_puntos)  # num_puntos valores equidistantes en el intervalo [0,2*pi]
+
+centro = (350, 250)
+radio = 75.3
+
+# Creamos las listas de coordenadas
+lista_x = [0]*num_puntos
+lista_y = [0]*num_puntos
+for i, tita in enumerate(titas):  # Generamos los num_puntos del segmento
+    lista_x[i] = centro[0] + radio*np.cos(tita)
+    lista_y[i] = centro[1] + radio*np.sin(tita)
+
+plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
+plt.title('Circunferencia de centro {} y radio {}'.format(centro, radio))
+plt.axis('scaled')
+```
+
+Matplotlib tiene una función llamada `Circle()` que permite dibujar círculos, pero se requieren de una serie de etapas previas de configuración de la figura que ahora mismo no merece la pena explicar.
+
++++
+
+Cuando estudiemos Numpy veremos como la creación de las listas de puntos se pueden hacer de forma mucho más compacta usando las herramientas de esa biblioteca.

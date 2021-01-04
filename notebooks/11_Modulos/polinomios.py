@@ -90,7 +90,6 @@ def polyconv(pol1, pol2):
 
 if __name__ == '__main__':
     pol = [4, 3, 2, 1]
-    exp = polyder(pol) == [12, 6, 2]
     assert polyder(pol) == [12, 6, 2]
     print('Test -> polyder(pol) == [12, 6, 2]\nOk')
     assert polyval(pol, 0.) == 1.
