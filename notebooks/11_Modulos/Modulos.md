@@ -77,7 +77,7 @@ Un **módulo** es un **fichero**, con extensión `*.py` y, por tanto, accesible 
 
 - Variables globales, funciones,  clases (patrones de objetos) y sentencias ejecutables.
 >La programación de clases no se estudian en un curso introductorio.
-- Un módulo, a su vez, puede _importar_ otros módulos. 
+- Un módulo, a su vez, puede _importar_ otros módulos.
 
 +++
 
@@ -171,7 +171,7 @@ En este caso, para echar un poco más de pimienta, el `Modulo_A`, en la propia d
 
 +++
 
-![importar.jpg](attachment:importar.jpg)
+![importar.jpg](img/importar.jpg)
 
 ```{code-cell} ipython3
 import Modulo_A
@@ -280,7 +280,6 @@ Para nuestro ejemplo de modulo, sin ánimo de ser exhaustivos, definiremos las s
 En el fichero `polinomios.py`, que colocaremos en el mismo directorio del programa que va a importarlo, se definirán las funciones anteriormente mencionadas.
 Nótese que, para este ejemplo, en aras a simplificar, el fichero que implementa el módulo se encuentra en el misma carpeta en la que se encuentra nuestro **cuaderno**.
 La siguiente celda muestra la definición de una de las funciones incluidas en `polinomios.py`. 
-El fichero completo puede ser accedido a través de este [enlace](./polinomios.py).
 
 ```{code-cell} ipython3
 def polyder(pol):

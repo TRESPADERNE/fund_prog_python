@@ -358,6 +358,60 @@ plt.title('Segmento de recta entre los puntos {} y {}'.format(p1, p2))
 plt.axis('scaled')  # Esta orden hace que la escala de ambos ejes sea la misma
 ```
 
+Si el alumno ya ha estudiado a estas alturas funciones, podemos encapsular la celda anterior usando una función `genera_coordenadas_segmento()`.
+
+```{code-cell} ipython3
+# Dibujando manualmente un segmento de recta
+import matplotlib.pyplot as plt
+import numpy as np
+
+def genera_coordenadas_segmento(p1, p2, num_puntos):
+    '''
+    Devuelve las listas de num_puntos equidistantes en un segmento de recta de puntos
+    extremos p_i y p_f.
+
+    Parameters
+    ----------
+    p_i : tuple, float
+        Tupla con el extremo inicial del segmento
+    p_f : tuple, float
+        Tupla con el extremo final del segmento
+    num_puntos : int
+        Número de puntos equidistantes que se generarán
+    Returns
+    -------
+    lista_x, lista_y : tuple of float
+        Tupla con las listas de coordenadas de los puntos generados
+    Example
+    -------
+    >>> lista_x, lista_y = genera_coordenadas_segmento((0, 0), (100, 50), 400)
+    '''
+    
+    lambdas = np.linspace(0, 1, num_puntos)  # num_puntos valores equidistantes en el intervalo [0,1]
+
+    v_x, v_y = (p2[0]-p1[0], p2[1]-p1[1])  # (vx, vy) Vector director
+
+    # Creamos las listas de coordenadas
+    lista_x = [0]*num_puntos
+    lista_y = [0]*num_puntos
+    for i, l in enumerate(lambdas):
+        lista_x[i] = p1[0] + l*v_x
+        lista_y[i] = p1[1] + l*v_y
+        
+    return lista_x, lista_y
+
+        
+num_puntos = 1000
+p1 = (100, 50)    # (x1, y1) Utilizamos tuplas, aunque podría usarse otro contenedor
+p2 = (-150, 300)  # (x2, y2)
+
+lista_x, lista_y = genera_coordenadas_segmento(p1, p2, num_puntos)
+
+plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
+plt.title('Segmento de recta entre los puntos {} y {}'.format(p1, p2))
+plt.axis('scaled')  # Esta orden hace que la escala de ambos ejes sea la misma
+```
+
 No es muy difícil darse cuenta que si lo único que queremos es dibujar el segmento, hubiese sido mucho más rápido lo siguiente:
 
 ```{code-cell} ipython3
@@ -412,6 +466,59 @@ lista_y = [0]*num_puntos
 for i, tita in enumerate(titas):  # Generamos los num_puntos del segmento
     lista_x[i] = centro[0] + radio*np.cos(tita)
     lista_y[i] = centro[1] + radio*np.sin(tita)
+
+plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
+plt.title('Circunferencia de centro {} y radio {}'.format(centro, radio))
+plt.axis('scaled')
+```
+
+Si el alumno ya ha estudiado a estas alturas funciones, podemos encapsular la celda anterior usando una función `genera_coordenadas_circunferencia()`.
+
+```{code-cell} ipython3
+# Dibujando manualmente una circunferencia
+# Aprovechamos que el módulo numpy nos brinda pi, cos() y sin()
+import matplotlib.pyplot as plt
+import numpy as np
+
+def genera_coordenadas_circunferencia(centro, radio, num_puntos):
+    '''
+    Devuelve las listas de num_puntos equidistantes en una circunferencia
+    de parámetros radio y centro.
+
+    Parameters
+    ----------
+    centro : tuple, float
+        Tupla con las coordenadas del centro
+    radio : float
+        Valor del radio
+    num_puntos : int
+        Número de puntos equidistantes que se generarán
+    Returns
+    -------
+    lista_x, lista_y : tuple of float
+        Tupla con las listas de coordenadas de los puntos generados
+    Example
+    -------
+    >>> lista_x, lista_y = genera_coordenadas_circunferencia((100, 50), 23.5, 500)
+    '''
+    
+    titas = np.linspace(0, 2*np.pi, num_puntos)  # num_puntos valores equidistantes en el intervalo [0,2*pi]
+
+    # Creamos las listas de coordenadas
+    lista_x = [0]*num_puntos
+    lista_y = [0]*num_puntos
+    for i, tita in enumerate(titas):  # Generamos los num_puntos del segmento
+        lista_x[i] = centro[0] + radio*np.cos(tita)
+        lista_y[i] = centro[1] + radio*np.sin(tita)
+        
+    return lista_x, lista_y
+
+
+num_puntos = 1000
+centro = (350, 250)
+radio = 75.3
+
+lista_x, lista_y = genera_coordenadas_circunferencia(centro, radio, num_puntos)
 
 plt.scatter(lista_x, lista_y, s=0.1)  # s es un parámetro que controla el tamaño del punto
 plt.title('Circunferencia de centro {} y radio {}'.format(centro, radio))

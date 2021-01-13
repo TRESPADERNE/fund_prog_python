@@ -16,9 +16,11 @@
     - file: notebooks/09_Funciones/Funciones
     - file: notebooks/11_Modulos/Modulos
     - file: notebooks/12_Ficheros/Ficheros
+    - file: notebooks/14_Diccionarios/Diccionarios
 
 - part: BIBLIOTECAS
   chapters:
     - file: notebooks/08_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
     - file: notebooks/10_Random/Random
     - file: notebooks/13_Numpy/Numpy
+    - file: notebooks/15_Pandas/Pandas
