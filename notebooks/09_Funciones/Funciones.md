@@ -12,6 +12,10 @@ kernelspec:
   name: python3
 ---
 
+```{code-cell} ipython3
+
+```
+
 +++ {"hideCode": false, "hidePrompt": false}
 
 # Funciones
@@ -210,7 +214,7 @@ Observe en lo anterior los dos momentos del trabajo con las funciones, la **defi
       ```python
       def area_circulo(r): 
       ```  
-        Se utiliza la palabra reservada `def` seguida del identificador que da **nombre a la función**, `area_circulo` en el ejemplo. Le sigue entre paréntesis (obligatorios) la lista de **parámetros**, que puede estar vacía. En el ejemplo, consta de un sólo parámetro al que hemos identificado dentro de la definición de la función con el nombre `r`. 
+        Se utiliza la palabra reservada `def` seguida del identificador que da **nombre a la función**, `area_circulo` en el ejemplo. Le sigue entre paréntesis (obligatorios) la lista de **parámetros**, que puede estar vacía. En el ejemplo, consta de un solo parámetro al que hemos identificado dentro de la definición de la función con el nombre `r`. 
     
         Note que, al definir la función, todavía no se ejecuta el código que ella representa, aunque aparezca primero dentro de la secuencia del programa. 
     - **Cuerpo**:
@@ -222,7 +226,7 @@ Observe en lo anterior los dos momentos del trabajo con las funciones, la **defi
          - La primera sentencia **asigna** a la variable `area` el resultado de evaluar la expresión a su derecha
          - La segunda sentencia utiliza la palabra reservada `return` para **devolver** el contenido de `area` al código que haya invocado a la función.
 
-    Es importante entender que `area` dentro de la definición de la función da nombre a una **variable local** que solo está definida y **accesible** dentro de la función `area_circulo()`. El identificador `r` igualmente sólo está definido dentro de la función.
+    Es importante entender que `area` dentro de la definición de la función da nombre a una **variable local** que solo está definida y **accesible** dentro de la función `area_circulo()`. El identificador `r` igualmente solo está definido dentro de la función.
     
     Entre triples comillas, `'''texto'''`, que es otro estilo de **comentario**, hemos **documentado** brevemente el objeto de la función. 
 
@@ -242,7 +246,7 @@ A tener en cuenta:
 
 +++ {"hideCode": true, "hidePrompt": true}
 
-En el siguiente ejemplo, que calcula el área de un cilindro, vemos una **reutilización** de la función `area_circulo(r)`. 
+En el siguiente ejemplo, que calcula el área de un cilindro, vemos una **reutilización** de la función `area_circulo(r)`.
 
 ```{code-cell} ipython3
 :hideCode: false
@@ -301,7 +305,7 @@ def area_circulo_desafortunado(r):
 
 Esta función tiene dos responsabilidades: calcular el área de un círculo e imprimir su valor por pantalla.
 
-A la hora de programar funciones, se debe buscar que éstas sean lo más generales posible, de forma que puedan ser reutilizadas en diferentes circunstancias. La función anterior no es muy flexible, puesto que siempre *imprime* en pantalla el resultado y, probablemente, no en todas las ocasiones ese es el comportamiento que se desea.
+A la hora de programar funciones, se debe buscar que estas sean lo más generales posible, de forma que puedan ser reutilizadas en diferentes circunstancias. La función anterior no es muy flexible, puesto que siempre *imprime* en pantalla el resultado y, probablemente, no en todas las ocasiones ese es el comportamiento que se desea.
 
 Por tanto, desde otro punto de vista, violaría un **principio de generalidad**: no en todos los casos en que se quiera calcular el área del círculo, se desea imprimir el resultado por pantalla. Más bien lo contrario.
 
@@ -320,7 +324,7 @@ Por tanto, desde otro punto de vista, violaría un **principio de generalidad**:
 :hidePrompt: false
 
 def intro():
-    print('Este código sólo imprime este mensaje.')
+    print('Este código solo imprime este mensaje.')
 
     
 intro()
@@ -583,7 +587,7 @@ square(num)
 
 La sentencia superflua `x = x**2` crea un nuevo objeto, en el ejemplo de valor `9`, al que pasa ahora a estar ligada la variable local `x`. No es sino una consecuencia del caracter **inmutable** de los tipos `int`, entre otros.
 
-Los parámetros de la función, y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y sólo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
+Los parámetros de la función, y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y solo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
 
 Esto parece contradecir lo que ocurre en el siguiente ejemplo, que usa como parámetro una lista. En este caso, la aparente variable local `lista` afecta a la variable externa `enteros`:
 
@@ -654,7 +658,7 @@ Las **funciones** de Python que tienen un comportamiento **similar a las funcion
 Se puede decir de las **funciones puras** que:
 
 - Devuelven el **mismo resultado** al ser _llamadas_ con los **mismos argumentos de entrada**.
-- El resultado sólo depende de la entrada: no tienen **memoria**, no conservan un **estado** que les permita _recordar_ que la misma ha sido _invocada_ antes, para entonces devolver un valor distinto en llamadas sucesivas.
+- El resultado solo depende de la entrada: no tienen **memoria**, no conservan un **estado** que les permita _recordar_ que la misma ha sido _invocada_ antes, para entonces devolver un valor distinto en llamadas sucesivas.
 - No tiene **efectos colaterales** (**side effects**). La única forma de interacción con el resto de programa, o el contexto en que éste se desarrolla, es a través de la sentencia `return`. En especial:
     - No modifican **variables externas** a la función.
     - No imprime nada por pantalla, ni interaccionan de ninguna otra manera con el _mundo exterior_. 
@@ -751,7 +755,7 @@ Ejemplos de funciones impuras imprescindibles o útiles:
 
 El **alcance** de una variable da cuenta de las reglas que especifican _desde_ qué sentencias del código Python son _accesibles_ cada una de las variables, teniendo en cuenta el _lugar_ dentro del código en el que han sido especificadas.
 
-Como se ha visto, los parámetros de la función y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y sólo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
+Como se ha visto, los parámetros de la función y las variables creadas en el cuerpo de la misma, son **variables locales** a dicha función y solo pueden ser accedidas desde código definido en el cuerpo de la misma en sentencias posteriores a su creación.
 
 ### Marcos de variables
 
@@ -1041,7 +1045,7 @@ en temas sucesivos, no nos *preocupamos* de **manejar las excepciones**, por eje
 +++
 
 #### Ejemplo 1: Determinación de si una serie de enteros son primos
-La última versión para determinar si un número es primo sólo puede *analizar* un número cada vez. ¿Cómo modificarlo para darle la oportunidad al usuario de que analice sucesivamente varios enteros sin tener que ejecutar varias veces el programa?
+La última versión para determinar si un número es primo solo puede *analizar* un número cada vez. ¿Cómo modificarlo para darle la oportunidad al usuario de que analice sucesivamente varios enteros sin tener que ejecutar varias veces el programa?
 
 La solución es utilizar otro bucle (bucles anidados), que incluya el código anterior, de manera que se pueda repetir cuantas veces se desee.
 
@@ -1157,7 +1161,7 @@ while True:
 ```
 
 Nótese que el manejo de excepciones se ha realizado de forma externa a la función ``es_primo()``.
-Podríamos haber diseñado la función de tal forma que sea ésta la que se preocupa de que el entero recibido es válido.
+Podríamos haber diseñado la función de tal forma que sea esta la que se preocupa de que el entero recibido es válido.
 
 ```{code-cell} ipython3
 # Función es_primo() con manejo interno de excepciones
@@ -1194,7 +1198,7 @@ except ValueError as error:
 
 El criterio para manejar o detectar las excepciones dentro de una función no es una ciencia exacta. Verificar la validez de los datos de entrada o de algún resultado intermedio es una tarea que consume tiempo de computación. Y en determinadas aplicaciones puede que sea más práctico dejar esa responsabilidad al programador usuario de la función y que sea éste el que garantice su correcto uso. Es lo que hicimos en la versión previa a esta última.
 
-Esto pone de relevancia lo importante que es la **documentación** de las funciones. Entre otras cosas, la documentación debe informar de aquellas situaciones que eventualmente se puedan generar excepciones, si éstas son manejadas (`try`) o si son levantadas (`raise`).
+Esto pone de relevancia lo importante que es la **documentación** de las funciones. Entre otras cosas, la documentación debe informar de aquellas situaciones que eventualmente se puedan generar excepciones, si estas son manejadas (`try`) o si son levantadas (`raise`).
 
 +++
 

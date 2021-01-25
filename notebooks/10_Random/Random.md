@@ -16,7 +16,15 @@ kernelspec:
 
 +++
 
+[Generador de números aleatorios](#Generador_numeros_aleatorios)<br>
+[Distribuciones uniformes](#Distribuciones_uniformes)<br>
+[Distribución normal](#Distribución_normal)<br>
+[Ejemplos de aplicación](#Ejemplos_aplicacion)
+
++++
+
 ***
+<a id='Generador_numeros_aleatorios'></a>
 
 +++
 
@@ -49,6 +57,11 @@ Empezar a usar [valores aleatorios en Python](https://docs.python.org/3/library/
 ```{code-cell} ipython3
 import random
 ```
+
+***
+<a id='Distribuciones_uniformes'></a>
+
++++
 
 ## Distribuciones uniformes
 
@@ -117,6 +130,11 @@ for _ in range(10):
 print(lista)
 ```
 
+***
+<a id='Distribución_normal'></a>
+
++++
+
 ## Distribución normal
 La distribución normal de una variable tiene dos parámetros:
 * la media $\mu$
@@ -132,6 +150,11 @@ sigma = 1
   
 random.gauss(mu, sigma)
 ```
+
+***
+<a id='Ejemplos_aplicacion'></a>
+
++++
 
 ## Ejemplos de aplicación
 ### Adivinar un número entero *pensado* por el ordenador
@@ -336,7 +359,7 @@ $$\frac{\text{Área círculo}}{\text{Área cuadrado}}= \frac{\pi}{4}$$
 
 Mediante **fuerza burta** podemos generar una secuencia de números aleatorios distribuidos uniformemente dentro del cuadrado. Si relacionamos los que han **caído cual dardos** dentro del círculo frente a los totales, deberemos obtener un valor que sigue la relación $\pi/4$.
 
-En lugar de todo el cuadrado, podemos escoger sólo el primer cuadrante y utilizar directamente la función `random()`.
+En lugar de todo el cuadrado, podemos escoger solo el primer cuadrante y utilizar directamente la función `random()`.
 
 ```{code-cell} ipython3
 def pi_numerico(n):
@@ -476,4 +499,8 @@ plt.title('Segmento aleatorio de {} puntos\nentre {} y {}\n y desviación están
           format(num_puntos, p_i, p_f, desv_std))
 plt.axis('scaled')
 plt.show()
+```
+
+```{code-cell} ipython3
+
 ```

@@ -64,7 +64,7 @@ El concepto de fichero es una **abstracción** del **Sistema Operativo** (**S.O.
 
 El Sistema Operativo crea todo el **sistema de ficheros** del ordenador: los directorios para organizarlos, las tablas para localizarlos en el disco, etc.
 
-Los ficheros son enormemente importantes en programación. No sólo debido al hecho evidente de que brindan el soporte que permite la mera existencia de las aplicaciones en el disco duro. Si no existieran los ficheros, por ejemplo, toda la interacción del usuario con una aplicación concreta, como la introducción y la obtención de resultados parciales, tendría que ser laboriosamente recreada cada vez que se ejecutara el programa. La existencia del fichero hace posible que, al terminar una sesión de trabajo, se almacenen los datos y resultados en el disco, para poder retomar la tarea en una sesión posterior. 
+Los ficheros son enormemente importantes en programación. No solo debido al hecho evidente de que brindan el soporte que permite la mera existencia de las aplicaciones en el disco duro. Si no existieran los ficheros, por ejemplo, toda la interacción del usuario con una aplicación concreta, como la introducción y la obtención de resultados parciales, tendría que ser laboriosamente recreada cada vez que se ejecutara el programa. La existencia del fichero hace posible que, al terminar una sesión de trabajo, se almacenen los datos y resultados en el disco, para poder retomar la tarea en una sesión posterior. 
 
 Por otra parte, los ficheros pueden ser útiles como vehículos para el intercambio de información entre diferentes aplicaciones: los datos resultantes *escritos* en un fichero por el programa A podrán servir de *entrada* para un programa B.
 
@@ -88,7 +88,7 @@ No son *editables*.
 > Ejemplo: Representación de 3 números enteros 255 3 10 codificados en ASCII, separados por espacios en blanco (20H en ASCII). Cada entero ocupa un número de bytes distinto.
 ![fichero_texto](img/fichero_texto.jpg)
 
-En este cuaderno trabajaremos con ficheros de texto. Vamos a ver que el trabajo con los ficheros de texto es esencialmente análogo al trabajo con entrada/salida convencional a través de la consola (habitualmente el teclado y la pantalla). 
+En este cuaderno trabajaremos con ficheros de texto. Vamos a ver que el trabajo con los ficheros de texto es esencialmente análogo al trabajo con entrada/salida convencional a través de la consola (habitualmente el teclado y la pantalla).
 
 +++
 
@@ -114,7 +114,7 @@ Cuando no usamos los *ficheros estándar*, tanto en Python como en cualquier otr
 
 Las operaciones de lectura/escritura hacen uso del concepto de **flujo** o **corriente** de datos (**stream**). El símil se basa en el hecho de interpretar la entrada/salida como una corriente o río de datos, donde estos son representados por la aparición **en serie**, uno tras otro, de los **bytes** que  representan cada uno de los valores transferidos. 
 
-El concepto de transferencia de datos en serie es clave. Si desde el teclado queremos introducir el número 543, es evidente que antes de escribir el 3, debemos escribir el 4 y antes el 5. En el caso de los ficheros se utiliza el mismo paradigma, se escribe un dato siempre a continuación del anterior. 
+El concepto de transferencia de datos en serie es clave. Si desde el teclado queremos introducir el número 543, es evidente que antes de escribir el 3, debemos escribir el 4 y antes el 5. En el caso de los ficheros se utiliza el mismo paradigma, se escribe un dato siempre a continuación del anterior.
 
 +++
 
@@ -211,7 +211,7 @@ for linea in fich_ent:
     # Procesar la línea
 fich_ent.close()
 ```
-La variable `linea` es una **cadena de caracteres** que va tomando secuencialmente las cadenas de caracteres correspondientes a cada una de las líneas del fichero, desde la primera a la última. 
+La variable `linea` es una **cadena de caracteres** que va tomando secuencialmente las cadenas de caracteres correspondientes a cada una de las líneas del fichero, desde la primera a la última.
 
 ```{code-cell} ipython3
 # Leyendo del fichero "valores_en_columna.txt" línea a línea
@@ -446,7 +446,8 @@ Debemos señalar que estas funciones pueden usarse con un argumento indicando el
 
 +++
 
-#### Ejemplo de uso de `readlines()`
+**Ejemplo de uso de `readlines()`**
+
 Para el fichero que estamos manejando, podemos observar que el código es menos compacto que con el método de lectura iterada línea por línea.
 
 ```{code-cell} ipython3
@@ -464,7 +465,7 @@ else:
     print("Lista con los enteros del fichero\n{}".format(lista_enteros))
 ```
 
-#### Ejemplo de uso de `read()`
+**Ejemplo de uso de `read()`**
 
 ```{code-cell} ipython3
 %reset -f
@@ -527,7 +528,7 @@ Los dos ejemplos de ficheros vistos hasta el momento tienen una estructura muy s
 
 Las aplicaciones prácticas requieren ser capaces de **crear** y **leer** ficheros que tengan una *estructura compleja* conocida de tamaño arbitrario, con independencia del número de datos que estos ficheros almacenen. En estos ficheros pueden mezclarse comentarios y datos tanto numéricos como cadenas de caracteres.
 
-Para dar sólo algunos ejemplos de los innumerables que podrían citarse, un fichero puede contener:
+Para dar solo algunos ejemplos de los innumerables que podrían citarse, un fichero puede contener:
 
 - los datos del censo de una ciudad o un país: nombre y apellidos, DNI, dirección y edad de los votantes.
 - la sucesión de temperaturas recogidas por un sensor en determinado lugar.
@@ -550,7 +551,7 @@ Veamos un posible fragmento para su lectura. Lo relevante:
 * Leemos la primera línea y la obviamos
 * Para cada una de las siguientes líneas, extraemos con `split()` la referencia y el precio.
 
-Es importante darnos cuenta también aquí del concepto de **flujo de datos**. Tras leer con `readline()` la línea del comentario, ésta ya está extraída de él. De hecho, un **puntero** oculto estará ahora *señalando* a la siguiente línea, al siguiente **byte** a extraer, correspondiente a la línea donde se encuentra `ref_1` y `1.5`. Por eso, el bucle `for` que itera a continuación sobre el objeto fichero `fich` lo hace desde esa línea, no desde el principio del fichero.
+Es importante darnos cuenta también aquí del concepto de **flujo de datos**. Tras leer con `readline()` la línea del comentario, esta ya está extraída de él. De hecho, un **puntero** oculto estará ahora *señalando* a la siguiente línea, al siguiente **byte** a extraer, correspondiente a la línea donde se encuentra `ref_1` y `1.5`. Por eso, el bucle `for` que itera a continuación sobre el objeto fichero `fich` lo hace desde esa línea, no desde el principio del fichero.
 
 ```{code-cell} ipython3
 # Leyendo el fichero "almacen.txt"

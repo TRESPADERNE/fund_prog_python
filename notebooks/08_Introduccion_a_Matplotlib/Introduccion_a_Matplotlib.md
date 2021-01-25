@@ -81,7 +81,7 @@ plt.plot(lista)
 
 Por defecto, `plot(lista)` une con una línea la secuencia de puntos de coordenadas $(i,lista[i])$, siendo $i$ los índices válidos de la lista desde $0$. En nuestro ejemplo, los puntos $\{(0,6),(1,2),(2,5),...,(7,6),(8,7),(9,3)\}$.
 
-Debe notarse que la figura donde reside la línea trazada se crea de forma automática para contener el dibujo. No sólo eso, en ausencia de indicaciones, se usan diferentes opciones por defecto, como tamaño de la figura, color y grosor de la línea, etc.
+Debe notarse que la figura donde reside la línea trazada se crea de forma automática para contener el dibujo. No solo eso, en ausencia de indicaciones, se usan diferentes opciones por defecto, como tamaño de la figura, color y grosor de la línea, etc.
 
 +++
 
@@ -244,7 +244,7 @@ plt.xlabel('$x$')
 plt.ylabel('${cos(x)}/{((x-10)(x+2)(x+12))}$')
 ```
 
-Estas son sólo un pequeño ejemplo de las enormes opciones de personalización que ofrece **Matplotlib**.
+Estas son solo un pequeño ejemplo de las enormes opciones de personalización que ofrece **Matplotlib**.
 
 +++
 

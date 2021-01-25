@@ -572,7 +572,7 @@ El número 97 es primo
 
 Una advertencia: existen formas más eficientes de realizar la tarea propuesta; el código anterior debe verse como un intento inicial. 
 
-Se trata básicamente de aplicar la propia definición de número primo: *aquel que es divisible sólo por él y por la unidad*. 
+Se trata básicamente de aplicar la propia definición de número primo: *aquel que es divisible solo por él y por la unidad*. 
 
 La estrategia entonces consiste en hallar, mediante un bucle, todos los posibles divisores *legítimos* que harían que se pudiera decidir que el número no es primo. Se utiliza un bucle `for` **por rango**, y el rango elegido es $[2,numero)$. Obsérvese que el límite inferior está incluido en el rango y el superior no. Y esto es precisamente lo que se requiere.
 
@@ -592,7 +592,7 @@ Las variables **testigo** son inicializadas a un valor **de reposo** antes de en
 
 +++
 
-Se debe comprender que la salida anticipada de un bucle constituye un recurso que puede mejorar la escritura o legibilidad del código. No obstante, siempre se puede modificar el bucle de manera que sólo se pueda decidir la permanencia o salida del mismo a partir de la expresión de control. 
+Se debe comprender que la salida anticipada de un bucle constituye un recurso que puede mejorar la escritura o legibilidad del código. No obstante, siempre se puede modificar el bucle de manera que solo se pueda decidir la permanencia o salida del mismo a partir de la expresión de control. 
 
 En el ejemplo que nos ocupa:
 

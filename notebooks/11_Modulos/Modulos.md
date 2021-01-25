@@ -146,18 +146,18 @@ Los módulos evitan la **contaminación del espacio de nombres** de un programa 
 
 ## Importación de un módulo
 Las formas recomendadas (y obligatorias en este curso) de importar un módulo son las siguientes:
-#### Forma 1
+* **Forma 1**
 ```python 
 import nombre_modulo1 
 ```
-Los diferentes objetos definidos con **alcance global** en el módulo `nombre_modulo1` son *incorporados* a los espacios de nombres de los respectivos módulos y/o programa principal, accesibles mediante el operador `.`. Como ya hemos comentado, los identificadores de un espacio de nombres, un módulo en este caso, son atributos del módulo. Por ello, la notación `.` es idéntica a la usada para el caso de acceso desde un objeto a sus atributos: datos y métodos.
+  Los diferentes objetos definidos con **alcance global** en el módulo `nombre_modulo1` son *incorporados* a los espacios de nombres de los respectivos módulos y/o programa principal, accesibles mediante el operador `.`. Como ya hemos comentado, los identificadores de un espacio de nombres, un módulo en este caso, son atributos del módulo. Por ello, la notación `.` es idéntica a la usada para el caso de acceso desde un objeto a sus atributos: datos y métodos.
 > Es lo que venimos haciendo cuando usamos, por ejemplo, `math.cos(x)` o `math.pi`.
 
-#### Forma 2
+* **Forma 2**
 ```python 
 import nombre_modulo2 as nom
 ```
-En esta segunda variante se especifica un **alias**, `nom` en el ejemplo, lo que permitiría utilizar `nom.` como alias del nombre del módulo.
+  En esta segunda variante se especifica un **alias**, `nom` en el ejemplo, lo que permitiría utilizar `nom.` como alias del nombre del módulo.
 > Es lo que hemos hecho con el módulo `numpy`, el alias `np` y la función `linspace`, por ejemplo, `np.linspace(0, 2, 10)`.
 
 +++
@@ -279,7 +279,7 @@ Para nuestro ejemplo de modulo, sin ánimo de ser exhaustivos, definiremos las s
 
 En el fichero `polinomios.py`, que colocaremos en el mismo directorio del programa que va a importarlo, se definirán las funciones anteriormente mencionadas.
 Nótese que, para este ejemplo, en aras a simplificar, el fichero que implementa el módulo se encuentra en el misma carpeta en la que se encuentra nuestro **cuaderno**.
-La siguiente celda muestra la definición de una de las funciones incluidas en `polinomios.py`. 
+La siguiente celda muestra la definición de una de las funciones incluidas en `polinomios.py`.
 
 ```{code-cell} ipython3
 def polyder(pol):
@@ -335,7 +335,7 @@ print(pol.polyder([2, 1, 1]))
 
 Desde el punto de vista de la sintaxis de Python **no hay diferencia alguna**. La diferencia la impone el *uso* que se le otorga a uno y otro. No hay ningún impedimento para ejecutar un módulo como si de un programa principal se tratase.
 
-La cuestión relevante es que un módulo puede contener sentencias que el programador sólo desea que sean ejecutadas cuando lo hacemos directamente desde el intérprete de Python. Por el contrario, cuando el módulo es importado, esas mismas sentencias no deseamos que se ejecuten.
+La cuestión relevante es que un módulo puede contener sentencias que el programador solo desea que sean ejecutadas cuando lo hacemos directamente desde el intérprete de Python. Por el contrario, cuando el módulo es importado, esas mismas sentencias no deseamos que se ejecuten.
 
 +++
 
@@ -381,7 +381,7 @@ Al ejecutar la celda ocurre lo siguiente:
 
 +++
 
-Teniendo en cuenta lo discutido, es práctica habitual en Python utilizar la construcción condicional que se muestra en la celda siguiente para ejecutar las sentencias definidas a nivel global (fuera de las funciones) sólo en el caso de que el fichero haya sido ejecutado directamente como programa de **nivel superior**.
+Teniendo en cuenta lo discutido, es práctica habitual en Python utilizar la construcción condicional que se muestra en la celda siguiente para ejecutar las sentencias definidas a nivel global (fuera de las funciones) solo en el caso de que el fichero haya sido ejecutado directamente como programa de **nivel superior**.
 
 El fichero `Modulo_D.py` muestra un ejemplo de ello:
 

@@ -2,10 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Fundamentos de Programación en Python
-author: Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría
+author: "" # Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría
 logo: logo.png
+copyright: "Félix Miguel Trespaderne / Rogelio Mazaeda Echevarría"
 
-exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.md", "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
 only_build_toc_files        : true
 
@@ -23,7 +24,6 @@ latex:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/TRESPADERNE/fund_prog_python  # Online location of your book
-# path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 #######################################################################################
@@ -34,15 +34,21 @@ parse:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+
 html:
-  use_issues_button         : true
   use_repository_button     : true
+  use_issues_button         : false
+  use_edit_page_button      : false
+  extra_navbar              : false
   extra_footer              : |
     <div>
-    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+        All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
     </div>
 
-# sphinx:
-#  extra_extensions: ['sphinx_rtd_theme']
-#  config                    :  
-#      html_theme : "sphinx_rtd_theme"
+
+
+sphinx:
+   config:
+      html_theme_options : {"use_download_button": False, "repository_url": "https://github.com/TRESPADERNE/fund_prog_python", "use_repository_button": True, 
+                            "extra_footer": <div> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a></div>,}

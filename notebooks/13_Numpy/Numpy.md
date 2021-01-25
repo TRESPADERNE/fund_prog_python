@@ -17,6 +17,7 @@ kernelspec:
 +++
 
 [Introducción](#Introducción)<br>
+[Tipos](#Tipos)<br>
 [Creación de arrays](#Creacion_arrays)<br>
 [Atributos de los arrays](#Atributos_arrays)<br>
 [Manipulando arrays](#Manipulando_arrays)<br>
@@ -25,7 +26,6 @@ kernelspec:
 [Copia](#Copia)<br>
 [Iterando con bucles](#Iterando_bucles)<br>
 [Funciones universales](#Funciones_universales)<br>
-[Tipos](#Tipos)<br>
 [Ejemplo de aplicación](#Ejemplo_aplicacion)
 
 +++
@@ -43,7 +43,7 @@ kernelspec:
 
 En Python ya hemos trabajado con vectores (matriz unidimensional) y matrices usando **listas**. Sin embargo, la *flexibilidad* de las listas (posibilidad de albergar distintos tipos de datos en una misma lista y la de poder variar su tamaño de forma dinámica), conlleva una estructura interna en memoria que penaliza severamente la manipulación eficiente de listas de gran tamaño. ¡No hay beneficio sin servidumbre!
 
-Por otro lado, la inmensa mayoría de las aplicaciones de interés que manejan matrices se caracterizan porque los datos que las conforman son del mismo tipo. Esta es una de las características de las matrices de **Numpy**: todos sus datos son del mismo tipo, lo que permite un almacenamiento interno en memoria eficiente.
+Por otro lado, la inmensa mayoría de las aplicaciones de interés que manejan matrices se caracterizan porque los datos que las conforman son del mismo tipo. Esta es una de las características de las matrices de **Numpy**: todos sus datos son del mismo tipo, lo que permite un almacenamiento interno en memoria eficiente, usando tipos **POD**.
 
 Otro hándicap de Python a la hora de manejar grandes volúmenes de datos es su carácter interpretado. El acceso secuencial vía bucles a todos y cada uno de los elementos de una matriz de gran tamaño conlleva una ejecución, por parte del **intérprete**, inevitablemente lenta. Para contrarestar este severo inconveniente, el paquete **NumPy** permite invocar multitud de métodos de forma **vectorizada**, es decir, pasando como argumento directamente la variable que representa a la matriz, estando la manipulación secuencial a cargo de una implementación eficiente interna en los lenguajes C o Fortran, y de forma transparente al programador.
 
@@ -62,6 +62,28 @@ Por consistencia con la denominación dentro del módulo, la terminología que u
 Debe tenerse en cuenta que en este documento expondremos una **pequeña parte** de las funciones  del módulo **NumPy**, las que se corresponden con las aplicaciones más habituales. Además, para cada función, existen multiples alternativas de invocación, con diferentes comportamientos en base a los tipos de los argumentos, argumentos opcionales, etc.
 
 Memorizar todas las posibilidades no tiene sentido, ni en esta ni en ninguna biblioteca o módulo. Lo importante es conocer las características fundamentales del módulo y **aprender a consultar** teniendo *a mano* la documentación pertinente: [**Numpy** reference](https://numpy.org/doc/stable/). Esto último es extensible, en general, a cualquier biblioteca de Python u otro lenguaje.
+
++++
+
+## Tipos
+**NumPy** permite trabajar con una gran variedad de **tipos POD**, equivalentes a los tipos fundamentales de C/C++.
+
+De forma **implícita**, **Numpy** deduce las constantes literales de la siguiente forma:
+
+* Literales enteras como `53` al tipo POD numpy `int32`, representación de enteros en complemento a 2 de 32 bits
+* Literales reales como `3.21` al tipo POD numpy `float64`, representación de reales IEEE-754 de 64 bits
+
+Si en alguna aplicación se desea utilizar un tipo específico basta indicarlo de forma **explícita** al crear las matrices, como iremos viendo en los siguientes apartados. Por ejemplo, algunos tipos habituales son:
+
+* `float32`, representación de reales IEEE-754 de 64 bits
+* `uint8`, representación de enteros sin signo de 8 bits
+* `int64`, representación de enteros en complemento a 2 de 64 bits
+* `uint32`, representación de enteros sin signo de 32 bits
+
++++
+
+***
+<a id='Tipos'></a>
 
 +++
 
@@ -156,7 +178,7 @@ np.ones((2,3), dtype=int)
 np.full(10, 3)
 ```
 
-#### `arange()`: emula la función intrínseca de Python `range()` 
+#### `arange()`: emula la función intrínseca de Python `range()`
 
 ```{code-cell} ipython3
 # Secuencia lineal que empieza en 0 y acaba antes de 10. El incremento por defecto es 1.
@@ -168,14 +190,14 @@ np.arange(10)
 np.arange(0., 100., 2.5)
 ```
 
-#### `linespace()`: creando una secuencia de valores equidistantes entre dos valores límite 
+#### `linespace()`: creando una secuencia de valores equidistantes entre dos valores límite
 
 ```{code-cell} ipython3
 # Secuencia lineal con 9 valores equidistantes, que empieza en 0 y acaba en 2
 np.linspace(0, 2, 9)
 ```
 
-#### `diag()`: crea una matriz unitaria cuadrada 
+#### `diag()`: crea una matriz unitaria cuadrada
 
 ```{code-cell} ipython3
 # El tamaño de la matriz coincide con el de la lista o ndarray 
@@ -272,7 +294,7 @@ Solo queremos leer la segunda columna
 
 El parámetro opcional `skiprows` nos permite hacerlo fácilmente.
 
-Además, de entre los datos útiles sólo estamos interesados en las columnas 1 y 2. Con el parámetro opcional `usecols` podemos seleccionar las columnas.
+Además, de entre los datos útiles solo estamos interesados en las columnas 1 y 2. Con el parámetro opcional `usecols` podemos seleccionar las columnas.
 
 ```{code-cell} ipython3
 M = np.loadtxt('data/ejemplo_lectura_parcial.dat', skiprows=2, usecols=(1, 2))
@@ -285,7 +307,7 @@ Como el alumno podrá imaginar, existe una función *hermana* de `loadtxt()`.
 
 ```{code-cell} ipython3
 # Salvar en el archivo data/prueba.dat la matriz m generada en la celda anterior en formato csv
-# con un formato de sólo dos cifras decimales para la primera columna y enteros para la segunda
+# con un formato de solo dos cifras decimales para la primera columna y enteros para la segunda
 
 np.savetxt('data/prueba.dat', M, delimiter=',', fmt=['%.2f', '%d'])
 np.loadtxt('data/prueba.dat', delimiter=',')
@@ -361,19 +383,34 @@ print(M)
 M[1, 2]
 ```
 
+Es relevante indicar que el tipo de los escalares indexados corresponde al mismo tipo del que tiene el array. En general, la mezcla de tipos no generá ningún problema, promocionándose en todo caso al de mayor rango.
+
+```{code-cell} ipython3
+v = np.array([4, 3, 5, 7], dtype='uint8')
+x = v[0]
+y = 8  # Tipo nativo Python int
+z = x*y
+w = int(z)  # Podemos convertir el tipo a uno nativo de Python
+
+print('x = {}, que es de tipo {}'.format(x, type(x)))
+print('y = {}, que es de tipo {}'.format(y, type(y)))
+print('z = {}, que es de tipo {}'.format(z, type(z)))
+print('w = {}, que es de tipo {}'.format(w, type(w)))
+```
+
 Si queremos acceder, por ejemplo, a toda una fila de una matriz de dos dimensiones, indicamos simplemente el índice de la fila:
 
 ```{code-cell} ipython3
 M[1]
 ```
 
-Lo mismo se puede conseguir usando la notación `:`: 
+Lo mismo se puede conseguir usando la notación `:`:
 
 ```{code-cell} ipython3
 M[2, :]  # fila 2
 ```
 
-Esto nos permite de una forma práctica acceder a toda una columna: 
+Esto nos permite de una forma práctica acceder a toda una columna:
 
 ```{code-cell} ipython3
 M[:, 1]  # columna 1
@@ -467,7 +504,7 @@ Lógicamente, las dimensiones de las matrices involucradas deben ser compatibles
 +++
 
 #### Multiplicación
-Usando la función `dot`: 
+Usando la función `dot`:
 
 ```{code-cell} ipython3
 M = np.array([[1, 2, 3], [4, 5, 6]])
@@ -733,7 +770,7 @@ for fila in M:  # fila es una fila de M
     print()
 ```
 
-Para iterar y modificar, nos podemos ayudar de `enumerate()`. 
+Para iterar y modificar, nos podemos ayudar de `enumerate()`.
 
 ```{code-cell} ipython3
 M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
@@ -774,16 +811,6 @@ np.sqrt(M)
 ```
 
 Podéis consultar todas las opciones disponibles en [numpy.ufuncs reference](https://numpy.org/doc/stable/reference/ufuncs.html)
-
-+++
-
-***
-<a id='Tipos'></a>
-
-+++
-
-## Tipos
-Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla bla
 
 +++
 

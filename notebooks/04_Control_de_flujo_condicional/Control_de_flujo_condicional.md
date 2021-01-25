@@ -195,7 +195,7 @@ z = 100
 print(x > y and x < z)
 ```
 
-O sea, tiene que cumplirse que el `x` es simultáneamente menor que el `z` `and` mayor que el `y`. Este tipo de sintaxis es habitual y obligada en la mayoría de los lenguajes de programación. En Python es perfectamente legítima. Sin embargo, este lenguaje ofrece una forma alternativa de *encadenar* los operadores de comparación, que resulta, en ocasiones como ésta, estar más en concordancia con nuestras intuiciones matemáticas. 
+O sea, tiene que cumplirse que el `x` es simultáneamente menor que el `z` `and` mayor que el `y`. Este tipo de sintaxis es habitual y obligada en la mayoría de los lenguajes de programación. En Python es perfectamente legítima. Sin embargo, este lenguaje ofrece una forma alternativa de *encadenar* los operadores de comparación, que resulta, en ocasiones como esta, estar más en concordancia con nuestras intuiciones matemáticas. 
 
 Por ejemplo, la misma proposición se podría haber expresado en Python de la siguiente manera:
 

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Manejo de excepciones  
+# Manejo de excepciones
 
 +++
 
@@ -315,7 +315,7 @@ En los ejemplos previos, el bloque `except` se limita a lanzar un mensaje de err
 
 No debemos perder de vista que **manejando la excepción evitamos que se detenga la ejecución del programa** de forma intempestiva.
 
-En la siguiente variante, mediante un bucle, volvemos a solicitar al usuario los valores mientras éstos no sean válidos.
+En la siguiente variante, mediante un bucle, volvemos a solicitar al usuario los valores mientras estos no sean válidos.
 
 ```{code-cell} ipython3
 :tags: [raises-exception, remove-output]
@@ -359,7 +359,7 @@ Denominador: 4
 ## Creación manual de excepciones: `raise`
 Muchos de los ejemplos de temas previos se ejecutan correctamente si utilizamos *entradas legítimas*. 
 
-Analicemos de nuevo el ejemplo de determinar si un número es primo cuando el usuario introduce un entero negativo o nulo. 
+Analicemos de nuevo el ejemplo de determinar si un número es primo cuando el usuario introduce un entero negativo o nulo.
 
 ```{code-cell} ipython3
 :tags: [remove-output, raises-exception]
@@ -383,7 +383,7 @@ Por ejemplo, si introducimos ``-3``, el resultado es incorrecto. Es un **error s
 
 La creación de un programa robusto frente a todas las posibles entradas, es una de las facetas de la **programación defensiva**. Muchas veces, al programar nos centramos en los aspectos algorítmicos de un problema, pero más tarde es necesario ir progresivamente **refinando el código**. La realización de **programas de prueba** en paralelo que nos permitan testar nuestro código es otra faceta indespensable en la ingeniería del software.
 
-Por ejemplo, la inclusión en el siguiente código del condicional que exige que el número sea mayor que uno, corrige el error semántico y la inclusión de `try ... except` evita formatos de entrada incorrectos. 
+Por ejemplo, la inclusión en el siguiente código del condicional que exige que el número sea mayor que uno, corrige el error semántico y la inclusión de `try ... except` evita formatos de entrada incorrectos.
 
 ```{code-cell} ipython3
 :tags: [raises-exception, remove-output]
