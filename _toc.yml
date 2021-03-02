@@ -14,14 +14,14 @@
     - file: notebooks/05_Secuencias/Secuencias
     - file: notebooks/06_Control_de_flujo_iterativo/Control_de_flujo_iterativo
     - file: notebooks/07_Manejo_de_excepciones/Manejo_de_excepciones
-    - file: notebooks/09_Funciones/Funciones
-    - file: notebooks/11_Modulos/Modulos
-    - file: notebooks/12_Ficheros/Ficheros
-    - file: notebooks/14_Diccionarios/Diccionarios
+    - file: notebooks/08_Funciones/Funciones
+    - file: notebooks/09_Modulos/Modulos
+    - file: notebooks/10_Ficheros/Ficheros
+    - file: notebooks/11_Diccionarios/Diccionarios
 
 - part: BIBLIOTECAS
   chapters:
-    - file: notebooks/08_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
-    - file: notebooks/10_Random/Random
-    - file: notebooks/13_Numpy/Numpy
-    - file: notebooks/15_Pandas/Pandas
+    - file: notebooks/Bibliotecas/01_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
+    - file: notebooks/Bibliotecas/02_Random/Random
+    - file: notebooks/Bibliotecas/03_Numpy/Numpy
+    - file: notebooks/Bibliotecas/04_Pandas/Pandas
