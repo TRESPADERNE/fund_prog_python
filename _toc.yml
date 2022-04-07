@@ -1,27 +1,22 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-
-- file: notebooks/00_Introduccion/Introduccion
-  title: Presentación
-
-- part: INTRODUCCIÓN A PYTHON
+format: jb-book
+root: notebooks/00_Introduccion/Introduccion
+title: "Presentaci\xF3n"
+parts:
+- caption: "INTRODUCCI\xD3N A PYTHON"
   chapters:
-    - file: notebooks/01_Tipos_y_variables/Tipos_y_variables
-    - file: notebooks/02_Funciones_predefinidas/Funciones_predefinidas
-    - file: notebooks/03_E_S/Entrada_salida
-    - file: notebooks/04_Control_de_flujo_condicional/Control_de_flujo_condicional
-    - file: notebooks/05_Secuencias/Secuencias
-    - file: notebooks/06_Control_de_flujo_iterativo/Control_de_flujo_iterativo
-    - file: notebooks/07_Manejo_de_excepciones/Manejo_de_excepciones
-    - file: notebooks/08_Funciones/Funciones
-    - file: notebooks/09_Modulos/Modulos
-    - file: notebooks/10_Ficheros/Ficheros
-    - file: notebooks/11_Diccionarios_conjuntos/Diccionarios_conjuntos
-
-- part: BIBLIOTECAS
+  - file: notebooks/01_Tipos_y_variables/Tipos_y_variables
+  - file: notebooks/02_Funciones_predefinidas/Funciones_predefinidas
+  - file: notebooks/03_E_S/Entrada_salida
+  - file: notebooks/04_Control_de_flujo_condicional/Control_de_flujo_condicional
+  - file: notebooks/05_Secuencias/Secuencias
+  - file: notebooks/06_Control_de_flujo_iterativo/Control_de_flujo_iterativo
+  - file: notebooks/07_Manejo_de_excepciones/Manejo_de_excepciones
+  - file: notebooks/08_Funciones/Funciones
+  - file: notebooks/09_Modulos/Modulos
+  - file: notebooks/10_Ficheros/Ficheros
+  - file: notebooks/11_Diccionarios_conjuntos/Diccionarios_conjuntos
+- caption: BIBLIOTECAS
   chapters:
-    - file: notebooks/Bibliotecas/01_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
-    - file: notebooks/Bibliotecas/02_Random/Random
-    - file: notebooks/Bibliotecas/03_Numpy/Numpy
-#    - file: notebooks/Bibliotecas/04_Pandas/Pandas
+  - file: notebooks/Bibliotecas/01_Introduccion_a_Matplotlib/Introduccion_a_Matplotlib
+  - file: notebooks/Bibliotecas/02_Random/Random
+  - file: notebooks/Bibliotecas/03_Numpy/Numpy
