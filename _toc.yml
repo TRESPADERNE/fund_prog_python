@@ -1,8 +1,8 @@
 format: jb-book
 root: notebooks/00_Introduccion/Introduccion
-title: "Presentaci\xF3n"
+title: "Presentación"
 parts:
-- caption: "INTRODUCCI\xD3N A PYTHON"
+- caption: "INTRODUCCIÓN A PYTHON"
   chapters:
   - file: notebooks/01_Tipos_y_variables/Tipos_y_variables
   - file: notebooks/02_Funciones_predefinidas/Funciones_predefinidas
